@@ -106,5 +106,7 @@ namespace Ignis.Storage
                 action(entityId, componentValue);
             }
         }
+
+        public T Get(int entityId) => Locked(() => _values[_ids.IndexOf(entityId)]);
     }
 }
