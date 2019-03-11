@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using ConcurrentCollections;
+using static Ignis.InternalConstants;
 
 namespace Ignis
 {
@@ -16,82 +17,85 @@ namespace Ignis
         public int EntityCount => (int)EntityCountLong;
         public long EntityCountLong => Interlocked.Read(ref _entityCount);
 
-        private long _lastEntityId = 1;
+        private int _lastEntityId = 1;
         private long _entityCount = 0;
-        private ConcurrentHashSet<long> _existingEntityIds = new ConcurrentHashSet<long>();
-        private ConcurrentDictionary<long, ICollection<Type>> _componentMap =
-            new ConcurrentDictionary<long, ICollection<Type>>();
+        private ConcurrentHashSet<int> _existingEntityIds = new ConcurrentHashSet<int>();
 
+        private ConcurrentHashSet<long> _entityComponentPairs = new ConcurrentHashSet<long>();
         private ConcurrentDictionary<Type, IComponentCollectionStorage> _storageCache =
             new ConcurrentDictionary<Type, IComponentCollectionStorage>();
-        
+
         private Func<Type, IComponentCollectionStorage> _storageResolver = null;
 
         public EntityManager(Func<Type, IComponentCollectionStorage> storageResolver) =>
             _storageResolver = storageResolver;
 
 
-        public long Create()
+        public int Create()
         {
             if (EntityCountLong >= long.MaxValue)
                 throw new ArgumentOutOfRangeException("Entity limit reached");
 
             var createdEntityId = _lastEntityId;
-            while (Exists(createdEntityId))
+            while (Exists(createdEntityId) || createdEntityId == NonExistingEntityId)
                 createdEntityId++;
 
             _existingEntityIds.Add(createdEntityId);
-            _componentMap.AddOrUpdate(createdEntityId, new ConcurrentHashSet<Type>(), (k, v) =>
-            {
-                v.Clear();
-                return v;
-            });
             Interlocked.Increment(ref _entityCount);
             OnEntityCreated?.Invoke(this, new EntityIdEventArgs(createdEntityId));
             return createdEntityId;
         }
 
-        public void Destroy(long entityId)
+        public void Destroy(int entityId)
         {
             if (!Exists(entityId))
                 return;
 
             _existingEntityIds.TryRemove(entityId);
-            _componentMap.TryRemove(entityId, out _);
+            foreach (var componentType in _storageCache.Keys)
+                RemoveComponent(entityId, componentType);
+
             Interlocked.Decrement(ref _entityCount);
             OnEntityDestroyed?.Invoke(this, new EntityIdEventArgs(entityId));
         }
 
-        public bool Exists(long entityId) => _existingEntityIds.Contains(entityId);
+        public bool Exists(int entityId) => _existingEntityIds.Contains(entityId);
 
-        public void AddComponent(long entityId, Type type)
+        private IComponentCollectionStorage GetStorage(Type componentType) =>
+            _storageCache.GetOrAdd(componentType, _storageResolver);
+
+        public void AddComponent(int entityId, Type type)
         {
-            throw new NotImplementedException();
+            if (HasComponent(entityId, type)) return;
+            _entityComponentPairs.Add(HashPair(entityId, type));
+            var storage = GetStorage(type);
+            lock (storage)
+                storage.StoreComponentForEntity(entityId);
+            OnEntityComponentAdded?.Invoke(this, new EntityComponentEventArgs(entityId, type));
         }
 
-        public void AddComponent<T>(long entityId) where T : struct
+        public void AddComponent<T>(int entityId) where T : struct =>
+            AddComponent(entityId, typeof(T));
+
+        public void RemoveComponent(int entityId, Type type)
         {
-            throw new NotImplementedException();
+            _entityComponentPairs.TryRemove(HashPair(entityId, type));
+            var storage = GetStorage(type);
+            lock (storage)
+                storage.RemoveComponentFromStorage(entityId);
+            OnEntityComponentRemoved?.Invoke(this, new EntityComponentEventArgs(entityId, type));
         }
 
-        public void RemoveComponent(long entityId, Type type)
-        {
-            throw new NotImplementedException();
-        }
+        public void RemoveComponent<T>(int entityId) where T : struct =>
+            RemoveComponent(entityId, typeof(T));
 
-        public void RemoveComponent<T>(long entityId) where T : struct
-        {
-            throw new NotImplementedException();
-        }
+        public bool HasComponent(int entityId, Type type) =>
+            _entityComponentPairs.Contains(HashPair(entityId, type));
 
-        public bool HasComponent(long entityId, Type type)
-        {
-            throw new NotImplementedException();
-        }
+        public bool HasComponent<T>(int entityId) where T : struct =>
+            HasComponent(entityId, typeof(T));
 
-        public bool HasComponent<T>(long entityId)
-        {
-            throw new NotImplementedException();
-        }
+        private long HashPair(int entityId, Type componentType) =>
+            ((long)entityId << 32) + (long)componentType.GetHashCode();
     }
 }

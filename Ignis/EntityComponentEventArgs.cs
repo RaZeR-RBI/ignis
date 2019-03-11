@@ -4,10 +4,10 @@ namespace Ignis
 {
     public class EntityComponentEventArgs : EventArgs
     {
-        public long EntityID { get; }
-        public object ComponentValue { get; }
+        public int EntityID { get; }
+        public Type ComponentType { get; }
 
-        public EntityComponentEventArgs(long id, object component) =>
-            (this.EntityID, this.ComponentValue) = (id, component);
+        public EntityComponentEventArgs(int id, Type component) =>
+            (this.EntityID, this.ComponentType) = (id, component);
     }
 }

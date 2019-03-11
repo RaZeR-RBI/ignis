@@ -4,7 +4,7 @@ namespace Ignis
 {
     public class EntityIdEventArgs : EventArgs
     {
-        public long EntityID { get; }
-        public EntityIdEventArgs(long id) => EntityID = id;
+        public int EntityID { get; }
+        public EntityIdEventArgs(int id) => EntityID = id;
     }
 }

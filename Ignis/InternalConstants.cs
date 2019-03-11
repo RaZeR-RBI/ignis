@@ -2,6 +2,6 @@ namespace Ignis
 {
     internal class InternalConstants
     {
-        public const long NonExistingEntityId = 0;
+        public const int NonExistingEntityId = 0;
     }
 }
