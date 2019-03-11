@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ConcurrentHashSet" Version="1.0.2" />
+    <PackageReference Include="MicroResolver" Version="2.3.5" />
+  </ItemGroup>
+
 </Project>

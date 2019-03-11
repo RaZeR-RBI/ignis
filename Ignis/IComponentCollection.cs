@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace Ignis
 {
-    internal interface IComponentCollectionInternal<T>
-        where T : struct
+    internal interface IComponentCollectionStorage
     {
-        bool StoreComponentForEntity(long entityId, T componentValue);
         bool RemoveComponentFromStorage(long entityId);
+        bool StoreComponentForEntity(long entityId);
     }
 
     public interface IComponentCollection<T> : IEnumerable<T>
@@ -17,5 +16,6 @@ namespace Ignis
         ref T NextValue();
         bool HasNextValue();
         long GetCurrentEntityId();
+        void ResetIterator();
     }
 }
