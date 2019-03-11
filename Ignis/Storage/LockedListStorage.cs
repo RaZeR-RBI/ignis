@@ -28,17 +28,18 @@ namespace Ignis.Storage
 
         private void Locked(Action act)
         {
-            lock (_ids)
-                lock (_values)
-                    act();
+            lock (sync)
+                act();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
+            Reset();
             if (!HasNext()) yield break;
             do
             {
                 var value = Locked(() => _values[_curIndex]);
+                _curIndex++;
                 yield return value;
             } while (HasNext());
         }
@@ -82,8 +83,8 @@ namespace Ignis.Storage
         {
             Locked(() =>
             {
-                if (_curIndex >= _ids.Count) return;
-                _values[_curIndex] = value;
+                if (_curIndex - 1 >= _ids.Count || _curIndex < 1) return;
+                _values[_curIndex - 1] = value;
             });
         }
 
@@ -101,8 +102,8 @@ namespace Ignis.Storage
                     entityId = _ids[_curIndex];
                     componentValue = _values[_curIndex];
                 }
-                action(entityId, componentValue);
                 _curIndex++;
+                action(entityId, componentValue);
             }
         }
     }

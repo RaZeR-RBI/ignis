@@ -4,5 +4,7 @@ namespace Tests
     {
         public float Foo;
         public bool Bar;
+
+        public override string ToString() => $"Foo: {Foo}, Bar: {Bar}";
     }
 }
