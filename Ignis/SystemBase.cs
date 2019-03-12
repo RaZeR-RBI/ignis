@@ -1,9 +1,12 @@
+using System;
+using Ignis.Containers;
+
 namespace Ignis
 {
     public abstract class SystemBase
     {
-        IContainer Container { get; }
+        public IContainer Container { get; }
         public abstract void Execute();
-        public SystemBase(IContainer owner) => Container = owner;
+        public SystemBase(ContainerProvider ownerProvider) => Container = ownerProvider.GetInstance();
     }
 }

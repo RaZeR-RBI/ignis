@@ -28,6 +28,8 @@ namespace Tests
             var entityIds = Enumerable.Range(0, entityCount)
                 .Select(i => entityManager.Create())
                 .ToList();
+            
+            entityIds.ForEach(id => entityManager.AddComponent<SampleComponent>(id));
 
             // Initial state
             storage.Count().Should().Be(entityCount);
@@ -54,9 +56,9 @@ namespace Tests
     {
         private IComponentCollection<SampleComponent> sampleComponent;
 
-        public SampleSystem(IContainer owner) : base(owner)
+        public SampleSystem(ContainerProvider provider) : base(provider)
         {
-            sampleComponent = owner.GetStorageFor<SampleComponent>();
+            sampleComponent = Container.GetStorageFor<SampleComponent>();
         }
 
         public override void Execute()

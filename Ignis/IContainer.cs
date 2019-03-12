@@ -11,14 +11,29 @@ namespace Ignis
 
         IContainer AddComponent<TComponent, TStorage>()
             where TComponent : struct
-            where TStorage : IComponentCollection<TComponent>;
+            where TStorage : class, IComponentCollection<TComponent>;
 
         IContainer AddSystem<TSystem>()
             where TSystem : SystemBase;
 
+        IContainer AddParallelSystems<T1, T2>()
+            where T1 : SystemBase
+            where T2 : SystemBase;
+
+        IContainer AddParallelSystems<T1, T2, T3>()
+            where T1 : SystemBase
+            where T2 : SystemBase
+            where T3 : SystemBase;
+
+        IContainer AddParallelSystems<T1, T2, T3, T4>()
+            where T1 : SystemBase
+            where T2 : SystemBase
+            where T3 : SystemBase
+            where T4 : SystemBase;
+
         IContainer Register<TInterface, TImpl>()
             where TInterface : class
-            where TImpl : TInterface;
+            where TImpl : class, TInterface;
 
         TInterface Resolve<TInterface>() where TInterface : class;
 
