@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace Ignis.Storage
 {
-    public class LockedListStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
+    public class DoubleLockedListStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
         where T : struct
     {
         private int _curIndex = 0;
@@ -14,10 +15,11 @@ namespace Ignis.Storage
         private List<int> _ids = new List<int>();
         private List<T> _values = new List<T>();
 
-        public object Current => GetEnumerator().Current;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool HasNext() => _curIndex < _ids.Count;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private R Locked<R>(Func<R> func)
         {
             R value;
@@ -26,6 +28,7 @@ namespace Ignis.Storage
             return value;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Locked(Action act)
         {
             lock (sync)
@@ -35,16 +38,13 @@ namespace Ignis.Storage
         public IEnumerator<T> GetEnumerator()
         {
             Reset();
-            if (!HasNext()) yield break;
-            do
+            while (HasNext())
             {
                 var value = Locked(() => _values[_curIndex]);
                 _curIndex++;
                 yield return value;
-            } while (HasNext());
+            }
         }
-
-        public bool MoveNext() => GetEnumerator().MoveNext();
 
         public bool RemoveComponentFromStorage(int entityId) =>
             Locked(() =>
@@ -58,7 +58,8 @@ namespace Ignis.Storage
                 return true;
             });
 
-        public void Reset() => _curIndex = 0;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void Reset() => _curIndex = 0;
 
         public bool StoreComponentForEntity(int entityId) =>
             Locked(() =>

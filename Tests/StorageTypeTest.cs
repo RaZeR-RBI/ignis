@@ -98,13 +98,30 @@ namespace Tests
             foreach (var id in alive.Reverse())
                 storage.Get(id).Foo.Should().Be(id + 1);
         }
+
+        [Theory]
+        [ClassData(typeof(StorageTypesTestData))]
+        public void ShouldIterateWhenEmpty(IComponentCollection<SampleComponent> storage)
+        {
+            var count = 0;
+            foreach (var component in storage)
+                count++;
+            count.Should().Be(0);
+
+            count = 0;
+            storage.ForEach((id, val) => count++);
+            count.Should().Be(0);
+        }
     }
 
     public class StorageTypesTestData : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] { new LockedListStorage<SampleComponent>() };
+            yield return new object[] { new DoubleListStorage<SampleComponent>() };
+            yield return new object[] { new DoubleLockedListStorage<SampleComponent>() };
+            yield return new object[] { new ListOfPairsStorage<SampleComponent>() };
+            // yield return new object[] { new ConcurrentDictionaryStorage<SampleComponent>() };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

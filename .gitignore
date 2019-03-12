@@ -10,6 +10,7 @@
 *.sln.docstates
 .vscode/*
 */.vscode/*
+tools/*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

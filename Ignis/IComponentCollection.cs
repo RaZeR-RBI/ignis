@@ -10,7 +10,7 @@ namespace Ignis
         bool StoreComponentForEntity(int entityId);
     }
 
-    public interface IComponentCollection<T> : IEnumerable<T>, IEnumerator
+    public interface IComponentCollection<T> : IEnumerable<T>
         where T : struct
     {
         void UpdateCurrent(T value);
