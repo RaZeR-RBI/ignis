@@ -10,7 +10,7 @@ namespace Tests
     public class EntityManagerTest
     {
         private IEntityManager em;
-        private IComponentCollection<SampleComponent> storage = new DoubleLockedListStorage<SampleComponent>();
+        private IComponentCollection<SampleComponent> storage = new DoubleListStorage<SampleComponent>();
 
         public EntityManagerTest() => em = new EntityManager(StorageResolver);
 

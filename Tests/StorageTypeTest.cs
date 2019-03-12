@@ -119,9 +119,7 @@ namespace Tests
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[] { new DoubleListStorage<SampleComponent>() };
-            yield return new object[] { new DoubleLockedListStorage<SampleComponent>() };
             yield return new object[] { new ListOfPairsStorage<SampleComponent>() };
-            // yield return new object[] { new ConcurrentDictionaryStorage<SampleComponent>() };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
