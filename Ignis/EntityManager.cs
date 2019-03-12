@@ -69,8 +69,7 @@ namespace Ignis
             if (HasComponent(entityId, type)) return;
             _entityComponentPairs.Add(HashPair(entityId, type));
             var storage = GetStorage(type);
-            lock (storage)
-                storage.StoreComponentForEntity(entityId);
+            storage.StoreComponentForEntity(entityId);
             OnEntityComponentAdded?.Invoke(this, new EntityComponentEventArgs(entityId, type));
         }
 
@@ -81,8 +80,7 @@ namespace Ignis
         {
             _entityComponentPairs.TryRemove(HashPair(entityId, type));
             var storage = GetStorage(type);
-            lock (storage)
-                storage.RemoveComponentFromStorage(entityId);
+            storage.RemoveComponentFromStorage(entityId);
             OnEntityComponentRemoved?.Invoke(this, new EntityComponentEventArgs(entityId, type));
         }
 
