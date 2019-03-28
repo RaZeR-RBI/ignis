@@ -2,7 +2,7 @@ using System;
 
 namespace Ignis
 {
-    public class EntityComponentEventArgs : EventArgs
+    public struct EntityComponentEventArgs
     {
         public int EntityID { get; }
         public Type ComponentType { get; }

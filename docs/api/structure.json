@@ -1,0 +1,538 @@
+{
+  "name": "",
+  "fullName": "",
+  "type": "Root",
+  "link": "",
+  "children": [
+    {
+      "name": "Ignis",
+      "fullName": "Ignis",
+      "type": "Namespace",
+      "link": "Ignis",
+      "children": [
+        {
+          "name": "SystemBase",
+          "fullName": "Ignis.SystemBase",
+          "type": "Class",
+          "link": "Ignis.SystemBase",
+          "children": [
+            {
+              "name": "Container",
+              "fullName": "Ignis.SystemBase.Container",
+              "type": "Property",
+              "link": "Ignis.SystemBase.Container"
+            },
+            {
+              "name": "Execute()",
+              "fullName": "Ignis.SystemBase.Execute()",
+              "type": "Method",
+              "link": "Ignis.SystemBase.Execute()"
+            },
+            {
+              "name": "SystemBase(ContainerProvider)",
+              "fullName": "Ignis.SystemBase.SystemBase(ContainerProvider)",
+              "type": "Constructor",
+              "link": "Ignis.SystemBase.SystemBase(ContainerProvider)"
+            }
+          ]
+        },
+        {
+          "name": "EntityComponentEventArgs",
+          "fullName": "Ignis.EntityComponentEventArgs",
+          "type": "Struct",
+          "link": "Ignis.EntityComponentEventArgs",
+          "children": [
+            {
+              "name": "EntityID",
+              "fullName": "Ignis.EntityComponentEventArgs.EntityID",
+              "type": "Property",
+              "link": "Ignis.EntityComponentEventArgs.EntityID"
+            },
+            {
+              "name": "ComponentType",
+              "fullName": "Ignis.EntityComponentEventArgs.ComponentType",
+              "type": "Property",
+              "link": "Ignis.EntityComponentEventArgs.ComponentType"
+            },
+            {
+              "name": "EntityComponentEventArgs(int, Type)",
+              "fullName": "Ignis.EntityComponentEventArgs.EntityComponentEventArgs(int, Type)",
+              "type": "Constructor",
+              "link": "Ignis.EntityComponentEventArgs.EntityComponentEventArgs(int, Type)"
+            }
+          ]
+        },
+        {
+          "name": "EntityIdEventArgs",
+          "fullName": "Ignis.EntityIdEventArgs",
+          "type": "Struct",
+          "link": "Ignis.EntityIdEventArgs",
+          "children": [
+            {
+              "name": "EntityID",
+              "fullName": "Ignis.EntityIdEventArgs.EntityID",
+              "type": "Property",
+              "link": "Ignis.EntityIdEventArgs.EntityID"
+            },
+            {
+              "name": "EntityIdEventArgs(int)",
+              "fullName": "Ignis.EntityIdEventArgs.EntityIdEventArgs(int)",
+              "type": "Constructor",
+              "link": "Ignis.EntityIdEventArgs.EntityIdEventArgs(int)"
+            }
+          ]
+        },
+        {
+          "name": "IComponentCollection<T>",
+          "fullName": "Ignis.IComponentCollection<T>",
+          "type": "Interface",
+          "link": "Ignis.IComponentCollection_T_",
+          "children": [
+            {
+              "name": "ForEach(Action<int, T>)",
+              "fullName": "Ignis.IComponentCollection<T>.ForEach(Action<int, T>)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.ForEach(Action_int, T_)"
+            },
+            {
+              "name": "Get(int)",
+              "fullName": "Ignis.IComponentCollection<T>.Get(int)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.Get(int)"
+            },
+            {
+              "name": "Update(int, T)",
+              "fullName": "Ignis.IComponentCollection<T>.Update(int, T)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.Update(int, T)"
+            },
+            {
+              "name": "UpdateCurrent(T)",
+              "fullName": "Ignis.IComponentCollection<T>.UpdateCurrent(T)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.UpdateCurrent(T)"
+            }
+          ]
+        },
+        {
+          "name": "IContainer",
+          "fullName": "Ignis.IContainer",
+          "type": "Interface",
+          "link": "Ignis.IContainer",
+          "children": [
+            {
+              "name": "EntityManager",
+              "fullName": "Ignis.IContainer.EntityManager",
+              "type": "Property",
+              "link": "Ignis.IContainer.EntityManager"
+            },
+            {
+              "name": "AddComponent<TComponent, TStorage>()",
+              "fullName": "Ignis.IContainer.AddComponent<TComponent, TStorage>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.AddComponent_TComponent, TStorage_()"
+            },
+            {
+              "name": "AddComponent<TComponent>()",
+              "fullName": "Ignis.IContainer.AddComponent<TComponent>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.AddComponent_TComponent_()"
+            },
+            {
+              "name": "AddParallelSystems<T1, T2, T3, T4>()",
+              "fullName": "Ignis.IContainer.AddParallelSystems<T1, T2, T3, T4>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.AddParallelSystems_T1, T2, T3, T4_()"
+            },
+            {
+              "name": "AddParallelSystems<T1, T2, T3>()",
+              "fullName": "Ignis.IContainer.AddParallelSystems<T1, T2, T3>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.AddParallelSystems_T1, T2, T3_()"
+            },
+            {
+              "name": "AddParallelSystems<T1, T2>()",
+              "fullName": "Ignis.IContainer.AddParallelSystems<T1, T2>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.AddParallelSystems_T1, T2_()"
+            },
+            {
+              "name": "AddSystem<TSystem>()",
+              "fullName": "Ignis.IContainer.AddSystem<TSystem>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.AddSystem_TSystem_()"
+            },
+            {
+              "name": "Build()",
+              "fullName": "Ignis.IContainer.Build()",
+              "type": "Method",
+              "link": "Ignis.IContainer.Build()"
+            },
+            {
+              "name": "ExecuteSystems()",
+              "fullName": "Ignis.IContainer.ExecuteSystems()",
+              "type": "Method",
+              "link": "Ignis.IContainer.ExecuteSystems()"
+            },
+            {
+              "name": "GetStorageFor<T>()",
+              "fullName": "Ignis.IContainer.GetStorageFor<T>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.GetStorageFor_T_()"
+            },
+            {
+              "name": "GetSystem<T>()",
+              "fullName": "Ignis.IContainer.GetSystem<T>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.GetSystem_T_()"
+            },
+            {
+              "name": "Register<TInterface, TImpl>()",
+              "fullName": "Ignis.IContainer.Register<TInterface, TImpl>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.Register_TInterface, TImpl_()"
+            },
+            {
+              "name": "Resolve<TInterface>()",
+              "fullName": "Ignis.IContainer.Resolve<TInterface>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.Resolve_TInterface_()"
+            }
+          ]
+        },
+        {
+          "name": "IEntityManager",
+          "fullName": "Ignis.IEntityManager",
+          "type": "Interface",
+          "link": "Ignis.IEntityManager",
+          "children": [
+            {
+              "name": "OnEntityCreated",
+              "fullName": "Ignis.IEntityManager.OnEntityCreated",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.OnEntityCreated"
+            },
+            {
+              "name": "OnEntityDestroyed",
+              "fullName": "Ignis.IEntityManager.OnEntityDestroyed",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.OnEntityDestroyed"
+            },
+            {
+              "name": "EntityCount",
+              "fullName": "Ignis.IEntityManager.EntityCount",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.EntityCount"
+            },
+            {
+              "name": "EntityCountLong",
+              "fullName": "Ignis.IEntityManager.EntityCountLong",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.EntityCountLong"
+            },
+            {
+              "name": "OnEntityComponentAdded",
+              "fullName": "Ignis.IEntityManager.OnEntityComponentAdded",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.OnEntityComponentAdded"
+            },
+            {
+              "name": "OnEntityComponentRemoved",
+              "fullName": "Ignis.IEntityManager.OnEntityComponentRemoved",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.OnEntityComponentRemoved"
+            },
+            {
+              "name": "AddComponent(int, Type)",
+              "fullName": "Ignis.IEntityManager.AddComponent(int, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.AddComponent(int, Type)"
+            },
+            {
+              "name": "AddComponent<T>(int)",
+              "fullName": "Ignis.IEntityManager.AddComponent<T>(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.AddComponent_T_(int)"
+            },
+            {
+              "name": "Create()",
+              "fullName": "Ignis.IEntityManager.Create()",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Create()"
+            },
+            {
+              "name": "Destroy(int)",
+              "fullName": "Ignis.IEntityManager.Destroy(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Destroy(int)"
+            },
+            {
+              "name": "Exists(int)",
+              "fullName": "Ignis.IEntityManager.Exists(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Exists(int)"
+            },
+            {
+              "name": "HasComponent(int, Type)",
+              "fullName": "Ignis.IEntityManager.HasComponent(int, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.HasComponent(int, Type)"
+            },
+            {
+              "name": "HasComponent<T>(int)",
+              "fullName": "Ignis.IEntityManager.HasComponent<T>(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.HasComponent_T_(int)"
+            },
+            {
+              "name": "RemoveComponent(int, Type)",
+              "fullName": "Ignis.IEntityManager.RemoveComponent(int, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.RemoveComponent(int, Type)"
+            },
+            {
+              "name": "RemoveComponent<T>(int)",
+              "fullName": "Ignis.IEntityManager.RemoveComponent<T>(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.RemoveComponent_T_(int)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ignis.Containers",
+      "fullName": "Ignis.Containers",
+      "type": "Namespace",
+      "link": "Ignis.Containers",
+      "children": [
+        {
+          "name": "ContainerProvider",
+          "fullName": "Ignis.Containers.ContainerProvider",
+          "type": "Class",
+          "link": "Ignis.Containers.ContainerProvider",
+          "children": [
+            {
+              "name": "BeginCreation(IContainer)",
+              "fullName": "Ignis.Containers.ContainerProvider.BeginCreation(IContainer)",
+              "type": "Method",
+              "link": "Ignis.Containers.ContainerProvider.BeginCreation(IContainer)"
+            },
+            {
+              "name": "EndCreation()",
+              "fullName": "Ignis.Containers.ContainerProvider.EndCreation()",
+              "type": "Method",
+              "link": "Ignis.Containers.ContainerProvider.EndCreation()"
+            },
+            {
+              "name": "GetInstance()",
+              "fullName": "Ignis.Containers.ContainerProvider.GetInstance()",
+              "type": "Method",
+              "link": "Ignis.Containers.ContainerProvider.GetInstance()"
+            }
+          ]
+        },
+        {
+          "name": "MicroResolverContainer",
+          "fullName": "Ignis.Containers.MicroResolverContainer",
+          "type": "Class",
+          "link": "Ignis.Containers.MicroResolverContainer",
+          "children": [
+            {
+              "name": "EntityManager",
+              "fullName": "Ignis.Containers.MicroResolverContainer.EntityManager",
+              "type": "Property",
+              "link": "Ignis.Containers.MicroResolverContainer.EntityManager"
+            },
+            {
+              "name": "MicroResolverContainer()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.MicroResolverContainer()",
+              "type": "Constructor",
+              "link": "Ignis.Containers.MicroResolverContainer.MicroResolverContainer()"
+            },
+            {
+              "name": "AddComponent<TComponent, TStorage>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddComponent<TComponent, TStorage>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.AddComponent_TComponent, TStorage_()"
+            },
+            {
+              "name": "AddComponent<TComponent>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddComponent<TComponent>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.AddComponent_TComponent_()"
+            },
+            {
+              "name": "AddParallelSystems<T1, T2, T3, T4>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems<T1, T2, T3, T4>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems_T1, T2, T3, T4_()"
+            },
+            {
+              "name": "AddParallelSystems<T1, T2, T3>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems<T1, T2, T3>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems_T1, T2, T3_()"
+            },
+            {
+              "name": "AddParallelSystems<T1, T2>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems<T1, T2>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems_T1, T2_()"
+            },
+            {
+              "name": "AddSystem<TSystem>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddSystem<TSystem>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.AddSystem_TSystem_()"
+            },
+            {
+              "name": "Build()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Build()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Build()"
+            },
+            {
+              "name": "ExecuteSystems()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.ExecuteSystems()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.ExecuteSystems()"
+            },
+            {
+              "name": "GetStorageFor<T>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.GetStorageFor<T>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.GetStorageFor_T_()"
+            },
+            {
+              "name": "GetSystem<T>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.GetSystem<T>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.GetSystem_T_()"
+            },
+            {
+              "name": "Register<TInterface, TImpl>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Register<TInterface, TImpl>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Register_TInterface, TImpl_()"
+            },
+            {
+              "name": "Resolve<TInterface>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Resolve<TInterface>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Resolve_TInterface_()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ignis.Storage",
+      "fullName": "Ignis.Storage",
+      "type": "Namespace",
+      "link": "Ignis.Storage",
+      "children": [
+        {
+          "name": "DoubleListStorage<T>",
+          "fullName": "Ignis.Storage.DoubleListStorage<T>",
+          "type": "Class",
+          "link": "Ignis.Storage.DoubleListStorage_T_",
+          "children": [
+            {
+              "name": "ForEach(Action<int, T>)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.ForEach(Action<int, T>)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.ForEach(Action_int, T_)"
+            },
+            {
+              "name": "Get(int)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.Get(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.Get(int)"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.GetEnumerator()"
+            },
+            {
+              "name": "RemoveComponentFromStorage(int)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.RemoveComponentFromStorage(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.RemoveComponentFromStorage(int)"
+            },
+            {
+              "name": "StoreComponentForEntity(int)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.StoreComponentForEntity(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.StoreComponentForEntity(int)"
+            },
+            {
+              "name": "Update(int, T)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.Update(int, T)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "UpdateCurrent(T)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.UpdateCurrent(T)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.UpdateCurrent(T)"
+            }
+          ]
+        },
+        {
+          "name": "ListOfPairsStorage<T>",
+          "fullName": "Ignis.Storage.ListOfPairsStorage<T>",
+          "type": "Class",
+          "link": "Ignis.Storage.ListOfPairsStorage_T_",
+          "children": [
+            {
+              "name": "ForEach(Action<int, T>)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ForEach(Action<int, T>)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.ForEach(Action_int, T_)"
+            },
+            {
+              "name": "Get(int)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Get(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.Get(int)"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetEnumerator()"
+            },
+            {
+              "name": "RemoveComponentFromStorage(int)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.RemoveComponentFromStorage(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.RemoveComponentFromStorage(int)"
+            },
+            {
+              "name": "StoreComponentForEntity(int)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.StoreComponentForEntity(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.StoreComponentForEntity(int)"
+            },
+            {
+              "name": "Update(int, T)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Update(int, T)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "UpdateCurrent(T)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.UpdateCurrent(T)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.UpdateCurrent(T)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
