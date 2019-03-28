@@ -73,7 +73,7 @@ namespace Ignis
             OnEntityComponentAdded?.Invoke(this, new EntityComponentEventArgs(entityId, type));
         }
 
-        public void AddComponent<T>(int entityId) where T : struct =>
+        public void AddComponent<T>(int entityId) where T : new() =>
             AddComponent(entityId, typeof(T));
 
         public void RemoveComponent(int entityId, Type type)
@@ -84,13 +84,13 @@ namespace Ignis
             OnEntityComponentRemoved?.Invoke(this, new EntityComponentEventArgs(entityId, type));
         }
 
-        public void RemoveComponent<T>(int entityId) where T : struct =>
+        public void RemoveComponent<T>(int entityId) where T : new() =>
             RemoveComponent(entityId, typeof(T));
 
         public bool HasComponent(int entityId, Type type) =>
             _entityComponentPairs.Contains(HashPair(entityId, type));
 
-        public bool HasComponent<T>(int entityId) where T : struct =>
+        public bool HasComponent<T>(int entityId) where T : new() =>
             HasComponent(entityId, typeof(T));
 
         private long HashPair(int entityId, Type componentType) =>

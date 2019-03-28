@@ -133,7 +133,7 @@ namespace Ignis.Containers
         public void ExecuteSystems() =>
             _executionOrder.ForEach(a => a.Invoke());
 
-        public IComponentCollection<T> GetStorageFor<T>() where T : struct =>
+        public IComponentCollection<T> GetStorageFor<T>() where T : new() =>
             _resolver.Resolve<IComponentCollection<T>>();
 
         public T GetSystem<T>() where T : SystemBase => _resolver.Resolve<T>();

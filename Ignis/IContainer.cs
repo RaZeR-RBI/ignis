@@ -3,7 +3,7 @@ namespace Ignis
     public interface IContainer
     {
         IEntityManager EntityManager { get; }
-        IComponentCollection<T> GetStorageFor<T>() where T : struct;
+        IComponentCollection<T> GetStorageFor<T>() where T : new();
         T GetSystem<T>() where T : SystemBase;
 
         IContainer AddComponent<TComponent>()

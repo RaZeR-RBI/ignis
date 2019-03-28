@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="217" visitedSequencePoints="179" numBranchPoints="217" visitedBranchPoints="179" sequenceCoverage="0,825" branchCoverage="0,825" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="11" numClasses="12" visitedMethods="63" numMethods="68" />
   <Modules>
-    <Module hash="C63A3A4D-ACFF-40C4-B2AE-1AA14B708FC1">
+    <Module hash="54FE8753-A5E3-463B-8214-DB51FE644206">
       <ModulePath>Ignis.dll</ModulePath>
-      <ModuleTime>2019-03-28T12:33:06</ModuleTime>
+      <ModuleTime>2019-03-28T01:04:24</ModuleTime>
       <ModuleName>Ignis</ModuleName>
       <Files>
         <File uid="1" fullPath="/home/razer/vscode-projects/ignis/Ignis/EntityComponentEventArgs.cs" />

@@ -8,7 +8,7 @@ using System.Threading;
 namespace Ignis.Storage
 {
     public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
-        where T : struct
+        where T : new()
     {
         private int _curIndex = 0;
         private List<int> _ids = new List<int>();

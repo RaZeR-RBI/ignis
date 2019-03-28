@@ -1,7 +1,7 @@
 namespace Ignis.Storage
 {
     internal struct EntityValuePair<T>
-        where T : struct
+        where T : new()
     {
         public int EntityID;
         public T ComponentValue;

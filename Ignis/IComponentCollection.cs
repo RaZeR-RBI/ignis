@@ -11,7 +11,7 @@ namespace Ignis
     }
 
     public interface IComponentCollection<T> : IEnumerable<T>
-        where T : struct
+        where T : new()
     {
         void UpdateCurrent(T value);
         void Update(int entityId, T value);

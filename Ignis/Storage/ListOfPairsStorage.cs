@@ -7,7 +7,7 @@ using System.Linq;
 namespace Ignis.Storage
 {
     public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
-        where T : struct
+        where T : new()
     {
         private int _curIndex = 0;
         private List<EntityValuePair<T>> _pairs = new List<EntityValuePair<T>>();
