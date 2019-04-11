@@ -78,6 +78,8 @@ namespace Ignis.Storage
 
         public T Get(int entityId) => _values[_ids.IndexOf(entityId)];
 
+        public void Update(int entityId, object value) => Update(entityId, (T)value);
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

@@ -81,5 +81,7 @@ namespace Ignis.Storage
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool HasNext() => _curIndex < _pairs.Count;
+
+        public void Update(int entityId, object value) => Update(entityId, (T)value);
     }
 }
