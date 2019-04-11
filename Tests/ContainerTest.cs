@@ -21,7 +21,10 @@ namespace Tests
 
             var storage = container.GetStorageFor<SampleComponent>();
             storage.Should().NotBeNull();
+            Assert.NotNull(container.GetStorageFor(typeof(SampleComponent)));
+
             container.GetSystem<SampleSystem>().Should().NotBeNull();
+            Assert.NotNull(container.GetSystem(typeof(SampleSystem)));
 
             var entityManager = container.EntityManager;
             var entityCount = 5;

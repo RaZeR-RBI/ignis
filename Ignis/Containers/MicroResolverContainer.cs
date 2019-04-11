@@ -148,5 +148,10 @@ namespace Ignis.Containers
 
         public TInterface Resolve<TInterface>() where TInterface : class =>
             _resolver.Resolve<TInterface>();
+
+        public dynamic GetStorageFor(Type type) =>
+            _resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type));
+
+        public SystemBase GetSystem(Type type) => _resolver.Resolve(type) as SystemBase;
     }
 }

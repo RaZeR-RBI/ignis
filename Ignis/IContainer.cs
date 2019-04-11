@@ -1,10 +1,14 @@
+using System;
+
 namespace Ignis
 {
     public interface IContainer
     {
         IEntityManager EntityManager { get; }
         IComponentCollection<T> GetStorageFor<T>() where T : new();
+        dynamic GetStorageFor(Type type);
         T GetSystem<T>() where T : SystemBase;
+        SystemBase GetSystem(Type type);
 
         IContainer AddComponent<TComponent>()
             where TComponent : struct;
