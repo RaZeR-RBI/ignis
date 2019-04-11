@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Ignis
 {
@@ -43,5 +44,8 @@ namespace Ignis
 
         IContainer Build();
         void ExecuteSystems();
+
+        IEnumerable<Type> GetComponentTypes();
+        IEnumerable<Type> GetSystemTypes();
     }
 }

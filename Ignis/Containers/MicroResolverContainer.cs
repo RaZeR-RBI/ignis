@@ -15,6 +15,9 @@ namespace Ignis.Containers
         private List<Action> _executionOrder = new List<Action>();
         private List<List<Type>> _systemTypes = new List<List<Type>>();
 
+        private List<Type> _registeredComponents = new List<Type>();
+        private List<Type> _registeredSystems = new List<Type>();
+
         public MicroResolverContainer()
         {
             ContainerProvider.BeginCreation(this);
@@ -143,6 +146,10 @@ namespace Ignis.Containers
             where TImpl : class, TInterface
         {
             _resolver.Register<TInterface, TImpl>(Lifestyle.Singleton);
+            if (typeof(SystemBase).IsAssignableFrom(typeof(TImpl)))
+                _registeredSystems.Add(typeof(TImpl));
+            else if (typeof(IComponentCollectionStorage).IsAssignableFrom(typeof(TImpl)))
+                _registeredComponents.Add(typeof(TImpl).GetGenericArguments()[0]);
             return this;
         }
 
@@ -153,5 +160,9 @@ namespace Ignis.Containers
             _resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type));
 
         public SystemBase GetSystem(Type type) => _resolver.Resolve(type) as SystemBase;
+
+        public IEnumerable<Type> GetComponentTypes() => _registeredComponents;
+
+        public IEnumerable<Type> GetSystemTypes() => _registeredSystems;
     }
 }

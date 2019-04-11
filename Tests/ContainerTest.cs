@@ -19,6 +19,9 @@ namespace Tests
                 .AddSystem<SampleSystem>()
                 .Build();
 
+            container.GetSystemTypes().Should().BeEquivalentTo(typeof(SampleSystem));
+            container.GetComponentTypes().Should().BeEquivalentTo(typeof(SampleComponent));
+
             var storage = container.GetStorageFor<SampleComponent>();
             storage.Should().NotBeNull();
             Assert.NotNull(container.GetStorageFor(typeof(SampleComponent)));
