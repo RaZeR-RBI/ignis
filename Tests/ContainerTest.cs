@@ -34,7 +34,7 @@ namespace Tests
             var entityIds = Enumerable.Range(0, entityCount)
                 .Select(i => entityManager.Create())
                 .ToList();
-            
+
             entityIds.ForEach(id => entityManager.AddComponent<SampleComponent>(id));
 
             // Initial state
@@ -43,6 +43,7 @@ namespace Tests
 
             // Execute the system once
             var pairs = new Dictionary<int, SampleComponent>();
+            container.InitializeSystems();
             container.ExecuteSystems();
             storage.ForEach((id, val) => pairs.Add(id, val));
 

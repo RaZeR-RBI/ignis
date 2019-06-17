@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Ignis.Storage
 {
     internal struct EntityValuePair<T>
@@ -12,6 +14,7 @@ namespace Ignis.Storage
         public EntityValuePair(int entityId, T value) =>
             (EntityID, ComponentValue) = (entityId, value);
 
+        [ExcludeFromCodeCoverage]
         public override string ToString() => $"[{EntityID} => {ComponentValue}]";
     }
 }

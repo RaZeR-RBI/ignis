@@ -112,6 +112,24 @@ namespace Tests
             storage.ForEach((id, val) => count++);
             count.Should().Be(0);
         }
+
+        [Fact]
+        public void ShouldThrowExceptionOnNullStorageAccess()
+        {
+            var storage = new NullStorage<SampleComponent>();
+            var actions = new List<Action> {
+                () => storage.ForEach((id, val) => {}),
+                () => storage.Get(-1),
+                () => storage.GetEnumerator(),
+                () => storage.Update(-1, new SampleComponent()),
+                () => storage.Update(-1, new object()),
+                () => storage.UpdateCurrent(new SampleComponent()),
+            };
+            foreach (var action in actions)
+                Assert.ThrowsAny<InvalidOperationException>(action);
+            storage.StoreComponentForEntity(1).Should().BeTrue();
+            storage.RemoveComponentFromStorage(1).Should().BeTrue();
+        }
     }
 
     public class StorageTypesTestData : IEnumerable<object[]>

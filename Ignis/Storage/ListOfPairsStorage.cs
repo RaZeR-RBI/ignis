@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis.Storage
 {
@@ -82,6 +83,7 @@ namespace Ignis.Storage
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool HasNext() => _curIndex < _pairs.Count;
 
+        [ExcludeFromCodeCoverage]
         public void Update(int entityId, object value) => Update(entityId, (T)value);
     }
 }

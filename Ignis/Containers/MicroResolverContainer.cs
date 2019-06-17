@@ -164,5 +164,11 @@ namespace Ignis.Containers
         public IEnumerable<Type> GetComponentTypes() => _registeredComponents;
 
         public IEnumerable<Type> GetSystemTypes() => _registeredSystems;
+
+        public void InitializeSystems() =>
+            GetSystemTypes()
+                .Select(GetSystem)
+                .ToList()
+                .ForEach(s => s.Initialize());
     }
 }

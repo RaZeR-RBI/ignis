@@ -43,6 +43,7 @@ namespace Ignis
         TInterface Resolve<TInterface>() where TInterface : class;
 
         IContainer Build();
+        void InitializeSystems();
         void ExecuteSystems();
 
         IEnumerable<Type> GetComponentTypes();

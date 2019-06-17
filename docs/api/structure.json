@@ -29,6 +29,12 @@
               "link": "Ignis.SystemBase.Execute()"
             },
             {
+              "name": "Initialize()",
+              "fullName": "Ignis.SystemBase.Initialize()",
+              "type": "Method",
+              "link": "Ignis.SystemBase.Initialize()"
+            },
+            {
               "name": "SystemBase(ContainerProvider)",
               "fullName": "Ignis.SystemBase.SystemBase(ContainerProvider)",
               "type": "Constructor",
@@ -99,6 +105,12 @@
               "fullName": "Ignis.IComponentCollection<T>.Get(int)",
               "type": "Method",
               "link": "Ignis.IComponentCollection_T_.Get(int)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.IComponentCollection<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.Update(int, object)"
             },
             {
               "name": "Update(int, T)",
@@ -175,16 +187,46 @@
               "link": "Ignis.IContainer.ExecuteSystems()"
             },
             {
+              "name": "GetComponentTypes()",
+              "fullName": "Ignis.IContainer.GetComponentTypes()",
+              "type": "Method",
+              "link": "Ignis.IContainer.GetComponentTypes()"
+            },
+            {
+              "name": "GetStorageFor(Type)",
+              "fullName": "Ignis.IContainer.GetStorageFor(Type)",
+              "type": "Method",
+              "link": "Ignis.IContainer.GetStorageFor(Type)"
+            },
+            {
               "name": "GetStorageFor<T>()",
               "fullName": "Ignis.IContainer.GetStorageFor<T>()",
               "type": "Method",
               "link": "Ignis.IContainer.GetStorageFor_T_()"
             },
             {
+              "name": "GetSystem(Type)",
+              "fullName": "Ignis.IContainer.GetSystem(Type)",
+              "type": "Method",
+              "link": "Ignis.IContainer.GetSystem(Type)"
+            },
+            {
               "name": "GetSystem<T>()",
               "fullName": "Ignis.IContainer.GetSystem<T>()",
               "type": "Method",
               "link": "Ignis.IContainer.GetSystem_T_()"
+            },
+            {
+              "name": "GetSystemTypes()",
+              "fullName": "Ignis.IContainer.GetSystemTypes()",
+              "type": "Method",
+              "link": "Ignis.IContainer.GetSystemTypes()"
+            },
+            {
+              "name": "InitializeSystems()",
+              "fullName": "Ignis.IContainer.InitializeSystems()",
+              "type": "Method",
+              "link": "Ignis.IContainer.InitializeSystems()"
             },
             {
               "name": "Register<TInterface, TImpl>()",
@@ -399,16 +441,46 @@
               "link": "Ignis.Containers.MicroResolverContainer.ExecuteSystems()"
             },
             {
+              "name": "GetComponentTypes()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.GetComponentTypes()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.GetComponentTypes()"
+            },
+            {
+              "name": "GetStorageFor(Type)",
+              "fullName": "Ignis.Containers.MicroResolverContainer.GetStorageFor(Type)",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.GetStorageFor(Type)"
+            },
+            {
               "name": "GetStorageFor<T>()",
               "fullName": "Ignis.Containers.MicroResolverContainer.GetStorageFor<T>()",
               "type": "Method",
               "link": "Ignis.Containers.MicroResolverContainer.GetStorageFor_T_()"
             },
             {
+              "name": "GetSystem(Type)",
+              "fullName": "Ignis.Containers.MicroResolverContainer.GetSystem(Type)",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.GetSystem(Type)"
+            },
+            {
               "name": "GetSystem<T>()",
               "fullName": "Ignis.Containers.MicroResolverContainer.GetSystem<T>()",
               "type": "Method",
               "link": "Ignis.Containers.MicroResolverContainer.GetSystem_T_()"
+            },
+            {
+              "name": "GetSystemTypes()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.GetSystemTypes()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.GetSystemTypes()"
+            },
+            {
+              "name": "InitializeSystems()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.InitializeSystems()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.InitializeSystems()"
             },
             {
               "name": "Register<TInterface, TImpl>()",
@@ -469,6 +541,12 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.StoreComponentForEntity(int)"
             },
             {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.Update(int, object)"
+            },
+            {
               "name": "Update(int, T)",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.Update(int, T)",
               "type": "Method",
@@ -519,6 +597,12 @@
               "link": "Ignis.Storage.ListOfPairsStorage_T_.StoreComponentForEntity(int)"
             },
             {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.Update(int, object)"
+            },
+            {
               "name": "Update(int, T)",
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Update(int, T)",
               "type": "Method",
@@ -529,6 +613,62 @@
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.UpdateCurrent(T)",
               "type": "Method",
               "link": "Ignis.Storage.ListOfPairsStorage_T_.UpdateCurrent(T)"
+            }
+          ]
+        },
+        {
+          "name": "NullStorage<T>",
+          "fullName": "Ignis.Storage.NullStorage<T>",
+          "type": "Class",
+          "link": "Ignis.Storage.NullStorage_T_",
+          "children": [
+            {
+              "name": "ForEach(Action<int, T>)",
+              "fullName": "Ignis.Storage.NullStorage<T>.ForEach(Action<int, T>)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.ForEach(Action_int, T_)"
+            },
+            {
+              "name": "Get(int)",
+              "fullName": "Ignis.Storage.NullStorage<T>.Get(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.Get(int)"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.Storage.NullStorage<T>.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.GetEnumerator()"
+            },
+            {
+              "name": "RemoveComponentFromStorage(int)",
+              "fullName": "Ignis.Storage.NullStorage<T>.RemoveComponentFromStorage(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.RemoveComponentFromStorage(int)"
+            },
+            {
+              "name": "StoreComponentForEntity(int)",
+              "fullName": "Ignis.Storage.NullStorage<T>.StoreComponentForEntity(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.StoreComponentForEntity(int)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.NullStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.Update(int, object)"
+            },
+            {
+              "name": "Update(int, T)",
+              "fullName": "Ignis.Storage.NullStorage<T>.Update(int, T)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "UpdateCurrent(T)",
+              "fullName": "Ignis.Storage.NullStorage<T>.UpdateCurrent(T)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.UpdateCurrent(T)"
             }
           ]
         }

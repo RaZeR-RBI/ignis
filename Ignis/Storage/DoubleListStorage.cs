@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
@@ -78,6 +79,7 @@ namespace Ignis.Storage
 
         public T Get(int entityId) => _values[_ids.IndexOf(entityId)];
 
+        [ExcludeFromCodeCoverage]
         public void Update(int entityId, object value) => Update(entityId, (T)value);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

@@ -1,7 +1,9 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis
 {
+    [ExcludeFromCodeCoverage]
     public struct EntityComponentEventArgs
     {
         public int EntityID { get; }
