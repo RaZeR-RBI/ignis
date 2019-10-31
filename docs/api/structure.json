@@ -315,6 +315,12 @@
               "link": "Ignis.IEntityManager.Exists(int)"
             },
             {
+              "name": "GetEntityIds()",
+              "fullName": "Ignis.IEntityManager.GetEntityIds()",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.GetEntityIds()"
+            },
+            {
               "name": "HasComponent(int, Type)",
               "fullName": "Ignis.IEntityManager.HasComponent(int, Type)",
               "type": "Method",
@@ -325,6 +331,12 @@
               "fullName": "Ignis.IEntityManager.HasComponent<T>(int)",
               "type": "Method",
               "link": "Ignis.IEntityManager.HasComponent_T_(int)"
+            },
+            {
+              "name": "Query(Type[])",
+              "fullName": "Ignis.IEntityManager.Query(Type[])",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Type[])"
             },
             {
               "name": "RemoveComponent(int, Type)",
