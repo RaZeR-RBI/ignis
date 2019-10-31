@@ -23,5 +23,6 @@ namespace Ignis
 		bool HasComponent<T>(int entityId) where T : new();
 		IEnumerable<int> GetEntityIds();
 		IEnumerable<int> Query(params Type[] componentTypes);
+		IEnumerable<int> QuerySubset(IEnumerable<int> ids, bool checkExistence = true, params Type[] componentTypes);
 	}
 }

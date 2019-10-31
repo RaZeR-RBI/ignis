@@ -102,9 +102,16 @@ namespace Ignis
 
 		public IEnumerable<int> GetEntityIds() => _existingEntityIds;
 
-		public IEnumerable<int> Query(params Type[] componentTypes)
+		public IEnumerable<int> Query(params Type[] componentTypes) =>
+			QuerySubset(GetEntityIds(), checkExistence: false, componentTypes);
+
+		public IEnumerable<int> QuerySubset(IEnumerable<int> ids,
+			bool checkExistence = true,
+			params Type[] componentTypes)
 		{
-			var result = GetEntityIds();
+			var result = ids;
+			if (checkExistence)
+				result = result.Where(Exists);
 			foreach (var type in componentTypes)
 				result = result.Where(id => HasComponent(id, type));
 			return result;

@@ -339,6 +339,12 @@
               "link": "Ignis.IEntityManager.Query(Type[])"
             },
             {
+              "name": "QuerySubset(IEnumerable<int>, bool, Type[])",
+              "fullName": "Ignis.IEntityManager.QuerySubset(IEnumerable<int>, bool, Type[])",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(IEnumerable_int_, bool, Type[])"
+            },
+            {
               "name": "RemoveComponent(int, Type)",
               "fullName": "Ignis.IEntityManager.RemoveComponent(int, Type)",
               "type": "Method",
