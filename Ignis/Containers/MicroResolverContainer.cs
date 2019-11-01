@@ -102,7 +102,12 @@ namespace Ignis.Containers
 		public IComponentCollection<T> GetStorageFor<T>() where T : new() =>
 			_resolver.Resolve<IComponentCollection<T>>();
 
-		public T GetSystem<T>() where T : SystemBase => _resolver.Resolve<T>();
+		public T GetSystem<T>() where T : class
+		{
+			if (!_registeredSystems.Contains(typeof(T)))
+				throw new ArgumentException($"No implementation for system ${typeof(T)} is registered");
+			return _resolver.Resolve<T>();
+		}
 
 		public IContainer Register<TInterface, TImpl>()
 			where TInterface : class

@@ -8,7 +8,7 @@ namespace Ignis
 		IEntityManager EntityManager { get; }
 		IComponentCollection<T> GetStorageFor<T>() where T : new();
 		dynamic GetStorageFor(Type type);
-		T GetSystem<T>() where T : SystemBase;
+		T GetSystem<T>() where T : class;
 		SystemBase GetSystem(Type type);
 
 		IContainer AddComponent<TComponent, TStorage>()
