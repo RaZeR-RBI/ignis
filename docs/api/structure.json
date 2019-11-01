@@ -151,22 +151,22 @@
               "link": "Ignis.IContainer.AddComponent_TComponent_()"
             },
             {
-              "name": "AddParallelSystems<T1, T2, T3, T4>()",
-              "fullName": "Ignis.IContainer.AddParallelSystems<T1, T2, T3, T4>()",
+              "name": "AddParallelSystems(Type[], Type[])",
+              "fullName": "Ignis.IContainer.AddParallelSystems(Type[], Type[])",
               "type": "Method",
-              "link": "Ignis.IContainer.AddParallelSystems_T1, T2, T3, T4_()"
+              "link": "Ignis.IContainer.AddParallelSystems(Type[], Type[])"
             },
             {
-              "name": "AddParallelSystems<T1, T2, T3>()",
-              "fullName": "Ignis.IContainer.AddParallelSystems<T1, T2, T3>()",
+              "name": "AddParallelSystems(Type[])",
+              "fullName": "Ignis.IContainer.AddParallelSystems(Type[])",
               "type": "Method",
-              "link": "Ignis.IContainer.AddParallelSystems_T1, T2, T3_()"
+              "link": "Ignis.IContainer.AddParallelSystems(Type[])"
             },
             {
-              "name": "AddParallelSystems<T1, T2>()",
-              "fullName": "Ignis.IContainer.AddParallelSystems<T1, T2>()",
+              "name": "AddSystem<TInterface, TSystem>()",
+              "fullName": "Ignis.IContainer.AddSystem<TInterface, TSystem>()",
               "type": "Method",
-              "link": "Ignis.IContainer.AddParallelSystems_T1, T2_()"
+              "link": "Ignis.IContainer.AddSystem_TInterface, TSystem_()"
             },
             {
               "name": "AddSystem<TSystem>()",
@@ -229,10 +229,40 @@
               "link": "Ignis.IContainer.InitializeSystems()"
             },
             {
+              "name": "IsBuilt()",
+              "fullName": "Ignis.IContainer.IsBuilt()",
+              "type": "Method",
+              "link": "Ignis.IContainer.IsBuilt()"
+            },
+            {
+              "name": "Register(Type, Type)",
+              "fullName": "Ignis.IContainer.Register(Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IContainer.Register(Type, Type)"
+            },
+            {
+              "name": "Register(Type)",
+              "fullName": "Ignis.IContainer.Register(Type)",
+              "type": "Method",
+              "link": "Ignis.IContainer.Register(Type)"
+            },
+            {
+              "name": "Register<T>()",
+              "fullName": "Ignis.IContainer.Register<T>()",
+              "type": "Method",
+              "link": "Ignis.IContainer.Register_T_()"
+            },
+            {
               "name": "Register<TInterface, TImpl>()",
               "fullName": "Ignis.IContainer.Register<TInterface, TImpl>()",
               "type": "Method",
               "link": "Ignis.IContainer.Register_TInterface, TImpl_()"
+            },
+            {
+              "name": "Resolve(Type)",
+              "fullName": "Ignis.IContainer.Resolve(Type)",
+              "type": "Method",
+              "link": "Ignis.IContainer.Resolve(Type)"
             },
             {
               "name": "Resolve<TInterface>()",
@@ -389,6 +419,12 @@
               "fullName": "Ignis.Containers.ContainerProvider.GetInstance()",
               "type": "Method",
               "link": "Ignis.Containers.ContainerProvider.GetInstance()"
+            },
+            {
+              "name": "IsBusy()",
+              "fullName": "Ignis.Containers.ContainerProvider.IsBusy()",
+              "type": "Method",
+              "link": "Ignis.Containers.ContainerProvider.IsBusy()"
             }
           ]
         },
@@ -423,22 +459,22 @@
               "link": "Ignis.Containers.MicroResolverContainer.AddComponent_TComponent_()"
             },
             {
-              "name": "AddParallelSystems<T1, T2, T3, T4>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems<T1, T2, T3, T4>()",
+              "name": "AddParallelSystems(Type[], Type[])",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems(Type[], Type[])",
               "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems_T1, T2, T3, T4_()"
+              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems(Type[], Type[])"
             },
             {
-              "name": "AddParallelSystems<T1, T2, T3>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems<T1, T2, T3>()",
+              "name": "AddParallelSystems(Type[])",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems(Type[])",
               "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems_T1, T2, T3_()"
+              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems(Type[])"
             },
             {
-              "name": "AddParallelSystems<T1, T2>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer.AddParallelSystems<T1, T2>()",
+              "name": "AddSystem<TInterface, TSystem>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.AddSystem<TInterface, TSystem>()",
               "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer.AddParallelSystems_T1, T2_()"
+              "link": "Ignis.Containers.MicroResolverContainer.AddSystem_TInterface, TSystem_()"
             },
             {
               "name": "AddSystem<TSystem>()",
@@ -451,6 +487,12 @@
               "fullName": "Ignis.Containers.MicroResolverContainer.Build()",
               "type": "Method",
               "link": "Ignis.Containers.MicroResolverContainer.Build()"
+            },
+            {
+              "name": "Dispose()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Dispose()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Dispose()"
             },
             {
               "name": "ExecuteSystems()",
@@ -501,10 +543,40 @@
               "link": "Ignis.Containers.MicroResolverContainer.InitializeSystems()"
             },
             {
+              "name": "IsBuilt()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.IsBuilt()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.IsBuilt()"
+            },
+            {
+              "name": "Register(Type, Type)",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Register(Type, Type)",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Register(Type, Type)"
+            },
+            {
+              "name": "Register(Type)",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Register(Type)",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Register(Type)"
+            },
+            {
+              "name": "Register<T>()",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Register<T>()",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Register_T_()"
+            },
+            {
               "name": "Register<TInterface, TImpl>()",
               "fullName": "Ignis.Containers.MicroResolverContainer.Register<TInterface, TImpl>()",
               "type": "Method",
               "link": "Ignis.Containers.MicroResolverContainer.Register_TInterface, TImpl_()"
+            },
+            {
+              "name": "Resolve(Type)",
+              "fullName": "Ignis.Containers.MicroResolverContainer.Resolve(Type)",
+              "type": "Method",
+              "link": "Ignis.Containers.MicroResolverContainer.Resolve(Type)"
             },
             {
               "name": "Resolve<TInterface>()",

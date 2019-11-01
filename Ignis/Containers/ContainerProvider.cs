@@ -1,31 +1,34 @@
+using System;
 using System.Threading;
 
 namespace Ignis.Containers
 {
-    public class ContainerProvider
-    {
-        private static ManualResetEvent _mre = new ManualResetEvent(true);
-        private static object _syncRoot = new object();
-        private volatile static IContainer _lastInstance = null;
+	public class ContainerProvider
+	{
+		private static object _syncRoot = new object();
+		private volatile static IContainer _lastInstance = null;
 
-        public static void BeginCreation(IContainer instance)
-        {
-            lock (_syncRoot)
-            {
-                _mre.Reset();
-                _lastInstance = instance;
-            }
-        }
+		public static bool IsBusy() => Monitor.IsEntered(_syncRoot);
 
-        public IContainer GetInstance() => _lastInstance;
+		public static void BeginCreation(IContainer instance)
+		{
+			if (!Monitor.TryEnter(_syncRoot, 500))
+				throw new AbandonedMutexException("ContainerProvider is locked");
+			_lastInstance = instance;
+		}
 
-        public static void EndCreation()
-        {
-            lock (_syncRoot)
-            {
-                _lastInstance = null;
-                _mre.Set();
-            }
-        }
-    }
+		public IContainer GetInstance()
+		{
+			lock (_syncRoot)
+			{
+				return _lastInstance;
+			}
+		}
+
+		public static void EndCreation()
+		{
+			_lastInstance = null;
+			Monitor.Exit(_syncRoot);
+		}
+	}
 }

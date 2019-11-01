@@ -1,94 +1,106 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Ignis;
 using Ignis.Containers;
+using Ignis.Storage;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Tests
 {
-    public class ContainerTest
-    {
-        [Theory]
-        [ClassData(typeof(ContainerTestData))]
-        public void ShouldRegisterAndExecuteComponentsAndSystems(IContainer container)
-        {
-            container
-                .AddComponent<SampleComponent>()
-                .AddSystem<SampleSystem>()
-                .Build();
+	public class ContainerTest : IDisposable
+	{
+		private readonly IContainer container;
+		public ContainerTest() =>
+			container = new MicroResolverContainer();
 
-            container.GetSystemTypes().Should().BeEquivalentTo(typeof(SampleSystem));
-            container.GetComponentTypes().Should().BeEquivalentTo(typeof(SampleComponent));
+		public void Dispose() =>
+			container.Dispose();
 
-            var storage = container.GetStorageFor<SampleComponent>();
-            storage.Should().NotBeNull();
-            Assert.NotNull(container.GetStorageFor(typeof(SampleComponent)));
+		[Fact]
+		public void ShouldRegisterAndExecuteComponentsAndSystems()
+		{
+			container
+				.AddComponent<SampleComponent>()
+				.AddSystem<SampleSystem>()
+				.Build();
 
-            container.GetSystem<SampleSystem>().Should().NotBeNull();
-            Assert.NotNull(container.GetSystem(typeof(SampleSystem)));
+			container.GetSystemTypes().Should().BeEquivalentTo(typeof(SampleSystem));
+			container.GetComponentTypes().Should().BeEquivalentTo(typeof(SampleComponent));
 
-            var entityManager = container.EntityManager;
-            var entityCount = 5;
-            var entityIds = Enumerable.Range(0, entityCount)
-                .Select(i => entityManager.Create())
-                .ToList();
+			var storage = container.GetStorageFor<SampleComponent>();
+			storage.Should().NotBeNull();
+			Assert.NotNull(container.GetStorageFor(typeof(SampleComponent)));
 
-            entityIds.ForEach(id => entityManager.AddComponent<SampleComponent>(id));
+			container.GetSystem<SampleSystem>().Should().NotBeNull();
+			Assert.NotNull(container.GetSystem(typeof(SampleSystem)));
 
-            // Initial state
-            storage.Count().Should().Be(entityCount);
-            storage.Should().OnlyContain(c => c.Foo == 0.0f && c.Bar == false);
+			var entityManager = container.EntityManager;
+			var entityCount = 5;
+			var entityIds = Enumerable.Range(0, entityCount)
+				.Select(i => entityManager.Create())
+				.ToList();
 
-            // Execute the system once
-            var pairs = new Dictionary<int, SampleComponent>();
-            container.InitializeSystems();
-            container.ExecuteSystems();
-            storage.ForEach((id, val) => pairs.Add(id, val));
+			entityIds.ForEach(id => entityManager.AddComponent<SampleComponent>(id));
 
-            pairs.AsEnumerable().Should().OnlyContain(kvp =>
-                kvp.Value.Foo == kvp.Key && kvp.Value.Bar == true);
+			// Initial state
+			storage.Count().Should().Be(entityCount);
+			storage.Should().OnlyContain(c => c.Foo == 0.0f && c.Bar == false);
 
-            // Execute the system again and observe changes
-            pairs.Clear();
-            container.ExecuteSystems();
-            storage.ForEach((id, val) => pairs.Add(id, val));
-            pairs.AsEnumerable().Should().OnlyContain(kvp =>
-                kvp.Value.Foo == kvp.Key + 1 && kvp.Value.Bar == false);
-        }
-    }
+			// Execute the system once
+			var pairs = new Dictionary<int, SampleComponent>();
+			container.InitializeSystems();
+			container.ExecuteSystems();
+			storage.ForEach((id, val) => pairs.Add(id, val));
 
-    public class SampleSystem : SystemBase
-    {
-        private IComponentCollection<SampleComponent> sampleComponent;
+			pairs.AsEnumerable().Should().OnlyContain(kvp =>
+				kvp.Value.Foo == kvp.Key && kvp.Value.Bar == true);
 
-        public SampleSystem(ContainerProvider provider) : base(provider)
-        {
-            sampleComponent = Container.GetStorageFor<SampleComponent>();
-        }
+			// Execute the system again and observe changes
+			pairs.Clear();
+			container.ExecuteSystems();
+			storage.ForEach((id, val) => pairs.Add(id, val));
+			pairs.AsEnumerable().Should().OnlyContain(kvp =>
+				kvp.Value.Foo == kvp.Key + 1 && kvp.Value.Bar == false);
+		}
 
-        public override void Execute()
-        {
-            sampleComponent.ForEach((id, val) =>
-            {
-                var newValue = new SampleComponent()
-                {
-                    Foo = val.Bar ? id + 1 : id,
-                    Bar = !val.Bar
-                };
-                sampleComponent.UpdateCurrent(newValue);
-            });
-        }
-    }
+		[Fact]
+		public void ShouldRegisterUsingNonGenericOverloads()
+		{
+			container
+				.Register(typeof(DoubleListStorage<SampleComponent>))
+				.Register(typeof(SampleSystem))
+				.Build();
 
-    public class ContainerTestData : IEnumerable<object[]>
-    {
-        public IEnumerator<object[]> GetEnumerator()
-        {
-            yield return new object[] { new MicroResolverContainer() };
-        }
+			container.GetSystemTypes().Should().BeEquivalentTo(typeof(SampleSystem));
+			container.GetComponentTypes().Should().BeEquivalentTo(typeof(SampleComponent));
+			container.Resolve(typeof(SampleSystem)).Should().BeOfType<SampleSystem>();
+		}
+	}
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    }
+	public class SampleSystem : SystemBase
+	{
+		private IComponentCollection<SampleComponent> sampleComponent;
+
+		public SampleSystem(ContainerProvider provider) : base(provider)
+		{
+			sampleComponent = Container.GetStorageFor<SampleComponent>();
+		}
+
+		public override void Execute()
+		{
+			sampleComponent.ForEach((id, val) =>
+			{
+				var newValue = new SampleComponent()
+				{
+					Foo = val.Bar ? id + 1 : id,
+					Bar = !val.Bar
+				};
+				sampleComponent.UpdateCurrent(newValue);
+			});
+		}
+	}
 }

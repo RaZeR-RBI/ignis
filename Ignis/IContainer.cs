@@ -3,50 +3,51 @@ using System.Collections.Generic;
 
 namespace Ignis
 {
-    public interface IContainer
-    {
-        IEntityManager EntityManager { get; }
-        IComponentCollection<T> GetStorageFor<T>() where T : new();
-        dynamic GetStorageFor(Type type);
-        T GetSystem<T>() where T : SystemBase;
-        SystemBase GetSystem(Type type);
+	public interface IContainer : IDisposable
+	{
+		IEntityManager EntityManager { get; }
+		IComponentCollection<T> GetStorageFor<T>() where T : new();
+		dynamic GetStorageFor(Type type);
+		T GetSystem<T>() where T : SystemBase;
+		SystemBase GetSystem(Type type);
 
-        IContainer AddComponent<TComponent>()
-            where TComponent : struct;
+		IContainer AddComponent<TComponent, TStorage>()
+			where TComponent : struct
+			where TStorage : class, IComponentCollection<TComponent>;
 
-        IContainer AddComponent<TComponent, TStorage>()
-            where TComponent : struct
-            where TStorage : class, IComponentCollection<TComponent>;
+		IContainer AddComponent<TComponent>()
+			where TComponent : struct;
 
-        IContainer AddSystem<TSystem>()
-            where TSystem : SystemBase;
+		IContainer AddSystem<TInterface, TSystem>()
+			where TInterface : class
+			where TSystem : SystemBase, TInterface;
 
-        IContainer AddParallelSystems<T1, T2>()
-            where T1 : SystemBase
-            where T2 : SystemBase;
+		IContainer AddSystem<TSystem>()
+			where TSystem : SystemBase;
 
-        IContainer AddParallelSystems<T1, T2, T3>()
-            where T1 : SystemBase
-            where T2 : SystemBase
-            where T3 : SystemBase;
+		IContainer AddParallelSystems(Type[] interfaces, Type[] implementations);
+		IContainer AddParallelSystems(Type[] implementations);
 
-        IContainer AddParallelSystems<T1, T2, T3, T4>()
-            where T1 : SystemBase
-            where T2 : SystemBase
-            where T3 : SystemBase
-            where T4 : SystemBase;
+		IContainer Register<T>()
+			where T : class;
 
-        IContainer Register<TInterface, TImpl>()
-            where TInterface : class
-            where TImpl : class, TInterface;
+		IContainer Register(Type type);
 
-        TInterface Resolve<TInterface>() where TInterface : class;
+		IContainer Register<TInterface, TImpl>()
+			where TInterface : class
+			where TImpl : class, TInterface;
 
-        IContainer Build();
-        void InitializeSystems();
-        void ExecuteSystems();
+		IContainer Register(Type @interface, Type impl);
 
-        IEnumerable<Type> GetComponentTypes();
-        IEnumerable<Type> GetSystemTypes();
-    }
+		object Resolve(Type type);
+		TInterface Resolve<TInterface>() where TInterface : class;
+
+		IContainer Build();
+		bool IsBuilt();
+		void InitializeSystems();
+		void ExecuteSystems();
+
+		IEnumerable<Type> GetComponentTypes();
+		IEnumerable<Type> GetSystemTypes();
+	}
 }
