@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageSession>
-  <Summary numSequencePoints="253" visitedSequencePoints="228" numBranchPoints="253" visitedBranchPoints="228" sequenceCoverage="0,901" branchCoverage="0,901" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="11" numClasses="12" visitedMethods="84" numMethods="89" />
+  <Summary numSequencePoints="262" visitedSequencePoints="236" numBranchPoints="262" visitedBranchPoints="236" sequenceCoverage="0,901" branchCoverage="0,901" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="11" numClasses="12" visitedMethods="86" numMethods="91" />
   <Modules>
-    <Module hash="6F8F0D49-1935-4D1F-8CA9-EB1AE0426F1B">
+    <Module hash="16404575-1A51-4191-88E4-A3B740514F26">
       <ModulePath>Ignis.dll</ModulePath>
-      <ModuleTime>2019-11-01T04:42:50</ModuleTime>
+      <ModuleTime>2019-11-25T03:52:59</ModuleTime>
       <ModuleName>Ignis</ModuleName>
       <Files>
-        <File uid="1" fullPath="/home/razer/vscode-projects/ignis/Ignis/EntityIdEventArgs.cs" />
-        <File uid="2" fullPath="/home/razer/vscode-projects/ignis/Ignis/EntityManager.cs" />
-        <File uid="3" fullPath="/home/razer/vscode-projects/ignis/Ignis/SystemBase.cs" />
-        <File uid="4" fullPath="/home/razer/vscode-projects/ignis/Ignis/Storage/DoubleListStorage.cs" />
-        <File uid="5" fullPath="/home/razer/vscode-projects/ignis/Ignis/Storage/EntityValuePair.cs" />
-        <File uid="6" fullPath="/home/razer/vscode-projects/ignis/Ignis/Storage/ListOfPairsStorage.cs" />
-        <File uid="7" fullPath="/home/razer/vscode-projects/ignis/Ignis/Storage/NullStorage.cs" />
-        <File uid="8" fullPath="/home/razer/vscode-projects/ignis/Ignis/Containers/ContainerProvider.cs" />
-        <File uid="9" fullPath="/home/razer/vscode-projects/ignis/Ignis/Containers/MicroResolverContainer.cs" />
+        <File uid="1" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/EntityIdEventArgs.cs" />
+        <File uid="2" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/EntityManager.cs" />
+        <File uid="3" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/SystemBase.cs" />
+        <File uid="4" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/Storage/DoubleListStorage.cs" />
+        <File uid="5" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/Storage/EntityValuePair.cs" />
+        <File uid="6" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/Storage/ListOfPairsStorage.cs" />
+        <File uid="7" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/Storage/NullStorage.cs" />
+        <File uid="8" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/Containers/ContainerProvider.cs" />
+        <File uid="9" fullPath="/home/razer/vscode-projects/into-the-vault/src/ignis/Ignis/Containers/MicroResolverContainer.cs" />
       </Files>
       <Classes>
         <Class>
@@ -348,7 +348,7 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="1" numClasses="1" visitedMethods="3" numMethods="3" />
+          <Summary numSequencePoints="8" visitedSequencePoints="8" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="1" branchCoverage="0,5" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="1" numClasses="1" visitedMethods="5" numMethods="5" />
           <FullName>Ignis.SystemBase</FullName>
           <Methods>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
@@ -373,6 +373,34 @@
               <BranchPoints />
               <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="10" ec="1" el="10" bec="0" bev="0" fileid="3" xmlns:p8="xsi" />
             </Method>
+            <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Ignis.SystemBase::OnDispose()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="2" upsid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="17" ec="1" el="17" bec="0" bev="0" fileid="3" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0,5" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="1" branchCoverage="0,5" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Ignis.SystemBase::Dispose()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="2" upsid="21" ordinal="0" sl="21" sc="1" el="21" ec="2" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="2" upsid="22" ordinal="1" sl="22" sc="1" el="22" ec="2" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="2" upsid="23" ordinal="2" sl="23" sc="1" el="23" ec="2" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="2" upsid="24" ordinal="3" sl="24" sc="1" el="24" ec="2" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="0" upsid="21" ordinal="0" path="0" offset="6" offsetend="8" sl="21" fileid="3" />
+                <BranchPoint vc="2" upsid="21" ordinal="1" path="1" offset="6" offsetend="9" sl="21" fileid="3" />
+              </BranchPoints>
+              <MethodPoint vc="4" upsid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="21" ec="1" el="24" bec="0" bev="0" fileid="3" xmlns:p8="xsi" />
+            </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
@@ -382,7 +410,7 @@
                 <SequencePoint vc="4" upsid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="3" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="3" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="3" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -948,7 +976,7 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="94" visitedSequencePoints="77" numBranchPoints="32" visitedBranchPoints="21" sequenceCoverage="0,819" branchCoverage="0,656" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="1" numClasses="1" visitedMethods="22" numMethods="26" />
+          <Summary numSequencePoints="98" visitedSequencePoints="80" numBranchPoints="36" visitedBranchPoints="24" sequenceCoverage="0,816" branchCoverage="0,667" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="1" numClasses="1" visitedMethods="22" numMethods="26" />
           <FullName>Ignis.Containers.MicroResolverContainer</FullName>
           <Methods>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
@@ -962,21 +990,25 @@
               <BranchPoints />
               <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="13" ec="1" el="13" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,667" branchCoverage="0,5" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="3" visitedSequencePoints="2" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="0,667" branchCoverage="0,5" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,8" branchCoverage="0,75" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="5" visitedSequencePoints="4" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="0,8" branchCoverage="0,75" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void Ignis.Containers.MicroResolverContainer::Dispose()</Name>
               <FileRef uid="9" />
               <SequencePoints>
                 <SequencePoint vc="2" upsid="32" ordinal="0" sl="32" sc="1" el="32" ec="2" bec="0" bev="0" fileid="9" />
                 <SequencePoint vc="0" upsid="33" ordinal="1" sl="33" sc="1" el="33" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="34" ordinal="2" sl="34" sc="1" el="34" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="8" upsid="34" ordinal="2" sl="34" sc="1" el="34" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="35" ordinal="3" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="36" ordinal="4" sl="36" sc="1" el="36" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="0" upsid="32" ordinal="0" path="0" offset="6" offsetend="8" sl="32" fileid="9" />
                 <BranchPoint vc="2" upsid="32" ordinal="1" path="1" offset="6" offsetend="13" sl="32" fileid="9" />
+                <BranchPoint vc="2" upsid="34" ordinal="3" path="1" offset="52" offsetend="27" sl="34" fileid="9" />
+                <BranchPoint vc="2" upsid="34" ordinal="2" path="0" offset="52" offsetend="54" sl="34" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="2" upsid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="32" ec="1" el="34" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="4" upsid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="32" ec="1" el="36" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -984,12 +1016,12 @@
               <Name>Ignis.IComponentCollectionStorage Ignis.Containers.MicroResolverContainer::ResolveStorage(System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="38" ordinal="0" sl="38" sc="1" el="38" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="39" ordinal="1" sl="39" sc="1" el="39" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="40" ordinal="2" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="40" ordinal="0" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="41" ordinal="1" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="42" ordinal="2" sl="42" sc="1" el="42" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="3" upsid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="38" ec="1" el="40" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="3" upsid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="40" ec="1" el="42" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -997,12 +1029,12 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::AddComponent()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="44" ordinal="0" sl="44" sc="1" el="44" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="50" ordinal="1" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="51" ordinal="2" sl="51" sc="1" el="51" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="46" ordinal="0" sl="46" sc="1" el="46" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="52" ordinal="1" sl="52" sc="1" el="52" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="53" ordinal="2" sl="53" sc="1" el="53" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="3" upsid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="44" ec="1" el="51" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="3" upsid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="46" ec="1" el="53" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1010,10 +1042,10 @@
               <Name>System.Void Ignis.Containers.MicroResolverContainer::ThrowIfSystemIsAlreadyRegistered()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="55" ordinal="0" sl="55" sc="1" el="55" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="57" ordinal="0" sl="57" sc="1" el="57" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="55" ec="1" el="55" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="57" ec="1" el="57" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,667" branchCoverage="0,75" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="2" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="0,667" branchCoverage="0,75" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1021,17 +1053,17 @@
               <Name>System.Void Ignis.Containers.MicroResolverContainer::ThrowIfSystemIsAlreadyRegistered(System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="59" ordinal="0" sl="59" sc="1" el="59" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="60" ordinal="1" sl="60" sc="1" el="60" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="61" ordinal="2" sl="61" sc="1" el="61" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="61" ordinal="0" sl="61" sc="1" el="61" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="62" ordinal="1" sl="62" sc="1" el="62" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="63" ordinal="2" sl="63" sc="1" el="63" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="1" upsid="59" ordinal="0" path="0" offset="12" offsetend="14" sl="59" fileid="9" />
-                <BranchPoint vc="1" upsid="59" ordinal="1" path="1" offset="12" offsetend="37" sl="59" fileid="9" />
-                <BranchPoint vc="0" upsid="59" ordinal="2" path="0" offset="48" offsetend="50" sl="59" fileid="9" />
-                <BranchPoint vc="1" upsid="59" ordinal="3" path="1" offset="48" offsetend="67" sl="59" fileid="9" />
+                <BranchPoint vc="1" upsid="61" ordinal="0" path="0" offset="12" offsetend="14" sl="61" fileid="9" />
+                <BranchPoint vc="1" upsid="61" ordinal="1" path="1" offset="12" offsetend="37" sl="61" fileid="9" />
+                <BranchPoint vc="0" upsid="61" ordinal="2" path="0" offset="48" offsetend="50" sl="61" fileid="9" />
+                <BranchPoint vc="1" upsid="61" ordinal="3" path="1" offset="48" offsetend="67" sl="61" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="2" upsid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="59" ec="1" el="61" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="2" upsid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="61" ec="1" el="63" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1039,14 +1071,14 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::AddSystem()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="64" ordinal="0" sl="64" sc="1" el="64" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="180" ordinal="1" sl="180" sc="1" el="180" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="181" ordinal="2" sl="181" sc="1" el="181" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="182" ordinal="3" sl="182" sc="1" el="182" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="183" ordinal="4" sl="183" sc="1" el="183" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="66" ordinal="0" sl="66" sc="1" el="66" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="187" ordinal="1" sl="187" sc="1" el="187" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="188" ordinal="2" sl="188" sc="1" el="188" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="189" ordinal="3" sl="189" sc="1" el="189" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="190" ordinal="4" sl="190" sc="1" el="190" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="5" upsid="0" p8:type="SequencePoint" ordinal="6" offset="6" sc="0" sl="64" ec="1" el="183" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="5" upsid="0" p8:type="SequencePoint" ordinal="6" offset="6" sc="0" sl="66" ec="1" el="190" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,727" branchCoverage="0,75" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="11" visitedSequencePoints="8" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="0,727" branchCoverage="0,75" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1054,25 +1086,25 @@
               <Name>System.Void Ignis.Containers.MicroResolverContainer::BuildExecutionOrder()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="6" upsid="68" ordinal="0" sl="68" sc="1" el="68" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="70" ordinal="1" sl="70" sc="1" el="70" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="71" ordinal="2" sl="71" sc="1" el="71" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="72" ordinal="3" sl="72" sc="1" el="72" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="73" ordinal="4" sl="73" sc="1" el="73" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="75" ordinal="5" sl="75" sc="1" el="75" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="3" upsid="76" ordinal="6" sl="76" sc="1" el="76" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="78" ordinal="7" sl="78" sc="1" el="78" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="79" ordinal="8" sl="79" sc="1" el="79" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="80" ordinal="9" sl="80" sc="1" el="80" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="82" ordinal="10" sl="82" sc="1" el="82" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="6" upsid="70" ordinal="0" sl="70" sc="1" el="70" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="72" ordinal="1" sl="72" sc="1" el="72" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="73" ordinal="2" sl="73" sc="1" el="73" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="74" ordinal="3" sl="74" sc="1" el="74" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="75" ordinal="4" sl="75" sc="1" el="75" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="77" ordinal="5" sl="77" sc="1" el="77" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="3" upsid="78" ordinal="6" sl="78" sc="1" el="78" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="80" ordinal="7" sl="80" sc="1" el="80" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="81" ordinal="8" sl="81" sc="1" el="81" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="82" ordinal="9" sl="82" sc="1" el="82" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="84" ordinal="10" sl="84" sc="1" el="84" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="1" upsid="68" ordinal="3" path="1" offset="131" offsetend="14" sl="68" fileid="9" />
-                <BranchPoint vc="1" upsid="75" ordinal="0" path="0" offset="74" offsetend="76" sl="75" fileid="9" />
-                <BranchPoint vc="0" upsid="75" ordinal="1" path="1" offset="74" offsetend="101" sl="75" fileid="9" />
-                <BranchPoint vc="2" upsid="68" ordinal="2" path="0" offset="131" offsetend="133" sl="68" fileid="9" />
+                <BranchPoint vc="1" upsid="70" ordinal="3" path="1" offset="131" offsetend="14" sl="70" fileid="9" />
+                <BranchPoint vc="1" upsid="77" ordinal="0" path="0" offset="74" offsetend="76" sl="77" fileid="9" />
+                <BranchPoint vc="0" upsid="77" ordinal="1" path="1" offset="74" offsetend="101" sl="77" fileid="9" />
+                <BranchPoint vc="2" upsid="70" ordinal="2" path="0" offset="131" offsetend="133" sl="70" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="8" upsid="0" p8:type="SequencePoint" ordinal="7" offset="7" sc="0" sl="68" ec="1" el="82" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="8" upsid="0" p8:type="SequencePoint" ordinal="7" offset="7" sc="0" sl="70" ec="1" el="84" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,889" branchCoverage="0,75" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="9" visitedSequencePoints="8" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="0,889" branchCoverage="0,75" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1080,23 +1112,23 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::Build()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="2" upsid="88" ordinal="0" sl="88" sc="1" el="88" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="89" ordinal="1" sl="89" sc="1" el="89" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="90" ordinal="2" sl="90" sc="1" el="90" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="16" upsid="91" ordinal="3" sl="91" sc="1" el="91" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="6" upsid="92" ordinal="4" sl="92" sc="1" el="92" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="93" ordinal="5" sl="93" sc="1" el="93" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="94" ordinal="6" sl="94" sc="1" el="94" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="95" ordinal="7" sl="95" sc="1" el="95" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="96" ordinal="8" sl="96" sc="1" el="96" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="90" ordinal="0" sl="90" sc="1" el="90" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="91" ordinal="1" sl="91" sc="1" el="91" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="92" ordinal="2" sl="92" sc="1" el="92" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="16" upsid="93" ordinal="3" sl="93" sc="1" el="93" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="6" upsid="94" ordinal="4" sl="94" sc="1" el="94" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="95" ordinal="5" sl="95" sc="1" el="95" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="96" ordinal="6" sl="96" sc="1" el="96" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="97" ordinal="7" sl="97" sc="1" el="97" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="98" ordinal="8" sl="98" sc="1" el="98" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" upsid="88" ordinal="0" path="0" offset="6" offsetend="8" sl="88" fileid="9" />
-                <BranchPoint vc="2" upsid="88" ordinal="1" path="1" offset="6" offsetend="19" sl="88" fileid="9" />
-                <BranchPoint vc="6" upsid="91" ordinal="3" path="1" offset="72" offsetend="44" sl="91" fileid="9" />
-                <BranchPoint vc="2" upsid="91" ordinal="2" path="0" offset="72" offsetend="74" sl="91" fileid="9" />
+                <BranchPoint vc="0" upsid="90" ordinal="0" path="0" offset="6" offsetend="8" sl="90" fileid="9" />
+                <BranchPoint vc="2" upsid="90" ordinal="1" path="1" offset="6" offsetend="19" sl="90" fileid="9" />
+                <BranchPoint vc="6" upsid="93" ordinal="3" path="1" offset="72" offsetend="44" sl="93" fileid="9" />
+                <BranchPoint vc="2" upsid="93" ordinal="2" path="0" offset="72" offsetend="74" sl="93" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="8" upsid="0" p8:type="SequencePoint" ordinal="8" offset="8" sc="0" sl="88" ec="1" el="96" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="8" upsid="0" p8:type="SequencePoint" ordinal="8" offset="8" sc="0" sl="90" ec="1" el="98" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="1" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="1" branchCoverage="1" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1104,13 +1136,13 @@
               <Name>System.Void Ignis.Containers.MicroResolverContainer::ExecuteSystems()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="4" upsid="100" ordinal="0" sl="100" sc="1" el="100" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="4" upsid="102" ordinal="0" sl="102" sc="1" el="102" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="1" upsid="100" ordinal="0" path="0" offset="12" offsetend="14" sl="100" fileid="9" />
-                <BranchPoint vc="2" upsid="100" ordinal="1" path="1" offset="12" offsetend="37" sl="100" fileid="9" />
+                <BranchPoint vc="1" upsid="102" ordinal="0" path="0" offset="12" offsetend="14" sl="102" fileid="9" />
+                <BranchPoint vc="2" upsid="102" ordinal="1" path="1" offset="12" offsetend="37" sl="102" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="9" offset="9" sc="0" sl="100" ec="1" el="100" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="9" offset="9" sc="0" sl="102" ec="1" el="102" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1118,21 +1150,26 @@
               <Name>Ignis.IComponentCollection`1&lt;T&gt; Ignis.Containers.MicroResolverContainer::GetStorageFor()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="3" upsid="103" ordinal="0" sl="103" sc="1" el="103" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="3" upsid="105" ordinal="0" sl="105" sc="1" el="105" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="10" offset="10" sc="0" sl="103" ec="1" el="103" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="10" offset="10" sc="0" sl="105" ec="1" el="105" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,667" branchCoverage="0,5" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="3" visitedSequencePoints="2" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="0,667" branchCoverage="0,5" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>T Ignis.Containers.MicroResolverContainer::GetSystem()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="105" ordinal="0" sl="105" sc="1" el="105" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="109" ordinal="0" sl="109" sc="1" el="109" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="110" ordinal="1" sl="110" sc="1" el="110" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="111" ordinal="2" sl="111" sc="1" el="111" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
-              <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="11" offset="11" sc="0" sl="105" ec="1" el="105" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <BranchPoints>
+                <BranchPoint vc="0" upsid="109" ordinal="0" path="0" offset="21" offsetend="23" sl="109" fileid="9" />
+                <BranchPoint vc="1" upsid="109" ordinal="1" path="1" offset="21" offsetend="49" sl="109" fileid="9" />
+              </BranchPoints>
+              <MethodPoint vc="2" upsid="0" p8:type="SequencePoint" ordinal="11" offset="11" sc="0" sl="109" ec="1" el="111" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,5" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="2" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0,5" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1140,11 +1177,11 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::Register()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="4" upsid="110" ordinal="0" sl="110" sc="1" el="110" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="141" ordinal="1" sl="141" sc="1" el="141" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="4" upsid="117" ordinal="0" sl="117" sc="1" el="117" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="148" ordinal="1" sl="148" sc="1" el="148" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="12" offset="12" sc="0" sl="110" ec="1" el="141" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="12" offset="12" sc="0" sl="117" ec="1" el="148" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -1152,10 +1189,10 @@
               <Name>TInterface Ignis.Containers.MicroResolverContainer::Resolve()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="0" upsid="113" ordinal="0" sl="113" sc="1" el="113" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="120" ordinal="0" sl="120" sc="1" el="120" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="13" offset="13" sc="0" sl="113" ec="1" el="113" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="13" offset="13" sc="0" sl="120" ec="1" el="120" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1163,10 +1200,10 @@
               <Name>System.Object Ignis.Containers.MicroResolverContainer::GetStorageFor(System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="116" ordinal="0" sl="116" sc="1" el="116" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="123" ordinal="0" sl="123" sc="1" el="123" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="14" offset="14" sc="0" sl="116" ec="1" el="116" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="14" offset="14" sc="0" sl="123" ec="1" el="123" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1174,10 +1211,10 @@
               <Name>Ignis.SystemBase Ignis.Containers.MicroResolverContainer::GetSystem(System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="2" upsid="118" ordinal="0" sl="118" sc="1" el="118" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="4" upsid="125" ordinal="0" sl="125" sc="1" el="125" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="15" offset="15" sc="0" sl="118" ec="1" el="118" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="15" offset="15" sc="0" sl="125" ec="1" el="125" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1185,10 +1222,10 @@
               <Name>System.Collections.Generic.IEnumerable`1&lt;System.Type&gt; Ignis.Containers.MicroResolverContainer::GetComponentTypes()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="2" upsid="120" ordinal="0" sl="120" sc="1" el="120" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="127" ordinal="0" sl="127" sc="1" el="127" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="16" offset="16" sc="0" sl="120" ec="1" el="120" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="16" offset="16" sc="0" sl="127" ec="1" el="127" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1196,10 +1233,10 @@
               <Name>System.Collections.Generic.IEnumerable`1&lt;System.Type&gt; Ignis.Containers.MicroResolverContainer::GetSystemTypes()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="3" upsid="122" ordinal="0" sl="122" sc="1" el="122" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="5" upsid="129" ordinal="0" sl="129" sc="1" el="129" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="17" offset="17" sc="0" sl="122" ec="1" el="122" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="17" offset="17" sc="0" sl="129" ec="1" el="129" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="1" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="1" branchCoverage="1" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1207,16 +1244,16 @@
               <Name>System.Void Ignis.Containers.MicroResolverContainer::InitializeSystems()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="125" ordinal="0" sl="125" sc="1" el="125" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="126" ordinal="1" sl="126" sc="1" el="126" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="1" upsid="127" ordinal="2" sl="127" sc="1" el="127" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="128" ordinal="3" sl="128" sc="1" el="128" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="132" ordinal="0" sl="132" sc="1" el="132" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="133" ordinal="1" sl="133" sc="1" el="133" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="134" ordinal="2" sl="134" sc="1" el="134" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="135" ordinal="3" sl="135" sc="1" el="135" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="1" upsid="125" ordinal="0" path="0" offset="35" offsetend="37" sl="125" fileid="9" />
-                <BranchPoint vc="1" upsid="125" ordinal="1" path="1" offset="35" offsetend="60" sl="125" fileid="9" />
+                <BranchPoint vc="1" upsid="132" ordinal="0" path="0" offset="35" offsetend="37" sl="132" fileid="9" />
+                <BranchPoint vc="1" upsid="132" ordinal="1" path="1" offset="35" offsetend="60" sl="132" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="4" upsid="0" p8:type="SequencePoint" ordinal="18" offset="18" sc="0" sl="125" ec="1" el="128" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="4" upsid="0" p8:type="SequencePoint" ordinal="18" offset="18" sc="0" sl="132" ec="1" el="135" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="6" visitedSequencePoints="0" numBranchPoints="6" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -1224,22 +1261,22 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::AddParallelSystems(System.Type[],System.Type[])</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="0" upsid="132" ordinal="0" sl="132" sc="1" el="132" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="133" ordinal="1" sl="133" sc="1" el="133" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="134" ordinal="2" sl="134" sc="1" el="134" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="135" ordinal="3" sl="135" sc="1" el="135" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="136" ordinal="4" sl="136" sc="1" el="136" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="137" ordinal="5" sl="137" sc="1" el="137" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="139" ordinal="0" sl="139" sc="1" el="139" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="140" ordinal="1" sl="140" sc="1" el="140" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="141" ordinal="2" sl="141" sc="1" el="141" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="142" ordinal="3" sl="142" sc="1" el="142" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="143" ordinal="4" sl="143" sc="1" el="143" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="144" ordinal="5" sl="144" sc="1" el="144" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" upsid="132" ordinal="1" path="1" offset="25" offsetend="6" sl="132" fileid="9" />
-                <BranchPoint vc="0" upsid="132" ordinal="0" path="0" offset="25" offsetend="27" sl="132" fileid="9" />
-                <BranchPoint vc="0" upsid="134" ordinal="2" path="0" offset="35" offsetend="37" sl="134" fileid="9" />
-                <BranchPoint vc="0" upsid="134" ordinal="3" path="1" offset="35" offsetend="60" sl="134" fileid="9" />
-                <BranchPoint vc="0" upsid="134" ordinal="5" path="1" offset="108" offsetend="73" sl="134" fileid="9" />
-                <BranchPoint vc="0" upsid="134" ordinal="4" path="0" offset="108" offsetend="110" sl="134" fileid="9" />
+                <BranchPoint vc="0" upsid="139" ordinal="1" path="1" offset="25" offsetend="6" sl="139" fileid="9" />
+                <BranchPoint vc="0" upsid="139" ordinal="0" path="0" offset="25" offsetend="27" sl="139" fileid="9" />
+                <BranchPoint vc="0" upsid="141" ordinal="2" path="0" offset="35" offsetend="37" sl="141" fileid="9" />
+                <BranchPoint vc="0" upsid="141" ordinal="3" path="1" offset="35" offsetend="60" sl="141" fileid="9" />
+                <BranchPoint vc="0" upsid="141" ordinal="5" path="1" offset="108" offsetend="73" sl="141" fileid="9" />
+                <BranchPoint vc="0" upsid="141" ordinal="4" path="0" offset="108" offsetend="110" sl="141" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="19" offset="19" sc="0" sl="132" ec="1" el="137" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="19" offset="19" sc="0" sl="139" ec="1" el="144" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1247,10 +1284,10 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::Register(System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="2" upsid="144" ordinal="0" sl="144" sc="1" el="144" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="151" ordinal="0" sl="151" sc="1" el="151" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="20" offset="20" sc="0" sl="144" ec="1" el="144" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="20" offset="20" sc="0" sl="151" ec="1" el="151" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0,95" branchCoverage="0,875" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="20" visitedSequencePoints="19" numBranchPoints="8" visitedBranchPoints="7" sequenceCoverage="0,95" branchCoverage="0,875" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1258,38 +1295,38 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::Register(System.Type,System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="6" upsid="148" ordinal="0" sl="148" sc="1" el="148" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="6" upsid="149" ordinal="1" sl="149" sc="1" el="149" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="151" ordinal="2" sl="151" sc="1" el="151" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="152" ordinal="3" sl="152" sc="1" el="152" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="153" ordinal="4" sl="153" sc="1" el="153" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="4" upsid="154" ordinal="5" sl="154" sc="1" el="154" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="156" ordinal="6" sl="156" sc="1" el="156" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="4" upsid="157" ordinal="7" sl="157" sc="1" el="157" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="158" ordinal="8" sl="158" sc="1" el="158" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="0" upsid="159" ordinal="9" sl="159" sc="1" el="159" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="160" ordinal="10" sl="160" sc="1" el="160" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="161" ordinal="11" sl="161" sc="1" el="161" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="162" ordinal="12" sl="162" sc="1" el="162" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="163" ordinal="13" sl="163" sc="1" el="163" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="164" ordinal="14" sl="164" sc="1" el="164" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="165" ordinal="15" sl="165" sc="1" el="165" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="166" ordinal="16" sl="166" sc="1" el="166" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="2" upsid="168" ordinal="17" sl="168" sc="1" el="168" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="6" upsid="169" ordinal="18" sl="169" sc="1" el="169" ec="2" bec="0" bev="0" fileid="9" />
-                <SequencePoint vc="6" upsid="170" ordinal="19" sl="170" sc="1" el="170" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="6" upsid="155" ordinal="0" sl="155" sc="1" el="155" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="6" upsid="156" ordinal="1" sl="156" sc="1" el="156" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="158" ordinal="2" sl="158" sc="1" el="158" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="159" ordinal="3" sl="159" sc="1" el="159" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="160" ordinal="4" sl="160" sc="1" el="160" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="4" upsid="161" ordinal="5" sl="161" sc="1" el="161" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="163" ordinal="6" sl="163" sc="1" el="163" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="4" upsid="164" ordinal="7" sl="164" sc="1" el="164" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="165" ordinal="8" sl="165" sc="1" el="165" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="166" ordinal="9" sl="166" sc="1" el="166" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="167" ordinal="10" sl="167" sc="1" el="167" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="168" ordinal="11" sl="168" sc="1" el="168" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="169" ordinal="12" sl="169" sc="1" el="169" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="170" ordinal="13" sl="170" sc="1" el="170" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="171" ordinal="14" sl="171" sc="1" el="171" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="172" ordinal="15" sl="172" sc="1" el="172" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="173" ordinal="16" sl="173" sc="1" el="173" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="2" upsid="175" ordinal="17" sl="175" sc="1" el="175" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="6" upsid="176" ordinal="18" sl="176" sc="1" el="176" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="6" upsid="177" ordinal="19" sl="177" sc="1" el="177" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="2" upsid="149" ordinal="0" path="0" offset="18" offsetend="20" sl="149" fileid="9" />
-                <BranchPoint vc="4" upsid="149" ordinal="1" path="1" offset="18" offsetend="51" sl="149" fileid="9" />
-                <BranchPoint vc="2" upsid="154" ordinal="2" path="0" offset="67" offsetend="69" sl="154" fileid="9" />
-                <BranchPoint vc="1" upsid="156" ordinal="4" path="0" offset="81" offsetend="83" sl="156" fileid="9" />
-                <BranchPoint vc="2" upsid="156" ordinal="5" path="1" offset="81" offsetend="106" sl="156" fileid="9" />
-                <BranchPoint vc="0" upsid="158" ordinal="6" path="0" offset="118" offsetend="120" sl="158" fileid="9" />
-                <BranchPoint vc="2" upsid="158" ordinal="7" path="1" offset="118" offsetend="131" sl="158" fileid="9" />
-                <BranchPoint vc="2" upsid="154" ordinal="3" path="1" offset="67" offsetend="193" sl="154" fileid="9" />
+                <BranchPoint vc="2" upsid="156" ordinal="0" path="0" offset="18" offsetend="20" sl="156" fileid="9" />
+                <BranchPoint vc="4" upsid="156" ordinal="1" path="1" offset="18" offsetend="51" sl="156" fileid="9" />
+                <BranchPoint vc="2" upsid="161" ordinal="2" path="0" offset="67" offsetend="69" sl="161" fileid="9" />
+                <BranchPoint vc="1" upsid="163" ordinal="4" path="0" offset="81" offsetend="83" sl="163" fileid="9" />
+                <BranchPoint vc="2" upsid="163" ordinal="5" path="1" offset="81" offsetend="106" sl="163" fileid="9" />
+                <BranchPoint vc="0" upsid="165" ordinal="6" path="0" offset="118" offsetend="120" sl="165" fileid="9" />
+                <BranchPoint vc="2" upsid="165" ordinal="7" path="1" offset="118" offsetend="131" sl="165" fileid="9" />
+                <BranchPoint vc="2" upsid="161" ordinal="3" path="1" offset="67" offsetend="193" sl="161" fileid="9" />
               </BranchPoints>
-              <MethodPoint vc="19" upsid="0" p8:type="SequencePoint" ordinal="21" offset="21" sc="0" sl="148" ec="1" el="170" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="19" upsid="0" p8:type="SequencePoint" ordinal="21" offset="21" sc="0" sl="155" ec="1" el="177" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -1297,10 +1334,10 @@
               <Name>System.Object Ignis.Containers.MicroResolverContainer::Resolve(System.Type)</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="1" upsid="174" ordinal="0" sl="174" sc="1" el="174" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="1" upsid="181" ordinal="0" sl="181" sc="1" el="181" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="22" offset="22" sc="0" sl="174" ec="1" el="174" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="1" upsid="0" p8:type="SequencePoint" ordinal="22" offset="22" sc="0" sl="181" ec="1" el="181" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -1308,10 +1345,10 @@
               <Name>Ignis.IContainer Ignis.Containers.MicroResolverContainer::AddParallelSystems(System.Type[])</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="0" upsid="187" ordinal="0" sl="187" sc="1" el="187" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="194" ordinal="0" sl="194" sc="1" el="194" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="23" offset="23" sc="0" sl="187" ec="1" el="187" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="23" offset="23" sc="0" sl="194" ec="1" el="194" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -1319,10 +1356,10 @@
               <Name>System.Boolean Ignis.Containers.MicroResolverContainer::IsBuilt()</Name>
               <FileRef uid="9" />
               <SequencePoints>
-                <SequencePoint vc="0" upsid="189" ordinal="0" sl="189" sc="1" el="189" ec="2" bec="0" bev="0" fileid="9" />
+                <SequencePoint vc="0" upsid="196" ordinal="0" sl="196" sc="1" el="196" ec="2" bec="0" bev="0" fileid="9" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="24" offset="24" sc="0" sl="189" ec="1" el="189" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
+              <MethodPoint vc="0" upsid="0" p8:type="SequencePoint" ordinal="24" offset="24" sc="0" sl="196" ec="1" el="196" bec="0" bev="0" fileid="9" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="1" branchCoverage="0" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="11" visitedSequencePoints="11" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="1" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />

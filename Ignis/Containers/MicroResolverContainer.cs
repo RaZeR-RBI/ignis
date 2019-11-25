@@ -31,6 +31,8 @@ namespace Ignis.Containers
 		{
 			if (!_alreadyBuilt)
 				ContainerProvider.EndCreation();
+			foreach (var systemType in GetSystemTypes())
+				GetSystem(systemType).Dispose();
 		}
 
 		private IComponentCollectionStorage ResolveStorage(Type componentType)

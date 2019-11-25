@@ -23,6 +23,12 @@
               "link": "Ignis.SystemBase.Container"
             },
             {
+              "name": "Dispose()",
+              "fullName": "Ignis.SystemBase.Dispose()",
+              "type": "Method",
+              "link": "Ignis.SystemBase.Dispose()"
+            },
+            {
               "name": "Execute()",
               "fullName": "Ignis.SystemBase.Execute()",
               "type": "Method",
