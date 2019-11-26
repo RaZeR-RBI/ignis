@@ -333,7 +333,7 @@ var assemblies = [
       { "name": "Ignis.Storage.EntityValuePair`1", "reportPath": "Ignis_EntityValuePair_1.htm", "coveredLines": 2, "uncoveredLines": 0, "coverableLines": 2, "totalLines": 20, "coverageType": "LineCoverage", "methodCoverage": "-", "coveredBranches": 0, "totalBranches": 0, "lineCoverageHistory": [], "branchCoverageHistory": [], "historicCoverages": [] },
       { "name": "Ignis.Storage.ListOfPairsStorage`1", "reportPath": "Ignis_ListOfPairsStorage_1.htm", "coveredLines": 36, "uncoveredLines": 2, "coverableLines": 38, "totalLines": 89, "coverageType": "LineCoverage", "methodCoverage": "-", "coveredBranches": 14, "totalBranches": 19, "lineCoverageHistory": [], "branchCoverageHistory": [], "historicCoverages": [] },
       { "name": "Ignis.Storage.NullStorage`1", "reportPath": "Ignis_NullStorage_1.htm", "coveredLines": 8, "uncoveredLines": 0, "coverableLines": 8, "totalLines": 48, "coverageType": "LineCoverage", "methodCoverage": "-", "coveredBranches": 0, "totalBranches": 0, "lineCoverageHistory": [], "branchCoverageHistory": [], "historicCoverages": [] },
-      { "name": "Ignis.SystemBase", "reportPath": "Ignis_SystemBase.htm", "coveredLines": 8, "uncoveredLines": 0, "coverableLines": 8, "totalLines": 26, "coverageType": "LineCoverage", "methodCoverage": "-", "coveredBranches": 1, "totalBranches": 2, "lineCoverageHistory": [], "branchCoverageHistory": [], "historicCoverages": [] },
+      { "name": "Ignis.SystemBase", "reportPath": "Ignis_SystemBase.htm", "coveredLines": 10, "uncoveredLines": 2, "coverableLines": 12, "totalLines": 35, "coverageType": "LineCoverage", "methodCoverage": "-", "coveredBranches": 1, "totalBranches": 2, "lineCoverageHistory": [], "branchCoverageHistory": [], "historicCoverages": [] },
     ]},
 ];
 

@@ -23,6 +23,12 @@
               "link": "Ignis.SystemBase.Container"
             },
             {
+              "name": "EntityManager",
+              "fullName": "Ignis.SystemBase.EntityManager",
+              "type": "Property",
+              "link": "Ignis.SystemBase.EntityManager"
+            },
+            {
               "name": "Dispose()",
               "fullName": "Ignis.SystemBase.Dispose()",
               "type": "Method",

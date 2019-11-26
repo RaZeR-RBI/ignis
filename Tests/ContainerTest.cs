@@ -87,7 +87,7 @@ namespace Tests
 
 		public SampleSystem(ContainerProvider provider) : base(provider)
 		{
-			sampleComponent = Container.GetStorageFor<SampleComponent>();
+			sampleComponent = _container.GetStorageFor<SampleComponent>();
 		}
 
 		public override void Execute()
