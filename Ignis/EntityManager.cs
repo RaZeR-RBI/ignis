@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using ConcurrentCollections;
-using static Ignis.InternalConstants;
+using static Ignis.IgnisConstants;
 
 namespace Ignis
 {
@@ -32,6 +32,7 @@ namespace Ignis
 			_storageResolver = storageResolver;
 
 
+		// TODO: Locks?
 		public int Create()
 		{
 			if (EntityCountLong >= long.MaxValue)
@@ -48,6 +49,14 @@ namespace Ignis
 			Interlocked.Increment(ref _entityCount);
 			OnEntityCreated?.Invoke(this, new EntityIdEventArgs(createdEntityId));
 			return createdEntityId;
+		}
+
+		public bool Create(int requestedEntityId)
+		{
+			if (requestedEntityId == IgnisConstants.NonExistingEntityId) return false;
+			if (Exists(requestedEntityId)) return false;
+			_existingEntityIds.Add(requestedEntityId);
+			return true;
 		}
 
 		public void Destroy(int entityId)

@@ -11,6 +11,20 @@
       "link": "Ignis",
       "children": [
         {
+          "name": "IgnisConstants",
+          "fullName": "Ignis.IgnisConstants",
+          "type": "Class",
+          "link": "Ignis.IgnisConstants",
+          "children": [
+            {
+              "name": "NonExistingEntityId",
+              "fullName": "Ignis.IgnisConstants.NonExistingEntityId",
+              "type": "Field",
+              "link": "Ignis.IgnisConstants.NonExistingEntityId"
+            }
+          ]
+        },
+        {
           "name": "SystemBase",
           "fullName": "Ignis.SystemBase",
           "type": "Class",
@@ -343,6 +357,12 @@
               "fullName": "Ignis.IEntityManager.Create()",
               "type": "Method",
               "link": "Ignis.IEntityManager.Create()"
+            },
+            {
+              "name": "Create(int)",
+              "fullName": "Ignis.IEntityManager.Create(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Create(int)"
             },
             {
               "name": "Destroy(int)",

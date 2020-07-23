@@ -25,7 +25,7 @@ namespace Tests
 		[Fact]
 		public void ShouldCreateCheckAndDestroyEntities()
 		{
-			var lastChangedEntity = InternalConstants.NonExistingEntityId;
+			var lastChangedEntity = IgnisConstants.NonExistingEntityId;
 			em.OnEntityCreated += (s, e) => lastChangedEntity = e.EntityID;
 			em.OnEntityDestroyed += (s, e) => lastChangedEntity = e.EntityID;
 
@@ -33,14 +33,14 @@ namespace Tests
 			em.GetEntityIds().Should().BeEquivalentTo(Enumerable.Empty<int>());
 
 			var firstEntity = em.Create();
-			firstEntity.Should().NotBe(InternalConstants.NonExistingEntityId);
+			firstEntity.Should().NotBe(IgnisConstants.NonExistingEntityId);
 			em.Exists(firstEntity).Should().BeTrue("first entity was created");
 			em.EntityCount.Should().Be(1, "one entity was created");
 			em.GetEntityIds().Should().BeEquivalentTo(new int[] { firstEntity });
 			lastChangedEntity.Should().Be(firstEntity);
 
 			var secondEntity = em.Create();
-			secondEntity.Should().NotBe(InternalConstants.NonExistingEntityId);
+			secondEntity.Should().NotBe(IgnisConstants.NonExistingEntityId);
 			secondEntity.Should().NotBe(firstEntity, "two separate entities");
 			em.Exists(secondEntity).Should().BeTrue("second entity was created");
 			em.EntityCount.Should().Be(2, "two entities were created");
@@ -68,7 +68,7 @@ namespace Tests
 			em.OnEntityComponentRemoved += (s, e) => lastEvent = "removed";
 
 			var entity = em.Create();
-			var oneEntity = new int [] { entity };
+			var oneEntity = new int[] { entity };
 			lastEvent.Should().BeNullOrEmpty();
 
 			em.HasComponent<SampleComponent>(entity).Should().BeFalse("created a new entity");
@@ -85,6 +85,16 @@ namespace Tests
 			em.HasComponent<SampleComponent>(entity).Should().BeFalse("removed a component");
 			em.Query(typeof(SampleComponent)).Should().BeEmpty();
 			lastEvent.Should().Be("removed");
+		}
+
+		[Fact]
+		public void ShouldCreateEntityWhenIdIsSpecified()
+		{
+			em.Create(1337).Should().BeTrue();
+			em.Exists(1337).Should().BeTrue();
+
+			em.Create(1337).Should().BeFalse();
+			em.Create(IgnisConstants.NonExistingEntityId).Should().BeFalse();
 		}
 	}
 }

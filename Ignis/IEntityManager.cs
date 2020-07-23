@@ -6,6 +6,7 @@ namespace Ignis
 	public interface IEntityManager
 	{
 		int Create();
+		bool Create(int requestedEntityId);
 		void Destroy(int entityId);
 		EventHandler<EntityIdEventArgs> OnEntityCreated { get; set; }
 		EventHandler<EntityIdEventArgs> OnEntityDestroyed { get; set; }
