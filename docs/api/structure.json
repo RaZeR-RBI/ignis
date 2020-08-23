@@ -25,6 +25,26 @@
           ]
         },
         {
+          "name": "IgnisExtensions",
+          "fullName": "Ignis.IgnisExtensions",
+          "type": "Class",
+          "link": "Ignis.IgnisExtensions",
+          "children": [
+            {
+              "name": "AddComponent<T>(IContainer, int, T)",
+              "fullName": "Ignis.IgnisExtensions.AddComponent<T>(IContainer, int, T)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.AddComponent_T_(IContainer, int, T)"
+            },
+            {
+              "name": "AddComponent<T>(IContainer, int)",
+              "fullName": "Ignis.IgnisExtensions.AddComponent<T>(IContainer, int)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.AddComponent_T_(IContainer, int)"
+            }
+          ]
+        },
+        {
           "name": "SystemBase",
           "fullName": "Ignis.SystemBase",
           "type": "Class",
