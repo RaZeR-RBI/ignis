@@ -13,9 +13,9 @@ namespace Tests
 {
 	public class ContainerTest : IDisposable
 	{
-		private readonly IContainer container;
+		private readonly IContainer<object> container;
 		public ContainerTest() =>
-			container = new MicroResolverContainer();
+			container = new MicroResolverContainer<object>();
 
 		public void Dispose() =>
 			container.Dispose();
@@ -81,16 +81,16 @@ namespace Tests
 		}
 	}
 
-	public class SampleSystem : SystemBase
+	public class SampleSystem : SystemBase<object>
 	{
 		private IComponentCollection<SampleComponent> sampleComponent;
 
-		public SampleSystem(ContainerProvider provider) : base(provider)
+		public SampleSystem(ContainerProvider<object> provider) : base(provider)
 		{
 			sampleComponent = _container.GetStorageFor<SampleComponent>();
 		}
 
-		public override void Execute()
+		public override void Execute(object state)
 		{
 			sampleComponent.ForEach((id, val) =>
 			{

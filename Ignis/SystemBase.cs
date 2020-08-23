@@ -3,17 +3,17 @@ using Ignis.Containers;
 
 namespace Ignis
 {
-	public abstract class SystemBase : IDisposable
+	public abstract class SystemBase<TState> : IDisposable
 	{
-		public IContainer Container => _container;
-		protected readonly IContainer _container;
+		public IContainer<TState> Container => _container;
+		protected readonly IContainer<TState> _container;
 
 		public IEntityManager EntityManager => _em;
 		protected readonly IEntityManager _em;
 
-		public abstract void Execute();
-		public virtual void Initialize() { }
-		public SystemBase(ContainerProvider ownerProvider)
+		public abstract void Execute(TState state);
+		public virtual void Initialize(TState state) { }
+		public SystemBase(ContainerProvider<TState> ownerProvider)
 		{
 			_container = ownerProvider.GetInstance();
 			_em = _container.EntityManager;

@@ -8,13 +8,13 @@ using MicroResolver;
 
 namespace Ignis.Containers
 {
-	public class MicroResolverContainer : IContainer, IDisposable
+	public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	{
 		public IEntityManager EntityManager { get; }
 		private ObjectResolver _resolver = ObjectResolver.Create();
 		private List<Type> _registeredTypes = new List<Type>();
 
-		private List<Action> _executionOrder = new List<Action>();
+		private List<Action<TState>> _executionOrder = new List<Action<TState>>();
 		private List<List<Type>> _systemTypes = new List<List<Type>>();
 
 		private List<Type> _registeredComponents = new List<Type>();
@@ -22,15 +22,15 @@ namespace Ignis.Containers
 
 		public MicroResolverContainer()
 		{
-			ContainerProvider.BeginCreation(this);
-			Register<ContainerProvider, ContainerProvider>();
+			ContainerProvider<TState>.BeginCreation(this);
+			Register<ContainerProvider<TState>>();
 			EntityManager = new EntityManager(ResolveStorage);
 		}
 
 		public void Dispose()
 		{
 			if (!_alreadyBuilt)
-				ContainerProvider.EndCreation();
+				ContainerProvider<TState>.EndCreation();
 			foreach (var systemType in GetSystemTypes())
 				GetSystem(systemType).Dispose();
 		}
@@ -42,10 +42,10 @@ namespace Ignis.Containers
 			return (IComponentCollectionStorage)result;
 		}
 
-		public IContainer AddComponent<TComponent>() where TComponent : struct =>
+		public IContainer<TState> AddComponent<TComponent>() where TComponent : struct =>
 			AddComponent<TComponent, DoubleListStorage<TComponent>>();
 
-		public IContainer AddComponent<TComponent, TStorage>()
+		public IContainer<TState> AddComponent<TComponent, TStorage>()
 			where TComponent : struct
 			where TStorage : class, IComponentCollection<TComponent>
 		{
@@ -62,7 +62,7 @@ namespace Ignis.Containers
 				throw new ArgumentException($"System type {type} is already registered");
 		}
 
-		public IContainer AddSystem<TSystem>() where TSystem : SystemBase =>
+		public IContainer<TState> AddSystem<TSystem>() where TSystem : SystemBase<TState> =>
 			AddSystem<TSystem, TSystem>();
 
 		private void BuildExecutionOrder()
@@ -71,21 +71,21 @@ namespace Ignis.Containers
 			{
 				var instances = list
 					.Select(t => _resolver.Resolve(t))
-					.Cast<SystemBase>()
+					.Cast<SystemBase<TState>>()
 					.ToList();
 
 				if (instances.Count == 1)
-					_executionOrder.Add(() => instances[0].Execute());
+					_executionOrder.Add((s) => instances[0].Execute(s));
 				else
-					_executionOrder.Add(() =>
+					_executionOrder.Add((s) =>
 						Parallel.ForEach(instances,
-						(instance, state, i) => instance.Execute()));
+						(instance, state, i) => instance.Execute(s)));
 			}
 		}
 
 		private bool _alreadyBuilt = false;
 
-		public IContainer Build()
+		public IContainer<TState> Build()
 		{
 			if (_alreadyBuilt)
 				throw new InvalidOperationException("Container is already built");
@@ -94,12 +94,12 @@ namespace Ignis.Containers
 				_resolver.Resolve(type);
 			BuildExecutionOrder();
 			_alreadyBuilt = true;
-			ContainerProvider.EndCreation();
+			ContainerProvider<TState>.EndCreation();
 			return this;
 		}
 
-		public void ExecuteSystems() =>
-			_executionOrder.ForEach(a => a.Invoke());
+		public void ExecuteSystems(TState state) =>
+			_executionOrder.ForEach(a => a.Invoke(state));
 
 		public IComponentCollection<T> GetStorageFor<T>() where T : new() =>
 			_resolver.Resolve<IComponentCollection<T>>();
@@ -111,7 +111,7 @@ namespace Ignis.Containers
 			return _resolver.Resolve<T>();
 		}
 
-		public IContainer Register<TInterface, TImpl>()
+		public IContainer<TState> Register<TInterface, TImpl>()
 			where TInterface : class
 			where TImpl : class, TInterface =>
 				Register(typeof(TInterface), typeof(TImpl));
@@ -122,19 +122,19 @@ namespace Ignis.Containers
 		public dynamic GetStorageFor(Type type) =>
 			_resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type));
 
-		public SystemBase GetSystem(Type type) => _resolver.Resolve(type) as SystemBase;
+		public SystemBase<TState> GetSystem(Type type) => _resolver.Resolve(type) as SystemBase<TState>;
 
 		public IEnumerable<Type> GetComponentTypes() => _registeredComponents;
 
 		public IEnumerable<Type> GetSystemTypes() => _registeredSystems;
 
-		public void InitializeSystems() =>
+		public void InitializeSystems(TState state = default(TState)) =>
 			GetSystemTypes()
 				.Select(GetSystem)
 				.ToList()
-				.ForEach(s => s.Initialize());
+				.ForEach(s => s.Initialize(state));
 
-		public IContainer AddParallelSystems(Type[] interfaces, Type[] implementations)
+		public IContainer<TState> AddParallelSystems(Type[] interfaces, Type[] implementations)
 		{
 			foreach (var iface in interfaces)
 				ThrowIfSystemIsAlreadyRegistered(iface);
@@ -144,16 +144,16 @@ namespace Ignis.Containers
 			return this;
 		}
 
-		public IContainer Register<T>() where T : class =>
+		public IContainer<TState> Register<T>() where T : class =>
 			Register<T, T>();
 
-		public IContainer Register(Type type) =>
+		public IContainer<TState> Register(Type type) =>
 			Register(type, type);
 
-		public IContainer Register(Type @interface, Type impl)
+		public IContainer<TState> Register(Type @interface, Type impl)
 		{
 			var registeredType = @interface;
-			if (typeof(SystemBase).IsAssignableFrom(impl))
+			if (typeof(SystemBase<TState>).IsAssignableFrom(impl))
 			{
 				_resolver.Register(Lifestyle.Singleton, @interface, impl);
 				_registeredSystems.Add(@interface);
@@ -180,9 +180,9 @@ namespace Ignis.Containers
 		public object Resolve(Type type) =>
 			_resolver.Resolve(type);
 
-		public IContainer AddSystem<TInterface, TSystem>()
+		public IContainer<TState> AddSystem<TInterface, TSystem>()
 			where TInterface : class
-			where TSystem : SystemBase, TInterface
+			where TSystem : SystemBase<TState>, TInterface
 		{
 			ThrowIfSystemIsAlreadyRegistered<TInterface>();
 			Register<TInterface, TSystem>();
@@ -190,7 +190,7 @@ namespace Ignis.Containers
 			return this;
 		}
 
-		public IContainer AddParallelSystems(Type[] implementations) =>
+		public IContainer<TState> AddParallelSystems(Type[] implementations) =>
 			AddParallelSystems(implementations, implementations);
 
 		public bool IsBuilt() => _alreadyBuilt;
