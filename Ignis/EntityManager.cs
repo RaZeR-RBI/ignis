@@ -56,6 +56,7 @@ namespace Ignis
 			if (requestedEntityId == IgnisConstants.NonExistingEntityId) return false;
 			if (Exists(requestedEntityId)) return false;
 			_existingEntityIds.Add(requestedEntityId);
+			Interlocked.Increment(ref _entityCount);
 			return true;
 		}
 
