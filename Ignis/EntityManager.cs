@@ -92,6 +92,7 @@ namespace Ignis
 
 		public void RemoveComponent(int entityId, Type type)
 		{
+			if (!HasComponent(entityId, type)) return;
 			_entityComponentPairs.TryRemove(HashPair(entityId, type));
 			var storage = GetStorage(type);
 			storage.RemoveComponentFromStorage(entityId);
