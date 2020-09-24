@@ -415,6 +415,36 @@
               "link": "Ignis.IEntityManager.HasComponent_T_(int)"
             },
             {
+              "name": "Query(Span<int>, ReadOnlySpan<Type>)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, ReadOnlySpan<Type>)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Span_int_, ReadOnlySpan_Type_)"
+            },
+            {
+              "name": "Query(Span<int>, Type, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type, Type, Type)"
+            },
+            {
+              "name": "Query(Span<int>, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type, Type)"
+            },
+            {
+              "name": "Query(Span<int>, Type, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type)"
+            },
+            {
+              "name": "Query(Span<int>, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type)"
+            },
+            {
               "name": "Query(Type[])",
               "fullName": "Ignis.IEntityManager.Query(Type[])",
               "type": "Method",
@@ -425,6 +455,12 @@
               "fullName": "Ignis.IEntityManager.QuerySubset(IEnumerable<int>, bool, Type[])",
               "type": "Method",
               "link": "Ignis.IEntityManager.QuerySubset(IEnumerable_int_, bool, Type[])"
+            },
+            {
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, ReadOnlySpan<Type>, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, ReadOnlySpan<Type>, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, ReadOnlySpan_Type_, bool)"
             },
             {
               "name": "RemoveComponent(int, Type)",

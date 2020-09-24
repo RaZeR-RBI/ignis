@@ -126,5 +126,100 @@ namespace Ignis
 				result = result.Where(id => HasComponent(id, type));
 			return result;
 		}
+
+		public ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, ReadOnlySpan<Type> componentTypes, bool checkExistence = true)
+		{
+			var count = 0;
+			for (var i = 0; i < ids.Length; i++)
+			{
+				if (count >= storage.Length) break;
+				if (checkExistence && !Exists(ids[i]))
+					continue;
+				var hasComponents = true;
+				for (var j = 0; j < componentTypes.Length; j++)
+					if (!HasComponent(ids[i], componentTypes[j]))
+					{
+						hasComponents = false;
+						break;
+					}
+				if (!hasComponents) continue;
+				storage[count++] = ids[i];
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> Query(Span<int> storage, ReadOnlySpan<Type> componentTypes)
+		{
+			var count = 0;
+			foreach (var id in _existingEntityIds)
+			{
+				if (count >= storage.Length) break;
+				var hasComponents = true;
+				for (var i = 0; i < componentTypes.Length; i++)
+					if (!HasComponent(id, componentTypes[i]))
+					{
+						hasComponents = false;
+						break;
+					}
+				if (!hasComponents) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> Query(Span<int> storage, Type component1)
+		{
+			var count = 0;
+			foreach (var id in _existingEntityIds)
+			{
+				if (count >= storage.Length) break;
+				if (!HasComponent(id, component1)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> Query(Span<int> storage, Type component1, Type component2)
+		{
+			var count = 0;
+			foreach (var id in _existingEntityIds)
+			{
+				if (count >= storage.Length) break;
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> Query(Span<int> storage, Type component1, Type component2, Type component3)
+		{
+			var count = 0;
+			foreach (var id in _existingEntityIds)
+			{
+				if (count >= storage.Length) break;
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				if (!HasComponent(id, component3)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> Query(Span<int> storage, Type component1, Type component2, Type component3, Type component4)
+		{
+			var count = 0;
+			foreach (var id in _existingEntityIds)
+			{
+				if (count >= storage.Length) break;
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				if (!HasComponent(id, component3)) continue;
+				if (!HasComponent(id, component4)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+
+		}
 	}
 }

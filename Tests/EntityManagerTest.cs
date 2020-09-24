@@ -12,6 +12,7 @@ namespace Tests
 	{
 		private IEntityManager em;
 		private IComponentCollection<SampleComponent> storage = new DoubleListStorage<SampleComponent>();
+		private static readonly Type[] componentTypes = new Type[] { typeof(SampleComponent) };
 
 		public EntityManagerTest() => em = new EntityManager(StorageResolver);
 
@@ -19,7 +20,7 @@ namespace Tests
 		{
 			if (type == typeof(SampleComponent))
 				return storage as IComponentCollectionStorage;
-			throw new Exception("This component type is not registered");
+			return (IComponentCollectionStorage)Activator.CreateInstance(typeof(NullStorage<>).MakeGenericType(type));
 		}
 
 		[Fact]
@@ -58,12 +59,34 @@ namespace Tests
 			em.EntityCount.Should().Be(0, "no entities left");
 			em.GetEntityIds().Should().BeEquivalentTo(Enumerable.Empty<int>());
 			lastChangedEntity.Should().Be(secondEntity);
+
+			em.Destroy(IgnisConstants.NonExistingEntityId);
+		}
+
+		[Fact]
+		public void ShouldQuerySubsets()
+		{
+			var entityOne = em.Create();
+			var entityTwo = em.Create();
+			var entityThree = em.Create();
+			Span<int> subset = stackalloc int[2];
+			subset[0] = entityTwo;
+			subset[1] = entityThree;
+
+			em.AddComponent<SampleComponent>(entityOne);
+			em.AddComponent<SampleComponent>(entityTwo);
+
+			Span<int> storage = stackalloc int[3];
+			var result = em.QuerySubset(subset, storage, componentTypes);
+			result.Length.Should().Be(1);
+			result[0].Should().Be(entityTwo);
 		}
 
 		[Fact]
 		public void ShouldAddCheckAndRemoveComponents()
 		{
 			var lastEvent = "";
+			Span<int> storage = stackalloc int[1];
 			em.OnEntityComponentAdded += (s, e) => lastEvent = "added";
 			em.OnEntityComponentRemoved += (s, e) => lastEvent = "removed";
 
@@ -74,16 +97,23 @@ namespace Tests
 			em.HasComponent<SampleComponent>(entity).Should().BeFalse("created a new entity");
 			em.GetEntityIds().Should().BeEquivalentTo(oneEntity);
 			em.Query(typeof(SampleComponent)).Should().BeEmpty();
+			var result = em.Query(storage, typeof(SampleComponent));
+			result.Length.Should().Be(0);
 
 			em.AddComponent<SampleComponent>(entity);
 
 			em.HasComponent<SampleComponent>(entity).Should().BeTrue("added a component");
 			em.Query(typeof(SampleComponent)).Should().BeEquivalentTo(oneEntity);
+			result = em.Query(storage, componentTypes);
+			result.Length.Should().Be(1);
+			result[0].Should().Be(entity);
 			lastEvent.Should().Be("added");
 
 			em.RemoveComponent<SampleComponent>(entity);
 			em.HasComponent<SampleComponent>(entity).Should().BeFalse("removed a component");
 			em.Query(typeof(SampleComponent)).Should().BeEmpty();
+			result = em.Query(storage, componentTypes);
+			result.Length.Should().Be(0);
 			lastEvent.Should().Be("removed");
 		}
 
@@ -95,6 +125,42 @@ namespace Tests
 
 			em.Create(1337).Should().BeFalse();
 			em.Create(IgnisConstants.NonExistingEntityId).Should().BeFalse();
+		}
+
+		public struct Component1 { }
+		public struct Component2 { }
+		public struct Component3 { }
+		public struct Component4 { }
+
+		[Fact]
+		public void ShouldQueryUsingOverloads()
+		{
+			Span<int> entities = stackalloc int[4];
+			for (var i = 0; i < entities.Length; i++)
+			{
+				entities[i] = em.Create();
+				em.AddComponent<Component1>(entities[i]);
+				if (i > 0) em.AddComponent<Component2>(entities[i]);
+				if (i > 1) em.AddComponent<Component3>(entities[i]);
+				if (i > 2) em.AddComponent<Component4>(entities[i]);
+			}
+			Span<int> storage = stackalloc int[entities.Length];
+
+			var result = em.Query(storage, typeof(Component1));
+			result.Length.Should().Be(4);
+			result.ToArray().Should().BeEquivalentTo(entities.ToArray());
+
+			result = em.Query(storage, typeof(Component1), typeof(Component2));
+			result.Length.Should().Be(3);
+			result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(1));
+
+			result = em.Query(storage, typeof(Component1), typeof(Component2), typeof(Component3));
+			result.Length.Should().Be(2);
+			result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(2));
+
+			result = em.Query(storage, typeof(Component1), typeof(Component2), typeof(Component3), typeof(Component4));
+			result.Length.Should().Be(1);
+			result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(3));
 		}
 	}
 }

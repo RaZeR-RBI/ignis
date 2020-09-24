@@ -35,7 +35,10 @@ namespace Tests
 			storage.Should().NotBeNull();
 			Assert.NotNull(container.GetStorageFor(typeof(SampleComponent)));
 
-			container.GetSystem<SampleSystem>().Should().NotBeNull();
+			var sampleSystem = container.GetSystem<SampleSystem>();
+			sampleSystem.Should().NotBeNull();
+			sampleSystem.Container.Should().Be(container);
+			sampleSystem.EntityManager.Should().Be(container.EntityManager);
 			Assert.NotNull(container.GetSystem(typeof(SampleSystem)));
 
 			var entityManager = container.EntityManager;
@@ -44,7 +47,7 @@ namespace Tests
 				.Select(i => entityManager.Create())
 				.ToList();
 
-			entityIds.ForEach(id => entityManager.AddComponent<SampleComponent>(id));
+			entityIds.ForEach(id => container.AddComponent<SampleComponent, object>(id));
 
 			// Initial state
 			storage.Count().Should().Be(entityCount);
