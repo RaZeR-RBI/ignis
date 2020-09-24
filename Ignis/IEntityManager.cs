@@ -31,5 +31,9 @@ namespace Ignis
 		ReadOnlySpan<int> Query(Span<int> storage, Type component1, Type component2, Type component3, Type component4);
 		IEnumerable<int> QuerySubset(IEnumerable<int> ids, bool checkExistence = true, params Type[] componentTypes);
 		ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, ReadOnlySpan<Type> componentTypes, bool checkExistence = true);
+		ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, bool checkExistence = true);
+		ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, Type component2, bool checkExistence = true);
+		ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, Type component2, Type component3, bool checkExistence = true);
+		ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, Type component2, Type component3, Type component4, bool checkExistence = true);
 	}
 }

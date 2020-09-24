@@ -463,6 +463,30 @@
               "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, ReadOnlySpan_Type_, bool)"
             },
             {
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, bool)"
+            },
+            {
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, bool)"
+            },
+            {
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, bool)"
+            },
+            {
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, Type, bool)"
+            },
+            {
               "name": "RemoveComponent(int, Type)",
               "fullName": "Ignis.IEntityManager.RemoveComponent(int, Type)",
               "type": "Method",

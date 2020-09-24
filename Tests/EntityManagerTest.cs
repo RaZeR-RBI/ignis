@@ -146,6 +146,7 @@ namespace Tests
 			}
 			Span<int> storage = stackalloc int[entities.Length];
 
+			// query
 			var result = em.Query(storage, typeof(Component1));
 			result.Length.Should().Be(4);
 			result.ToArray().Should().BeEquivalentTo(entities.ToArray());
@@ -161,6 +162,24 @@ namespace Tests
 			result = em.Query(storage, typeof(Component1), typeof(Component2), typeof(Component3), typeof(Component4));
 			result.Length.Should().Be(1);
 			result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(3));
+
+			// query subset
+			var subset = entities.ToArray().Skip(1).ToArray();
+			result = em.QuerySubset(subset, storage, typeof(Component1));
+			result.Length.Should().Be(3);
+			result.ToArray().Should().BeEquivalentTo(subset);
+
+			result = em.QuerySubset(subset, storage, typeof(Component1), typeof(Component2));
+			result.Length.Should().Be(3);
+			result.ToArray().Should().BeEquivalentTo(subset);
+
+			result = em.QuerySubset(subset, storage, typeof(Component1), typeof(Component2), typeof(Component3));
+			result.Length.Should().Be(2);
+			result.ToArray().Should().BeEquivalentTo(subset.Skip(1));
+
+			result = em.QuerySubset(subset, storage, typeof(Component1), typeof(Component2), typeof(Component3), typeof(Component4));
+			result.Length.Should().Be(1);
+			result.ToArray().Should().BeEquivalentTo(subset.Skip(2));
 		}
 	}
 }

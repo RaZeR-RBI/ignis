@@ -132,18 +132,19 @@ namespace Ignis
 			var count = 0;
 			for (var i = 0; i < ids.Length; i++)
 			{
+				var id = ids[i];
 				if (count >= storage.Length) break;
-				if (checkExistence && !Exists(ids[i]))
+				if (checkExistence && !Exists(id))
 					continue;
 				var hasComponents = true;
 				for (var j = 0; j < componentTypes.Length; j++)
-					if (!HasComponent(ids[i], componentTypes[j]))
+					if (!HasComponent(id, componentTypes[j]))
 					{
 						hasComponents = false;
 						break;
 					}
 				if (!hasComponents) continue;
-				storage[count++] = ids[i];
+				storage[count++] = id;
 			}
 			return storage.Slice(0, count);
 		}
@@ -220,6 +221,72 @@ namespace Ignis
 			}
 			return storage.Slice(0, count);
 
+		}
+
+		public ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, bool checkExistence = true)
+		{
+			var count = 0;
+			for (var i = 0; i < ids.Length; i++)
+			{
+				var id = ids[i];
+				if (count >= storage.Length) break;
+				if (checkExistence && !Exists(id))
+					continue;
+				if (!HasComponent(id, component1)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, Type component2, bool checkExistence = true)
+		{
+			var count = 0;
+			for (var i = 0; i < ids.Length; i++)
+			{
+				var id = ids[i];
+				if (count >= storage.Length) break;
+				if (checkExistence && !Exists(id))
+					continue;
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, Type component2, Type component3, bool checkExistence = true)
+		{
+			var count = 0;
+			for (var i = 0; i < ids.Length; i++)
+			{
+				var id = ids[i];
+				if (count >= storage.Length) break;
+				if (checkExistence && !Exists(id))
+					continue;
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				if (!HasComponent(id, component3)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
+		}
+
+		public ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage, Type component1, Type component2, Type component3, Type component4, bool checkExistence = true)
+		{
+			var count = 0;
+			for (var i = 0; i < ids.Length; i++)
+			{
+				var id = ids[i];
+				if (count >= storage.Length) break;
+				if (checkExistence && !Exists(id))
+					continue;
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				if (!HasComponent(id, component3)) continue;
+				if (!HasComponent(id, component4)) continue;
+				storage[count++] = id;
+			}
+			return storage.Slice(0, count);
 		}
 	}
 }
