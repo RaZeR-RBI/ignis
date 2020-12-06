@@ -19,6 +19,7 @@ namespace Ignis
 		void RemoveComponent(int entityId, Type type);
 		void RemoveComponent<T>(int entityId) where T : new();
 		EventHandler<EntityComponentEventArgs> OnEntityComponentAdded { get; set; }
+		EventHandler<EntityComponentEventArgs> OnEntityComponentRemoving { get; set; }
 		EventHandler<EntityComponentEventArgs> OnEntityComponentRemoved { get; set; }
 		bool HasComponent(int entityId, Type type);
 		bool HasComponent<T>(int entityId) where T : new();

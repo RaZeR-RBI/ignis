@@ -13,6 +13,7 @@ namespace Ignis
 		public EventHandler<EntityIdEventArgs> OnEntityCreated { get; set; } = null;
 		public EventHandler<EntityIdEventArgs> OnEntityDestroyed { get; set; } = null;
 		public EventHandler<EntityComponentEventArgs> OnEntityComponentAdded { get; set; } = null;
+		public EventHandler<EntityComponentEventArgs> OnEntityComponentRemoving { get; set; } = null;
 		public EventHandler<EntityComponentEventArgs> OnEntityComponentRemoved { get; set; } = null;
 
 		public int EntityCount => (int)EntityCountLong;
@@ -93,6 +94,7 @@ namespace Ignis
 		public void RemoveComponent(int entityId, Type type)
 		{
 			if (!HasComponent(entityId, type)) return;
+			OnEntityComponentRemoving?.Invoke(this, new EntityComponentEventArgs(entityId, type));
 			_entityComponentPairs.TryRemove(HashPair(entityId, type));
 			var storage = GetStorage(type);
 			storage.RemoveComponentFromStorage(entityId);

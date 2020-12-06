@@ -355,6 +355,12 @@
               "link": "Ignis.IEntityManager.OnEntityComponentAdded"
             },
             {
+              "name": "OnEntityComponentRemoving",
+              "fullName": "Ignis.IEntityManager.OnEntityComponentRemoving",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.OnEntityComponentRemoving"
+            },
+            {
               "name": "OnEntityComponentRemoved",
               "fullName": "Ignis.IEntityManager.OnEntityComponentRemoved",
               "type": "Property",
