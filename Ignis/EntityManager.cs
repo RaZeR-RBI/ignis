@@ -291,5 +291,70 @@ namespace Ignis
 			}
 			return storage.Slice(0, count);
 		}
+
+		public void QueryTo(IList<int> storage, params Type[] componentTypes)
+		{
+			var ids = _existingEntityIds;
+			foreach (var id in ids)
+			{
+				var hasComponents = true;
+				foreach (var component in componentTypes)
+				{
+					if (!HasComponent(id, component))
+					{
+						hasComponents = false;
+						break;
+					}
+				}
+				if (hasComponents)
+					storage.Add(id);
+			}
+		}
+
+		public void QueryTo(IList<int> storage, Type component1)
+		{
+			var ids = _existingEntityIds;
+			foreach (var id in ids)
+			{
+				if (!HasComponent(id, component1)) continue;
+				storage.Add(id);
+			}
+		}
+
+		public void QueryTo(IList<int> storage, Type component1, Type component2)
+		{
+			var ids = _existingEntityIds;
+			foreach (var id in ids)
+			{
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				storage.Add(id);
+			}
+		}
+
+		public void QueryTo(IList<int> storage, Type component1, Type component2, Type component3)
+		{
+			var ids = _existingEntityIds;
+			foreach (var id in ids)
+			{
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				if (!HasComponent(id, component3)) continue;
+				storage.Add(id);
+			}
+		}
+
+		public void QueryTo(IList<int> storage, Type component1, Type component2, Type component3, Type component4)
+		{
+			var ids = _existingEntityIds;
+			foreach (var id in ids)
+			{
+				if (!HasComponent(id, component1)) continue;
+				if (!HasComponent(id, component2)) continue;
+				if (!HasComponent(id, component3)) continue;
+				if (!HasComponent(id, component4)) continue;
+				storage.Add(id);
+			}
+		}
 	}
 }

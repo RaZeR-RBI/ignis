@@ -493,6 +493,36 @@
               "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, Type, bool)"
             },
             {
+              "name": "QueryTo(IList<int>, Type, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(IList<int>, Type, Type, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QueryTo(IList_int_, Type, Type, Type, Type)"
+            },
+            {
+              "name": "QueryTo(IList<int>, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(IList<int>, Type, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QueryTo(IList_int_, Type, Type, Type)"
+            },
+            {
+              "name": "QueryTo(IList<int>, Type, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(IList<int>, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QueryTo(IList_int_, Type, Type)"
+            },
+            {
+              "name": "QueryTo(IList<int>, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(IList<int>, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QueryTo(IList_int_, Type)"
+            },
+            {
+              "name": "QueryTo(IList<int>, Type[])",
+              "fullName": "Ignis.IEntityManager.QueryTo(IList<int>, Type[])",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QueryTo(IList_int_, Type[])"
+            },
+            {
               "name": "RemoveComponent(int, Type)",
               "fullName": "Ignis.IEntityManager.RemoveComponent(int, Type)",
               "type": "Method",
