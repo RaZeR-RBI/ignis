@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="406" visitedSequencePoints="325" numBranchPoints="250" visitedBranchPoints="178" sequenceCoverage="80.04" branchCoverage="71.2" maxCyclomaticComplexity="319" minCyclomaticComplexity="319" visitedClasses="12" numClasses="12" visitedMethods="99" numMethods="111" />
   <Modules>
-    <Module hash="27EE1433-EB55-4674-A52C-63A1DCFC872C">
+    <Module hash="275D35F7-5164-466B-8B56-D3A9F606C2E5">
       <ModulePath>Ignis.dll</ModulePath>
-      <ModuleTime>2020-12-07T06:33:10</ModuleTime>
+      <ModuleTime>2020-12-07T06:37:17</ModuleTime>
       <ModuleName>Ignis</ModuleName>
       <Files>
         <File uid="1" fullPath="/home/razer/vscode-projects/bsp-playground/External/Ignis/Ignis/EntityIdEventArgs.cs" />
@@ -683,7 +683,7 @@
             <Method cyclomaticComplexity="8" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="10" visitedSequencePoints="0" numBranchPoints="8" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="8" minCyclomaticComplexity="8" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.IList`1&lt;System.Int32&gt;,System.Type[])</Name>
+              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.ICollection`1&lt;System.Int32&gt;,System.Type[])</Name>
               <FileRef uid="2" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="297" ordinal="0" sl="297" sc="1" el="297" ec="2" bec="0" bev="0" fileid="2" />
@@ -712,7 +712,7 @@
             <Method cyclomaticComplexity="4" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="5" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.IList`1&lt;System.Int32&gt;,System.Type)</Name>
+              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.ICollection`1&lt;System.Int32&gt;,System.Type)</Name>
               <FileRef uid="2" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="316" ordinal="0" sl="316" sc="1" el="316" ec="2" bec="0" bev="0" fileid="2" />
@@ -732,7 +732,7 @@
             <Method cyclomaticComplexity="6" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="6" visitedSequencePoints="0" numBranchPoints="6" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="6" minCyclomaticComplexity="6" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.IList`1&lt;System.Int32&gt;,System.Type,System.Type)</Name>
+              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.ICollection`1&lt;System.Int32&gt;,System.Type,System.Type)</Name>
               <FileRef uid="2" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="326" ordinal="0" sl="326" sc="1" el="326" ec="2" bec="0" bev="0" fileid="2" />
@@ -755,7 +755,7 @@
             <Method cyclomaticComplexity="8" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="7" visitedSequencePoints="0" numBranchPoints="8" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="8" minCyclomaticComplexity="8" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.IList`1&lt;System.Int32&gt;,System.Type,System.Type,System.Type)</Name>
+              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.ICollection`1&lt;System.Int32&gt;,System.Type,System.Type,System.Type)</Name>
               <FileRef uid="2" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="337" ordinal="0" sl="337" sc="1" el="337" ec="2" bec="0" bev="0" fileid="2" />
@@ -781,7 +781,7 @@
             <Method cyclomaticComplexity="10" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="8" visitedSequencePoints="0" numBranchPoints="10" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="10" minCyclomaticComplexity="10" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.IList`1&lt;System.Int32&gt;,System.Type,System.Type,System.Type,System.Type)</Name>
+              <Name>System.Void Ignis.EntityManager::QueryTo(System.Collections.Generic.ICollection`1&lt;System.Int32&gt;,System.Type,System.Type,System.Type,System.Type)</Name>
               <FileRef uid="2" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="349" ordinal="0" sl="349" sc="1" el="349" ec="2" bec="0" bev="0" fileid="2" />

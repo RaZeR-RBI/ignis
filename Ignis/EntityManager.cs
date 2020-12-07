@@ -292,7 +292,7 @@ namespace Ignis
 			return storage.Slice(0, count);
 		}
 
-		public void QueryTo(IList<int> storage, params Type[] componentTypes)
+		public void QueryTo(ICollection<int> storage, params Type[] componentTypes)
 		{
 			var ids = _existingEntityIds;
 			foreach (var id in ids)
@@ -311,7 +311,7 @@ namespace Ignis
 			}
 		}
 
-		public void QueryTo(IList<int> storage, Type component1)
+		public void QueryTo(ICollection<int> storage, Type component1)
 		{
 			var ids = _existingEntityIds;
 			foreach (var id in ids)
@@ -321,7 +321,7 @@ namespace Ignis
 			}
 		}
 
-		public void QueryTo(IList<int> storage, Type component1, Type component2)
+		public void QueryTo(ICollection<int> storage, Type component1, Type component2)
 		{
 			var ids = _existingEntityIds;
 			foreach (var id in ids)
@@ -332,7 +332,7 @@ namespace Ignis
 			}
 		}
 
-		public void QueryTo(IList<int> storage, Type component1, Type component2, Type component3)
+		public void QueryTo(ICollection<int> storage, Type component1, Type component2, Type component3)
 		{
 			var ids = _existingEntityIds;
 			foreach (var id in ids)
@@ -344,7 +344,7 @@ namespace Ignis
 			}
 		}
 
-		public void QueryTo(IList<int> storage, Type component1, Type component2, Type component3, Type component4)
+		public void QueryTo(ICollection<int> storage, Type component1, Type component2, Type component3, Type component4)
 		{
 			var ids = _existingEntityIds;
 			foreach (var id in ids)
