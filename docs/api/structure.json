@@ -11,6 +11,44 @@
       "link": "Ignis",
       "children": [
         {
+          "name": "EntityView",
+          "fullName": "Ignis.EntityView",
+          "type": "Class",
+          "link": "Ignis.EntityView",
+          "children": [
+            {
+              "name": "EntityCount",
+              "fullName": "Ignis.EntityView.EntityCount",
+              "type": "Property",
+              "link": "Ignis.EntityView.EntityCount"
+            },
+            {
+              "name": "Filter",
+              "fullName": "Ignis.EntityView.Filter",
+              "type": "Property",
+              "link": "Ignis.EntityView.Filter"
+            },
+            {
+              "name": "EntityView(IEntityManager, Type[])",
+              "fullName": "Ignis.EntityView.EntityView(IEntityManager, Type[])",
+              "type": "Constructor",
+              "link": "Ignis.EntityView.EntityView(IEntityManager, Type[])"
+            },
+            {
+              "name": "EntityView(IEntityManager, IEnumerable<Type>)",
+              "fullName": "Ignis.EntityView.EntityView(IEntityManager, IEnumerable<Type>)",
+              "type": "Constructor",
+              "link": "Ignis.EntityView.EntityView(IEntityManager, IEnumerable_Type_)"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.EntityView.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.EntityView.GetEnumerator()"
+            }
+          ]
+        },
+        {
           "name": "IgnisConstants",
           "fullName": "Ignis.IgnisConstants",
           "type": "Class",
@@ -41,6 +79,36 @@
               "fullName": "Ignis.IgnisExtensions.AddComponent<T, TState>(IContainer<TState>, int)",
               "type": "Method",
               "link": "Ignis.IgnisExtensions.AddComponent_T, TState_(IContainer_TState_, int)"
+            },
+            {
+              "name": "CreateView(IEntityManager, Type[])",
+              "fullName": "Ignis.IgnisExtensions.CreateView(IEntityManager, Type[])",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.CreateView(IEntityManager, Type[])"
+            },
+            {
+              "name": "CreateView<T1, T2, T3, T4>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.CreateView<T1, T2, T3, T4>(IEntityManager)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.CreateView_T1, T2, T3, T4_(IEntityManager)"
+            },
+            {
+              "name": "CreateView<T1, T2, T3>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.CreateView<T1, T2, T3>(IEntityManager)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.CreateView_T1, T2, T3_(IEntityManager)"
+            },
+            {
+              "name": "CreateView<T1, T2>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.CreateView<T1, T2>(IEntityManager)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.CreateView_T1, T2_(IEntityManager)"
+            },
+            {
+              "name": "CreateView<T1>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.CreateView<T1>(IEntityManager)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.CreateView_T1_(IEntityManager)"
             }
           ]
         },
@@ -533,6 +601,26 @@
               "fullName": "Ignis.IEntityManager.RemoveComponent<T>(int)",
               "type": "Method",
               "link": "Ignis.IEntityManager.RemoveComponent_T_(int)"
+            }
+          ]
+        },
+        {
+          "name": "IEntityView",
+          "fullName": "Ignis.IEntityView",
+          "type": "Interface",
+          "link": "Ignis.IEntityView",
+          "children": [
+            {
+              "name": "EntityCount",
+              "fullName": "Ignis.IEntityView.EntityCount",
+              "type": "Property",
+              "link": "Ignis.IEntityView.EntityCount"
+            },
+            {
+              "name": "Filter",
+              "fullName": "Ignis.IEntityView.Filter",
+              "type": "Property",
+              "link": "Ignis.IEntityView.Filter"
             }
           ]
         }
