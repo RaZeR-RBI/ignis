@@ -21,21 +21,21 @@ namespace Ignis
 			return container;
 		}
 
-		public static IEntityView CreateView(this IEntityManager em, params Type[] filter)
+		public static IEntityView GetView(this IEntityManager em, params Type[] filter)
 		{
-			return new EntityView(em, filter);
+			return em.GetView(filter);
 		}
 
-		public static IEntityView CreateView<T1>(this IEntityManager em) =>
-			CreateView(em, typeof(T1));
+		public static IEntityView GetView<T1>(this IEntityManager em) =>
+			GetView(em, typeof(T1));
 
-		public static IEntityView CreateView<T1, T2>(this IEntityManager em) =>
-			CreateView(em, typeof(T1), typeof(T2));
+		public static IEntityView GetView<T1, T2>(this IEntityManager em) =>
+			GetView(em, typeof(T1), typeof(T2));
 
-		public static IEntityView CreateView<T1, T2, T3>(this IEntityManager em) =>
-			CreateView(em, typeof(T1), typeof(T2), typeof(T3));
+		public static IEntityView GetView<T1, T2, T3>(this IEntityManager em) =>
+			GetView(em, typeof(T1), typeof(T2), typeof(T3));
 
-		public static IEntityView CreateView<T1, T2, T3, T4>(this IEntityManager em) =>
-			CreateView(em, typeof(T1), typeof(T2), typeof(T3), typeof(T4));
+		public static IEntityView GetView<T1, T2, T3, T4>(this IEntityManager em) =>
+			GetView(em, typeof(T1), typeof(T2), typeof(T3), typeof(T4));
 	}
 }

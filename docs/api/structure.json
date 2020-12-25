@@ -11,44 +11,6 @@
       "link": "Ignis",
       "children": [
         {
-          "name": "EntityView",
-          "fullName": "Ignis.EntityView",
-          "type": "Class",
-          "link": "Ignis.EntityView",
-          "children": [
-            {
-              "name": "EntityCount",
-              "fullName": "Ignis.EntityView.EntityCount",
-              "type": "Property",
-              "link": "Ignis.EntityView.EntityCount"
-            },
-            {
-              "name": "Filter",
-              "fullName": "Ignis.EntityView.Filter",
-              "type": "Property",
-              "link": "Ignis.EntityView.Filter"
-            },
-            {
-              "name": "EntityView(IEntityManager, Type[])",
-              "fullName": "Ignis.EntityView.EntityView(IEntityManager, Type[])",
-              "type": "Constructor",
-              "link": "Ignis.EntityView.EntityView(IEntityManager, Type[])"
-            },
-            {
-              "name": "EntityView(IEntityManager, IEnumerable<Type>)",
-              "fullName": "Ignis.EntityView.EntityView(IEntityManager, IEnumerable<Type>)",
-              "type": "Constructor",
-              "link": "Ignis.EntityView.EntityView(IEntityManager, IEnumerable_Type_)"
-            },
-            {
-              "name": "GetEnumerator()",
-              "fullName": "Ignis.EntityView.GetEnumerator()",
-              "type": "Method",
-              "link": "Ignis.EntityView.GetEnumerator()"
-            }
-          ]
-        },
-        {
           "name": "IgnisConstants",
           "fullName": "Ignis.IgnisConstants",
           "type": "Class",
@@ -81,34 +43,34 @@
               "link": "Ignis.IgnisExtensions.AddComponent_T, TState_(IContainer_TState_, int)"
             },
             {
-              "name": "CreateView(IEntityManager, Type[])",
-              "fullName": "Ignis.IgnisExtensions.CreateView(IEntityManager, Type[])",
+              "name": "GetView(IEntityManager, Type[])",
+              "fullName": "Ignis.IgnisExtensions.GetView(IEntityManager, Type[])",
               "type": "Method",
-              "link": "Ignis.IgnisExtensions.CreateView(IEntityManager, Type[])"
+              "link": "Ignis.IgnisExtensions.GetView(IEntityManager, Type[])"
             },
             {
-              "name": "CreateView<T1, T2, T3, T4>(IEntityManager)",
-              "fullName": "Ignis.IgnisExtensions.CreateView<T1, T2, T3, T4>(IEntityManager)",
+              "name": "GetView<T1, T2, T3, T4>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.GetView<T1, T2, T3, T4>(IEntityManager)",
               "type": "Method",
-              "link": "Ignis.IgnisExtensions.CreateView_T1, T2, T3, T4_(IEntityManager)"
+              "link": "Ignis.IgnisExtensions.GetView_T1, T2, T3, T4_(IEntityManager)"
             },
             {
-              "name": "CreateView<T1, T2, T3>(IEntityManager)",
-              "fullName": "Ignis.IgnisExtensions.CreateView<T1, T2, T3>(IEntityManager)",
+              "name": "GetView<T1, T2, T3>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.GetView<T1, T2, T3>(IEntityManager)",
               "type": "Method",
-              "link": "Ignis.IgnisExtensions.CreateView_T1, T2, T3_(IEntityManager)"
+              "link": "Ignis.IgnisExtensions.GetView_T1, T2, T3_(IEntityManager)"
             },
             {
-              "name": "CreateView<T1, T2>(IEntityManager)",
-              "fullName": "Ignis.IgnisExtensions.CreateView<T1, T2>(IEntityManager)",
+              "name": "GetView<T1, T2>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.GetView<T1, T2>(IEntityManager)",
               "type": "Method",
-              "link": "Ignis.IgnisExtensions.CreateView_T1, T2_(IEntityManager)"
+              "link": "Ignis.IgnisExtensions.GetView_T1, T2_(IEntityManager)"
             },
             {
-              "name": "CreateView<T1>(IEntityManager)",
-              "fullName": "Ignis.IgnisExtensions.CreateView<T1>(IEntityManager)",
+              "name": "GetView<T1>(IEntityManager)",
+              "fullName": "Ignis.IgnisExtensions.GetView<T1>(IEntityManager)",
               "type": "Method",
-              "link": "Ignis.IgnisExtensions.CreateView_T1_(IEntityManager)"
+              "link": "Ignis.IgnisExtensions.GetView_T1_(IEntityManager)"
             }
           ]
         },
@@ -465,6 +427,12 @@
               "link": "Ignis.IEntityManager.Destroy(int)"
             },
             {
+              "name": "DestroyView(IEnumerable<Type>)",
+              "fullName": "Ignis.IEntityManager.DestroyView(IEnumerable<Type>)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.DestroyView(IEnumerable_Type_)"
+            },
+            {
               "name": "Exists(int)",
               "fullName": "Ignis.IEntityManager.Exists(int)",
               "type": "Method",
@@ -475,6 +443,18 @@
               "fullName": "Ignis.IEntityManager.GetEntityIds()",
               "type": "Method",
               "link": "Ignis.IEntityManager.GetEntityIds()"
+            },
+            {
+              "name": "GetView(IEnumerable<Type>)",
+              "fullName": "Ignis.IEntityManager.GetView(IEnumerable<Type>)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.GetView(IEnumerable_Type_)"
+            },
+            {
+              "name": "GetView(Type[])",
+              "fullName": "Ignis.IEntityManager.GetView(Type[])",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.GetView(Type[])"
             },
             {
               "name": "HasComponent(int, Type)",

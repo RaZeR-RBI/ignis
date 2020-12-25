@@ -20,8 +20,8 @@ namespace Tests
 		[Fact]
 		public void ShouldUpdateEntityList()
 		{
-			var view1 = em.CreateView<Component1>();
-			var view24 = em.CreateView<Component2, Component4>();
+			var view1 = em.GetView<Component1>();
+			var view24 = em.GetView<Component2, Component4>();
 			view1.Filter.Should().BeEquivalentTo(new[] { typeof(Component1) });
 			view24.Filter.Should().BeEquivalentTo(new[] { typeof(Component2), typeof(Component4) });
 
@@ -59,7 +59,7 @@ namespace Tests
 			view24.Should().BeEquivalentTo(entities24);
 			view24.Should().NotContain(entities2);
 
-			var view2 = em.CreateView<Component2>();
+			var view2 = em.GetView<Component2>();
 			view2.EntityCount.Should().Be(entities2.Count + entities24.Count);
 			view2.Should().BeEquivalentTo(entities2.Concat(entities24));
 
@@ -68,6 +68,14 @@ namespace Tests
 			view2.Should().BeEquivalentTo(entities24);
 			view24.EntityCount.Should().Be(count24);
 			view24.Should().BeEquivalentTo(entities24);
+		}
+
+		[Fact]
+		public void ShouldCacheViews()
+		{
+			var view = em.GetView<Component1>();
+			var sameView = em.GetView<Component1>();
+			Assert.Same(view, sameView);
 		}
 
 		public struct Component1 { }

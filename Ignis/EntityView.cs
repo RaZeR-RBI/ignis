@@ -12,7 +12,7 @@ namespace Ignis
 		IReadOnlyCollection<Type> Filter { get; }
 	}
 
-	public class EntityView : IEnumerable<int>, IEntityView
+	internal class EntityView : IEnumerable<int>, IEntityView
 	{
 		private readonly IReadOnlyCollection<Type> _filter;
 		private readonly ConcurrentHashSet<int> _ids;

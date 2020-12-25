@@ -29,6 +29,8 @@ namespace Ignis
 
 		private Func<Type, IComponentCollectionStorage> _storageResolver = null;
 
+		private List<IEntityView> _views = new List<IEntityView>();
+
 		public EntityManager(Func<Type, IComponentCollectionStorage> storageResolver) =>
 			_storageResolver = storageResolver;
 
@@ -355,6 +357,37 @@ namespace Ignis
 				if (!HasComponent(id, component4)) continue;
 				storage.Add(id);
 			}
+		}
+
+		private IEntityView GetViewByFilter(IEnumerable<Type> filter)
+		{
+			var set = filter.ToHashSet();
+			return _views.FirstOrDefault(v =>
+				v.Filter.All(set.Contains) &&
+				v.Filter.Count == set.Count);
+		}
+
+		public IEntityView GetView(IEnumerable<Type> filter)
+		{
+			var set = filter.ToHashSet();
+			var view = GetViewByFilter(set);
+			if (view != null) return view;
+			view = new EntityView(this, filter);
+			_views.Add(view);
+			return view;
+		}
+
+		public IEntityView GetView(params Type[] filter)
+		{
+			return GetView((IEnumerable<Type>)filter);
+		}
+
+		public bool DestroyView(IEnumerable<Type> filter)
+		{
+			var view = GetViewByFilter(filter);
+			if (view == null) return false;
+			_views.Remove(view);
+			return true;
 		}
 	}
 }
