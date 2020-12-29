@@ -9,6 +9,7 @@ namespace Ignis
 	public interface IEntityView : IEnumerable<int>
 	{
 		int EntityCount { get; }
+		bool Contains(int id);
 		IReadOnlyCollection<Type> Filter { get; }
 	}
 
@@ -91,6 +92,11 @@ namespace Ignis
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return ((IEnumerable)_ids).GetEnumerator();
+		}
+
+		public bool Contains(int id)
+		{
+			return _ids.Contains(id);
 		}
 	}
 }

@@ -39,6 +39,8 @@ namespace Tests
 			view1.EntityCount.Should().Be(count1);
 			view1.Should().BeEquivalentTo(entities1);
 			view1.Should().NotContain(entities2);
+			view1.Should().OnlyContain(id => view1.Contains(id));
+			view1.Contains(-1).Should().BeFalse();
 
 			view24.EntityCount.Should().Be(0);
 			view24.Should().BeEmpty();

@@ -601,6 +601,12 @@
               "fullName": "Ignis.IEntityView.Filter",
               "type": "Property",
               "link": "Ignis.IEntityView.Filter"
+            },
+            {
+              "name": "Contains(int)",
+              "fullName": "Ignis.IEntityView.Contains(int)",
+              "type": "Method",
+              "link": "Ignis.IEntityView.Contains(int)"
             }
           ]
         }
