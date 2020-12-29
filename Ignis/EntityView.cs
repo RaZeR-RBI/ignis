@@ -11,6 +11,7 @@ namespace Ignis
 		int EntityCount { get; }
 		bool Contains(int id);
 		IReadOnlyCollection<Type> Filter { get; }
+		Span<int> CopyTo(Span<int> storage);
 	}
 
 	internal class EntityView : IEnumerable<int>, IEntityView
@@ -97,6 +98,28 @@ namespace Ignis
 		public bool Contains(int id)
 		{
 			return _ids.Contains(id);
+		}
+
+		public Span<int> CopyTo(Span<int> storage)
+		{
+			var lockTaken = false;
+			try
+			{
+				Monitor.Enter(_ids);
+				var i = 0;
+				foreach (var id in _ids)
+				{
+					if (i >= storage.Length)
+						break;
+					storage[i++] = id;
+				}
+				return storage.Slice(0, i);
+			}
+			finally
+			{
+				if (lockTaken)
+					Monitor.Exit(_ids);
+			}
 		}
 	}
 }

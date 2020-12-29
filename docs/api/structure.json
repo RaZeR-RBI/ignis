@@ -607,6 +607,12 @@
               "fullName": "Ignis.IEntityView.Contains(int)",
               "type": "Method",
               "link": "Ignis.IEntityView.Contains(int)"
+            },
+            {
+              "name": "CopyTo(Span<int>)",
+              "fullName": "Ignis.IEntityView.CopyTo(Span<int>)",
+              "type": "Method",
+              "link": "Ignis.IEntityView.CopyTo(Span_int_)"
             }
           ]
         }

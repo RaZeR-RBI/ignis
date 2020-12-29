@@ -42,6 +42,11 @@ namespace Tests
 			view1.Should().OnlyContain(id => view1.Contains(id));
 			view1.Contains(-1).Should().BeFalse();
 
+			Span<int> copyTarget = stackalloc int[10];
+			var copied = view1.CopyTo(copyTarget);
+			copied.Length.Should().Be(count1);
+			copied.ToArray().Should().BeEquivalentTo(entities1);
+
 			view24.EntityCount.Should().Be(0);
 			view24.Should().BeEmpty();
 

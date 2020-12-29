@@ -228,7 +228,7 @@ var assemblies = [
       { "name": "Ignis.Containers.MicroResolverContainer`1", "rp": "Ignis_MicroResolverContainer_1.htm", "cl": 78, "ucl": 18, "cal": 96, "tl": 198, "ct": "LineCoverage", "mc": "-", "cb": 20, "tb": 32, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityIdEventArgs", "rp": "Ignis_EntityIdEventArgs.htm", "cl": 2, "ucl": 0, "cal": 2, "tl": 10, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityManager", "rp": "Ignis_EntityManager.htm", "cl": 159, "ucl": 49, "cal": 208, "tl": 393, "ct": "LineCoverage", "mc": "-", "cb": 138, "tb": 186, "lch": [], "bch": [], "hc": [] },
-      { "name": "Ignis.EntityView", "rp": "Ignis_EntityView.htm", "cl": 38, "ucl": 3, "cal": 41, "tl": 102, "ct": "LineCoverage", "mc": "-", "cb": 18, "tb": 20, "lch": [], "bch": [], "hc": [] },
+      { "name": "Ignis.EntityView", "rp": "Ignis_EntityView.htm", "cl": 48, "ucl": 5, "cal": 53, "tl": 125, "ct": "LineCoverage", "mc": "-", "cb": 22, "tb": 26, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.IgnisExtensions", "rp": "Ignis_IgnisExtensions.htm", "cl": 5, "ucl": 6, "cal": 11, "tl": 41, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.Storage.DoubleListStorage`1", "rp": "Ignis_DoubleListStorage_1.htm", "cl": 33, "ucl": 4, "cal": 37, "tl": 87, "ct": "LineCoverage", "mc": "-", "cb": 11, "tb": 16, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.Storage.EntityValuePair`1", "rp": "Ignis_EntityValuePair_1.htm", "cl": 2, "ucl": 0, "cal": 2, "tl": 20, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
