@@ -30,6 +30,15 @@ public class StorageTypeTest
 		withComponents.Should().OnlyContain(id => em.HasComponent<SampleComponent>(id));
 		withoutComponents.Should().OnlyContain(id => !em.HasComponent<SampleComponent>(id));
 
+		// Check IEntityView implementation
+		var view = storage.GetView();
+		view.Should().BeEquivalentTo(withComponents);
+		view.EntityCount.Should().Be(withComponents.Count);
+		view.Filter.Should().BeEquivalentTo(new[] {typeof(SampleComponent)});
+		Span<int> viewData = stackalloc int[withComponents.Count];
+		var actualViewData = view.CopyTo(viewData).ToArray();
+		actualViewData.Should().BeEquivalentTo(withComponents);
+
 		// Try to iterate using foreach
 		var count = 0;
 		foreach (var component in storage)
@@ -125,7 +134,8 @@ public class StorageTypeTest
 			() => storage.GetEnumerator(),
 			() => storage.Update(-1, new SampleComponent()),
 			() => storage.Update(-1, new object()),
-			() => storage.UpdateCurrent(new SampleComponent())
+			() => storage.UpdateCurrent(new SampleComponent()),
+			() => storage.GetView()
 		};
 		foreach (var action in actions)
 			Assert.ThrowsAny<InvalidOperationException>(action);

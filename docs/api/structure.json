@@ -183,6 +183,12 @@
               "link": "Ignis.IComponentCollection_T_.Get(int)"
             },
             {
+              "name": "GetView()",
+              "fullName": "Ignis.IComponentCollection<T>.GetView()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.GetView()"
+            },
+            {
               "name": "Update(int, object)",
               "fullName": "Ignis.IComponentCollection<T>.Update(int, object)",
               "type": "Method",
@@ -431,6 +437,12 @@
               "fullName": "Ignis.IEntityManager.DestroyView(IEnumerable<Type>)",
               "type": "Method",
               "link": "Ignis.IEntityManager.DestroyView(IEnumerable_Type_)"
+            },
+            {
+              "name": "DestroyView(Type[])",
+              "fullName": "Ignis.IEntityManager.DestroyView(Type[])",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.DestroyView(Type[])"
             },
             {
               "name": "Exists(int)",
@@ -829,6 +841,12 @@
           "link": "Ignis.Storage.DoubleListStorage_T_",
           "children": [
             {
+              "name": "DoubleListStorage()",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.DoubleListStorage()",
+              "type": "Constructor",
+              "link": "Ignis.Storage.DoubleListStorage_T_.DoubleListStorage()"
+            },
+            {
               "name": "ForEach(Action<int, T>)",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.ForEach(Action<int, T>)",
               "type": "Method",
@@ -845,6 +863,12 @@
               "fullName": "Ignis.Storage.DoubleListStorage<T>.GetEnumerator()",
               "type": "Method",
               "link": "Ignis.Storage.DoubleListStorage_T_.GetEnumerator()"
+            },
+            {
+              "name": "GetView()",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetView()",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.GetView()"
             },
             {
               "name": "RemoveComponentFromStorage(int)",
@@ -885,6 +909,12 @@
           "link": "Ignis.Storage.ListOfPairsStorage_T_",
           "children": [
             {
+              "name": "ListOfPairsStorage()",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ListOfPairsStorage()",
+              "type": "Constructor",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.ListOfPairsStorage()"
+            },
+            {
               "name": "ForEach(Action<int, T>)",
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ForEach(Action<int, T>)",
               "type": "Method",
@@ -901,6 +931,12 @@
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetEnumerator()",
               "type": "Method",
               "link": "Ignis.Storage.ListOfPairsStorage_T_.GetEnumerator()"
+            },
+            {
+              "name": "GetView()",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetView()",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetView()"
             },
             {
               "name": "RemoveComponentFromStorage(int)",
@@ -957,6 +993,12 @@
               "fullName": "Ignis.Storage.NullStorage<T>.GetEnumerator()",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.GetEnumerator()"
+            },
+            {
+              "name": "GetView()",
+              "fullName": "Ignis.Storage.NullStorage<T>.GetView()",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.GetView()"
             },
             {
               "name": "RemoveComponentFromStorage(int)",

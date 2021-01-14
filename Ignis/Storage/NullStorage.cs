@@ -23,6 +23,11 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 		throw new InvalidOperationException();
 	}
 
+	public IEntityView GetView()
+	{
+		throw new InvalidOperationException();
+	}
+
 	public bool RemoveComponentFromStorage(int entityId)
 	{
 		return true;

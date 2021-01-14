@@ -63,5 +63,6 @@ public interface IEntityManager
 	IEntityView GetView(IEnumerable<Type> filter);
 	IEntityView GetView(params Type[] filter);
 	bool DestroyView(IEnumerable<Type> filter);
+	bool DestroyView(params Type[] filter);
 }
 }

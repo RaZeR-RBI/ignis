@@ -433,5 +433,10 @@ internal class EntityManager : IEntityManager
 		_views.Remove(view);
 		return true;
 	}
+
+	public bool DestroyView(params Type[] filter)
+	{
+		return DestroyView((IEnumerable<Type>) filter);
+	}
 }
 }

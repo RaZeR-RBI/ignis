@@ -28,10 +28,12 @@ public class ContainerTest : IDisposable
 	[Fact]
 	public void ShouldRegisterAndExecuteComponentsAndSystems()
 	{
+		container.IsBuilt().Should().BeFalse();
 		container
 			.AddComponent<SampleComponent>()
 			.AddSystem<SampleSystem>()
 			.Build();
+		container.IsBuilt().Should().BeTrue();
 
 		container.GetSystemTypes().Should().BeEquivalentTo(typeof(SampleSystem));
 		container.GetComponentTypes().Should().BeEquivalentTo(typeof(SampleComponent));
@@ -39,6 +41,7 @@ public class ContainerTest : IDisposable
 		var storage = container.GetStorageFor<SampleComponent>();
 		storage.Should().NotBeNull();
 		Assert.NotNull(container.GetStorageFor(typeof(SampleComponent)));
+		container.Resolve<IComponentCollection<SampleComponent>>().Should().BeSameAs(storage);
 
 		var sampleSystem = container.GetSystem<SampleSystem>();
 		sampleSystem.Should().NotBeNull();
@@ -77,6 +80,27 @@ public class ContainerTest : IDisposable
 		     .Should()
 		     .OnlyContain(kvp =>
 			                  kvp.Value.Foo == kvp.Key + 1 && kvp.Value.Bar == false);
+	}
+
+	[Fact]
+	public void ShouldSetComponentValueIfSupplied()
+	{
+		container
+			.AddComponent<SampleComponent>()
+			.Build();
+		var em = container.EntityManager;
+		var id = em.Create();
+		var storage = container.GetStorageFor<SampleComponent>();
+		em.HasComponent<SampleComponent>(id).Should().BeFalse();
+
+		var expected = new SampleComponent()
+		{
+			Foo = -1f,
+			Bar = !default(bool)
+		};
+		container.AddComponent(id, expected);
+		em.HasComponent<SampleComponent>(id).Should().BeTrue();
+		storage.Get(id).Should().Be(expected);
 	}
 
 	[Fact]

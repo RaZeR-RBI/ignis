@@ -18,5 +18,6 @@ public interface IComponentCollection<T> : IEnumerable<T>
 	void Update(int entityId, object value);
 	T Get(int entityId);
 	void ForEach(Action<int, T> action);
+	IEntityView GetView();
 }
 }

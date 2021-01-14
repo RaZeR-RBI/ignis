@@ -85,9 +85,24 @@ public class EntityViewTest
 	[Fact]
 	public void ShouldCacheViews()
 	{
-		var view = em.GetView<Component1>();
-		var sameView = em.GetView<Component1>();
-		Assert.Same(view, sameView);
+		var view1 = em.GetView<Component1>();
+		var sameView1 = em.GetView<Component1>();
+		var view2 = em.GetView<Component1, Component2>();
+		var sameView2 = em.GetView<Component1, Component2>();
+		var view3 = em.GetView<Component1, Component2, Component3>();
+		var sameView3 = em.GetView<Component1, Component2, Component3>();
+		var view4 = em.GetView<Component1, Component2, Component3, Component4>();
+		var sameView4 = em.GetView<Component1, Component2, Component3, Component4>();
+
+		Assert.Same(view1, sameView1);
+		Assert.Same(view2, sameView2);
+		Assert.Same(view3, sameView3);
+		Assert.Same(view4, sameView4);
+
+		em.DestroyView(typeof(Component4)).Should().BeFalse();
+		em.DestroyView(typeof(Component1)).Should().BeTrue();
+		var newView1 = em.GetView<Component1>();
+		newView1.Should().NotBeSameAs(view1);
 	}
 
 	public struct Component1

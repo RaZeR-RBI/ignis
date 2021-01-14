@@ -11,7 +11,13 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 	where T : new()
 {
 	private int _curIndex = 0;
-	private List<EntityValuePair<T>> _pairs = new List<EntityValuePair<T>>();
+	private readonly ListOfPairsEntityView _view;
+	private readonly List<EntityValuePair<T>> _pairs = new List<EntityValuePair<T>>();
+
+	public ListOfPairsStorage()
+	{
+		_view = new ListOfPairsEntityView(this);
+	}
 
 	public void ForEach(Action<int, T> action)
 	{
@@ -78,6 +84,7 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 		_pairs[_curIndex - 1] = curPair;
 	}
 
+	[ExcludeFromCodeCoverage]
 	IEnumerator IEnumerable.GetEnumerator()
 	{
 		return GetEnumerator();
@@ -99,6 +106,59 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 	public void Update(int entityId, object value)
 	{
 		Update(entityId, (T) value);
+	}
+
+	public IEntityView GetView()
+	{
+		return _view;
+	}
+
+	[ExcludeFromCodeCoverage]
+	private class ListOfPairsEntityView : IEntityView
+	{
+		private readonly ListOfPairsStorage<T> _storage;
+
+		public ListOfPairsEntityView(ListOfPairsStorage<T> storage)
+		{
+			_storage = storage;
+		}
+
+		public int EntityCount => _storage._pairs.Count;
+
+		private static Type[] s_filter = new Type[] {typeof(T)};
+		public IReadOnlyCollection<Type> Filter => s_filter;
+
+		public bool Contains(int id)
+		{
+			foreach (var pair in _storage._pairs)
+				if (pair.EntityID == id)
+					return true;
+			return false;
+		}
+
+		public Span<int> CopyTo(Span<int> storage)
+		{
+			var index = 0;
+			foreach (var id in this)
+			{
+				if (index >= storage.Length)
+					break;
+				storage[index++] = id;
+			}
+
+			return storage.Slice(0, index);
+		}
+
+		public IEnumerator<int> GetEnumerator()
+		{
+			foreach (var pair in _storage._pairs)
+				yield return pair.EntityID;
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
 	}
 }
 }

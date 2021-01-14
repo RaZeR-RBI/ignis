@@ -12,8 +12,14 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 	where T : new()
 {
 	private int _curIndex = 0;
-	private List<int> _ids = new List<int>();
-	private List<T> _values = new List<T>();
+	private readonly DoubleListStorageView _view;
+	private readonly List<int> _ids = new List<int>();
+	private readonly List<T> _values = new List<T>();
+
+	public DoubleListStorage()
+	{
+		_view = new DoubleListStorageView(this);
+	}
 
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -94,9 +100,59 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		Update(entityId, (T) value);
 	}
 
+	[ExcludeFromCodeCoverage]
 	IEnumerator IEnumerable.GetEnumerator()
 	{
 		return GetEnumerator();
+	}
+
+	public IEntityView GetView()
+	{
+		return _view;
+	}
+
+	[ExcludeFromCodeCoverage]
+	private class DoubleListStorageView : IEntityView
+	{
+		private readonly DoubleListStorage<T> _storage;
+
+		public DoubleListStorageView(DoubleListStorage<T> storage)
+		{
+			_storage = storage;
+		}
+
+		public int EntityCount => _storage._ids.Count;
+
+		private static Type[] s_filter = new Type[] {typeof(T)};
+		public IReadOnlyCollection<Type> Filter => s_filter;
+
+		public bool Contains(int id)
+		{
+			return _storage._ids.Contains(id);
+		}
+
+		public Span<int> CopyTo(Span<int> storage)
+		{
+			var index = 0;
+			foreach (var id in _storage._ids)
+			{
+				if (index >= storage.Length)
+					break;
+				storage[index++] = id;
+			}
+
+			return storage.Slice(0, index);
+		}
+
+		public IEnumerator<int> GetEnumerator()
+		{
+			return _storage._ids.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
 	}
 }
 }

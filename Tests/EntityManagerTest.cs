@@ -150,6 +150,54 @@ public class EntityManagerTest
 	{
 	}
 
+	private void TestQuery(IEntityManager em, IReadOnlyCollection<int> expected,
+	                       params Type[] types)
+	{
+		em.Query(types).Should().BeEquivalentTo(expected);
+
+		Span<int> span = stackalloc int[expected.Count];
+		var items = new List<int>();
+		em.Query(span, types).ToArray().Should().BeEquivalentTo(expected);
+		em.QueryTo(items, types);
+		items.Should().BeEquivalentTo(expected);
+		items.Clear();
+
+		switch (types.Length)
+		{
+		case 1:
+			em.Query(span, types[0]).ToArray().Should().BeEquivalentTo(expected);
+			em.QueryTo(items, types[0]);
+			items.Should().BeEquivalentTo(expected);
+			break;
+		case 2:
+			em.Query(span, types[0], types[1]).ToArray().Should().BeEquivalentTo(expected);
+			em.QueryTo(items, types[0], types[1]);
+			items.Should().BeEquivalentTo(expected);
+			break;
+		case 3:
+			em.Query(span, types[0], types[1], types[2])
+			  .ToArray()
+			  .Should()
+			  .BeEquivalentTo(expected);
+			em.QueryTo(items, types[0], types[1], types[2]);
+			items.Should().BeEquivalentTo(expected);
+			break;
+		case 4:
+			em.Query(span, types[0], types[1], types[2], types[3])
+			  .ToArray()
+			  .Should()
+			  .BeEquivalentTo(expected);
+			em.QueryTo(items, types[0], types[1], types[2], types[3]);
+			items.Should().BeEquivalentTo(expected);
+			break;
+		default:
+			em.Query(span, types).ToArray().Should().BeEquivalentTo(expected);
+			em.QueryTo(items, types);
+			items.Should().BeEquivalentTo(expected);
+			break;
+		}
+	}
+
 	[Fact]
 	public void ShouldQueryUsingOverloads()
 	{
@@ -165,27 +213,18 @@ public class EntityManagerTest
 
 		Span<int> storage = stackalloc int[entities.Length];
 
-		// query
-		var result = em.Query(storage, typeof(Component1));
-		result.Length.Should().Be(4);
-		result.ToArray().Should().BeEquivalentTo(entities.ToArray());
-
-		result = em.Query(storage, typeof(Component1), typeof(Component2));
-		result.Length.Should().Be(3);
-		result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(1));
-
-		result = em.Query(storage, typeof(Component1), typeof(Component2), typeof(Component3));
-		result.Length.Should().Be(2);
-		result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(2));
-
-		result = em.Query(storage, typeof(Component1), typeof(Component2), typeof(Component3),
-		                  typeof(Component4));
-		result.Length.Should().Be(1);
-		result.ToArray().Should().BeEquivalentTo(entities.ToArray().Skip(3));
+		// query & queryTo
+		var ids = entities.ToArray();
+		TestQuery(em, ids, typeof(Component1));
+		TestQuery(em, ids.Skip(1).ToList(), typeof(Component1), typeof(Component2));
+		TestQuery(em, ids.Skip(2).ToList(), typeof(Component1), typeof(Component2),
+		          typeof(Component3));
+		TestQuery(em, ids.Skip(3).ToList(), typeof(Component1), typeof(Component2),
+		          typeof(Component3), typeof(Component4));
 
 		// query subset
 		var subset = entities.ToArray().Skip(1).ToArray();
-		result = em.QuerySubset(subset, storage, typeof(Component1));
+		var result = em.QuerySubset(subset, storage, typeof(Component1));
 		result.Length.Should().Be(3);
 		result.ToArray().Should().BeEquivalentTo(subset);
 
