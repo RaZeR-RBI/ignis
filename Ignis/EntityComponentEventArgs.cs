@@ -3,13 +3,15 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis
 {
-    [ExcludeFromCodeCoverage]
-    public struct EntityComponentEventArgs
-    {
-        public int EntityID { get; }
-        public Type ComponentType { get; }
+[ExcludeFromCodeCoverage]
+public struct EntityComponentEventArgs
+{
+	public int EntityID { get; }
+	public Type ComponentType { get; }
 
-        public EntityComponentEventArgs(int id, Type component) =>
-            (this.EntityID, this.ComponentType) = (id, component);
-    }
+	public EntityComponentEventArgs(int id, Type component)
+	{
+		(EntityID, ComponentType) = (id, component);
+	}
+}
 }
