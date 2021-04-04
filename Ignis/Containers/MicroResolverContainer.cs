@@ -14,7 +14,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	private ObjectResolver _resolver = ObjectResolver.Create();
 	private List<Type> _registeredTypes = new List<Type>();
 
-	private List<Action<TState>> _executionOrder = new List<Action<TState>>();
+	private Action<TState> _executor = _ => { };
 	private List<List<Type>> _systemTypes = new List<List<Type>>();
 
 	private List<Type> _registeredComponents = new List<Type>();
@@ -81,12 +81,12 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 			                .ToList();
 
 			if (instances.Count == 1)
-				_executionOrder.Add((s) => instances[0].Execute(s));
+				_executor += (s) => instances[0].Execute(s);
 			else
-				_executionOrder.Add((s) =>
-					                    Parallel.ForEach(instances,
-					                                     (instance, state, i) =>
-						                                     instance.Execute(s)));
+				_executor += (s) =>
+					Parallel.ForEach(instances,
+					                 (v, _, __) =>
+						                 v.Execute(s));
 		}
 	}
 
@@ -107,7 +107,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 
 	public void ExecuteSystems(TState state)
 	{
-		_executionOrder.ForEach(a => a.Invoke(state));
+		_executor(state);
 	}
 
 	public IComponentCollection<T> GetStorageFor<T>() where T : new()
