@@ -58,8 +58,8 @@ public class ContainerTest : IDisposable
 		entityIds.ForEach(id => container.AddComponent<SampleComponent, object>(id));
 
 		// Initial state
-		storage.Count().Should().Be(entityCount);
-		storage.Should().OnlyContain(c => c.Foo == 0.0f && c.Bar == false);
+		storage.GetCount().Should().Be(entityCount);
+		storage.GetValues().Should().OnlyContain(c => c.Foo == 0.0f && c.Bar == false);
 
 		// Execute the system once
 		var pairs = new Dictionary<int, SampleComponent>();

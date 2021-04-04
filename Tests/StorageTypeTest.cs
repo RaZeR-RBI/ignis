@@ -41,28 +41,29 @@ public class StorageTypeTest
 
 		// Try to iterate using foreach
 		var count = 0;
-		foreach (var component in storage)
+		foreach (var component in storage.GetValues())
 			count++;
 		count.Should().Be(withComponents.Count);
 
 		// Try to iterate and modify
 		count = 0;
-		foreach (var component in storage)
+		var ids = storage.GetView().ToList();
+		foreach (var id in ids)
 		{
 			var value = new SampleComponent()
 			{
 				Foo = 1337,
 				Bar = true
 			};
-			storage.UpdateCurrent(value);
+			storage.Update(id, value);
 			count++;
 		}
 
 		count.Should().Be(withComponents.Count);
 
 		// Check if they were modified
-		storage.Should().OnlyContain(c => c.Foo == 1337);
-		storage.Should().OnlyContain(c => c.Bar == true);
+		storage.GetValues().Should().OnlyContain(c => c.Foo == 1337);
+		storage.GetValues().Should().OnlyContain(c => c.Bar == true);
 
 		// Modify again and delete component from every second entity
 		var iterations = 0;
@@ -114,7 +115,7 @@ public class StorageTypeTest
 	public void ShouldIterateWhenEmpty(IComponentCollection<SampleComponent> storage)
 	{
 		var count = 0;
-		foreach (var component in storage)
+		foreach (var component in storage.GetValues())
 			count++;
 		count.Should().Be(0);
 
@@ -131,7 +132,8 @@ public class StorageTypeTest
 		{
 			() => storage.ForEach((id, val) => { }),
 			() => storage.Get(-1),
-			() => storage.GetEnumerator(),
+			() => storage.GetCount(),
+			() => storage.GetValues(),
 			() => storage.Update(-1, new SampleComponent()),
 			() => storage.Update(-1, new object()),
 			() => storage.UpdateCurrent(new SampleComponent()),

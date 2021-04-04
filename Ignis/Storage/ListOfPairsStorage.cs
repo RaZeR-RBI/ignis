@@ -35,17 +35,6 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 		return _pairs.First(p => p.EntityID == entityId).ComponentValue;
 	}
 
-	public IEnumerator<T> GetEnumerator()
-	{
-		Reset();
-		while (HasNext())
-		{
-			var value = _pairs[_curIndex];
-			_curIndex++;
-			yield return value.ComponentValue;
-		}
-	}
-
 	public bool RemoveComponentFromStorage(int entityId)
 	{
 		for (var i = 0; i < _pairs.Count; i++)
@@ -84,12 +73,6 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 		_pairs[_curIndex - 1] = curPair;
 	}
 
-	[ExcludeFromCodeCoverage]
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
-	}
-
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void Reset()
 	{
@@ -111,6 +94,17 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 	public IEntityView GetView()
 	{
 		return _view;
+	}
+
+	public int GetCount()
+	{
+		return _pairs.Count;
+	}
+
+	public IEnumerable<T> GetValues()
+	{
+		foreach (var pair in _pairs)
+			yield return pair.ComponentValue;
 	}
 
 	[ExcludeFromCodeCoverage]

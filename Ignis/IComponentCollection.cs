@@ -10,7 +10,7 @@ internal interface IComponentCollectionStorage
 	bool StoreComponentForEntity(int entityId);
 }
 
-public interface IComponentCollection<T> : IEnumerable<T>
+public interface IComponentCollection<T>
 	where T : new()
 {
 	void UpdateCurrent(T value);
@@ -19,5 +19,7 @@ public interface IComponentCollection<T> : IEnumerable<T>
 	T Get(int entityId);
 	void ForEach(Action<int, T> action);
 	IEntityView GetView();
+	int GetCount();
+	IEnumerable<T> GetValues();
 }
 }

@@ -183,6 +183,18 @@
               "link": "Ignis.IComponentCollection_T_.Get(int)"
             },
             {
+              "name": "GetCount()",
+              "fullName": "Ignis.IComponentCollection<T>.GetCount()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.GetCount()"
+            },
+            {
+              "name": "GetValues()",
+              "fullName": "Ignis.IComponentCollection<T>.GetValues()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.GetValues()"
+            },
+            {
               "name": "GetView()",
               "fullName": "Ignis.IComponentCollection<T>.GetView()",
               "type": "Method",
@@ -859,10 +871,16 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.Get(int)"
             },
             {
-              "name": "GetEnumerator()",
-              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetEnumerator()",
+              "name": "GetCount()",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetCount()",
               "type": "Method",
-              "link": "Ignis.Storage.DoubleListStorage_T_.GetEnumerator()"
+              "link": "Ignis.Storage.DoubleListStorage_T_.GetCount()"
+            },
+            {
+              "name": "GetValues()",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetValues()",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.GetValues()"
             },
             {
               "name": "GetView()",
@@ -927,10 +945,16 @@
               "link": "Ignis.Storage.ListOfPairsStorage_T_.Get(int)"
             },
             {
-              "name": "GetEnumerator()",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetEnumerator()",
+              "name": "GetCount()",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetCount()",
               "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetEnumerator()"
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetCount()"
+            },
+            {
+              "name": "GetValues()",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetValues()",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetValues()"
             },
             {
               "name": "GetView()",
@@ -989,10 +1013,16 @@
               "link": "Ignis.Storage.NullStorage_T_.Get(int)"
             },
             {
-              "name": "GetEnumerator()",
-              "fullName": "Ignis.Storage.NullStorage<T>.GetEnumerator()",
+              "name": "GetCount()",
+              "fullName": "Ignis.Storage.NullStorage<T>.GetCount()",
               "type": "Method",
-              "link": "Ignis.Storage.NullStorage_T_.GetEnumerator()"
+              "link": "Ignis.Storage.NullStorage_T_.GetCount()"
+            },
+            {
+              "name": "GetValues()",
+              "fullName": "Ignis.Storage.NullStorage<T>.GetValues()",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.GetValues()"
             },
             {
               "name": "GetView()",

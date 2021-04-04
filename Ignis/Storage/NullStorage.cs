@@ -18,7 +18,12 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 		throw new InvalidOperationException();
 	}
 
-	public IEnumerator<T> GetEnumerator()
+	public int GetCount()
+	{
+		throw new InvalidOperationException();
+	}
+
+	public IEnumerable<T> GetValues()
 	{
 		throw new InvalidOperationException();
 	}
@@ -51,12 +56,6 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 	public void UpdateCurrent(T value)
 	{
 		throw new InvalidOperationException();
-	}
-
-	[ExcludeFromCodeCoverage]
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
 	}
 }
 }

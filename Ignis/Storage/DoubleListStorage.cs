@@ -28,17 +28,6 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		return _curIndex < _ids.Count;
 	}
 
-	public IEnumerator<T> GetEnumerator()
-	{
-		Reset();
-		while (HasNext())
-		{
-			var value = _values[_curIndex];
-			_curIndex++;
-			yield return value;
-		}
-	}
-
 	public bool RemoveComponentFromStorage(int entityId)
 	{
 		var entityIndex = _ids.IndexOf(entityId);
@@ -100,15 +89,19 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		Update(entityId, (T) value);
 	}
 
-	[ExcludeFromCodeCoverage]
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
-	}
-
 	public IEntityView GetView()
 	{
 		return _view;
+	}
+
+	public int GetCount()
+	{
+		return _ids.Count;
+	}
+
+	public IEnumerable<T> GetValues()
+	{
+		return _values;
 	}
 
 	[ExcludeFromCodeCoverage]
