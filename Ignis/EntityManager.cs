@@ -21,16 +21,16 @@ internal class EntityManager : IEntityManager
 
 	private int _lastEntityId = 1;
 	private long _entityCount = 0;
-	private ConcurrentHashSet<int> _existingEntityIds = new ConcurrentHashSet<int>();
+	private readonly ConcurrentHashSet<int> _existingEntityIds = new ConcurrentHashSet<int>();
 
-	private ConcurrentHashSet<long> _entityComponentPairs = new ConcurrentHashSet<long>();
+	private readonly ConcurrentHashSet<long> _entityComponentPairs = new ConcurrentHashSet<long>();
 
-	private ConcurrentDictionary<Type, IComponentCollectionStorage> _storageCache =
+	private readonly ConcurrentDictionary<Type, IComponentCollectionStorage> _storageCache =
 		new ConcurrentDictionary<Type, IComponentCollectionStorage>();
 
-	private Func<Type, IComponentCollectionStorage> _storageResolver = null;
+	private readonly Func<Type, IComponentCollectionStorage> _storageResolver = null;
 
-	private List<IEntityView> _views = new List<IEntityView>();
+	private readonly List<IEntityView> _views = new List<IEntityView>();
 
 	public EntityManager(Func<Type, IComponentCollectionStorage> storageResolver)
 	{
@@ -44,13 +44,14 @@ internal class EntityManager : IEntityManager
 		if (EntityCountLong >= long.MaxValue)
 			throw new ArgumentOutOfRangeException("Entity limit reached");
 
-		var createdEntityId = _lastEntityId;
+		var createdEntityId = _lastEntityId + 1;
 		while (Exists(createdEntityId) || createdEntityId == NonExistingEntityId)
 			unchecked
 			{
 				createdEntityId++;
 			}
 
+		_lastEntityId = createdEntityId;
 		_existingEntityIds.Add(createdEntityId);
 		Interlocked.Increment(ref _entityCount);
 		OnEntityCreated?.Invoke(this, new EntityIdEventArgs(createdEntityId));

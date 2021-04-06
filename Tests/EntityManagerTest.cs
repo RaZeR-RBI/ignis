@@ -10,9 +10,9 @@ namespace Tests
 {
 public class EntityManagerTest
 {
-	private IEntityManager em;
+	private readonly IEntityManager em;
 
-	private IComponentCollection<SampleComponent>
+	private readonly IComponentCollection<SampleComponent>
 		storage = new DoubleListStorage<SampleComponent>();
 
 	private static readonly Type[] componentTypes = new Type[] {typeof(SampleComponent)};

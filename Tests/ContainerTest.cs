@@ -119,7 +119,7 @@ public class ContainerTest : IDisposable
 
 public class SampleSystem : SystemBase<object>
 {
-	private IComponentCollection<SampleComponent> sampleComponent;
+	private readonly IComponentCollection<SampleComponent> sampleComponent;
 
 	public SampleSystem(ContainerProvider<object> provider) : base(provider)
 	{

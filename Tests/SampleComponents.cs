@@ -14,13 +14,7 @@ public struct SampleComponent
 
 	public override int GetHashCode()
 	{
-		unchecked
-		{
-			var hash = 17;
-			hash = hash * 23 + Foo.GetHashCode();
-			hash = hash * 23 + Bar.GetHashCode();
-			return hash;
-		}
+		return HashCode.Combine(Foo, Bar);
 	}
 
 	private bool Equals(SampleComponent other)
@@ -30,8 +24,8 @@ public struct SampleComponent
 
 	public override bool Equals(object obj)
 	{
-		if (obj is SampleComponent)
-			return Equals((SampleComponent) obj);
+		if (obj is SampleComponent component)
+			return Equals(component);
 		return false;
 	}
 }

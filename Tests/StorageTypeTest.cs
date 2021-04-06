@@ -80,7 +80,7 @@ public class StorageTypeTest
 		});
 		iterations.Should().Be(withComponents.Count);
 		var oddsAndEvens = withComponents
-		                   .Select((item, i) => (item: item, isEven: i % 2 == 0))
+		                   .Select((item, i) => (item, isEven: i % 2 == 0))
 		                   .ToLookup(x => x.isEven, x => x.item);
 
 		// Check if the components were removed

@@ -119,7 +119,7 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 
 		public int EntityCount => _storage._pairs.Count;
 
-		private static Type[] s_filter = new Type[] {typeof(T)};
+		private static readonly Type[] s_filter = new Type[] {typeof(T)};
 		public IReadOnlyCollection<Type> Filter => s_filter;
 
 		public bool Contains(int id)

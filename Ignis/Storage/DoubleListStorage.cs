@@ -116,7 +116,7 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 
 		public int EntityCount => _storage._ids.Count;
 
-		private static Type[] s_filter = new Type[] {typeof(T)};
+		private static readonly Type[] s_filter = new Type[] {typeof(T)};
 		public IReadOnlyCollection<Type> Filter => s_filter;
 
 		public bool Contains(int id)

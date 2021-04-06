@@ -11,14 +11,14 @@ namespace Ignis.Containers
 public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 {
 	public IEntityManager EntityManager { get; }
-	private ObjectResolver _resolver = ObjectResolver.Create();
-	private List<Type> _registeredTypes = new List<Type>();
+	private readonly ObjectResolver _resolver = ObjectResolver.Create();
+	private readonly List<Type> _registeredTypes = new List<Type>();
 
 	private Action<TState> _executor = _ => { };
-	private List<List<Type>> _systemTypes = new List<List<Type>>();
+	private readonly List<List<Type>> _systemTypes = new List<List<Type>>();
 
-	private List<Type> _registeredComponents = new List<Type>();
-	private List<Type> _registeredSystems = new List<Type>();
+	private readonly List<Type> _registeredComponents = new List<Type>();
+	private readonly List<Type> _registeredSystems = new List<Type>();
 
 	public MicroResolverContainer()
 	{
@@ -154,7 +154,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		return _registeredSystems;
 	}
 
-	public void InitializeSystems(TState state = default(TState))
+	public void InitializeSystems(TState state = default)
 	{
 		GetSystemTypes()
 			.Select(GetSystem)

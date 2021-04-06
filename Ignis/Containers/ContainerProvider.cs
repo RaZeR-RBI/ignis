@@ -5,7 +5,7 @@ namespace Ignis.Containers
 {
 public class ContainerProvider<TState>
 {
-	private static object _syncRoot = new object();
+	private static readonly object _syncRoot = new object();
 	private static volatile IContainer<TState> _lastInstance = null;
 
 	public static bool IsBusy()

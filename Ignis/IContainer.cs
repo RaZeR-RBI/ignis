@@ -44,8 +44,8 @@ public interface IContainer<TState> : IDisposable
 
 	IContainer<TState> Build();
 	bool IsBuilt();
-	void InitializeSystems(TState state = default(TState));
-	void ExecuteSystems(TState state = default(TState));
+	void InitializeSystems(TState state = default);
+	void ExecuteSystems(TState state = default);
 
 	IEnumerable<Type> GetComponentTypes();
 	IEnumerable<Type> GetSystemTypes();
