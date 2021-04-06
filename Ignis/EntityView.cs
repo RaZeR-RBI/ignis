@@ -14,6 +14,8 @@ public interface IEntityView : IEnumerable<int>
 	Span<int> CopyTo(Span<int> storage);
 }
 
+#pragma warning disable HAA0401
+
 internal class EntityView : IEnumerable<int>, IEntityView
 {
 	private readonly IReadOnlyCollection<Type> _filter;
@@ -35,10 +37,25 @@ internal class EntityView : IEnumerable<int>, IEntityView
 		_em = em;
 		_filter = new List<Type>(components);
 		_ids = new ConcurrentHashSet<int>();
-		_em.OnEntityComponentAdded += (s, e) => TryAdd(e.EntityID);
-		_em.OnEntityComponentRemoved += (s, e) => TryRemove(e.EntityID);
-		_em.OnEntityDestroyed += (s, e) => TryRemove(e.EntityID);
+		_em.OnEntityComponentAdded += OnEntityComponentAdded;
+		_em.OnEntityComponentRemoved += OnEntityComponentRemoved;
+		_em.OnEntityDestroyed += OnEntityDestroyed;
 		FillSet();
+	}
+
+	private void OnEntityComponentAdded(object sender, EntityComponentEventArgs e)
+	{
+		TryAdd(e.EntityID);
+	}
+
+	private void OnEntityComponentRemoved(object sender, EntityComponentEventArgs e)
+	{
+		TryRemove(e.EntityID);
+	}
+
+	private void OnEntityDestroyed(object sender, EntityIdEventArgs e)
+	{
+		TryRemove(e.EntityID);
 	}
 
 	private void TryAdd(int id)
@@ -59,7 +76,7 @@ internal class EntityView : IEnumerable<int>, IEntityView
 
 	public IEnumerator<int> GetEnumerator()
 	{
-		return ((IEnumerable<int>) _ids).GetEnumerator();
+		return _ids.GetEnumerator();
 	}
 
 	private bool Belongs(int id)

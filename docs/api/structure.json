@@ -177,6 +177,12 @@
               "link": "Ignis.IComponentCollection_T_.ForEach(Action_int, T_)"
             },
             {
+              "name": "ForEach<TState>(Action<int, T, TState>, TState)",
+              "fullName": "Ignis.IComponentCollection<T>.ForEach<TState>(Action<int, T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.ForEach_TState_(Action_int, T, TState_, TState)"
+            },
+            {
               "name": "Get(int)",
               "fullName": "Ignis.IComponentCollection<T>.Get(int)",
               "type": "Method",
@@ -865,6 +871,12 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.ForEach(Action_int, T_)"
             },
             {
+              "name": "ForEach<TState>(Action<int, T, TState>, TState)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.ForEach_TState_(Action_int, T, TState_, TState)"
+            },
+            {
               "name": "Get(int)",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.Get(int)",
               "type": "Method",
@@ -939,6 +951,12 @@
               "link": "Ignis.Storage.ListOfPairsStorage_T_.ForEach(Action_int, T_)"
             },
             {
+              "name": "ForEach<TState>(Action<int, T, TState>, TState)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.ForEach_TState_(Action_int, T, TState_, TState)"
+            },
+            {
               "name": "Get(int)",
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Get(int)",
               "type": "Method",
@@ -1005,6 +1023,12 @@
               "fullName": "Ignis.Storage.NullStorage<T>.ForEach(Action<int, T>)",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.ForEach(Action_int, T_)"
+            },
+            {
+              "name": "ForEach<TState>(Action<int, T, TState>, TState)",
+              "fullName": "Ignis.Storage.NullStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.ForEach_TState_(Action_int, T, TState_, TState)"
             },
             {
               "name": "Get(int)",

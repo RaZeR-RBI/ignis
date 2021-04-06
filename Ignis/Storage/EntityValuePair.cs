@@ -1,7 +1,9 @@
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis.Storage
 {
+[DebuggerDisplay("{EntityID} => {ComponentValue}")]
 internal struct EntityValuePair<T>
 	where T : new()
 {
@@ -16,12 +18,6 @@ internal struct EntityValuePair<T>
 	public EntityValuePair(int entityId, T value)
 	{
 		(EntityID, ComponentValue) = (entityId, value);
-	}
-
-	[ExcludeFromCodeCoverage]
-	public override string ToString()
-	{
-		return $"[{EntityID} => {ComponentValue}]";
 	}
 }
 }

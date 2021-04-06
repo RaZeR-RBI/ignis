@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -31,16 +32,18 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	{
 		if (!_alreadyBuilt)
 			ContainerProvider<TState>.EndCreation();
-		foreach (var systemType in GetSystemTypes())
+		foreach (var systemType in _registeredSystems)
 			GetSystem(systemType).Dispose();
 	}
 
+#pragma warning disable HAA0101 // rare call, don't care about params allocation
 	private IComponentCollectionStorage ResolveStorage(Type componentType)
 	{
 		var storageType = typeof(IComponentCollection<>).MakeGenericType(componentType);
 		var result = _resolver.Resolve(storageType);
 		return (IComponentCollectionStorage) result;
 	}
+#pragma warning restore
 
 	public IContainer<TState> AddComponent<TComponent>() where TComponent : struct
 	{
@@ -71,6 +74,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		return AddSystem<TSystem, TSystem>();
 	}
 
+#pragma warning disable HAA0302, HAA0301 // we're aware of closures capturing stuff here, we do it once
 	private void BuildExecutionOrder()
 	{
 		foreach (var list in _systemTypes)
@@ -89,6 +93,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 						                 v.Execute(s));
 		}
 	}
+#pragma warning restore
 
 	private bool _alreadyBuilt = false;
 
@@ -134,10 +139,12 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		return (TInterface) Resolve(typeof(TInterface));
 	}
 
+#pragma warning disable HAA0101 // params call is ok because it's intended mostly for testing purposes
 	public dynamic GetStorageFor(Type type)
 	{
 		return _resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type));
 	}
+#pragma warning restore
 
 	public SystemBase<TState> GetSystem(Type type)
 	{
@@ -156,12 +163,14 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 
 	public void InitializeSystems(TState state = default)
 	{
-		GetSystemTypes()
-			.Select(GetSystem)
-			.ToList()
-			.ForEach(s => s.Initialize(state));
+		foreach (var type in _registeredSystems)
+		{
+			var system = GetSystem(type);
+			system.Initialize(state);
+		}
 	}
 
+#pragma warning disable HAA0401 // rare call, don't account for allocations
 	public IContainer<TState> AddParallelSystems(Type[] interfaces, Type[] implementations)
 	{
 		foreach (var iface in interfaces)
@@ -171,6 +180,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		_systemTypes.Add(interfaces.ToList());
 		return this;
 	}
+#pragma warning restore
 
 	public IContainer<TState> Register<T>() where T : class
 	{
@@ -182,6 +192,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		return Register(type, type);
 	}
 
+#pragma warning disable HAA0101 // rare call, don't account for params allocation
 	public IContainer<TState> Register(Type @interface, Type impl)
 	{
 		var registeredType = @interface;
@@ -214,6 +225,7 @@ public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		_registeredTypes.Add(registeredType);
 		return this;
 	}
+#pragma warning restore
 
 	public object Resolve(Type type)
 	{

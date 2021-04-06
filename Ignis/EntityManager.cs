@@ -6,6 +6,8 @@ using System.Threading;
 using ConcurrentCollections;
 using static Ignis.IgnisConstants;
 
+#pragma warning disable HAA0401
+
 namespace Ignis
 {
 internal class EntityManager : IEntityManager
@@ -148,12 +150,16 @@ internal class EntityManager : IEntityManager
 	                                    bool checkExistence = true,
 	                                    params Type[] componentTypes)
 	{
-		var result = ids;
-		if (checkExistence)
-			result = result.Where(Exists);
-		foreach (var type in componentTypes)
-			result = result.Where(id => HasComponent(id, type));
-		return result;
+		foreach (var id in ids)
+		{
+			if (checkExistence && !Exists(id))
+				continue;
+			foreach (var type in componentTypes)
+				if (!HasComponent(id, type))
+					goto next;
+			yield return id;
+			next: ;
+		}
 	}
 
 	public ReadOnlySpan<int> QuerySubset(ReadOnlySpan<int> ids, Span<int> storage,
@@ -407,9 +413,18 @@ internal class EntityManager : IEntityManager
 	private IEntityView GetViewByFilter(IEnumerable<Type> filter)
 	{
 		var set = filter.ToHashSet();
-		return _views.FirstOrDefault(v =>
-			                             v.Filter.All(set.Contains) &&
-			                             v.Filter.Count == set.Count);
+		foreach (var view in _views)
+		{
+			if (view.Filter.Count != set.Count)
+				continue;
+			foreach (var type in set)
+				if (!view.Filter.Contains(type))
+					goto next;
+			return view;
+			next: ;
+		}
+
+		return null;
 	}
 
 	public IEntityView GetView(IEnumerable<Type> filter)

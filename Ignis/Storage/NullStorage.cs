@@ -13,6 +13,11 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 		throw new InvalidOperationException();
 	}
 
+	public void ForEach<TState>(Action<int, T, TState> action, TState state)
+	{
+		throw new InvalidOperationException();
+	}
+
 	public T Get(int entityId)
 	{
 		throw new InvalidOperationException();

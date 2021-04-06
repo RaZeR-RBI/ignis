@@ -32,7 +32,10 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 
 	public T Get(int entityId)
 	{
-		return _pairs.First(p => p.EntityID == entityId).ComponentValue;
+		foreach (var pair in _pairs)
+			if (pair.EntityID == entityId)
+				return pair.ComponentValue;
+		return default;
 	}
 
 	public bool RemoveComponentFromStorage(int entityId)
@@ -51,17 +54,29 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 
 	public bool StoreComponentForEntity(int entityId)
 	{
-		if (_pairs.Any(p => p.EntityID == entityId))
-			return false;
+		foreach (var pair in _pairs)
+			if (pair.EntityID == entityId)
+				return false;
 		_pairs.Add(new EntityValuePair<T>(entityId));
 		return true;
 	}
 
 	public void Update(int entityId, T value)
 	{
-		var entityIndex = _pairs.FindIndex(p => p.EntityID == entityId);
+		var entityIndex = -1;
+		var i = 0;
+		foreach (var pair in _pairs)
+		{
+			if (pair.EntityID == entityId)
+			{
+				entityIndex = i;
+				break;
+			}
+
+			i++;
+		}
+
 		if (entityIndex == -1) return;
-		var pair = _pairs[entityIndex];
 		_pairs[entityIndex] = new EntityValuePair<T>(entityId, value);
 	}
 
@@ -107,6 +122,17 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 			yield return pair.ComponentValue;
 	}
 
+	public void ForEach<TState>(Action<int, T, TState> action, TState state)
+	{
+		Reset();
+		while (HasNext())
+		{
+			var value = _pairs[_curIndex];
+			_curIndex++;
+			action(value.EntityID, value.ComponentValue, state);
+		}
+	}
+
 	[ExcludeFromCodeCoverage]
 	private class ListOfPairsEntityView : IEntityView
 	{
@@ -133,11 +159,11 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 		public Span<int> CopyTo(Span<int> storage)
 		{
 			var index = 0;
-			foreach (var id in this)
+			foreach (var pair in _storage._pairs)
 			{
 				if (index >= storage.Length)
 					break;
-				storage[index++] = id;
+				storage[index++] = pair.EntityID;
 			}
 
 			return storage.Slice(0, index);
@@ -149,6 +175,8 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 				yield return pair.EntityID;
 		}
 
+
+#pragma warning disable HAA0401
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();

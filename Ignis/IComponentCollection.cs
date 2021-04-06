@@ -18,6 +18,7 @@ public interface IComponentCollection<T>
 	void Update(int entityId, object value);
 	T Get(int entityId);
 	void ForEach(Action<int, T> action);
+	void ForEach<TState>(Action<int, T, TState> action, TState state);
 	IEntityView GetView();
 	int GetCount();
 	IEnumerable<T> GetValues();

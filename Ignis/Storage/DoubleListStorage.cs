@@ -104,6 +104,18 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		return _values;
 	}
 
+	public void ForEach<TState>(Action<int, T, TState> action, TState state)
+	{
+		Reset();
+		while (HasNext())
+		{
+			var entityId = _ids[_curIndex];
+			var componentValue = _values[_curIndex];
+			_curIndex++;
+			action(entityId, componentValue, state);
+		}
+	}
+
 	[ExcludeFromCodeCoverage]
 	private class DoubleListStorageView : IEntityView
 	{
@@ -137,9 +149,10 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 			return storage.Slice(0, index);
 		}
 
+#pragma warning disable HAA0401 // list's enumerator is a struct, should be no allocations here
 		public IEnumerator<int> GetEnumerator()
 		{
-			return _storage._ids.GetEnumerator();
+			return ((IEnumerable<int>) _storage._ids).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()

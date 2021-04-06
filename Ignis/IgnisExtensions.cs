@@ -28,6 +28,7 @@ public static class IgnisExtensions
 		return em.GetView(filter);
 	}
 
+#pragma warning disable HAA0101 // we're aware of the params allocation thing
 	public static IEntityView GetView<T1>(this IEntityManager em)
 	{
 		return GetView(em, typeof(T1));
