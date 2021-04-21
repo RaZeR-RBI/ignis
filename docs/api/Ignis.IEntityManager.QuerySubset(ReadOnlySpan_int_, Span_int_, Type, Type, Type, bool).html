@@ -22,7 +22,10 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Queries an entity ID subset that have the specified components and populates the
+resulting Span.
+</p>
 <h2>Syntax</h2>
 <pre><code>public ReadOnlySpan&lt;int&gt; QuerySubset(
 	ReadOnlySpan&lt;int&gt; ids,
@@ -32,6 +35,23 @@
 	Type component3,
 	bool checkExistence
 )</code></pre>
+<h3>Parameters</h3>
+<p>
+<code>ids</code>
+</p>
+<p>
+Entity ID subset to check</p>
+<p>
+<code>checkExistence</code>
+</p>
+<p>
+Should the ID existence be checked</p>
+<h3>Returns</h3>
+<p>
+
+Slice of the original span that contain the query results.
+IDs that don't fit in the Span are skipped.
+</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

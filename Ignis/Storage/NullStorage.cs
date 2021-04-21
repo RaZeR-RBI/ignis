@@ -5,6 +5,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis.Storage
 {
+/// <summary>
+/// A storage that doesn't store any values and throws exceptions on almost all
+/// actions. Useful for testing purposes or when a component is just an empty 'tag'
+/// (has no value).
+/// </summary>
+/// <typeparam name="T">Component type</typeparam>
 public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
 	where T : new()
 {

@@ -22,7 +22,17 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Represents a container provider which allows resolved objects to retrieve
+it's parent container without creating a circular dependency.
+
+Please take note that the side effect of this is that no more than one
+container can be in 'configuring' state simultaneously.
+
+If you aren't implementing a new container type yourself, you could pretty
+much ignore this class since it has no use for you (excluding <a href="Ignis.Containers.ContainerProvider_TState_.GetInstance().html">GetInstance()</a>
+).
+</p>
 <h2>Members</h2>
 <h3>Method</h3>
 <li><a href="Ignis.Containers.ContainerProvider_TState_.BeginCreation(IContainer_TState_).html">BeginCreation(IContainer&lt;TState&gt;)</a></li>

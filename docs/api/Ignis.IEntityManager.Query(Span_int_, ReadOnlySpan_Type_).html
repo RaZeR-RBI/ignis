@@ -22,12 +22,21 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Queries entity IDs that have the specified components and populates the
+resulting Span.
+</p>
 <h2>Syntax</h2>
 <pre><code>public ReadOnlySpan&lt;int&gt; Query(
 	Span&lt;int&gt; storage,
 	ReadOnlySpan&lt;Type&gt; componentTypes
 )</code></pre>
+<h3>Returns</h3>
+<p>
+
+Slice of the original span that contain the query results.
+IDs that don't fit in the Span are skipped.
+</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

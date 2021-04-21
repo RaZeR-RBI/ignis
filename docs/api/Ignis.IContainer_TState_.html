@@ -27,33 +27,47 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Describes an ECS container which incapsulates an entity manager, systems,
+components and their storage.
+Basically it's a dependency injection container with ECS-specific additions where every object is a singleton.
+There is two types of members available - 'builder' methods (AddSystem, AddComponent, Register, etc.)
+and regular members that can be used after <a href="Ignis.IContainer_TState_.Build().html">Build()</a>
+ has been called.
+The systems will be called in order they've been registered with.
+</p>
+<h3>Type parameters</h3>
+<p>
+<code>TState</code>
+</p>
+<p>
+Type of state parameter that gets passed to systems.</p>
 <h2>Members</h2>
 <h3>Property</h3>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.EntityManager.html">EntityManager</a></li>
+<li><a href="Ignis.IContainer_TState_.EntityManager.html">EntityManager</a></li>
 <h3>Method</h3>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.AddComponent_TComponent, TStorage_().html">AddComponent&lt;TComponent, TStorage&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.AddComponent_TComponent_().html">AddComponent&lt;TComponent&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.AddParallelSystems(Type[], Type[]).html">AddParallelSystems(Type[], Type[])</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.AddParallelSystems(Type[]).html">AddParallelSystems(Type[])</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.AddSystem_TInterface, TSystem_().html">AddSystem&lt;TInterface, TSystem&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.AddSystem_TSystem_().html">AddSystem&lt;TSystem&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Build().html">Build()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.ExecuteSystems(TState).html">ExecuteSystems(TState)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.GetComponentTypes().html">GetComponentTypes()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.GetStorageFor(Type).html">GetStorageFor(Type)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.GetStorageFor_T_().html">GetStorageFor&lt;T&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.GetSystem(Type).html">GetSystem(Type)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.GetSystem_T_().html">GetSystem&lt;T&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.GetSystemTypes().html">GetSystemTypes()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.InitializeSystems(TState).html">InitializeSystems(TState)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.IsBuilt().html">IsBuilt()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Register(Type, Type).html">Register(Type, Type)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Register(Type).html">Register(Type)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Register_T_().html">Register&lt;T&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Register_TInterface, TImpl_().html">Register&lt;TInterface, TImpl&gt;()</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Resolve(Type).html">Resolve(Type)</a></li>
-<li><a href="Ignis.Containers.MicroResolverContainer_TState_.Resolve_TInterface_().html">Resolve&lt;TInterface&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.AddComponent_TComponent, TStorage_().html">AddComponent&lt;TComponent, TStorage&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.AddComponent_TComponent_().html">AddComponent&lt;TComponent&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.AddParallelSystems(Type[], Type[]).html">AddParallelSystems(Type[], Type[])</a></li>
+<li><a href="Ignis.IContainer_TState_.AddParallelSystems(Type[]).html">AddParallelSystems(Type[])</a></li>
+<li><a href="Ignis.IContainer_TState_.AddSystem_TInterface, TSystem_().html">AddSystem&lt;TInterface, TSystem&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.AddSystem_TSystem_().html">AddSystem&lt;TSystem&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.Build().html">Build()</a></li>
+<li><a href="Ignis.IContainer_TState_.ExecuteSystems(TState).html">ExecuteSystems(TState)</a></li>
+<li><a href="Ignis.IContainer_TState_.GetComponentTypes().html">GetComponentTypes()</a></li>
+<li><a href="Ignis.IContainer_TState_.GetStorageFor(Type).html">GetStorageFor(Type)</a></li>
+<li><a href="Ignis.IContainer_TState_.GetStorageFor_T_().html">GetStorageFor&lt;T&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.GetSystem(Type).html">GetSystem(Type)</a></li>
+<li><a href="Ignis.IContainer_TState_.GetSystem_T_().html">GetSystem&lt;T&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.GetSystemTypes().html">GetSystemTypes()</a></li>
+<li><a href="Ignis.IContainer_TState_.InitializeSystems(TState).html">InitializeSystems(TState)</a></li>
+<li><a href="Ignis.IContainer_TState_.IsBuilt().html">IsBuilt()</a></li>
+<li><a href="Ignis.IContainer_TState_.Register(Type, Type).html">Register(Type, Type)</a></li>
+<li><a href="Ignis.IContainer_TState_.Register(Type).html">Register(Type)</a></li>
+<li><a href="Ignis.IContainer_TState_.Register_T_().html">Register&lt;T&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.Register_TInterface, TImpl_().html">Register&lt;TInterface, TImpl&gt;()</a></li>
+<li><a href="Ignis.IContainer_TState_.Resolve(Type).html">Resolve(Type)</a></li>
+<li><a href="Ignis.IContainer_TState_.Resolve_TInterface_().html">Resolve&lt;TInterface&gt;()</a></li>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

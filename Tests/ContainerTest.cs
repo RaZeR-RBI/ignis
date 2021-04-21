@@ -17,7 +17,7 @@ public class ContainerTest : IDisposable
 
 	public ContainerTest()
 	{
-		container = new MicroResolverContainer<object>();
+		container = ContainerFactory.CreateMicroResolverContainer<object>();
 	}
 
 	public void Dispose()

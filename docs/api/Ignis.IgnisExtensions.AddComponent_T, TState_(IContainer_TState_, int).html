@@ -22,12 +22,39 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Adds a component to an existing entity.
+</p>
 <h2>Syntax</h2>
 <pre><code>public static IContainer&lt;TState&gt; AddComponent&lt;T, TState&gt;(
 	IContainer&lt;TState&gt; container,
 	int entityId
 )</code></pre>
+<h3>Parameters</h3>
+<p>
+<code>container</code>
+</p>
+<p>
+The ECS container</p>
+<p>
+<code>entityId</code>
+</p>
+<p>
+Entity ID for which the component should be attached</p>
+<h3>Returns</h3>
+<p>
+The ECS container</p>
+<h3>Type parameters</h3>
+<p>
+<code>T</code>
+</p>
+<p>
+Type of the component</p>
+<p>
+<code>TState</code>
+</p>
+<p>
+Type of the state parameter passed to container</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

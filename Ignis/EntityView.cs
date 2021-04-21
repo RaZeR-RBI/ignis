@@ -6,11 +6,31 @@ using ConcurrentCollections;
 
 namespace Ignis
 {
+/// <summary>
+/// Represents an entity ID set which contains all entity IDs that have the
+/// specified component types (sometimes it's called an 'archetype').
+/// </summary>
 public interface IEntityView : IEnumerable<int>
 {
+	/// <summary>
+	/// Returns the entity count in this view.
+	/// </summary>
 	int EntityCount { get; }
+	/// <summary>
+	/// Checks if this view contains the specified entity ID.
+	/// </summary>
+	/// <param name="id">Entity ID to check</param>
 	bool Contains(int id);
+	/// <summary>
+	/// Returns the component set against which the entity IDs are filtered
+	/// for containment.
+	/// </summary>
 	IReadOnlyCollection<Type> Filter { get; }
+	/// <summary>
+	/// Copies the entity IDs from this view to a span.
+	/// </summary>
+	/// <param name="storage">Target span</param>
+	/// <returns>Slice of the original span. Not fitting entries are skipped.</returns>
 	Span<int> CopyTo(Span<int> storage);
 }
 

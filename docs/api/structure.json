@@ -655,6 +655,20 @@
       "link": "Ignis.Containers",
       "children": [
         {
+          "name": "ContainerFactory",
+          "fullName": "Ignis.Containers.ContainerFactory",
+          "type": "Class",
+          "link": "Ignis.Containers.ContainerFactory",
+          "children": [
+            {
+              "name": "CreateMicroResolverContainer<TState>()",
+              "fullName": "Ignis.Containers.ContainerFactory.CreateMicroResolverContainer<TState>()",
+              "type": "Method",
+              "link": "Ignis.Containers.ContainerFactory.CreateMicroResolverContainer_TState_()"
+            }
+          ]
+        },
+        {
           "name": "ContainerProvider<TState>",
           "fullName": "Ignis.Containers.ContainerProvider<TState>",
           "type": "Class",
@@ -683,164 +697,6 @@
               "fullName": "Ignis.Containers.ContainerProvider<TState>.IsBusy()",
               "type": "Method",
               "link": "Ignis.Containers.ContainerProvider_TState_.IsBusy()"
-            }
-          ]
-        },
-        {
-          "name": "MicroResolverContainer<TState>",
-          "fullName": "Ignis.Containers.MicroResolverContainer<TState>",
-          "type": "Class",
-          "link": "Ignis.Containers.MicroResolverContainer_TState_",
-          "children": [
-            {
-              "name": "EntityManager",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.EntityManager",
-              "type": "Property",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.EntityManager"
-            },
-            {
-              "name": "MicroResolverContainer()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.MicroResolverContainer()",
-              "type": "Constructor",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.MicroResolverContainer()"
-            },
-            {
-              "name": "AddComponent<TComponent, TStorage>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.AddComponent<TComponent, TStorage>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.AddComponent_TComponent, TStorage_()"
-            },
-            {
-              "name": "AddComponent<TComponent>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.AddComponent<TComponent>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.AddComponent_TComponent_()"
-            },
-            {
-              "name": "AddParallelSystems(Type[], Type[])",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.AddParallelSystems(Type[], Type[])",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.AddParallelSystems(Type[], Type[])"
-            },
-            {
-              "name": "AddParallelSystems(Type[])",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.AddParallelSystems(Type[])",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.AddParallelSystems(Type[])"
-            },
-            {
-              "name": "AddSystem<TInterface, TSystem>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.AddSystem<TInterface, TSystem>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.AddSystem_TInterface, TSystem_()"
-            },
-            {
-              "name": "AddSystem<TSystem>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.AddSystem<TSystem>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.AddSystem_TSystem_()"
-            },
-            {
-              "name": "Build()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Build()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Build()"
-            },
-            {
-              "name": "Dispose()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Dispose()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Dispose()"
-            },
-            {
-              "name": "ExecuteSystems(TState)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.ExecuteSystems(TState)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.ExecuteSystems(TState)"
-            },
-            {
-              "name": "GetComponentTypes()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.GetComponentTypes()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.GetComponentTypes()"
-            },
-            {
-              "name": "GetStorageFor(Type)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.GetStorageFor(Type)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.GetStorageFor(Type)"
-            },
-            {
-              "name": "GetStorageFor<T>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.GetStorageFor<T>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.GetStorageFor_T_()"
-            },
-            {
-              "name": "GetSystem(Type)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.GetSystem(Type)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.GetSystem(Type)"
-            },
-            {
-              "name": "GetSystem<T>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.GetSystem<T>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.GetSystem_T_()"
-            },
-            {
-              "name": "GetSystemTypes()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.GetSystemTypes()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.GetSystemTypes()"
-            },
-            {
-              "name": "InitializeSystems(TState)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.InitializeSystems(TState)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.InitializeSystems(TState)"
-            },
-            {
-              "name": "IsBuilt()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.IsBuilt()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.IsBuilt()"
-            },
-            {
-              "name": "Register(Type, Type)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Register(Type, Type)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Register(Type, Type)"
-            },
-            {
-              "name": "Register(Type)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Register(Type)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Register(Type)"
-            },
-            {
-              "name": "Register<T>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Register<T>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Register_T_()"
-            },
-            {
-              "name": "Register<TInterface, TImpl>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Register<TInterface, TImpl>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Register_TInterface, TImpl_()"
-            },
-            {
-              "name": "Resolve(Type)",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Resolve(Type)",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Resolve(Type)"
-            },
-            {
-              "name": "Resolve<TInterface>()",
-              "fullName": "Ignis.Containers.MicroResolverContainer<TState>.Resolve<TInterface>()",
-              "type": "Method",
-              "link": "Ignis.Containers.MicroResolverContainer_TState_.Resolve_TInterface_()"
             }
           ]
         }

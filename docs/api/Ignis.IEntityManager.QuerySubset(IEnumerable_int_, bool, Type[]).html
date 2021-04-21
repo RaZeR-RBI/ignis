@@ -22,13 +22,31 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Queries entity IDs from the specified enumerable that have the specified components.
+If you care about performance and memory allocation, consider using
+<a href="Ignis.IEntityManager.Query(Span_int_, ReadOnlySpan_Type_).html">Query(Span&lt;int&gt;, ReadOnlySpan&lt;Type&gt;)</a>
+ and other overloads
+with Span, or <a href="Ignis.IEntityManager.GetView(Type[]).html">GetView(Type[])</a>
+.
+</p>
 <h2>Syntax</h2>
 <pre><code>public IEnumerable&lt;int&gt; QuerySubset(
 	IEnumerable&lt;int&gt; ids,
 	bool checkExistence,
 	Type[] componentTypes
 )</code></pre>
+<h3>Parameters</h3>
+<p>
+<code>ids</code>
+</p>
+<p>
+Entity ID subset to check</p>
+<p>
+<code>checkExistence</code>
+</p>
+<p>
+Should the ID existence be checked</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

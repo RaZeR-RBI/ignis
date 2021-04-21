@@ -22,11 +22,22 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Copies the entity IDs from this view to a span.
+</p>
 <h2>Syntax</h2>
 <pre><code>public Span&lt;int&gt; CopyTo(
 	Span&lt;int&gt; storage
 )</code></pre>
+<h3>Parameters</h3>
+<p>
+<code>storage</code>
+</p>
+<p>
+Target span</p>
+<h3>Returns</h3>
+<p>
+Slice of the original span. Not fitting entries are skipped.</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

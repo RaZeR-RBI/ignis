@@ -22,12 +22,28 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Iterates over each 'entity ID'-'component' pair using the supplied
+callback. Passes an additional parameter to the callback which can
+be used to avoid heap allocations by passing the required variables
+through it.
+</p>
 <h2>Syntax</h2>
 <pre><code>public void ForEach&lt;TState&gt;(
 	Action&lt;int, T, TState&gt; action,
 	TState state
 )</code></pre>
+<h3>Parameters</h3>
+<p>
+<code>action</code>
+</p>
+<p>
+Callback to be called on each pair</p>
+<p>
+<code>state</code>
+</p>
+<p>
+Additional parameter for the callback</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

@@ -6,8 +6,20 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
+/// <summary>
+/// Contains various <see cref="Ignis.IComponentCollection<T>" /> implementations
+/// and related types.
+/// </summary>
 namespace Ignis.Storage
 {
+/// <summary>
+/// A component storage implemented by using two lists - one for entity IDs and
+/// one for component values. It's a default implementation when specific storage
+/// type is not supplied.
+/// </summary>
+/// <typeparam name="T">Component type</typeparam>
+/// <seealso cref="Ignis.IContainer<TState>.AddComponent{TComponent}" />
+/// <seealso cref="Ignis.IContainer<TState>.AddComponent{TComponent, TStorage}" />
 public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
 	where T : new()
 {

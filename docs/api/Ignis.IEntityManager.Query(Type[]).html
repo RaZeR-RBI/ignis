@@ -22,11 +22,24 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+Queries entity IDs that have the specified components.
+If you care about performance and memory allocation, consider using
+<a href="Ignis.IEntityManager.Query(Span_int_, ReadOnlySpan_Type_).html">Query(Span&lt;int&gt;, ReadOnlySpan&lt;Type&gt;)</a>
+ and other overloads
+with Span, or <a href="Ignis.IEntityManager.GetView(Type[]).html">GetView(Type[])</a>
+.
+</p>
 <h2>Syntax</h2>
 <pre><code>public IEnumerable&lt;int&gt; Query(
 	Type[] componentTypes
 )</code></pre>
+<h3>Parameters</h3>
+<p>
+<code>componentTypes</code>
+</p>
+<p>
+Component types to check</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

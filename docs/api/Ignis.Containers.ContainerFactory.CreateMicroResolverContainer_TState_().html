@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html><head><title>Ignis.IEntityManager.Exists(int)</title>
+<html><head><title>Ignis.Containers.ContainerFactory.CreateMicroResolverContainer<TState>()</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <style>
@@ -11,33 +11,28 @@
             display: inline;
         }</style>
 </head><body>
-<h1>Exists(int)</h1>
+<h1>CreateMicroResolverContainer&lt;TState&gt;()</h1>
 <p>
 <b>Method</b></p>
 <p>
-<b>Namespace:</b> <a href="Ignis.html">Ignis</a>
+<b>Namespace:</b> <a href="Ignis.Containers.html">Ignis.Containers</a>
 </p>
 <p>
-<b>Declared in:</b> <a href="Ignis.IEntityManager.html">Ignis.IEntityManager</a>
+<b>Declared in:</b> <a href="Ignis.Containers.ContainerFactory.html">Ignis.Containers.ContainerFactory</a>
 </p>
 <hr>
 <p>
 
-Checks if the entity with the specified ID exists.
+Creates a MicroResolver-based ECS container.
 </p>
 <h2>Syntax</h2>
-<pre><code>public bool Exists(
-	int entityId
-)</code></pre>
-<h3>Parameters</h3>
+<pre><code>public static IContainer&lt;TState&gt; CreateMicroResolverContainer&lt;TState&gt;()</code></pre>
+<h3>Type parameters</h3>
 <p>
-<code>entityId</code>
+<code>TState</code>
 </p>
 <p>
-Entity ID to check</p>
-<h3>Returns</h3>
-<p>
-True if exists, false otherwise</p>
+Type of state parameter that gets passed to systems.</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

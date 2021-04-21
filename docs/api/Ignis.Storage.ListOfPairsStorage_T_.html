@@ -28,7 +28,19 @@
 </p>
 <hr>
 <p>
-<i>No description provided</i></p>
+
+A component storage that's implemented as list of pairs ('entity ID'-'component' tuples).
+May offer a slight increase in cache locality when <a href="Ignis.Storage.NullStorage_T_.ForEach(Action_int, T_).html">ForEach(Action&lt;int, T&gt;)</a>
+ is used.
+Other scenarios may perform worse than the <a href="Ignis.Storage.DoubleListStorage_T_.html">DoubleListStorage&lt;T&gt;</a>
+.
+</p>
+<h3>Type parameters</h3>
+<p>
+<code>T</code>
+</p>
+<p>
+Component type</p>
 <h2>Members</h2>
 <h3>Constructor</h3>
 <li><a href="Ignis.Storage.ListOfPairsStorage_T_.ListOfPairsStorage().html">ListOfPairsStorage()</a></li>

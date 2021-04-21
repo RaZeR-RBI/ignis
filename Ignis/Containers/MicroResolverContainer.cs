@@ -9,7 +9,7 @@ using MicroResolver;
 
 namespace Ignis.Containers
 {
-public class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
+internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 {
 	public IEntityManager EntityManager { get; }
 	private readonly ObjectResolver _resolver = ObjectResolver.Create();

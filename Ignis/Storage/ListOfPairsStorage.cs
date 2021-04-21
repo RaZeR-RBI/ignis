@@ -7,6 +7,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis.Storage
 {
+/// <summary>
+/// A component storage that's implemented as list of pairs ('entity ID'-'component' tuples).
+/// May offer a slight increase in cache locality when <see cref="ForEach(Action<int, T>)" /> is used.
+/// Other scenarios may perform worse than the <see cref="DoubleListStorage<T>" />.
+/// </summary>
+/// <typeparam name="T">Component type</typeparam>
 public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
 	where T : new()
 {
