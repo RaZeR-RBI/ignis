@@ -18,21 +18,25 @@ public interface IContainer<TState> : IDisposable
 	/// Gets the entity manager for this container.
 	/// </summary>
 	IEntityManager EntityManager { get; }
+
 	/// <summary>
 	/// Gets the storage for the specified component type.
 	/// </summary>
 	/// <typeparam name="T">Component type</typeparam>
 	IComponentCollection<T> GetStorageFor<T>() where T : new();
+
 	/// <summary>
 	/// Gets the storage for the specified component type.
 	/// </summary>
 	/// <param name="type">Component type</param>
 	dynamic GetStorageFor(Type type);
+
 	/// <summary>
 	/// Gets the system of the specified type.
 	/// </summary>
 	/// <typeparam name="T">System type</typeparam>
 	T GetSystem<T>() where T : class;
+
 	/// <summary>
 	/// Gets the system of the specified type.
 	/// </summary>
@@ -82,6 +86,7 @@ public interface IContainer<TState> : IDisposable
 	/// <param name="implementations">System types that implement those interfaces</param>
 	/// <returns></returns>
 	IContainer<TState> AddParallelSystems(Type[] interfaces, Type[] implementations);
+
 	/// <summary>
 	/// Registers systems which should be run in parallel.
 	/// </summary>
@@ -120,6 +125,7 @@ public interface IContainer<TState> : IDisposable
 	/// </summary>
 	/// <param name="type"></param>
 	object Resolve(Type type);
+
 	/// <summary>
 	/// Resolves an object of the specified type or implementing the specified interface.
 	/// </summary>
@@ -133,16 +139,19 @@ public interface IContainer<TState> : IDisposable
 	/// <seealso cref="AddComponent<TComponent>()" />
 	/// <seealso cref="Register<TInterface, TImpl>()" />
 	IContainer<TState> Build();
+
 	/// <summary>
 	/// Indicates whether this container is built or still in configuration stage.
 	/// </summary>
 	bool IsBuilt();
+
 	/// <summary>
 	/// Initializes the systems.
 	/// </summary>
 	/// <param name="state">State value passed to systems</param>
 	/// <seealso cref="Ignis.SystemBase<TState>.Initialize(TState)" />
 	void InitializeSystems(TState state = default);
+
 	/// <summary>
 	/// Executes the systems.
 	/// </summary>
@@ -154,6 +163,7 @@ public interface IContainer<TState> : IDisposable
 	/// Gets the component types registered in this container.
 	/// </summary>
 	IEnumerable<Type> GetComponentTypes();
+
 	/// <summary>
 	/// Gets the system types registered in this container.
 	/// </summary>

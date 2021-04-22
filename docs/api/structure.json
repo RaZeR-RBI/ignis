@@ -171,12 +171,6 @@
           "link": "Ignis.IComponentCollection_T_",
           "children": [
             {
-              "name": "ForEach(Action<int, T>)",
-              "fullName": "Ignis.IComponentCollection<T>.ForEach(Action<int, T>)",
-              "type": "Method",
-              "link": "Ignis.IComponentCollection_T_.ForEach(Action_int, T_)"
-            },
-            {
               "name": "ForEach<TState>(Action<int, T, TState>, TState)",
               "fullName": "Ignis.IComponentCollection<T>.ForEach<TState>(Action<int, T, TState>, TState)",
               "type": "Method",
@@ -205,6 +199,12 @@
               "fullName": "Ignis.IComponentCollection<T>.GetView()",
               "type": "Method",
               "link": "Ignis.IComponentCollection_T_.GetView()"
+            },
+            {
+              "name": "Process(Func<int, T, T>)",
+              "fullName": "Ignis.IComponentCollection<T>.Process(Func<int, T, T>)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.Process(Func_int, T, T_)"
             },
             {
               "name": "Update(int, object)",
@@ -721,12 +721,6 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.DoubleListStorage()"
             },
             {
-              "name": "ForEach(Action<int, T>)",
-              "fullName": "Ignis.Storage.DoubleListStorage<T>.ForEach(Action<int, T>)",
-              "type": "Method",
-              "link": "Ignis.Storage.DoubleListStorage_T_.ForEach(Action_int, T_)"
-            },
-            {
               "name": "ForEach<TState>(Action<int, T, TState>, TState)",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
               "type": "Method",
@@ -755,6 +749,12 @@
               "fullName": "Ignis.Storage.DoubleListStorage<T>.GetView()",
               "type": "Method",
               "link": "Ignis.Storage.DoubleListStorage_T_.GetView()"
+            },
+            {
+              "name": "Process(Func<int, T, T>)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.Process(Func<int, T, T>)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.Process(Func_int, T, T_)"
             },
             {
               "name": "RemoveComponentFromStorage(int)",
@@ -801,12 +801,6 @@
               "link": "Ignis.Storage.ListOfPairsStorage_T_.ListOfPairsStorage()"
             },
             {
-              "name": "ForEach(Action<int, T>)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ForEach(Action<int, T>)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.ForEach(Action_int, T_)"
-            },
-            {
               "name": "ForEach<TState>(Action<int, T, TState>, TState)",
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
               "type": "Method",
@@ -835,6 +829,12 @@
               "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetView()",
               "type": "Method",
               "link": "Ignis.Storage.ListOfPairsStorage_T_.GetView()"
+            },
+            {
+              "name": "Process(Func<int, T, T>)",
+              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Process(Func<int, T, T>)",
+              "type": "Method",
+              "link": "Ignis.Storage.ListOfPairsStorage_T_.Process(Func_int, T, T_)"
             },
             {
               "name": "RemoveComponentFromStorage(int)",
@@ -875,12 +875,6 @@
           "link": "Ignis.Storage.NullStorage_T_",
           "children": [
             {
-              "name": "ForEach(Action<int, T>)",
-              "fullName": "Ignis.Storage.NullStorage<T>.ForEach(Action<int, T>)",
-              "type": "Method",
-              "link": "Ignis.Storage.NullStorage_T_.ForEach(Action_int, T_)"
-            },
-            {
               "name": "ForEach<TState>(Action<int, T, TState>, TState)",
               "fullName": "Ignis.Storage.NullStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
               "type": "Method",
@@ -909,6 +903,12 @@
               "fullName": "Ignis.Storage.NullStorage<T>.GetView()",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.GetView()"
+            },
+            {
+              "name": "Process(Func<int, T, T>)",
+              "fullName": "Ignis.Storage.NullStorage<T>.Process(Func<int, T, T>)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.Process(Func_int, T, T_)"
             },
             {
               "name": "RemoveComponentFromStorage(int)",

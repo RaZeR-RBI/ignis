@@ -68,7 +68,7 @@ public class StorageTypeTest
 		// Modify again and delete component from every second entity
 		var iterations = 0;
 		count = 0;
-		storage.ForEach((id, componentValue) =>
+		storage.ForEach((id, componentValue, _) =>
 		{
 			componentValue.Foo = id;
 			storage.UpdateCurrent(componentValue);
@@ -77,7 +77,7 @@ public class StorageTypeTest
 			else
 				count++;
 			iterations++;
-		});
+		}, default(object));
 		iterations.Should().Be(withComponents.Count);
 		var oddsAndEvens = withComponents
 		                   .Select((item, i) => (item, isEven: i % 2 == 0))
@@ -88,11 +88,11 @@ public class StorageTypeTest
 		oddsAndEvens[false].Should().OnlyContain(id => !em.HasComponent<SampleComponent>(id));
 
 		// Check if the alive ones was updated
-		storage.ForEach((id, val) =>
+		storage.ForEach((id, val, _) =>
 		{
 			val.Foo.Should().Be(id);
 			val.Bar.Should().BeTrue();
-		});
+		}, default(object));
 
 		// Modify and get in different order
 		// Note: this is slower than the ForEach due to additional lookups
@@ -119,9 +119,9 @@ public class StorageTypeTest
 			count++;
 		count.Should().Be(0);
 
-		count = 0;
-		storage.ForEach((id, val) => count++);
-		count.Should().Be(0);
+		var items = new List<int>();
+		storage.ForEach((id, val, list) => list.Add(id), items);
+		items.Should().BeEmpty();
 	}
 
 	[Fact]
@@ -130,7 +130,8 @@ public class StorageTypeTest
 		var storage = new NullStorage<SampleComponent>();
 		var actions = new List<Action>
 		{
-			() => storage.ForEach((id, val) => { }),
+			() => storage.Process((id, val) => val),
+			() => storage.ForEach((id, val, _) => { }, default(object)),
 			() => storage.Get(-1),
 			() => storage.GetCount(),
 			() => storage.GetValues(),

@@ -12,6 +12,7 @@ public struct EntityComponentEventArgs
 	/// Entity ID that corresponds to this event.
 	/// </summary>
 	public int EntityID { get; }
+
 	/// <summary>
 	/// Component type that corresponds to this event.
 	/// </summary>

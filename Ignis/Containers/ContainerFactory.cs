@@ -1,6 +1,7 @@
 /// <summary>
 /// Contains container-related functionality.
 /// </summary>
+
 namespace Ignis.Containers
 {
 /// <summary>

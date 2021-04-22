@@ -14,7 +14,7 @@ namespace Ignis.Storage
 public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
 	where T : new()
 {
-	public void ForEach(Action<int, T> action)
+	public void Process(Func<int, T, T> action)
 	{
 		throw new InvalidOperationException();
 	}

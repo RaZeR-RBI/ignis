@@ -25,14 +25,16 @@ public class ListOfPairsStorage<T> : IComponentCollection<T>, IComponentCollecti
 		_view = new ListOfPairsEntityView(this);
 	}
 
-	public void ForEach(Action<int, T> action)
+	public void Process(Func<int, T, T> action)
 	{
 		Reset();
 		while (HasNext())
 		{
-			var value = _pairs[_curIndex];
+			var pair = _pairs[_curIndex];
+			var newValue = action(pair.EntityID, pair.ComponentValue);
+			pair.ComponentValue = newValue;
+			_pairs[_curIndex] = pair;
 			_curIndex++;
-			action(value.EntityID, value.ComponentValue);
 		}
 	}
 

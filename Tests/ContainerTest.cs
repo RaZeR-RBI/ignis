@@ -65,7 +65,7 @@ public class ContainerTest : IDisposable
 		var pairs = new Dictionary<int, SampleComponent>();
 		container.InitializeSystems();
 		container.ExecuteSystems();
-		storage.ForEach((id, val) => pairs.Add(id, val));
+		storage.ForEach((id, val, _) => pairs.Add(id, val), default(object));
 
 		pairs.AsEnumerable()
 		     .Should()
@@ -75,7 +75,7 @@ public class ContainerTest : IDisposable
 		// Execute the system again and observe changes
 		pairs.Clear();
 		container.ExecuteSystems();
-		storage.ForEach((id, val) => pairs.Add(id, val));
+		storage.ForEach((id, val, _) => pairs.Add(id, val), default(object));
 		pairs.AsEnumerable()
 		     .Should()
 		     .OnlyContain(kvp =>
@@ -128,14 +128,14 @@ public class SampleSystem : SystemBase<object>
 
 	public override void Execute(object state)
 	{
-		sampleComponent.ForEach((id, val) =>
+		sampleComponent.Process((id, val) =>
 		{
 			var newValue = new SampleComponent()
 			{
 				Foo = val.Bar ? id + 1 : id,
 				Bar = !val.Bar
 			};
-			sampleComponent.UpdateCurrent(newValue);
+			return newValue;
 		});
 	}
 }

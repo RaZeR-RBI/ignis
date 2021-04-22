@@ -78,15 +78,16 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		_values[_curIndex - 1] = value;
 	}
 
-	public void ForEach(Action<int, T> action)
+	public void Process(Func<int, T, T> action)
 	{
 		Reset();
 		while (HasNext())
 		{
 			var entityId = _ids[_curIndex];
 			var componentValue = _values[_curIndex];
+			var newValue = action(entityId, componentValue);
+			_values[_curIndex] = newValue;
 			_curIndex++;
-			action(entityId, componentValue);
 		}
 	}
 

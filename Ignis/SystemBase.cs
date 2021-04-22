@@ -13,12 +13,14 @@ public abstract class SystemBase<TState> : IDisposable
 	/// Gets the container in which this system belongs too.
 	/// </summary>
 	public IContainer<TState> Container => _container;
+
 	protected readonly IContainer<TState> _container;
 
 	/// <summary>
 	/// Gets the entity manager belonging to this system's container.
 	/// </summary>
 	public IEntityManager EntityManager => _em;
+
 	protected readonly IEntityManager _em;
 
 	/// <summary>
