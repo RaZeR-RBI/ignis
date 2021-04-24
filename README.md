@@ -246,6 +246,7 @@ public class RenderingSystem : SystemBase<GameState>
 	{
 		/* implement logic here */
 	}
+}
 ```
 
 `IEntityView` implements `IEnumerable<int>`, so working with it boils down to
@@ -263,23 +264,23 @@ Let's implement the `Execute` method:
 ```csharp
 public override void Execute(GameState state)
 {
-		var term = state.Backend;
-		term.BackgroundColor = new ColorValue(Color16.Black);
-		term.Clear();
-		// enumerate through entity view
-		foreach (var id in _drawableIds)
-		{
-			var position = _physObjects.Get(id).Position;
-			position.X = MathF.Round(position.X);
-			position.Y = MathF.Round(position.Y);
-			var drawable = _drawables.Get(id);
+	var term = state.Backend;
+	term.BackgroundColor = new ColorValue(Color16.Black);
+	term.Clear();
+	// enumerate through entity view
+	foreach (var id in _drawableIds)
+	{
+		var position = _physObjects.Get(id).Position;
+		position.X = MathF.Round(position.X);
+		position.Y = MathF.Round(position.Y);
+		var drawable = _drawables.Get(id);
 
-			// draw it
-			term.SetCursorPosition((int)position.X, (int)position.Y);
-			term.ForegroundColor = drawable.Color;
-			term.Write(drawable.Symbol.ToString());
-		}
+		// draw it
+		term.SetCursorPosition((int)position.X, (int)position.Y);
+		term.ForegroundColor = drawable.Color;
+		term.Write(drawable.Symbol.ToString());
 	}
+}
 ```
 
 Now we have all of our components and systems in place, let's configure the **ECS container**.
