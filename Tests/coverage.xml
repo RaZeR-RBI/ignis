@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageSession>
-  <Summary numSequencePoints="566" visitedSequencePoints="497" numBranchPoints="314" visitedBranchPoints="264" sequenceCoverage="87.8" branchCoverage="84.07" maxCyclomaticComplexity="415" minCyclomaticComplexity="415" visitedClasses="17" numClasses="19" visitedMethods="136" numMethods="155" />
+  <Summary numSequencePoints="567" visitedSequencePoints="498" numBranchPoints="314" visitedBranchPoints="264" sequenceCoverage="87.83" branchCoverage="84.07" maxCyclomaticComplexity="416" minCyclomaticComplexity="416" visitedClasses="18" numClasses="19" visitedMethods="137" numMethods="156" />
   <Modules>
-    <Module hash="086256C0-9305-4096-979B-AE8DE5EAA35B">
+    <Module hash="FEAD9C82-E815-4CDC-AF7E-A8CA5D616206">
       <ModulePath>Ignis.dll</ModulePath>
-      <ModuleTime>2021-08-07T01:43:14</ModuleTime>
+      <ModuleTime>2021-08-07T02:01:09</ModuleTime>
       <ModuleName>Ignis</ModuleName>
       <Files>
         <File uid="1" fullPath="/home/razer/vscode-projects/ignis/Ignis/CollectionEnumerable.cs" />
@@ -1457,19 +1457,30 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="1" />
+          <Summary numSequencePoints="2" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="50" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="2" />
           <FullName>Ignis.IComponentCollection`1</FullName>
           <Methods>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Boolean Ignis.IComponentCollection`1::Contains(System.Int32)</Name>
+              <FileRef uid="7" />
+              <SequencePoints>
+                <SequencePoint vc="10" uspid="87" ordinal="0" sl="87" sc="1" el="87" ec="2" bec="0" bev="0" fileid="7" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="87" ec="1" el="87" bec="0" bev="0" fileid="7" xmlns:p8="xsi" />
+            </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
               <Name>Ignis.CollectionEnumerator`1&lt;System.Int32&gt; Ignis.IComponentCollection`1::GetEnumerator()</Name>
               <FileRef uid="7" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="88" ordinal="0" sl="88" sc="1" el="88" ec="2" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="0" uspid="96" ordinal="0" sl="96" sc="1" el="96" ec="2" bec="0" bev="0" fileid="7" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="88" ec="1" el="88" bec="0" bev="0" fileid="7" xmlns:p8="xsi" />
+              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="96" ec="1" el="96" bec="0" bev="0" fileid="7" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -1767,7 +1778,7 @@
               <Name>Ignis.IEntityView Ignis.Storage.DoubleListStorage`1::GetView()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="107" ordinal="0" sl="107" sc="1" el="107" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="12" uspid="107" ordinal="0" sl="107" sc="1" el="107" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="8" offset="8" sc="0" sl="107" ec="1" el="107" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />

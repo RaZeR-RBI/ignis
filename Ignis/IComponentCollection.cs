@@ -80,6 +80,14 @@ public interface IComponentCollection<T>
 	IEntityView GetView();
 
 	/// <summary>
+	/// Check if the specified entity ID has a component stored in this storage.
+	/// </summary>
+	bool Contains(int entityId)
+	{
+		return GetView().Contains(entityId);
+	}
+
+	/// <summary>
 	/// Returns an enumerator over entity IDs that have this component.
 	/// </summary>
 	/// <returns></returns>

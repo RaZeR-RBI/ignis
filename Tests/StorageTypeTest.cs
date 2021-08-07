@@ -22,7 +22,9 @@ public class StorageTypeTest
 		{
 			withoutComponents.Add(em.Create());
 			var entityWithComponent = em.Create();
+			storage.Contains(entityWithComponent).Should().BeFalse();
 			em.AddComponent<SampleComponent>(entityWithComponent);
+			storage.Contains(entityWithComponent).Should().BeTrue();
 			withComponents.Add(entityWithComponent);
 		}
 

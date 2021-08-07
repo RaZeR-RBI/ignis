@@ -229,6 +229,12 @@
           "link": "Ignis.IComponentCollection_T_",
           "children": [
             {
+              "name": "Contains(int)",
+              "fullName": "Ignis.IComponentCollection<T>.Contains(int)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.Contains(int)"
+            },
+            {
               "name": "ForEach<TState>(Action<int, T, TState>, TState)",
               "fullName": "Ignis.IComponentCollection<T>.ForEach<TState>(Action<int, T, TState>, TState)",
               "type": "Method",

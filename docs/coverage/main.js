@@ -233,7 +233,7 @@ var assemblies = [
       { "name": "Ignis.EntityIdEventArgs", "rp": "Ignis_EntityIdEventArgs.htm", "cl": 3, "ucl": 0, "cal": 3, "tl": 24, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityManager", "rp": "Ignis_EntityManager.htm", "cl": 216, "ucl": 9, "cal": 225, "tl": 465, "ct": "LineCoverage", "mc": "-", "cb": 190, "tb": 202, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityView", "rp": "Ignis_EntityView.htm", "cl": 53, "ucl": 5, "cal": 58, "tl": 188, "ct": "LineCoverage", "mc": "-", "cb": 22, "tb": 26, "lch": [], "bch": [], "hc": [] },
-      { "name": "Ignis.IComponentCollection`1", "rp": "Ignis_IComponentCollection_1.htm", "cl": 0, "ucl": 1, "cal": 1, "tl": 101, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Ignis.IComponentCollection`1", "rp": "Ignis_IComponentCollection_1.htm", "cl": 1, "ucl": 1, "cal": 2, "tl": 109, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.IEntityManager", "rp": "Ignis_IEntityManager.htm", "cl": 1, "ucl": 0, "cal": 1, "tl": 344, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.IEntityView", "rp": "Ignis_IEntityView.htm", "cl": 2, "ucl": 0, "cal": 2, "tl": 188, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.IgnisExtensions", "rp": "Ignis_IgnisExtensions.htm", "cl": 11, "ucl": 0, "cal": 11, "tl": 111, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
