@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using ConcurrentCollections;
 
@@ -10,12 +11,18 @@ namespace Ignis
 /// Represents an entity ID set which contains all entity IDs that have the
 /// specified component types (sometimes it's called an 'archetype').
 /// </summary>
-public interface IEntityView : IEnumerable<int>
+public interface IEntityView
 {
 	/// <summary>
 	/// Returns the entity count in this view.
 	/// </summary>
 	int EntityCount { get; }
+
+	[ExcludeFromCodeCoverage]
+	/// <summary>
+	/// Returns the entity count in this view.
+	/// </summary>
+	int Count => EntityCount;
 
 	/// <summary>
 	/// Checks if this view contains the specified entity ID.
@@ -35,13 +42,33 @@ public interface IEntityView : IEnumerable<int>
 	/// <param name="storage">Target span</param>
 	/// <returns>Slice of the original span. Not fitting entries are skipped.</returns>
 	Span<int> CopyTo(Span<int> storage);
+
+	/// <summary>
+	/// Returns an enumerator for this view.
+	/// </summary>
+	CollectionEnumerator<int> GetEnumerator()
+	{
+		return GetItems().GetEnumerator();
+	}
+
+	/// <summary>
+	/// Returns an enumerable for this view.
+	/// </summary>
+	CollectionEnumerable<int> GetItems();
+
+	/// <summary>
+	/// Returns an IEnumerable for this view. Not recommended for use in
+	/// hot paths because of enumerator boxing.
+	/// </summary>
+	IEnumerable<int> AsEnumerable()
+	{
+		return GetItems().AsEnumerable();
+	}
 }
 
-#pragma warning disable HAA0401
-
-internal class EntityView : IEnumerable<int>, IEntityView
+internal class EntityView : IEntityView
 {
-	private readonly IReadOnlyCollection<Type> _filter;
+	private readonly List<Type> _filter;
 	private readonly ConcurrentHashSet<int> _ids;
 	private readonly IEntityManager _em;
 	private volatile int _entityCount = 0;
@@ -97,9 +124,9 @@ internal class EntityView : IEnumerable<int>, IEntityView
 			Interlocked.Decrement(ref _entityCount);
 	}
 
-	public IEnumerator<int> GetEnumerator()
+	public CollectionEnumerable<int> GetItems()
 	{
-		return _ids.GetEnumerator();
+		return new CollectionEnumerable<int>(_ids);
 	}
 
 	private bool Belongs(int id)
@@ -128,11 +155,6 @@ internal class EntityView : IEnumerable<int>, IEntityView
 			if (lockTaken)
 				Monitor.Exit(_em);
 		}
-	}
-
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return ((IEnumerable) _ids).GetEnumerator();
 	}
 
 	public bool Contains(int id)

@@ -1,0 +1,3 @@
+[submodule "External/ConcurrentHashSet"]
+	path = External/ConcurrentHashSet
+	url = git@github.com:RaZeR-RBI/ConcurrentHashSet.git

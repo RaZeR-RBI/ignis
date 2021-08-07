@@ -19,9 +19,11 @@ public interface IComponentCollection<T>
 {
 	/// <summary>
 	/// Updates current entity's component value.
+	/// This method should be called ONLY when executing inside
+	/// <see cref="ForEach{TState}(Action{int, T, TState}, TState)" />.
 	/// </summary>
 	/// <param name="value">New component value</param>
-	/// <seealso cref="ForEach(Action<int, T>)" />
+	/// <seealso cref="ForEach{TState}(Action{int, T, TState}, TState)" />
 	void UpdateCurrent(T value);
 
 	/// <summary>
@@ -64,12 +66,8 @@ public interface IComponentCollection<T>
 	/// </summary>
 	/// <param name="action">Callback to be called on each pair</param>
 	/// <param name="state">Additional parameter for the callback</param>
+	/// <seealso cref="UpdateCurrent(T)" />
 	void ForEach<TState>(Action<int, T, TState> action, TState state);
-
-	/// <summary>
-	/// Returns a view which contains entity IDs that have this component.
-	/// </summary>
-	IEntityView GetView();
 
 	/// <summary>
 	/// Return the count of entities with this component.
@@ -77,8 +75,27 @@ public interface IComponentCollection<T>
 	int GetCount();
 
 	/// <summary>
+	/// Returns a view which contains entity IDs that have this component.
+	/// </summary>
+	IEntityView GetView();
+
+	/// <summary>
+	/// Returns an enumerator over entity IDs that have this component.
+	/// </summary>
+	/// <returns></returns>
+	CollectionEnumerator<int> GetEnumerator()
+	{
+		return GetEntityIds().GetEnumerator();
+	}
+
+	/// <summary>
+	/// Returns the entity IDs that have this component.
+	/// </summary>
+	CollectionEnumerable<int> GetEntityIds();
+
+	/// <summary>
 	/// Returns the values of all components.
 	/// </summary>
-	IEnumerable<T> GetValues();
+	CollectionEnumerable<T> GetValues();
 }
 }

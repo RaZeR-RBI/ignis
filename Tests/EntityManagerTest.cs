@@ -34,17 +34,18 @@ public class EntityManagerTest
 	public void ShouldCreateCheckAndDestroyEntities()
 	{
 		var lastChangedEntity = IgnisConstants.NonExistingEntityId;
+		var ids = em.GetEntityIds().AsEnumerable();
 		em.OnEntityCreated += (s, e) => lastChangedEntity = e.EntityID;
 		em.OnEntityDestroyed += (s, e) => lastChangedEntity = e.EntityID;
 
 		em.EntityCount.Should().Be(0);
-		em.GetEntityIds().Should().BeEquivalentTo(Enumerable.Empty<int>());
+		ids.Should().BeEquivalentTo(Enumerable.Empty<int>());
 
 		var firstEntity = em.Create();
 		firstEntity.Should().NotBe(IgnisConstants.NonExistingEntityId);
 		em.Exists(firstEntity).Should().BeTrue("first entity was created");
 		em.EntityCount.Should().Be(1, "one entity was created");
-		em.GetEntityIds().Should().BeEquivalentTo(new int[] {firstEntity});
+		ids.Should().BeEquivalentTo(new int[] {firstEntity});
 		lastChangedEntity.Should().Be(firstEntity);
 
 		var secondEntity = em.Create();
@@ -52,19 +53,19 @@ public class EntityManagerTest
 		secondEntity.Should().NotBe(firstEntity, "two separate entities");
 		em.Exists(secondEntity).Should().BeTrue("second entity was created");
 		em.EntityCount.Should().Be(2, "two entities were created");
-		em.GetEntityIds().Should().BeEquivalentTo(new int[] {firstEntity, secondEntity});
+		ids.Should().BeEquivalentTo(new int[] {firstEntity, secondEntity});
 		lastChangedEntity.Should().Be(secondEntity);
 
 		em.Destroy(firstEntity);
 		em.Exists(firstEntity).Should().BeFalse("first entity was destroyed");
 		em.EntityCount.Should().Be(1, "one of two entities was destroyed");
-		em.GetEntityIds().Should().BeEquivalentTo(new int[] {secondEntity});
+		ids.Should().BeEquivalentTo(new int[] {secondEntity});
 		lastChangedEntity.Should().Be(firstEntity);
 
 		em.Destroy(secondEntity);
 		em.Exists(secondEntity).Should().BeFalse("second entity was destroyed");
 		em.EntityCount.Should().Be(0, "no entities left");
-		em.GetEntityIds().Should().BeEquivalentTo(Enumerable.Empty<int>());
+		ids.Should().BeEquivalentTo(Enumerable.Empty<int>());
 		lastChangedEntity.Should().Be(secondEntity);
 
 		em.Destroy(IgnisConstants.NonExistingEntityId);
@@ -102,7 +103,7 @@ public class EntityManagerTest
 		lastEvent.Should().BeNullOrEmpty();
 
 		em.HasComponent<SampleComponent>(entity).Should().BeFalse("created a new entity");
-		em.GetEntityIds().Should().BeEquivalentTo(oneEntity);
+		em.GetEntityIds().AsEnumerable().Should().BeEquivalentTo(oneEntity);
 		em.Query(typeof(SampleComponent)).Should().BeEmpty();
 		var result = em.Query(storage, typeof(SampleComponent));
 		result.Length.Should().Be(0);

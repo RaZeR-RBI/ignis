@@ -24,6 +24,9 @@
 <p>
 
 Updates current entity's component value.
+This method should be called ONLY when executing inside
+<a href="#.html">ForEach{TState}(Action{int, T, TState}, TState)</a>
+.
 </p>
 <h2>Syntax</h2>
 <pre><code>public void UpdateCurrent(
@@ -36,7 +39,7 @@ Updates current entity's component value.
 <p>
 New component value</p>
 <h2>See also</h2>
-<li><a href="#.html">ForEach(Action&lt;int, T&gt;)</a></li>
+<li><a href="#.html">ForEach{TState}(Action{int, T, TState}, TState)</a></li>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

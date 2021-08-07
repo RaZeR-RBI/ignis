@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis
 {
@@ -117,7 +118,17 @@ public interface IEntityManager
 	/// <summary>
 	/// Gets the currently existing entity IDs.
 	/// </summary>
-	IEnumerable<int> GetEntityIds();
+	CollectionEnumerable<int> GetEntityIds();
+
+	[ExcludeFromCodeCoverage]
+	/// <summary>
+	/// Returns an enumerator over existing entity IDs.
+	/// </summary>
+	/// <returns></returns>
+	CollectionEnumerator<int> GetEnumerator()
+	{
+		return GetEntityIds().GetEnumerator();
+	}
 
 	/// <summary>
 	/// Queries entity IDs that have the specified components.
@@ -126,7 +137,10 @@ public interface IEntityManager
 	/// with Span, or <see cref="GetView(Type[])" />.
 	/// </summary>
 	/// <param name="componentTypes">Component types to check</param>
-	IEnumerable<int> Query(params Type[] componentTypes);
+	IEnumerable<int> Query(params Type[] componentTypes)
+	{
+		return QuerySubset(GetEntityIds().AsEnumerable(), componentTypes, false);
+	}
 
 	/// <summary>
 	/// Queries entity IDs that have the specified components and adds them
@@ -235,8 +249,9 @@ public interface IEntityManager
 	/// </summary>
 	/// <param name="ids">Entity ID subset to check</param>
 	/// <param name="checkExistence">Should the ID existence be checked</param>
-	IEnumerable<int> QuerySubset(IEnumerable<int> ids, bool checkExistence = true,
-	                             params Type[] componentTypes);
+	IEnumerable<int> QuerySubset<T, C>(T ids, C componentTypes, bool checkExistence = true)
+		where T : IEnumerable<int>
+		where C : IEnumerable<Type>;
 
 	/// <summary>
 	/// Queries an entity ID subset that have the specified components and populates the

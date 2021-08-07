@@ -6,8 +6,6 @@ using System.Threading;
 using ConcurrentCollections;
 using static Ignis.IgnisConstants;
 
-#pragma warning disable HAA0401
-
 namespace Ignis
 {
 internal class EntityManager : IEntityManager
@@ -27,8 +25,8 @@ internal class EntityManager : IEntityManager
 
 	private readonly ConcurrentHashSet<long> _entityComponentPairs = new ConcurrentHashSet<long>();
 
-	private readonly ConcurrentDictionary<Type, IComponentCollectionStorage> _storageCache =
-		new ConcurrentDictionary<Type, IComponentCollectionStorage>();
+	private readonly Dictionary<Type, IComponentCollectionStorage> _storageCache =
+		new Dictionary<Type, IComponentCollectionStorage>();
 
 	private readonly Func<Type, IComponentCollectionStorage> _storageResolver = null;
 
@@ -75,8 +73,8 @@ internal class EntityManager : IEntityManager
 			return;
 
 		_existingEntityIds.TryRemove(entityId);
-		foreach (var componentType in _storageCache.Keys)
-			RemoveComponent(entityId, componentType);
+		foreach (var kvp in _storageCache)
+			RemoveComponent(entityId, kvp.Key);
 
 		Interlocked.Decrement(ref _entityCount);
 		OnEntityDestroyed?.Invoke(this, new EntityIdEventArgs(entityId));
@@ -87,9 +85,21 @@ internal class EntityManager : IEntityManager
 		return _existingEntityIds.Contains(entityId);
 	}
 
+	private object _syncRoot = new object();
+
 	private IComponentCollectionStorage GetStorage(Type componentType)
 	{
-		return _storageCache.GetOrAdd(componentType, _storageResolver);
+		if (!_storageCache.ContainsKey(componentType))
+			lock (_syncRoot)
+			{
+				if (!_storageCache.ContainsKey(componentType))
+				{
+					var storage = _storageResolver(componentType);
+					_storageCache.Add(componentType, storage);
+				}
+			}
+
+		return _storageCache[componentType];
 	}
 
 	public void AddComponent(int entityId, Type type)
@@ -136,19 +146,16 @@ internal class EntityManager : IEntityManager
 		return ((long) entityId << 32) + (long) componentType.GetHashCode();
 	}
 
-	public IEnumerable<int> GetEntityIds()
+	public CollectionEnumerable<int> GetEntityIds()
 	{
-		return _existingEntityIds;
+		return new CollectionEnumerable<int>(_existingEntityIds);
 	}
 
-	public IEnumerable<int> Query(params Type[] componentTypes)
-	{
-		return QuerySubset(GetEntityIds(), false, componentTypes);
-	}
-
-	public IEnumerable<int> QuerySubset(IEnumerable<int> ids,
-	                                    bool checkExistence = true,
-	                                    params Type[] componentTypes)
+	public IEnumerable<int> QuerySubset<T, C>(T ids,
+	                                          C componentTypes,
+	                                          bool checkExistence = true)
+		where T : IEnumerable<int>
+		where C : IEnumerable<Type>
 	{
 		foreach (var id in ids)
 		{

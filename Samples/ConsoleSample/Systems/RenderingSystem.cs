@@ -1,5 +1,3 @@
-#pragma warning disable HAA0401
-
 using System;
 using ANSITerm;
 using ConsoleSample.Components;

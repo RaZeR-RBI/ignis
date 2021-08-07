@@ -32,7 +32,7 @@ public class StorageTypeTest
 
 		// Check IEntityView implementation
 		var view = storage.GetView();
-		view.Should().BeEquivalentTo(withComponents);
+		view.AsEnumerable().Should().BeEquivalentTo(withComponents);
 		view.EntityCount.Should().Be(withComponents.Count);
 		view.Filter.Should().BeEquivalentTo(new[] {typeof(SampleComponent)});
 		Span<int> viewData = stackalloc int[withComponents.Count];
@@ -47,7 +47,7 @@ public class StorageTypeTest
 
 		// Try to iterate and modify
 		count = 0;
-		var ids = storage.GetView().ToList();
+		var ids = storage.GetView();
 		foreach (var id in ids)
 		{
 			var value = new SampleComponent()
@@ -62,8 +62,9 @@ public class StorageTypeTest
 		count.Should().Be(withComponents.Count);
 
 		// Check if they were modified
-		storage.GetValues().Should().OnlyContain(c => c.Foo == 1337);
-		storage.GetValues().Should().OnlyContain(c => c.Bar == true);
+		var values = storage.GetValues().AsEnumerable();
+		values.Should().OnlyContain(c => c.Foo == 1337);
+		values.Should().OnlyContain(c => c.Bar == true);
 
 		// Modify again and delete component from every second entity
 		var iterations = 0;
@@ -133,17 +134,19 @@ public class StorageTypeTest
 			() => storage.Process((id, val) => val),
 			() => storage.ForEach((id, val, _) => { }, default(object)),
 			() => storage.Get(-1),
-			() => storage.GetCount(),
 			() => storage.GetValues(),
 			() => storage.Update(-1, new SampleComponent()),
 			() => storage.Update(-1, new object()),
-			() => storage.UpdateCurrent(new SampleComponent()),
-			() => storage.GetView()
+			() => storage.UpdateCurrent(new SampleComponent())
 		};
 		foreach (var action in actions)
 			Assert.ThrowsAny<InvalidOperationException>(action);
 		storage.StoreComponentForEntity(1).Should().BeTrue();
+		storage.GetView().Contains(1).Should().BeTrue();
+		storage.GetCount().Should().Be(1);
 		storage.RemoveComponentFromStorage(1).Should().BeTrue();
+		storage.GetView().Contains(1).Should().BeFalse();
+		storage.GetCount().Should().Be(0);
 	}
 }
 
@@ -152,7 +155,6 @@ public class StorageTypesTestData : IEnumerable<object[]>
 	public IEnumerator<object[]> GetEnumerator()
 	{
 		yield return new object[] {new DoubleListStorage<SampleComponent>()};
-		yield return new object[] {new ListOfPairsStorage<SampleComponent>()};
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

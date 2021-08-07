@@ -59,7 +59,7 @@ public class ContainerTest : IDisposable
 
 		// Initial state
 		storage.GetCount().Should().Be(entityCount);
-		storage.GetValues().Should().OnlyContain(c => c.Foo == 0.0f && c.Bar == false);
+		foreach (var c in storage.GetValues()) (c.Foo == 0.0f && c.Bar == false).Should().BeTrue();
 
 		// Execute the system once
 		var pairs = new Dictionary<int, SampleComponent>();

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using ConcurrentCollections;
 
 namespace Ignis.Storage
 {
@@ -14,6 +15,14 @@ namespace Ignis.Storage
 public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
 	where T : new()
 {
+	private ConcurrentHashSet<int> _ids = new ConcurrentHashSet<int>();
+	private readonly NullStorageEntityView<T> _view;
+
+	public NullStorage()
+	{
+		_view = new NullStorageEntityView<T>(this);
+	}
+
 	public void Process(Func<int, T, T> action)
 	{
 		throw new InvalidOperationException();
@@ -31,27 +40,32 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 
 	public int GetCount()
 	{
-		throw new InvalidOperationException();
+		return _ids.Count;
 	}
 
-	public IEnumerable<T> GetValues()
+	public CollectionEnumerable<int> GetEntityIds()
+	{
+		return new CollectionEnumerable<int>(_ids);
+	}
+
+	public CollectionEnumerable<T> GetValues()
 	{
 		throw new InvalidOperationException();
 	}
 
 	public IEntityView GetView()
 	{
-		throw new InvalidOperationException();
+		return _view;
 	}
 
 	public bool RemoveComponentFromStorage(int entityId)
 	{
-		return true;
+		return _ids.TryRemove(entityId);
 	}
 
 	public bool StoreComponentForEntity(int entityId)
 	{
-		return true;
+		return _ids.Add(entityId);
 	}
 
 	public void Update(int entityId, T value)
@@ -67,6 +81,43 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 	public void UpdateCurrent(T value)
 	{
 		throw new InvalidOperationException();
+	}
+
+	private class NullStorageEntityView<U> : IEntityView
+		where U : new()
+	{
+		private readonly NullStorage<U> _storage;
+
+		public NullStorageEntityView(NullStorage<U> storage)
+		{
+			_storage = storage;
+		}
+
+		public int EntityCount => _storage._ids.Count;
+
+		private static readonly Type[] s_filter = new Type[] {typeof(U)};
+		public IReadOnlyCollection<Type> Filter => s_filter;
+
+		public bool Contains(int id)
+		{
+			return _storage._ids.Contains(id);
+		}
+
+		public Span<int> CopyTo(Span<int> storage)
+		{
+			if (storage.Length <= 0) return storage;
+
+			var e = GetItems().GetEnumerator();
+			var i = 0;
+			while (e.MoveNext() && i < storage.Length)
+				storage[i++] = e.Current;
+			return storage.Slice(0, i);
+		}
+
+		public CollectionEnumerable<int> GetItems()
+		{
+			return new CollectionEnumerable<int>(_storage._ids);
+		}
 	}
 }
 }

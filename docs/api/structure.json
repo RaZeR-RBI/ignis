@@ -119,6 +119,64 @@
           ]
         },
         {
+          "name": "CollectionEnumerable<T>",
+          "fullName": "Ignis.CollectionEnumerable<T>",
+          "type": "Struct",
+          "link": "Ignis.CollectionEnumerable_T_",
+          "children": [
+            {
+              "name": "CollectionEnumerable(ConcurrentHashSet<T>)",
+              "fullName": "Ignis.CollectionEnumerable<T>.CollectionEnumerable(ConcurrentHashSet<T>)",
+              "type": "Constructor",
+              "link": "Ignis.CollectionEnumerable_T_.CollectionEnumerable(ConcurrentHashSet_T_)"
+            },
+            {
+              "name": "CollectionEnumerable(List<T>)",
+              "fullName": "Ignis.CollectionEnumerable<T>.CollectionEnumerable(List<T>)",
+              "type": "Constructor",
+              "link": "Ignis.CollectionEnumerable_T_.CollectionEnumerable(List_T_)"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.CollectionEnumerable<T>.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.CollectionEnumerable_T_.GetEnumerator()"
+            }
+          ]
+        },
+        {
+          "name": "CollectionEnumerator<T>",
+          "fullName": "Ignis.CollectionEnumerator<T>",
+          "type": "Struct",
+          "link": "Ignis.CollectionEnumerator_T_",
+          "children": [
+            {
+              "name": "Empty",
+              "fullName": "Ignis.CollectionEnumerator<T>.Empty",
+              "type": "Field",
+              "link": "Ignis.CollectionEnumerator_T_.Empty"
+            },
+            {
+              "name": "Current",
+              "fullName": "Ignis.CollectionEnumerator<T>.Current",
+              "type": "Property",
+              "link": "Ignis.CollectionEnumerator_T_.Current"
+            },
+            {
+              "name": "CollectionEnumerator(List<T>)",
+              "fullName": "Ignis.CollectionEnumerator<T>.CollectionEnumerator(List<T>)",
+              "type": "Constructor",
+              "link": "Ignis.CollectionEnumerator_T_.CollectionEnumerator(List_T_)"
+            },
+            {
+              "name": "CollectionEnumerator(ConcurrentHashSet<T>)",
+              "fullName": "Ignis.CollectionEnumerator<T>.CollectionEnumerator(ConcurrentHashSet<T>)",
+              "type": "Constructor",
+              "link": "Ignis.CollectionEnumerator_T_.CollectionEnumerator(ConcurrentHashSet_T_)"
+            }
+          ]
+        },
+        {
           "name": "EntityComponentEventArgs",
           "fullName": "Ignis.EntityComponentEventArgs",
           "type": "Struct",
@@ -187,6 +245,18 @@
               "fullName": "Ignis.IComponentCollection<T>.GetCount()",
               "type": "Method",
               "link": "Ignis.IComponentCollection_T_.GetCount()"
+            },
+            {
+              "name": "GetEntityIds()",
+              "fullName": "Ignis.IComponentCollection<T>.GetEntityIds()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.GetEntityIds()"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.IComponentCollection<T>.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.GetEnumerator()"
             },
             {
               "name": "GetValues()",
@@ -475,6 +545,12 @@
               "link": "Ignis.IEntityManager.GetEntityIds()"
             },
             {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.IEntityManager.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.GetEnumerator()"
+            },
+            {
               "name": "GetView(IEnumerable<Type>)",
               "fullName": "Ignis.IEntityManager.GetView(IEnumerable<Type>)",
               "type": "Method",
@@ -535,12 +611,6 @@
               "link": "Ignis.IEntityManager.Query(Type[])"
             },
             {
-              "name": "QuerySubset(IEnumerable<int>, bool, Type[])",
-              "fullName": "Ignis.IEntityManager.QuerySubset(IEnumerable<int>, bool, Type[])",
-              "type": "Method",
-              "link": "Ignis.IEntityManager.QuerySubset(IEnumerable_int_, bool, Type[])"
-            },
-            {
               "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, ReadOnlySpan<Type>, bool)",
               "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, ReadOnlySpan<Type>, bool)",
               "type": "Method",
@@ -569,6 +639,12 @@
               "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
               "type": "Method",
               "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, Type, bool)"
+            },
+            {
+              "name": "QuerySubset<T, C>(T, C, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset<T, C>(T, C, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset_T, C_(T, C, bool)"
             },
             {
               "name": "QueryTo(ICollection<int>, Type, Type, Type, Type)",
@@ -627,10 +703,22 @@
               "link": "Ignis.IEntityView.EntityCount"
             },
             {
+              "name": "Count",
+              "fullName": "Ignis.IEntityView.Count",
+              "type": "Property",
+              "link": "Ignis.IEntityView.Count"
+            },
+            {
               "name": "Filter",
               "fullName": "Ignis.IEntityView.Filter",
               "type": "Property",
               "link": "Ignis.IEntityView.Filter"
+            },
+            {
+              "name": "AsEnumerable()",
+              "fullName": "Ignis.IEntityView.AsEnumerable()",
+              "type": "Method",
+              "link": "Ignis.IEntityView.AsEnumerable()"
             },
             {
               "name": "Contains(int)",
@@ -643,6 +731,18 @@
               "fullName": "Ignis.IEntityView.CopyTo(Span<int>)",
               "type": "Method",
               "link": "Ignis.IEntityView.CopyTo(Span_int_)"
+            },
+            {
+              "name": "GetEnumerator()",
+              "fullName": "Ignis.IEntityView.GetEnumerator()",
+              "type": "Method",
+              "link": "Ignis.IEntityView.GetEnumerator()"
+            },
+            {
+              "name": "GetItems()",
+              "fullName": "Ignis.IEntityView.GetItems()",
+              "type": "Method",
+              "link": "Ignis.IEntityView.GetItems()"
             }
           ]
         }
@@ -739,6 +839,12 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.GetCount()"
             },
             {
+              "name": "GetEntityIds()",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetEntityIds()",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.GetEntityIds()"
+            },
+            {
               "name": "GetValues()",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.GetValues()",
               "type": "Method",
@@ -789,91 +895,17 @@
           ]
         },
         {
-          "name": "ListOfPairsStorage<T>",
-          "fullName": "Ignis.Storage.ListOfPairsStorage<T>",
-          "type": "Class",
-          "link": "Ignis.Storage.ListOfPairsStorage_T_",
-          "children": [
-            {
-              "name": "ListOfPairsStorage()",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ListOfPairsStorage()",
-              "type": "Constructor",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.ListOfPairsStorage()"
-            },
-            {
-              "name": "ForEach<TState>(Action<int, T, TState>, TState)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.ForEach_TState_(Action_int, T, TState_, TState)"
-            },
-            {
-              "name": "Get(int)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Get(int)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.Get(int)"
-            },
-            {
-              "name": "GetCount()",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetCount()",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetCount()"
-            },
-            {
-              "name": "GetValues()",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetValues()",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetValues()"
-            },
-            {
-              "name": "GetView()",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.GetView()",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.GetView()"
-            },
-            {
-              "name": "Process(Func<int, T, T>)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Process(Func<int, T, T>)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.Process(Func_int, T, T_)"
-            },
-            {
-              "name": "RemoveComponentFromStorage(int)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.RemoveComponentFromStorage(int)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.RemoveComponentFromStorage(int)"
-            },
-            {
-              "name": "StoreComponentForEntity(int)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.StoreComponentForEntity(int)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.StoreComponentForEntity(int)"
-            },
-            {
-              "name": "Update(int, object)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Update(int, object)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.Update(int, object)"
-            },
-            {
-              "name": "Update(int, T)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.Update(int, T)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.Update(int, T)"
-            },
-            {
-              "name": "UpdateCurrent(T)",
-              "fullName": "Ignis.Storage.ListOfPairsStorage<T>.UpdateCurrent(T)",
-              "type": "Method",
-              "link": "Ignis.Storage.ListOfPairsStorage_T_.UpdateCurrent(T)"
-            }
-          ]
-        },
-        {
           "name": "NullStorage<T>",
           "fullName": "Ignis.Storage.NullStorage<T>",
           "type": "Class",
           "link": "Ignis.Storage.NullStorage_T_",
           "children": [
+            {
+              "name": "NullStorage()",
+              "fullName": "Ignis.Storage.NullStorage<T>.NullStorage()",
+              "type": "Constructor",
+              "link": "Ignis.Storage.NullStorage_T_.NullStorage()"
+            },
             {
               "name": "ForEach<TState>(Action<int, T, TState>, TState)",
               "fullName": "Ignis.Storage.NullStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
@@ -891,6 +923,12 @@
               "fullName": "Ignis.Storage.NullStorage<T>.GetCount()",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.GetCount()"
+            },
+            {
+              "name": "GetEntityIds()",
+              "fullName": "Ignis.Storage.NullStorage<T>.GetEntityIds()",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.GetEntityIds()"
             },
             {
               "name": "GetValues()",
