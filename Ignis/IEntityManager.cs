@@ -35,6 +35,11 @@ public interface IEntityManager
 	EventHandler<EntityIdEventArgs> OnEntityCreated { get; set; }
 
 	/// <summary>
+	/// Fires when an entity is being destroyed (before components removal).
+	/// </summary>
+	EventHandler<EntityIdEventArgs> OnEntityDestroying { get; set; }
+
+	/// <summary>
 	/// Fires when an entity gets destroyed.
 	/// </summary>
 	EventHandler<EntityIdEventArgs> OnEntityDestroyed { get; set; }

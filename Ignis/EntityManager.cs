@@ -11,6 +11,7 @@ namespace Ignis
 internal class EntityManager : IEntityManager
 {
 	public EventHandler<EntityIdEventArgs> OnEntityCreated { get; set; } = null;
+	public EventHandler<EntityIdEventArgs> OnEntityDestroying { get; set; } = null;
 	public EventHandler<EntityIdEventArgs> OnEntityDestroyed { get; set; } = null;
 	public EventHandler<EntityComponentEventArgs> OnEntityComponentAdded { get; set; } = null;
 	public EventHandler<EntityComponentEventArgs> OnEntityComponentRemoving { get; set; } = null;
@@ -72,6 +73,7 @@ internal class EntityManager : IEntityManager
 		if (!Exists(entityId))
 			return;
 
+		OnEntityDestroying?.Invoke(this, new EntityIdEventArgs(entityId));
 		_existingEntityIds.TryRemove(entityId);
 		foreach (var kvp in _storageCache)
 			RemoveComponent(entityId, kvp.Key);

@@ -461,6 +461,12 @@
               "link": "Ignis.IEntityManager.OnEntityCreated"
             },
             {
+              "name": "OnEntityDestroying",
+              "fullName": "Ignis.IEntityManager.OnEntityDestroying",
+              "type": "Property",
+              "link": "Ignis.IEntityManager.OnEntityDestroying"
+            },
+            {
               "name": "OnEntityDestroyed",
               "fullName": "Ignis.IEntityManager.OnEntityDestroyed",
               "type": "Property",
