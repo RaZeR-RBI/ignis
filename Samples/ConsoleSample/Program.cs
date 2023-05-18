@@ -33,7 +33,7 @@ internal class Program
 
 	private static IContainer<GameState> ConfigureECS()
 	{
-		return ContainerFactory.CreateMicroResolverContainer<GameState>()
+		return ContainerFactory.CreateContainer<GameState>()
 		                       .AddComponent<PhysicsObject>()
 		                       .AddComponent<Drawable>()
 		                       .AddSystem<PhysicsSystem>()

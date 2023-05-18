@@ -3,20 +3,23 @@ using ANSITerm;
 using ConsoleSample.Components;
 using Ignis;
 using Ignis.Containers;
-using MicroResolver;
 
 namespace ConsoleSample.Systems
 {
 public class RenderingSystem : SystemBase<GameState>
 {
-	[Inject] private IComponentCollection<PhysicsObject> _physObjects = null;
+	private readonly IComponentCollection<PhysicsObject> _physObjects;
 
-	[Inject] private IComponentCollection<Drawable> _drawables = null;
+	private readonly IComponentCollection<Drawable> _drawables;
 
 	private readonly IEntityView _drawableIds;
 
-	public RenderingSystem(ContainerProvider<GameState> ownerProvider) : base(ownerProvider)
+	public RenderingSystem(ContainerProvider<GameState> ownerProvider,
+	                       IComponentCollection<PhysicsObject> physObjects,
+	                       IComponentCollection<Drawable> drawables) : base(ownerProvider)
 	{
+		_physObjects = physObjects;
+		_drawables = drawables;
 		// filter out entities that have both PhysicsObject and Drawable
 		_drawableIds = EntityManager.GetView<PhysicsObject, Drawable>();
 	}

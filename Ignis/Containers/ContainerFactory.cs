@@ -10,12 +10,12 @@ namespace Ignis.Containers
 public static class ContainerFactory
 {
 	/// <summary>
-	/// Creates a MicroResolver-based ECS container.
+	/// Creates an ECS container.
 	/// </summary>
 	/// <typeparam name="TState">Type of state parameter that gets passed to systems.</typeparam>
-	public static IContainer<TState> CreateMicroResolverContainer<TState>()
+	public static IContainer<TState> CreateContainer<TState>()
 	{
-		return new MicroResolverContainer<TState>();
+		return new MEDIContainer<TState>();
 	}
 }
 }

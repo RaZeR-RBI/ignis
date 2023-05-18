@@ -1,33 +1,29 @@
 using ConsoleSample.Components;
 using Ignis;
 using Ignis.Containers;
-using MicroResolver;
 
 namespace ConsoleSample.Systems
 {
 public class PhysicsSystem : SystemBase<GameState>
 {
-	[Inject] // this attribute comes from MicroResolver
-	private IComponentCollection<PhysicsObject> _objects = null;
+	private readonly IComponentCollection<PhysicsObject> _objects;
 
-	public PhysicsSystem(ContainerProvider<GameState> ownerProvider) : base(ownerProvider)
+	public PhysicsSystem(ContainerProvider<GameState> ownerProvider,
+	                     IComponentCollection<PhysicsObject> objects) : base(ownerProvider)
 	{
+		_objects = objects;
 	}
 
 	public override void Execute(GameState state)
 	{
 		// pass current state and instance as parameter to avoid heap allocations
-		var param = (this, state);
+		var param = (Self: this, State: state);
 		// process each component
-		_objects.ForEach((id, obj, p) => Move(id, obj, p), param);
+		_objects.ForEach((id, obj, p) => p.Self.Move(id, obj, p.State), param);
 	}
 
-	// note - it's static on purpose, to prevent accidental closure creation
-	private static void Move(int id, PhysicsObject obj, (PhysicsSystem, GameState) param)
+	private void Move(int id, PhysicsObject obj, GameState state)
 	{
-		// unpack them back
-		var (@this, state) = param;
-
 		// move object
 		obj.Position += obj.Velocity * state.DeltaSeconds;
 
@@ -45,7 +41,7 @@ public class PhysicsSystem : SystemBase<GameState>
 		}
 
 		// update component value
-		@this._objects.UpdateCurrent(obj);
+		_objects.UpdateCurrent(obj);
 	}
 }
 }

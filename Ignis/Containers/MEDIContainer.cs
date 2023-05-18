@@ -5,14 +5,13 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Ignis.Storage;
-using MicroResolver;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Ignis.Containers
 {
-internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
+internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 {
 	public IEntityManager EntityManager { get; }
-	private readonly ObjectResolver _resolver = ObjectResolver.Create();
 	private readonly List<Type> _registeredTypes = new List<Type>();
 
 	private Action<TState> _executor = _ => { };
@@ -21,8 +20,12 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	private readonly List<Type> _registeredComponents = new List<Type>();
 	private readonly List<Type> _registeredSystems = new List<Type>();
 
-	public MicroResolverContainer()
+	private IServiceProvider _provider;
+	private IServiceCollection _services;
+
+	public MEDIContainer()
 	{
+		_services = new ServiceCollection();
 		ContainerProvider<TState>.BeginCreation(this);
 		Register<ContainerProvider<TState>>();
 		EntityManager = new EntityManager(ResolveStorage);
@@ -40,7 +43,7 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	private IComponentCollectionStorage ResolveStorage(Type componentType)
 	{
 		var storageType = typeof(IComponentCollection<>).MakeGenericType(componentType);
-		var result = _resolver.Resolve(storageType);
+		var result = Resolve(storageType);
 		return (IComponentCollectionStorage) result;
 	}
 #pragma warning restore
@@ -80,7 +83,7 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		foreach (var list in _systemTypes)
 		{
 			var instances = list
-			                .Select(t => _resolver.Resolve(t))
+			                .Select(t => Resolve(t))
 			                .Cast<SystemBase<TState>>()
 			                .ToList();
 
@@ -101,9 +104,9 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	{
 		if (_alreadyBuilt)
 			throw new InvalidOperationException("Container is already built");
-		_resolver.Compile();
+		_provider = new DefaultServiceProviderFactory().CreateServiceProvider(_services);
 		foreach (var type in _registeredTypes)
-			_resolver.Resolve(type);
+			Resolve(type);
 		BuildExecutionOrder();
 		_alreadyBuilt = true;
 		ContainerProvider<TState>.EndCreation();
@@ -117,14 +120,14 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 
 	public IComponentCollection<T> GetStorageFor<T>() where T : new()
 	{
-		return _resolver.Resolve<IComponentCollection<T>>();
+		return Resolve<IComponentCollection<T>>();
 	}
 
 	public T GetSystem<T>() where T : class
 	{
 		if (!_registeredSystems.Contains(typeof(T)))
 			throw new ArgumentException($"No implementation for system ${typeof(T)} is registered");
-		return _resolver.Resolve<T>();
+		return Resolve<T>();
 	}
 
 	public IContainer<TState> Register<TInterface, TImpl>()
@@ -142,14 +145,14 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 #pragma warning disable HAA0101 // params call is ok because it's intended mostly for testing purposes
 	public IComponentCollection GetStorageFor(Type type)
 	{
-		return _resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type)) as
+		return Resolve(typeof(IComponentCollection<>).MakeGenericType(type)) as
 			       IComponentCollection;
 	}
 #pragma warning restore
 
 	public SystemBase<TState> GetSystem(Type type)
 	{
-		return _resolver.Resolve(type) as SystemBase<TState>;
+		return Resolve(type) as SystemBase<TState>;
 	}
 
 	public IEnumerable<Type> GetComponentTypes()
@@ -199,7 +202,7 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 		var registeredType = @interface;
 		if (typeof(SystemBase<TState>).IsAssignableFrom(impl))
 		{
-			_resolver.Register(Lifestyle.Singleton, @interface, impl);
+			_services.AddSingleton(@interface, impl);
 			_registeredSystems.Add(@interface);
 		}
 		else if (typeof(IComponentCollectionStorage).IsAssignableFrom(impl))
@@ -213,14 +216,12 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 				"Object implements IComponentCollectionStorage but not IComponentCollection<T>");
 			var componentType = storeInterface.GetGenericArguments()[0];
 			registeredType = typeof(IComponentCollection<>).MakeGenericType(componentType);
-			_resolver.Register(Lifestyle.Singleton,
-			                   registeredType,
-			                   impl);
+			_services.AddSingleton(registeredType, impl);
 			_registeredComponents.Add(componentType);
 		}
 		else
 		{
-			_resolver.Register(Lifestyle.Singleton, @interface, impl);
+			_services.AddSingleton(@interface, impl);
 		}
 
 		_registeredTypes.Add(registeredType);
@@ -230,7 +231,9 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 
 	public object Resolve(Type type)
 	{
-		return _resolver.Resolve(type);
+		if (_provider is null)
+			throw new InvalidOperationException("Container must be built first");
+		return _provider.GetRequiredService(type);
 	}
 
 	public IContainer<TState> AddSystem<TInterface, TSystem>()
