@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -14,11 +14,10 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 	public IEntityManager EntityManager { get; }
 	private readonly List<Type> _registeredTypes = new List<Type>();
 
-	private Action<TState> _executor = _ => { };
-	private readonly List<List<Type>> _systemTypes = new List<List<Type>>();
-
-	private readonly List<Type> _registeredComponents = new List<Type>();
+	private readonly Dictionary<Type, Type> _registeredComponents = new Dictionary<Type, Type>();
 	private readonly List<Type> _registeredSystems = new List<Type>();
+
+	private readonly List<SystemBase<TState>> _systemInstances = new List<SystemBase<TState>>();
 
 	private IServiceProvider _provider;
 	private IServiceCollection _services;
@@ -42,7 +41,7 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 #pragma warning disable HAA0101 // rare call, don't care about params allocation
 	private IComponentCollectionStorage ResolveStorage(Type componentType)
 	{
-		var storageType = typeof(IComponentCollection<>).MakeGenericType(componentType);
+		var storageType = _registeredComponents[componentType];
 		var result = Resolve(storageType);
 		return (IComponentCollectionStorage) result;
 	}
@@ -57,7 +56,9 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 		where TComponent : struct
 		where TStorage : class, IComponentCollection<TComponent>
 	{
-		Register<IComponentCollection<TComponent>, TStorage>();
+		_registeredComponents.Add(typeof(TComponent), typeof(IComponentCollection<TComponent>));
+		_registeredTypes.Add(typeof(IComponentCollection<TComponent>));
+		_services.AddSingleton<IComponentCollection<TComponent>, TStorage>();
 		return this;
 	}
 
@@ -68,7 +69,7 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 
 	private void ThrowIfSystemIsAlreadyRegistered(Type type)
 	{
-		if (_systemTypes.SelectMany(l => l).Contains(type))
+		if (_registeredSystems.Contains(type))
 			throw new ArgumentException($"System type {type} is already registered");
 	}
 
@@ -77,26 +78,11 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 		return AddSystem<TSystem, TSystem>();
 	}
 
-#pragma warning disable HAA0302, HAA0301 // we're aware of closures capturing stuff here, we do it once
-	private void BuildExecutionOrder()
+	private void CreateSystemInstances()
 	{
-		foreach (var list in _systemTypes)
-		{
-			var instances = list
-			                .Select(t => Resolve(t))
-			                .Cast<SystemBase<TState>>()
-			                .ToList();
-
-			if (instances.Count == 1)
-				_executor += (s) => instances[0].Execute(s);
-			else
-				_executor += (s) =>
-					Parallel.ForEach(instances,
-					                 (v, _, __) =>
-						                 v.Execute(s));
-		}
+		foreach (var type in _registeredSystems)
+			_systemInstances.Add(GetSystem(type));
 	}
-#pragma warning restore
 
 	private bool _alreadyBuilt = false;
 
@@ -104,10 +90,10 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 	{
 		if (_alreadyBuilt)
 			throw new InvalidOperationException("Container is already built");
-		_provider = new DefaultServiceProviderFactory().CreateServiceProvider(_services);
+		_provider = _services.BuildServiceProvider();
 		foreach (var type in _registeredTypes)
 			Resolve(type);
-		BuildExecutionOrder();
+		CreateSystemInstances();
 		_alreadyBuilt = true;
 		ContainerProvider<TState>.EndCreation();
 		return this;
@@ -115,7 +101,8 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 
 	public void ExecuteSystems(TState state)
 	{
-		_executor(state);
+		foreach (var item in _systemInstances)
+			item.Execute(state);
 	}
 
 	public IComponentCollection<T> GetStorageFor<T>() where T : new()
@@ -134,7 +121,9 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 		where TInterface : class
 		where TImpl : class, TInterface
 	{
-		return Register(typeof(TInterface), typeof(TImpl));
+		_services.AddSingleton<TInterface, TImpl>();
+		_registeredTypes.Add(typeof(TInterface));
+		return this;
 	}
 
 	public TInterface Resolve<TInterface>() where TInterface : class
@@ -145,8 +134,9 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 #pragma warning disable HAA0101 // params call is ok because it's intended mostly for testing purposes
 	public IComponentCollection GetStorageFor(Type type)
 	{
-		return Resolve(typeof(IComponentCollection<>).MakeGenericType(type)) as
-			       IComponentCollection;
+		var storageType = _registeredComponents[type];
+		var result = Resolve(storageType);
+		return (IComponentCollection) result;
 	}
 #pragma warning restore
 
@@ -157,7 +147,7 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 
 	public IEnumerable<Type> GetComponentTypes()
 	{
-		return _registeredComponents;
+		return _registeredComponents.Keys;
 	}
 
 	public IEnumerable<Type> GetSystemTypes()
@@ -174,30 +164,19 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 		}
 	}
 
-#pragma warning disable HAA0401 // rare call, don't account for allocations
-	public IContainer<TState> AddParallelSystems(Type[] interfaces, Type[] implementations)
-	{
-		foreach (var iface in interfaces)
-			ThrowIfSystemIsAlreadyRegistered(iface);
-		foreach (var pair in interfaces.Zip(implementations, (k, v) => (k, v)))
-			Register(pair.k, pair.v);
-		_systemTypes.Add(interfaces.ToList());
-		return this;
-	}
-#pragma warning restore
-
 	public IContainer<TState> Register<T>() where T : class
 	{
 		return Register<T, T>();
 	}
 
-	public IContainer<TState> Register(Type type)
+	public IContainer<TState> Register([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type type)
 	{
 		return Register(type, type);
 	}
 
-#pragma warning disable HAA0101 // rare call, don't account for params allocation
-	public IContainer<TState> Register(Type @interface, Type impl)
+	public IContainer<TState> Register(
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type @interface,
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type impl)
 	{
 		var registeredType = @interface;
 		if (typeof(SystemBase<TState>).IsAssignableFrom(impl))
@@ -215,9 +194,8 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 				throw new ArgumentException(
 				"Object implements IComponentCollectionStorage but not IComponentCollection<T>");
 			var componentType = storeInterface.GetGenericArguments()[0];
-			registeredType = typeof(IComponentCollection<>).MakeGenericType(componentType);
 			_services.AddSingleton(registeredType, impl);
-			_registeredComponents.Add(componentType);
+			_registeredComponents.Add(componentType, registeredType);
 		}
 		else
 		{
@@ -227,7 +205,6 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 		_registeredTypes.Add(registeredType);
 		return this;
 	}
-#pragma warning restore
 
 	public object Resolve(Type type)
 	{
@@ -242,13 +219,8 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 	{
 		ThrowIfSystemIsAlreadyRegistered<TInterface>();
 		Register<TInterface, TSystem>();
-		_systemTypes.Add(new List<Type> {typeof(TInterface)});
+		_registeredSystems.Add(typeof(TInterface));
 		return this;
-	}
-
-	public IContainer<TState> AddParallelSystems(Type[] implementations)
-	{
-		return AddParallelSystems(implementations, implementations);
 	}
 
 	public bool IsBuilt()

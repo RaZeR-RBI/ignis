@@ -1,4 +1,4 @@
-![Stability: alpha](https://img.shields.io/badge/stability-alpha-orange.svg)
+![Stability: alpha](https://img.shields.io/badge/stability-beta-orange.svg)
 ![Line coverage](docs/coverage/badge_linecoverage.png) ![Branch coverage](docs/coverage/badge_branchcoverage.png)
 
 # Ignis - a simple and lightweight Entity Component System (ECS)
@@ -24,12 +24,13 @@ pattern.
 - Easy to use API
 - Minimal or zero heap allocations in hot paths
 - Simple architecture
-- Minimal boilerplate code - [MicroResolver](https://github.com/neuecc/MicroResolver) is used as dependency injection container, which allows easy and fast injection of needed services and objects, keeping your code clean
+- Minimal boilerplate code - Microsoft.Extensions.DependencyInjection is used as dependency injection container, which allows easy and fast injection of needed services and objects, keeping your code clean
 
 ## Non-goals
 To reduce both code and usage complexity the following trade-offs were made:
 - Single instance of component per entity
 - Order of execution is defined by the user
+- No parent/child relationships (can be augmented by an additional component)
 
 ## Definitions
 - **Entity** - represented as **int**, components are attached to them.
@@ -112,11 +113,12 @@ Let's make a **PhysicsSystem**:
 ```csharp
 public class PhysicsSystem : SystemBase<GameState>
 {
-	[Inject] // this attribute comes from MicroResolver
 	private readonly IComponentCollection<PhysicsObject> _objects;
 
-	public PhysicsSystem(ContainerProvider<GameState> ownerProvider) : base(ownerProvider)
+	public PhysicsSystem(ContainerProvider<GameState> ownerProvider,
+	                     IComponentCollection<PhysicsObject> objects) : base(ownerProvider)
 	{
+		_objects = objects;
 	}
 
 	public override void Execute(GameState state)
@@ -176,22 +178,17 @@ Since we need to access the outer state to do our calculations, let's use the ``
 ```csharp
 public override void Execute(GameState state)
 {
-	// pass current state and instance as parameter
-	var param = (this, state);
+	// pass current state and instance as parameter to avoid heap allocations
+	var param = (Self: this, State: state);
 	// process each component
-	_objects.ForEach((id, obj, p) => Move(id, obj, p), param);
+	_objects.ForEach((id, obj, p) => p.Self.Move(id, obj, p.State), param);
 }
 ```
 
 Let's implement our ```Move``` method:
 ```csharp
-// note - it's static on purpose, to prevent accidental closure creation
-
-private static void Move(int id, PhysicsObject obj, (PhysicsSystem, GameState) param)
+private void Move(int id, PhysicsObject obj, GameState state)
 {
-	// unpack the parameters
-	var (@this, state) = param;
-
 	// move object
 	obj.Position += obj.Velocity * state.DeltaSeconds;
 
@@ -209,7 +206,7 @@ private static void Move(int id, PhysicsObject obj, (PhysicsSystem, GameState) p
 	}
 
 	// update component value
-	@this._objects.UpdateCurrent(obj);
+	_objects.UpdateCurrent(obj);
 }
 ```
 
@@ -227,21 +224,21 @@ We need two components, so we need to request it from the `EntityManager`:
 ```csharp
 public class RenderingSystem : SystemBase<GameState>
 {
-	[Inject]
-	private IComponentCollection<PhysicsObject> _physObjects = null;
+	private readonly IComponentCollection<PhysicsObject> _physObjects;
 
-	[Inject]
-	private IComponentCollection<Drawable> _drawables = null;
+	private readonly IComponentCollection<Drawable> _drawables;
 
-	// our entity view
 	private readonly IEntityView _drawableIds;
 
-	public RenderingSystem(ContainerProvider<GameState> ownerProvider) : base(ownerProvider)
+	public RenderingSystem(ContainerProvider<GameState> ownerProvider,
+	                       IComponentCollection<PhysicsObject> physObjects,
+	                       IComponentCollection<Drawable> drawables) : base(ownerProvider)
 	{
-		// retrieve an entity view
+		_physObjects = physObjects;
+		_drawables = drawables;
+		// filter out entities that have both PhysicsObject and Drawable
 		_drawableIds = EntityManager.GetView<PhysicsObject, Drawable>();
 	}
-
 	public override void Execute(GameState state)
 	{
 		/* implement logic here */
@@ -289,7 +286,7 @@ To do that you need to use the [ContainerFactory](https://razer-rbi.github.io/ig
 ```csharp
 private static IContainer<GameState> ConfigureECS()
 {
-	return ContainerFactory.CreateMicroResolverContainer<GameState>()
+	return ContainerFactory.CreateContainer<GameState>()
 	                       .AddComponent<PhysicsObject>()
 	                       .AddComponent<Drawable>()
 	                       .AddSystem<PhysicsSystem>()

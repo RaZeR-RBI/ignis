@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ignis
 {
@@ -80,20 +81,6 @@ public interface IContainer<TState> : IDisposable
 		where TSystem : SystemBase<TState>;
 
 	/// <summary>
-	/// Registers system implementations conforming to the supplied interfaces which should be run in parallel.
-	/// </summary>
-	/// <param name="interfaces">Interface type (will be used for <see cref="Resolve(Type)" />)</param>
-	/// <param name="implementations">System types that implement those interfaces</param>
-	/// <returns></returns>
-	IContainer<TState> AddParallelSystems(Type[] interfaces, Type[] implementations);
-
-	/// <summary>
-	/// Registers systems which should be run in parallel.
-	/// </summary>
-	/// <param name="implementations">System types</param>
-	IContainer<TState> AddParallelSystems(Type[] implementations);
-
-	/// <summary>
 	/// Register an object type in this container.
 	/// </summary>
 	/// <typeparam name="T">Object type</typeparam>
@@ -104,7 +91,7 @@ public interface IContainer<TState> : IDisposable
 	/// Register an object type in this container.
 	/// </summary>
 	/// <param name="type">Object type</param>
-	IContainer<TState> Register(Type type);
+	IContainer<TState> Register([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type type);
 
 	/// <summary>
 	/// Register an interface implementation in this container.
@@ -118,7 +105,9 @@ public interface IContainer<TState> : IDisposable
 	/// <summary>
 	/// Register an interface implementation in this container.
 	/// </summary>
-	IContainer<TState> Register(Type @interface, Type impl);
+	IContainer<TState> Register(
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type @interface,
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type impl);
 
 	/// <summary>
 	/// Resolves an object of the specified type.

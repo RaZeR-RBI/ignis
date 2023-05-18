@@ -107,7 +107,7 @@ public class ContainerTest : IDisposable
 	public void ShouldRegisterUsingNonGenericOverloads()
 	{
 		container
-			.Register(typeof(DoubleListStorage<SampleComponent>))
+			.Register(typeof(IComponentCollection<SampleComponent>), typeof(DoubleListStorage<SampleComponent>))
 			.Register(typeof(SampleSystem))
 			.Build();
 
@@ -121,9 +121,9 @@ public class SampleSystem : SystemBase<object>
 {
 	private readonly IComponentCollection<SampleComponent> sampleComponent;
 
-	public SampleSystem(ContainerProvider<object> provider) : base(provider)
+	public SampleSystem(ContainerProvider<object> provider, IComponentCollection<SampleComponent> storage) : base(provider)
 	{
-		sampleComponent = _container.GetStorageFor<SampleComponent>();
+		sampleComponent = storage;
 	}
 
 	public override void Execute(object state)

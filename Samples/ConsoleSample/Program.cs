@@ -113,9 +113,9 @@ internal class Program
 	}
 
 	private static T RandomEnumValue<T>()
-		where T : Enum
+		where T : struct, Enum
 	{
-		var elements = Enum.GetValues(typeof(T));
+		var elements = Enum.GetValues<T>();
 		return (T) elements.GetValue(_rnd.Next(0, elements.Length));
 	}
 }
