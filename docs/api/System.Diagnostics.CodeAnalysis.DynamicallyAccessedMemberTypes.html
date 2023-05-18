@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html><head><title>System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<style>
+        pre code.hljs {
+            display: block;
+        }
+
+        code.hljs {
+            display: inline;
+        }</style>
+</head><body>
+<h1>DynamicallyAccessedMemberTypes</h1>
+<p>
+<b>Enum</b></p>
+<p>
+<b>Namespace:</b> <a href="System.Diagnostics.CodeAnalysis.html">System.Diagnostics.CodeAnalysis</a>
+</p>
+<p>
+<b>Declared in:</b> <a href="System.Diagnostics.CodeAnalysis.html">System.Diagnostics.CodeAnalysis</a>
+</p>
+<hr>
+<p>
+
+Specifies the types of members that are dynamically accessed.
+
+This enumeration has a <a href="#.html">FlagsAttribute</a>
+ attribute that allows a
+bitwise combination of its member values.
+</p>
+<h3>Enumeration</h3>
+<b>Underlying type:</b> int<p>
+Values:<ul>
+<li>None = 0</li>
+<li>PublicParameterlessConstructor = 0x0001</li>
+<li>PublicConstructors = 0x0002 | PublicParameterlessConstructor</li>
+<li>NonPublicConstructors = 0x0004</li>
+<li>PublicMethods = 0x0008</li>
+<li>NonPublicMethods = 0x0010</li>
+<li>PublicFields = 0x0020</li>
+<li>NonPublicFields = 0x0040</li>
+<li>PublicNestedTypes = 0x0080</li>
+<li>NonPublicNestedTypes = 0x0100</li>
+<li>PublicProperties = 0x0200</li>
+<li>NonPublicProperties = 0x0400</li>
+<li>PublicEvents = 0x0800</li>
+<li>NonPublicEvents = 0x1000</li>
+<li>Interfaces = 0x2000</li>
+<li>All = ~None</li>
+</ul>
+</p>
+<hr>
+<a href="index.html">Back to index</a>
+<script>
+            var code = document.getElementsByTagName('code');
+            for (i = 0; i < code.length; i++) hljs.highlightBlock(code[i]);
+        </script>
+</body></html>

@@ -91,7 +91,8 @@ public interface IContainer<TState> : IDisposable
 	/// Register an object type in this container.
 	/// </summary>
 	/// <param name="type">Object type</param>
-	IContainer<TState> Register([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type type);
+	IContainer<TState> Register([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+	                            Type type);
 
 	/// <summary>
 	/// Register an interface implementation in this container.
@@ -106,8 +107,10 @@ public interface IContainer<TState> : IDisposable
 	/// Register an interface implementation in this container.
 	/// </summary>
 	IContainer<TState> Register(
-		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type @interface,
-		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type impl);
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+		Type @interface,
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+		Type impl);
 
 	/// <summary>
 	/// Resolves an object of the specified type.

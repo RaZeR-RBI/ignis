@@ -341,18 +341,6 @@
               "link": "Ignis.IContainer_TState_.AddComponent_TComponent_()"
             },
             {
-              "name": "AddParallelSystems(Type[], Type[])",
-              "fullName": "Ignis.IContainer<TState>.AddParallelSystems(Type[], Type[])",
-              "type": "Method",
-              "link": "Ignis.IContainer_TState_.AddParallelSystems(Type[], Type[])"
-            },
-            {
-              "name": "AddParallelSystems(Type[])",
-              "fullName": "Ignis.IContainer<TState>.AddParallelSystems(Type[])",
-              "type": "Method",
-              "link": "Ignis.IContainer_TState_.AddParallelSystems(Type[])"
-            },
-            {
               "name": "AddSystem<TInterface, TSystem>()",
               "fullName": "Ignis.IContainer<TState>.AddSystem<TInterface, TSystem>()",
               "type": "Method",
@@ -787,10 +775,10 @@
           "link": "Ignis.Containers.ContainerFactory",
           "children": [
             {
-              "name": "CreateMicroResolverContainer<TState>()",
-              "fullName": "Ignis.Containers.ContainerFactory.CreateMicroResolverContainer<TState>()",
+              "name": "CreateContainer<TState>()",
+              "fullName": "Ignis.Containers.ContainerFactory.CreateContainer<TState>()",
               "type": "Method",
-              "link": "Ignis.Containers.ContainerFactory.CreateMicroResolverContainer_TState_()"
+              "link": "Ignis.Containers.ContainerFactory.CreateContainer_TState_()"
             }
           ]
         },
@@ -1017,6 +1005,66 @@
               "link": "Ignis.Storage.NullStorage_T_.UpdateCurrent(T)"
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "System.Diagnostics.CodeAnalysis",
+      "fullName": "System.Diagnostics.CodeAnalysis",
+      "type": "Namespace",
+      "link": "System.Diagnostics.CodeAnalysis",
+      "children": [
+        {
+          "name": "DynamicallyAccessedMembersAttribute",
+          "fullName": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute",
+          "type": "Class",
+          "link": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute",
+          "children": [
+            {
+              "name": "MemberTypes",
+              "fullName": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.MemberTypes",
+              "type": "Property",
+              "link": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.MemberTypes"
+            },
+            {
+              "name": "DynamicallyAccessedMembersAttribute(DynamicallyAccessedMemberTypes)",
+              "fullName": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.DynamicallyAccessedMembersAttribute(DynamicallyAccessedMemberTypes)",
+              "type": "Constructor",
+              "link": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.DynamicallyAccessedMembersAttribute(DynamicallyAccessedMemberTypes)"
+            }
+          ]
+        },
+        {
+          "name": "RequiresDynamicCodeAttribute",
+          "fullName": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute",
+          "type": "Class",
+          "link": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute",
+          "children": [
+            {
+              "name": "Message",
+              "fullName": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message",
+              "type": "Property",
+              "link": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message"
+            },
+            {
+              "name": "Url",
+              "fullName": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url",
+              "type": "Property",
+              "link": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url"
+            },
+            {
+              "name": "RequiresDynamicCodeAttribute(string)",
+              "fullName": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.RequiresDynamicCodeAttribute(string)",
+              "type": "Constructor",
+              "link": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.RequiresDynamicCodeAttribute(string)"
+            }
+          ]
+        },
+        {
+          "name": "DynamicallyAccessedMemberTypes",
+          "fullName": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes",
+          "type": "Enum",
+          "link": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes"
         }
       ]
     }

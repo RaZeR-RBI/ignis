@@ -228,7 +228,7 @@ var assemblies = [
       { "name": "Ignis.CollectionEnumerator`1", "rp": "Ignis_CollectionEnumerator_1.htm", "cl": 23, "ucl": 10, "cal": 33, "tl": 95, "ct": "LineCoverage", "mc": "-", "cb": 9, "tb": 16, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.Containers.ContainerFactory", "rp": "Ignis_ContainerFactory.htm", "cl": 1, "ucl": 0, "cal": 1, "tl": 21, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.Containers.ContainerProvider`1", "rp": "Ignis_ContainerProvider_1.htm", "cl": 11, "ucl": 2, "cal": 13, "tl": 63, "ct": "LineCoverage", "mc": "-", "cb": 1, "tb": 2, "lch": [], "bch": [], "hc": [] },
-      { "name": "Ignis.Containers.MicroResolverContainer`1", "rp": "Ignis_MicroResolverContainer_1.htm", "cl": 85, "ucl": 18, "cal": 103, "tl": 256, "ct": "LineCoverage", "mc": "-", "cb": 24, "tb": 36, "lch": [], "bch": [], "hc": [] },
+      { "name": "Ignis.Containers.MEDIContainer`1", "rp": "Ignis_MEDIContainer_1.htm", "cl": 83, "ucl": 8, "cal": 91, "tl": 235, "ct": "LineCoverage", "mc": "-", "cb": 21, "tb": 28, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityComponentEventArgs", "rp": "Ignis_EntityComponentEventArgs.htm", "cl": 3, "ucl": 1, "cal": 4, "tl": 29, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityIdEventArgs", "rp": "Ignis_EntityIdEventArgs.htm", "cl": 3, "ucl": 0, "cal": 3, "tl": 24, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.EntityManager", "rp": "Ignis_EntityManager.htm", "cl": 217, "ucl": 10, "cal": 227, "tl": 467, "ct": "LineCoverage", "mc": "-", "cb": 191, "tb": 204, "lch": [], "bch": [], "hc": [] },
@@ -241,6 +241,8 @@ var assemblies = [
       { "name": "Ignis.Storage.EntityValuePair`1", "rp": "Ignis_EntityValuePair_1.htm", "cl": 0, "ucl": 4, "cal": 4, "tl": 23, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.Storage.NullStorage`1", "rp": "Ignis_NullStorage_1.htm", "cl": 19, "ucl": 12, "cal": 31, "tl": 128, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 6, "lch": [], "bch": [], "hc": [] },
       { "name": "Ignis.SystemBase`1", "rp": "Ignis_SystemBase_1.htm", "cl": 11, "ucl": 1, "cal": 12, "tl": 69, "ct": "LineCoverage", "mc": "-", "cb": 1, "tb": 2, "lch": [], "bch": [], "hc": [] },
+      { "name": "System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute", "rp": "Ignis_DynamicallyAccessedMembersAttribute.htm", "cl": 0, "ucl": 4, "cal": 4, "tl": 57, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute", "rp": "Ignis_RequiresDynamicCodeAttribute.htm", "cl": 0, "ucl": 5, "cal": 5, "tl": 47, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
     ]},
 ];
 

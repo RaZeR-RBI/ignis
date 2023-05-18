@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <linker>
-	<assembly fullname="Ignis" preserve="all" />
-	<assembly fullname="ConsoleSample" preserve="all" />
+    <assembly fullname="Ignis" preserve="all" />
+    <assembly fullname="ConsoleSample" preserve="all" />
 </linker>

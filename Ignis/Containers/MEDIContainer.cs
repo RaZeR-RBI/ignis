@@ -169,14 +169,18 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 		return Register<T, T>();
 	}
 
-	public IContainer<TState> Register([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type type)
+	public IContainer<TState> Register(
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+		Type type)
 	{
 		return Register(type, type);
 	}
 
 	public IContainer<TState> Register(
-		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type @interface,
-		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type impl)
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+		Type @interface,
+		[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+		Type impl)
 	{
 		var registeredType = @interface;
 		if (typeof(SystemBase<TState>).IsAssignableFrom(impl))
