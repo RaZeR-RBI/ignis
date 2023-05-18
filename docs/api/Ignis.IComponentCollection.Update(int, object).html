@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html><head><title>Ignis.IContainer<TState>.GetStorageFor(Type)</title>
+<html><head><title>Ignis.IComponentCollection.Update(int, object)</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <style>
@@ -11,30 +11,39 @@
             display: inline;
         }</style>
 </head><body>
-<h1>GetStorageFor(Type)</h1>
+<h1>Update(int, object)</h1>
 <p>
 <b>Method</b></p>
 <p>
 <b>Namespace:</b> <a href="Ignis.html">Ignis</a>
 </p>
 <p>
-<b>Declared in:</b> <a href="Ignis.IContainer_TState_.html">Ignis.IContainer&lt;TState&gt;</a>
+<b>Declared in:</b> <a href="Ignis.IComponentCollection.html">Ignis.IComponentCollection</a>
 </p>
 <hr>
 <p>
 
-Gets the storage for the specified component type.
+Updates the specified entity's component value.
+It's strongly recommended to use the generic version
+<a href="Ignis.Storage.NullStorage_T_.Update(int, T).html">Update(int, T)</a>
+ instead.
 </p>
 <h2>Syntax</h2>
-<pre><code>public IComponentCollection GetStorageFor(
-	Type type
+<pre><code>public void Update(
+	int entityId,
+	object value
 )</code></pre>
 <h3>Parameters</h3>
 <p>
-<code>type</code>
+<code>entityId</code>
 </p>
 <p>
-Component type</p>
+Entity ID</p>
+<p>
+<code>value</code>
+</p>
+<p>
+New value (must be of type T)</p>
 <hr>
 <a href="index.html">Back to index</a>
 <script>

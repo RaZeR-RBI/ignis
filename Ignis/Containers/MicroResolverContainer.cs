@@ -140,9 +140,10 @@ internal class MicroResolverContainer<TState> : IContainer<TState>, IDisposable
 	}
 
 #pragma warning disable HAA0101 // params call is ok because it's intended mostly for testing purposes
-	public dynamic GetStorageFor(Type type)
+	public IComponentCollection GetStorageFor(Type type)
 	{
-		return _resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type));
+		return _resolver.Resolve(typeof(IComponentCollection<>).MakeGenericType(type)) as
+			       IComponentCollection;
 	}
 #pragma warning restore
 

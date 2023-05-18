@@ -223,6 +223,26 @@
           ]
         },
         {
+          "name": "IComponentCollection",
+          "fullName": "Ignis.IComponentCollection",
+          "type": "Interface",
+          "link": "Ignis.IComponentCollection",
+          "children": [
+            {
+              "name": "GetValue(int)",
+              "fullName": "Ignis.IComponentCollection.GetValue(int)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection.GetValue(int)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.IComponentCollection.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection.Update(int, object)"
+            }
+          ]
+        },
+        {
           "name": "IComponentCollection<T>",
           "fullName": "Ignis.IComponentCollection<T>",
           "type": "Interface",
@@ -281,12 +301,6 @@
               "fullName": "Ignis.IComponentCollection<T>.Process(Func<int, T, T>)",
               "type": "Method",
               "link": "Ignis.IComponentCollection_T_.Process(Func_int, T, T_)"
-            },
-            {
-              "name": "Update(int, object)",
-              "fullName": "Ignis.IComponentCollection<T>.Update(int, object)",
-              "type": "Method",
-              "link": "Ignis.IComponentCollection_T_.Update(int, object)"
             },
             {
               "name": "Update(int, T)",
@@ -857,6 +871,12 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.GetEntityIds()"
             },
             {
+              "name": "GetValue(int)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.GetValue(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.GetValue(int)"
+            },
+            {
               "name": "GetValues()",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.GetValues()",
               "type": "Method",
@@ -941,6 +961,12 @@
               "fullName": "Ignis.Storage.NullStorage<T>.GetEntityIds()",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.GetEntityIds()"
+            },
+            {
+              "name": "GetValue(int)",
+              "fullName": "Ignis.Storage.NullStorage<T>.GetValue(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.GetValue(int)"
             },
             {
               "name": "GetValues()",

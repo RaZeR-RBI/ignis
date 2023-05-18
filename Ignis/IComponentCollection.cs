@@ -10,11 +10,31 @@ internal interface IComponentCollectionStorage
 	bool StoreComponentForEntity(int entityId);
 }
 
+public interface IComponentCollection
+{
+	/// <summary>
+	/// Updates the specified entity's component value.
+	/// It's strongly recommended to use the generic version
+	/// <see cref="Update(int, T)" /> instead.
+	/// </summary>
+	/// <param name="entityId">Entity ID</param>
+	/// <param name="value">New value (must be of type T)</param>
+	void Update(int entityId, object value);
+
+	/// <summary>
+	/// Retrieves a component value for the specified entity.
+	/// It's strongly recommended to use the generic version
+	/// <see cref="Get(int)" /> instead.
+	/// </summary>
+	/// <param name="entityId">Entity ID</param>
+	object GetValue(int entityId);
+}
+
 /// <summary>
 /// Represents a component storage.
 /// </summary>
 /// <typeparam name="T">Component type</typeparam>
-public interface IComponentCollection<T>
+public interface IComponentCollection<T> : IComponentCollection
 	where T : new()
 {
 	/// <summary>
@@ -32,15 +52,6 @@ public interface IComponentCollection<T>
 	/// <param name="entityId">Entity ID</param>
 	/// <param name="value">New component value</param>
 	void Update(int entityId, T value);
-
-	/// <summary>
-	/// Updates the specified entity's component value.
-	/// It's strongly recommended to use the generic version
-	/// <see cref="Update(int, T)" /> instead.
-	/// </summary>
-	/// <param name="entityId">Entity ID</param>
-	/// <param name="value">New value (must be of type T)</param>
-	void Update(int entityId, object value);
 
 	/// <summary>
 	/// Retrieves a component value for the specified entity.

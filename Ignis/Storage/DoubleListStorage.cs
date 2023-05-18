@@ -134,6 +134,13 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		}
 	}
 
+#pragma warning disable HAA0601
+	public object GetValue(int entityId)
+	{
+		return Get(entityId);
+	}
+#pragma warning restore HAA0601
+
 	[ExcludeFromCodeCoverage]
 	private class DoubleListStorageView : IEntityView
 	{

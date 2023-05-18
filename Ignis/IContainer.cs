@@ -29,7 +29,7 @@ public interface IContainer<TState> : IDisposable
 	/// Gets the storage for the specified component type.
 	/// </summary>
 	/// <param name="type">Component type</param>
-	dynamic GetStorageFor(Type type);
+	IComponentCollection GetStorageFor(Type type);
 
 	/// <summary>
 	/// Gets the system of the specified type.
