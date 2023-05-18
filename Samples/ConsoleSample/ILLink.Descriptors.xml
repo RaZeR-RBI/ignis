@@ -2,6 +2,4 @@
 <linker>
 	<assembly fullname="Ignis" preserve="all" />
 	<assembly fullname="ConsoleSample" preserve="all" />
-	<!-- <type fullname="ConsoleSample.Systems.PhysicsSystem" preserve="all" /> -->
-	<!-- <type fullname="ConsoleSample.Systems.RenderingSystem" preserve="all" /> -->
 </linker>

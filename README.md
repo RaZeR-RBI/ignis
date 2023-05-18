@@ -11,7 +11,7 @@ In short, you describe your game entities as composition of **components** like
 decoupling the game logic from the entities and allowing a wide range of behaviors
 to be combined easily. **Entities** are represented as simple types (like **int**) and carry zero overhead.
 
-This library provides a simple and fast implementation for such a
+This library provides a simple, fast and NativeAOT-friendly implementation for such a
 pattern.
 
 [Interested? Read more about ECS](https://en.wikipedia.org/wiki/Entity_component_system)
@@ -31,6 +31,29 @@ To reduce both code and usage complexity the following trade-offs were made:
 - Single instance of component per entity
 - Order of execution is defined by the user
 - No parent/child relationships (can be augmented by an additional component)
+
+## Native AOT support
+Library can be used in Native AOT mode.
+To make everything work, add `ILLink.Descriptors.xml` file to your project folder. Here's an example from supplied ConsoleSample:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+	<assembly fullname="Ignis" preserve="all" />
+	<assembly fullname="ConsoleSample" preserve="all" />
+</linker>
+```
+
+Then link it as an embedded resource in your .csproj:
+```xml
+<ItemGroup>
+	<EmbeddedResource Include="ILLink.Descriptors.xml">
+		<LogicalName>ILLink.Descriptors.xml</LogicalName>
+	</EmbeddedResource>
+</ItemGroup>
+```
+
+This configuration retains all declared members in both library and the code which uses it.
+
 
 ## Definitions
 - **Entity** - represented as **int**, components are attached to them.
