@@ -86,7 +86,9 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 
 	private bool _alreadyBuilt = false;
 
-	[UnconditionalSuppressMessage("Aot", "IL3050:RequiresDynamicCode", Justification = "The unfriendly method is not reachable with AOT")]
+	[UnconditionalSuppressMessage("Aot", "IL3050:RequiresDynamicCode",
+	                              Justification =
+		                              "The unfriendly method is not reachable with AOT")]
 	public IContainer<TState> Build()
 	{
 		if (_alreadyBuilt)

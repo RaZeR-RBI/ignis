@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 /// <summary>
@@ -80,14 +81,27 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 
 	public void Process(Func<int, T, T> action)
 	{
-		Reset();
-		while (HasNext())
+		var max = _ids.Count;
+		var ids = CollectionsMarshal.AsSpan(_ids);
+		var values = CollectionsMarshal.AsSpan(_values);
+		for (_curIndex = 0; _curIndex < max; _curIndex++)
 		{
-			var entityId = _ids[_curIndex];
-			var componentValue = _values[_curIndex];
-			var newValue = action(entityId, componentValue);
-			_values[_curIndex] = newValue;
-			_curIndex++;
+			var entityId = ids[_curIndex];
+			ref var componentValue = ref values[_curIndex];
+			componentValue = action(entityId, componentValue);
+		}
+	}
+
+	public void Process<TState>(Func<int, T, TState, T> action, TState state)
+	{
+		var max = _ids.Count;
+		var ids = CollectionsMarshal.AsSpan(_ids);
+		var values = CollectionsMarshal.AsSpan(_values);
+		for (_curIndex = 0; _curIndex < max; _curIndex++)
+		{
+			var entityId = ids[_curIndex];
+			ref var componentValue = ref values[_curIndex];
+			componentValue = action(entityId, componentValue, state);
 		}
 	}
 
@@ -124,8 +138,7 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 
 	public void ForEach<TState>(Action<int, T, TState> action, TState state)
 	{
-		Reset();
-		while (HasNext())
+		for (_curIndex = 0; _curIndex < _ids.Count;)
 		{
 			var entityId = _ids[_curIndex];
 			var componentValue = _values[_curIndex];

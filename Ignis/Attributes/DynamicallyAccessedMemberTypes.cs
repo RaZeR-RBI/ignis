@@ -13,7 +13,7 @@ namespace System.Diagnostics.CodeAnalysis
 #if SYSTEM_PRIVATE_CORELIB
 public
 #else
-    internal
+internal
 #endif
 	enum DynamicallyAccessedMemberTypes
 {

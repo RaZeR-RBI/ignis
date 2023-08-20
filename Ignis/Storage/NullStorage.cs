@@ -28,6 +28,11 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 		throw new InvalidOperationException();
 	}
 
+	public void Process<TState>(Func<int, T, TState, T> action, TState state)
+	{
+		throw new InvalidOperationException();
+	}
+
 	public void ForEach<TState>(Action<int, T, TState> action, TState state)
 	{
 		throw new InvalidOperationException();

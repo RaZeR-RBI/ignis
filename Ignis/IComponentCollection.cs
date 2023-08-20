@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Ignis
 {
-internal interface IComponentCollectionStorage
+public interface IComponentCollectionStorage
 {
 	bool RemoveComponentFromStorage(int entityId);
 	bool StoreComponentForEntity(int entityId);
@@ -63,11 +63,22 @@ public interface IComponentCollection<T> : IComponentCollection
 	/// Iterates over each 'entity ID'-'component' pair using the supplied
 	/// callback. The return value will be saved as the new component value.
 	/// If your callback is a closure (which means it uses local variables or 'this'),
-	/// consider using <see cref="ForEach<TState>(Action<int, T, TState>, TState)" /> instead
+	/// consider using <see cref="Process<TState>(Action<int, T, TState>, TState)" /> or
+	/// <see cref="ForEach<TState>(Action<int, T, TState>, TState)" /> instead
 	/// to reduce heap memory allocations.
 	/// </summary>
 	/// <param name="action">Callback to be called on each pair</param>
 	void Process(Func<int, T, T> action);
+
+	/// <summary>
+	/// Iterates over each 'entity ID'-'component' pair using the supplied
+	/// callback. The return value will be saved as the new component value.
+	/// Passes an additional parameter to the callback which can
+	/// be used to avoid heap allocations by passing the required variables
+	/// through it.
+	/// </summary>
+	/// <param name="action">Callback to be called on each pair</param>
+	void Process<TState>(Func<int, T, TState, T> action, TState state);
 
 	/// <summary>
 	/// Iterates over each 'entity ID'-'component' pair using the supplied

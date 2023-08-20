@@ -157,6 +157,7 @@ public class StorageTypesTestData : IEnumerable<object[]>
 	public IEnumerator<object[]> GetEnumerator()
 	{
 		yield return new object[] {new DoubleListStorage<SampleComponent>()};
+		yield return new object[] {new SparseLinearDictionaryStorage<SampleComponent>()};
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

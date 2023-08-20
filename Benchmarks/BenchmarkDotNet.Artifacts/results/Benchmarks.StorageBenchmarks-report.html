@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Benchmarks.StorageBenchmarks-20230820-203857</title>
+
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            display: block;
+            width: 100%;
+            overflow: auto;
+        }
+
+        td, th {
+            padding: 6px 13px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        tr {
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        tr:nth-child(even) { background: #f8f8f8; }
+    </style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.7, Debian GNU/Linux 12 (bookworm)
+Intel Core i7-2630QM CPU 2.00GHz (Sandy Bridge), 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.305
+  [Host]     : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
+  DefaultJob : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+    <thead>
+    <tr>
+        <th> Method</th><th>N</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Allocated</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>DoubleListAdd</td><td>100</td><td>2.826 &mu;s</td><td>0.0171 &mu;s</td><td>0.0160 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRemove</td><td>100</td><td>1.378 &mu;s</td><td>0.0036 &mu;s</td><td>0.0032 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRandomLookup</td><td>100</td><td>3.011 &mu;s</td><td>0.0154 &mu;s</td><td>0.0144 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRandomUpdate</td><td>100</td><td>8.806 &mu;s</td><td>0.0433 &mu;s</td><td>0.0405 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListProcess</td><td>100</td><td>5.882 &mu;s</td><td>0.0145 &mu;s</td><td>0.0136 &mu;s</td><td>144 B</td>
+    </tr>
+    <tr>
+        <td>DoubleListForEach</td><td>100</td><td>7.924 &mu;s</td><td>0.0209 &mu;s</td><td>0.0185 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryAdd</td><td>100</td><td>13.479 &mu;s</td><td>0.0438 &mu;s</td><td>0.0410 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRemove</td><td>100</td><td>1.529 &mu;s</td><td>0.0027 &mu;s</td><td>0.0022 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRandomLookup</td><td>100</td><td>12.075 &mu;s</td><td>0.0431 &mu;s</td><td>0.0403 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRandomUpdate</td><td>100</td><td>19.781 &mu;s</td><td>0.0373 &mu;s</td><td>0.0331 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryProcess</td><td>100</td><td>5.790 &mu;s</td><td>0.0465 &mu;s</td><td>0.0435 &mu;s</td><td>144 B</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryForEach</td><td>100</td><td>8.000 &mu;s</td><td>0.0506 &mu;s</td><td>0.0473 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListAdd</td><td>1000</td><td>2.857 &mu;s</td><td>0.0098 &mu;s</td><td>0.0087 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRemove</td><td>1000</td><td>22.512 &mu;s</td><td>0.1156 &mu;s</td><td>0.1082 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRandomLookup</td><td>1000</td><td>13.704 &mu;s</td><td>0.0331 &mu;s</td><td>0.0276 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRandomUpdate</td><td>1000</td><td>20.354 &mu;s</td><td>0.0240 &mu;s</td><td>0.0201 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListProcess</td><td>1000</td><td>16.537 &mu;s</td><td>0.0296 &mu;s</td><td>0.0262 &mu;s</td><td>144 B</td>
+    </tr>
+    <tr>
+        <td>DoubleListForEach</td><td>1000</td><td>108.309 &mu;s</td><td>0.2217 &mu;s</td><td>0.2074 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryAdd</td><td>1000</td><td>13.644 &mu;s</td><td>0.0434 &mu;s</td><td>0.0406 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRemove</td><td>1000</td><td>19.643 &mu;s</td><td>0.0609 &mu;s</td><td>0.0539 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRandomLookup</td><td>1000</td><td>21.613 &mu;s</td><td>0.1281 &mu;s</td><td>0.1198 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRandomUpdate</td><td>1000</td><td>28.246 &mu;s</td><td>0.0609 &mu;s</td><td>0.0540 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryProcess</td><td>1000</td><td>13.932 &mu;s</td><td>0.0524 &mu;s</td><td>0.0490 &mu;s</td><td>144 B</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryForEach</td><td>1000</td><td>36.702 &mu;s</td><td>0.1377 &mu;s</td><td>0.1288 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListAdd</td><td>10000</td><td>2.845 &mu;s</td><td>0.0052 &mu;s</td><td>0.0048 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRemove</td><td>10000</td><td>271.559 &mu;s</td><td>3.3630 &mu;s</td><td>3.1458 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRandomLookup</td><td>10000</td><td>126.004 &mu;s</td><td>0.1691 &mu;s</td><td>0.1499 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListRandomUpdate</td><td>10000</td><td>119.009 &mu;s</td><td>0.2000 &mu;s</td><td>0.1871 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>DoubleListProcess</td><td>10000</td><td>115.950 &mu;s</td><td>0.1457 &mu;s</td><td>0.1363 &mu;s</td><td>144 B</td>
+    </tr>
+    <tr>
+        <td>DoubleListForEach</td><td>10000</td><td>311.940 &mu;s</td><td>0.4334 &mu;s</td><td>0.3619 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryAdd</td><td>10000</td><td>11.723 &mu;s</td><td>0.0465 &mu;s</td><td>0.0435 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRemove</td><td>10000</td><td>29.310 &mu;s</td><td>0.1038 &mu;s</td><td>0.0971 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRandomLookup</td><td>10000</td><td>29.138 &mu;s</td><td>0.0436 &mu;s</td><td>0.0341 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryRandomUpdate</td><td>10000</td><td>35.365 &mu;s</td><td>0.0510 &mu;s</td><td>0.0477 &mu;s</td><td>-</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryProcess</td><td>10000</td><td>92.362 &mu;s</td><td>0.0475 &mu;s</td><td>0.0397 &mu;s</td><td>144 B</td>
+    </tr>
+    <tr>
+        <td>SparseLinearDictionaryForEach</td><td>10000</td><td>292.755 &mu;s</td><td>0.4660 &mu;s</td><td>0.4359 &mu;s</td><td>-</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
