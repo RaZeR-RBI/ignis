@@ -26,12 +26,30 @@ public unsafe struct TestComponent
 	}
 }
 
+public enum ActionType
+{
+	Add100,
+	Remove100,
+	RandomLookup100,
+	RandomUpdate100,
+	Process,
+	ForEach
+}
+
+public enum StorageType
+{
+	DoubleList,
+	SparseLinearDictionary
+}
+
 [MemoryDiagnoser(false)]
 public class StorageBenchmarks
 {
-	[Params(100, 1000, 10000)] public int N;
+	[Params(100)] public int N;
+	[ParamsAllValues] public ActionType Action;
 
 	private const int c_operationN = 100;
+	private TestComponent _targetValue = TestComponent.Create();
 
 	private int[] _randomIds = null!;
 
@@ -77,76 +95,42 @@ public class StorageBenchmarks
 		}
 	}
 
-	[Benchmark]
-	public void DoubleListAdd()
+	[Benchmark(Baseline = true)]
+	public void DoubleList()
 	{
-		RunAddBenchmark(_dblListAdd);
+		RunSelected(_dblListAdd, _dblListRemove, _dblListLookup, _dblListUpdate);
 	}
 
 	[Benchmark]
-	public void DoubleListRemove()
+	public void SparseLinearDictionary()
 	{
-		RunRemoveBenchmark(_dblListRemove);
+		RunSelected(_slDictAdd, _slDictRemove, _slDictLookup, _slDictUpdate);
 	}
 
-	[Benchmark]
-	public void DoubleListRandomLookup()
+	private void RunSelected<T>(T storageAdd, T storageRemove, T storageLookup, T storageUpdate)
+		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		RunRandomLookupBenchmark(_dblListLookup);
-	}
-
-	[Benchmark]
-	public void DoubleListRandomUpdate()
-	{
-		RunRandomUpdateBenchmark(_dblListUpdate);
-	}
-
-	[Benchmark]
-	public void DoubleListProcess()
-	{
-		RunProcessBenchmark(_dblListUpdate);
-	}
-
-	[Benchmark]
-	public void DoubleListForEach()
-	{
-		RunForEachBenchmark(_dblListUpdate);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryAdd()
-	{
-		RunAddBenchmark(_slDictAdd);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryRemove()
-	{
-		RunRemoveBenchmark(_slDictRemove);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryRandomLookup()
-	{
-		RunRandomLookupBenchmark(_slDictLookup);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryRandomUpdate()
-	{
-		RunRandomUpdateBenchmark(_slDictUpdate);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryProcess()
-	{
-		RunProcessBenchmark(_slDictUpdate);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryForEach()
-	{
-		RunForEachBenchmark(_slDictUpdate);
+		switch (Action)
+		{
+			case ActionType.Add100:
+				RunAddBenchmark(storageAdd);
+				break;
+			case ActionType.Remove100:
+				RunRemoveBenchmark(storageRemove);
+				break;
+			case ActionType.RandomLookup100:
+				RunRandomLookupBenchmark(storageLookup);
+				break;
+			case ActionType.RandomUpdate100:
+				RunRandomUpdateBenchmark(storageUpdate);
+				break;
+			case ActionType.Process:
+				RunProcessBenchmark(storageUpdate);
+				break;
+			case ActionType.ForEach:
+				RunForEachBenchmark(storageUpdate);
+				break;
+		}
 	}
 
 	private void RunAddBenchmark<T>(T storage)
@@ -194,16 +178,14 @@ public class StorageBenchmarks
 	private void RunProcessBenchmark<T>(T storage)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		var val = TestComponent.Create();
-		storage.Process((id, v) => val);
+		storage.Process((id, old, v) => v, _targetValue);
 	}
 
 	private void RunForEachBenchmark<T>(T storage)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		var val = TestComponent.Create();
 		storage.ForEach(
 		(id, old, s) => s.Storage.UpdateCurrent(s.Value),
-		(Storage: storage, Value: val));
+		(Storage: storage, Value: _targetValue));
 	}
 }
