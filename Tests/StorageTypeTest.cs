@@ -7,8 +7,8 @@ using System.Collections;
 using System.Linq;
 using System;
 
-namespace Tests
-{
+namespace Tests;
+
 public class StorageTypeTest
 {
 	[Theory]
@@ -158,11 +158,11 @@ public class StorageTypesTestData : IEnumerable<object[]>
 	{
 		yield return new object[] {new DoubleListStorage<SampleComponent>()};
 		yield return new object[] {new SparseLinearDictionaryStorage<SampleComponent>()};
+		yield return new object[] {new SparseLinearDictionaryWithLookupStorage<SampleComponent>()};
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()
 	{
 		return GetEnumerator();
 	}
-}
 }

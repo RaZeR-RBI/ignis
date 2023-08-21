@@ -8,13 +8,17 @@ namespace Tests;
 
 public class SparseLinearDictionaryTest
 {
-	[Fact]
-	public void ShouldBehaveLikeNormalDictionary()
+	[Theory]
+	[InlineData(false)]
+	[InlineData(true)]
+	public void ShouldBehaveLikeNormalDictionary(bool useLookup)
 	{
 		var normal = new Dictionary<int, string>();
-		var sparse = new SparseLinearDictionary<int, string>();
+		SparseLinearDictionaryBase<int, string> sparse = useLookup ?
+			new SparseLinearDictionaryWithLookup<int, string>() :
+		 	new SparseLinearDictionary<int, string>();
 
-		for (var i = 0; i < 64; i++)
+		for (var i = 1; i < 64; i++)
 		{
 			var kvp = new KeyValuePair<int, string>(i, i.ToString());
 			normal.Add(kvp.Key, kvp.Value);
@@ -46,7 +50,7 @@ public class SparseLinearDictionaryTest
 		sparse.Values.Contains("-1").Should().BeFalse();
 		sparse.Contains(new KeyValuePair<int, string>(-1, "-1")).Should().BeFalse();
 		Func<string> nonExistingKey = () => sparse[-1];
-		Action existingKey = () => sparse.Add(0, "0");
+		Action existingKey = () => sparse.Add(1, "1");
 		nonExistingKey.Should().Throw<KeyNotFoundException>();
 		existingKey.Should().Throw<ArgumentException>();
 

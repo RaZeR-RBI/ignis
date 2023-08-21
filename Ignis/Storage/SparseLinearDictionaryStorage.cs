@@ -3,15 +3,18 @@ using System.Collections.Generic;
 
 namespace Ignis.Storage;
 
-public class SparseLinearDictionaryStorage<T> : IComponentCollection<T>, IComponentCollectionStorage
+public abstract class SparseLinearDictionaryStorageBase<T> : IComponentCollection<T>, IComponentCollectionStorage
 	where T : new()
 {
-	private readonly SparseLinearDictionary<int, T> _data = new ();
-	private readonly View _view;
+	private readonly SparseLinearDictionaryBase<int, T> _data;
+	private readonly SparseLinearDictionaryEntityView<T> _view;
 
-	public SparseLinearDictionaryStorage()
+	public SparseLinearDictionaryStorageBase(bool useLookup)
 	{
-		_view = new View(this);
+		_data = useLookup ?
+			new SparseLinearDictionaryWithLookup<int, T>() :
+			new SparseLinearDictionary<int, T>();
+		_view = new(_data);
 	}
 
 	public void Process(Func<int, T, T> action)
@@ -89,17 +92,14 @@ public class SparseLinearDictionaryStorage<T> : IComponentCollection<T>, ICompon
 
 	public bool RemoveComponentFromStorage(int entityId)
 	{
-		if (!_data.TryLookup(entityId, out var index)) return false;
-		if (index < _curIndex) _curIndex--;
-		_data.Remove(entityId);
-		return true;
+		var result = _data.Remove(entityId, out var index);
+		if (result && index < _curIndex) _curIndex--;
+		return result;
 	}
 
 	public bool StoreComponentForEntity(int entityId)
 	{
-		if (_data.TryLookup(entityId, out _)) return false;
-		_data.Add(entityId, default);
-		return true;
+		return _data.TryAdd(entityId, default);
 	}
 
 	public void Update(int entityId, T value)
@@ -124,41 +124,16 @@ public class SparseLinearDictionaryStorage<T> : IComponentCollection<T>, ICompon
 	}
 #pragma warning restore
 
-	private class View : IEntityView
-	{
-		private readonly SparseLinearDictionaryStorage<T> _storage;
+}
 
-		public View(SparseLinearDictionaryStorage<T> storage)
-		{
-			_storage = storage;
-		}
+public class SparseLinearDictionaryStorage<T> : SparseLinearDictionaryStorageBase<T>
+	where T : new()
+{
+	public SparseLinearDictionaryStorage() : base(false) {}
+}
 
-		public int EntityCount => _storage._data.Count;
-
-		private static readonly Type[] s_filter = new Type[] {typeof(T)};
-		public IReadOnlyCollection<Type> Filter => s_filter;
-
-		public bool Contains(int id)
-		{
-			return _storage._data.ContainsKey(id);
-		}
-
-		public Span<int> CopyTo(Span<int> storage)
-		{
-			var index = 0;
-			foreach (var id in GetItems())
-			{
-				if (index >= storage.Length)
-					break;
-				storage[index++] = id;
-			}
-
-			return storage.Slice(0, index);
-		}
-
-		public CollectionEnumerable<int> GetItems()
-		{
-			return new CollectionEnumerable<int>((SparseCollectionView<int>) _storage._data.Keys);
-		}
-	}
+public class SparseLinearDictionaryWithLookupStorage<T> : SparseLinearDictionaryStorageBase<T>
+	where T : new()
+{
+	public SparseLinearDictionaryWithLookupStorage() : base(true) {}
 }
