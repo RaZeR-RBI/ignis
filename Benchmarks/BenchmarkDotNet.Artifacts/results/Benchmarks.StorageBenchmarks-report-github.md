@@ -8,32 +8,60 @@ Intel Core i7-2630QM CPU 2.00GHz (Sandy Bridge), 1 CPU, 8 logical and 4 physical
 
 
 ```
-|                           Method |     N |          Action |       Mean |     Error |    StdDev | Ratio | RatioSD | Allocated | Alloc Ratio |
-|--------------------------------- |------ |---------------- |-----------:|----------:|----------:|------:|--------:|----------:|------------:|
-|                       **DoubleList** | **10000** |          **Add100** |   **2.877 μs** | **0.0180 μs** | **0.0168 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 |          Add100 |   3.666 μs | 0.0207 μs | 0.0193 μs |  1.27 |    0.01 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 |          Add100 |  13.009 μs | 0.0762 μs | 0.0713 μs |  4.52 |    0.04 |         - |          NA |
-|                                  |       |                 |            |           |           |       |         |           |             |
-|                       **DoubleList** | **10000** |       **Remove100** | **237.002 μs** | **1.4293 μs** | **1.1159 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 |       Remove100 | 240.450 μs | 0.5420 μs | 0.4526 μs |  1.01 |    0.01 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 |       Remove100 |  29.529 μs | 0.0966 μs | 0.0903 μs |  0.12 |    0.00 |         - |          NA |
-|                                  |       |                 |            |           |           |       |         |           |             |
-|                       **DoubleList** | **10000** |    **RemoveAdd100** | **282.278 μs** | **0.9162 μs** | **0.7650 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 |    RemoveAdd100 | 212.446 μs | 3.3259 μs | 3.1110 μs |  0.75 |    0.01 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 |    RemoveAdd100 |  25.993 μs | 0.1257 μs | 0.1176 μs |  0.09 |    0.00 |         - |          NA |
-|                                  |       |                 |            |           |           |       |         |           |             |
-|                       **DoubleList** | **10000** | **RandomLookup100** | **113.938 μs** | **0.5642 μs** | **0.4712 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 | RandomLookup100 | 114.589 μs | 0.3907 μs | 0.3464 μs |  1.01 |    0.00 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 | RandomLookup100 |  31.016 μs | 0.0616 μs | 0.0514 μs |  0.27 |    0.00 |         - |          NA |
-|                                  |       |                 |            |           |           |       |         |           |             |
-|                       **DoubleList** | **10000** | **RandomUpdate100** | **119.658 μs** | **1.9028 μs** | **1.4856 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 | RandomUpdate100 | 122.354 μs | 2.3338 μs | 2.3967 μs |  1.02 |    0.02 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 | RandomUpdate100 |  36.027 μs | 0.6835 μs | 0.6393 μs |  0.30 |    0.00 |         - |          NA |
-|                                  |       |                 |            |           |           |       |         |           |             |
-|                       **DoubleList** | **10000** |         **Process** | **113.235 μs** | **2.0998 μs** | **2.0622 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 |         Process | 101.252 μs | 0.5740 μs | 0.5088 μs |  0.90 |    0.02 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 |         Process |  85.529 μs | 0.6334 μs | 0.5615 μs |  0.76 |    0.01 |         - |          NA |
-|                                  |       |                 |            |           |           |       |         |           |             |
-|                       **DoubleList** | **10000** |         **ForEach** | **305.507 μs** | **0.4585 μs** | **0.3580 μs** |  **1.00** |    **0.00** |         **-** |          **NA** |
-|           SparseLinearDictionary | 10000 |         ForEach | 311.499 μs | 6.1796 μs | 6.0691 μs |  1.02 |    0.02 |         - |          NA |
-| SparseLinearDictionaryWithLookup | 10000 |         ForEach | 278.791 μs | 0.7130 μs | 0.6321 μs |  0.91 |    0.00 |         - |          NA |
+|                           Method |     N |          Action |         Mean |     Error |    StdDev | Ratio | RatioSD | Allocated | Alloc Ratio |
+|--------------------------------- |------ |---------------- |-------------:|----------:|----------:|------:|--------:|----------:|------------:|
+|                       **DoubleList** |   **100** |          **Add100** |   **2,766.9 ns** |   **4.50 ns** |   **3.76 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 |          Add100 |   3,361.3 ns |  11.84 ns |  10.50 ns |  1.21 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 |          Add100 |  12,667.9 ns |  86.84 ns |  81.23 ns |  4.57 |    0.03 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** |   **100** |       **Remove100** |   **1,388.1 ns** |   **2.01 ns** |   **1.88 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 |       Remove100 |   3,800.7 ns |   9.69 ns |   8.59 ns |  2.74 |    0.01 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 |       Remove100 |  13,643.2 ns |  55.82 ns |  52.22 ns |  9.83 |    0.04 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** |   **100** |    **RemoveAdd100** |   **2,316.4 ns** |  **12.62 ns** |  **11.81 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 |    RemoveAdd100 |   3,658.9 ns |  14.45 ns |  13.52 ns |  1.58 |    0.01 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 |    RemoveAdd100 |  12,500.3 ns | 106.81 ns |  94.68 ns |  5.40 |    0.05 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** |   **100** | **RandomLookup100** |   **3,254.3 ns** |   **7.11 ns** |   **6.31 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 | RandomLookup100 |   3,581.0 ns |  12.29 ns |  11.50 ns |  1.10 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 | RandomLookup100 |  14,038.7 ns |  81.37 ns |  76.12 ns |  4.31 |    0.03 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** |   **100** | **RandomUpdate100** |   **8,360.5 ns** |  **38.93 ns** |  **36.42 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 | RandomUpdate100 |   8,720.0 ns |  27.94 ns |  23.33 ns |  1.04 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 | RandomUpdate100 |  18,527.9 ns | 152.88 ns | 143.01 ns |  2.22 |    0.02 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** |   **100** |         **Process** |     **971.1 ns** |   **4.03 ns** |   **3.77 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 |         Process |     887.2 ns |   1.43 ns |   1.27 ns |  0.91 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 |         Process |     738.5 ns |   0.66 ns |   0.52 ns |  0.76 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** |   **100** |         **ForEach** |   **3,030.8 ns** |   **6.22 ns** |   **5.51 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary |   100 |         ForEach |   3,130.3 ns |   3.29 ns |   2.92 ns |  1.03 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup |   100 |         ForEach |   2,883.6 ns |   6.11 ns |   5.71 ns |  0.95 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** |          **Add100** |   **2,866.9 ns** |  **10.65 ns** |   **9.96 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 |          Add100 |   3,359.0 ns |   6.48 ns |   6.06 ns |  1.17 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 |          Add100 |  12,517.1 ns |  35.60 ns |  31.56 ns |  4.37 |    0.02 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** |       **Remove100** | **267,600.8 ns** | **191.35 ns** | **149.40 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 |       Remove100 | 239,121.4 ns | 405.64 ns | 338.73 ns |  0.89 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 |       Remove100 |  26,405.7 ns |  70.34 ns |  65.79 ns |  0.10 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** |    **RemoveAdd100** | **167,679.6 ns** | **337.93 ns** | **316.10 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 |    RemoveAdd100 | 190,109.3 ns | 211.51 ns | 176.62 ns |  1.13 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 |    RemoveAdd100 |  25,436.7 ns |  68.35 ns |  63.94 ns |  0.15 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** | **RandomLookup100** | **110,918.7 ns** | **284.34 ns** | **252.06 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 | RandomLookup100 | 124,019.4 ns | 290.03 ns | 257.10 ns |  1.12 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 | RandomLookup100 |  26,270.2 ns |  68.15 ns |  63.74 ns |  0.24 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** | **RandomUpdate100** | **116,047.6 ns** | **207.88 ns** | **194.45 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 | RandomUpdate100 | 124,473.8 ns | 218.56 ns | 204.44 ns |  1.07 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 | RandomUpdate100 |  30,906.9 ns |  95.11 ns |  88.97 ns |  0.27 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** |         **Process** | **108,370.3 ns** | **268.55 ns** | **251.20 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 |         Process | 101,372.9 ns | 333.16 ns | 278.20 ns |  0.93 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 |         Process |  85,439.3 ns | 192.28 ns | 170.46 ns |  0.79 |    0.00 |         - |          NA |
+|                                  |       |                 |              |           |           |       |         |           |             |
+|                       **DoubleList** | **10000** |         **ForEach** | **308,229.7 ns** | **384.98 ns** | **300.57 ns** |  **1.00** |    **0.00** |         **-** |          **NA** |
+|           SparseLinearDictionary | 10000 |         ForEach | 307,999.7 ns | 319.88 ns | 283.57 ns |  1.00 |    0.00 |         - |          NA |
+| SparseLinearDictionaryWithLookup | 10000 |         ForEach | 284,058.7 ns | 725.71 ns | 643.33 ns |  0.92 |    0.00 |         - |          NA |

@@ -4,20 +4,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Ignis.Storage;
 
-public abstract class SparseLinearDictionaryBase<TKey, TValue> : IDictionary<TKey, TValue>, ICollection
-	where TKey : notnull
+public abstract class SparseLinearDictionaryBase<TKey, TValue> : IDictionary<TKey, TValue>,
+                                                                 ICollection
+	where TKey : notnull, IEquatable<TKey>
 {
 	protected readonly List<byte> _presence;
 	protected readonly List<TKey> _keys;
 	protected readonly List<TValue> _values;
 	protected int _count = 0;
+	protected int _emptySlotCount = 0;
 
 	public int Count => _count;
+	public int EmptySlots => _emptySlotCount;
 
 	[ExcludeFromCodeCoverage] public object SyncRoot => this;
 
@@ -113,17 +116,19 @@ public abstract class SparseLinearDictionaryBase<TKey, TValue> : IDictionary<TKe
 		if (TryLookup(key, out _))
 			return false;
 
-		if (TryFindEmptySlot(out var index))
+		if (_emptySlotCount > 0 && TryFindEmptySlot(out var index))
 		{
 			_presence[index] = byte.MaxValue;
 			_keys[index] = key;
 			_values[index] = value;
 			_count++;
+			_emptySlotCount--;
 			OnSet(index, key, value);
 			return true;
 		}
 
 		// add to end
+		Debug.Assert(_emptySlotCount == 0);
 		_presence.Add(byte.MaxValue);
 		_keys.Add(key);
 		_values.Add(value);
@@ -149,6 +154,7 @@ public abstract class SparseLinearDictionaryBase<TKey, TValue> : IDictionary<TKe
 		_keys[index] = default!;
 		_values[index] = default!;
 		_count--;
+		_emptySlotCount++;
 		return true;
 	}
 

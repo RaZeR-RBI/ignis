@@ -15,7 +15,7 @@ public class SparseLinearDictionaryEntityView<T> : IEntityView
 
 	public int EntityCount => _data.Count;
 
-	private static readonly Type[] s_filter = new Type[] { typeof(T) };
+	private static readonly Type[] s_filter = new Type[] {typeof(T)};
 	public IReadOnlyCollection<Type> Filter => s_filter;
 
 	public bool Contains(int id)
@@ -38,6 +38,6 @@ public class SparseLinearDictionaryEntityView<T> : IEntityView
 
 	public CollectionEnumerable<int> GetItems()
 	{
-		return new CollectionEnumerable<int>((SparseCollectionView<int>)_data.Keys);
+		return new CollectionEnumerable<int>((SparseCollectionView<int>) _data.Keys);
 	}
 }

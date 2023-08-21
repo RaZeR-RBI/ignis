@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace Ignis.Storage;
 
-public abstract class SparseLinearDictionaryStorageBase<T> : IComponentCollection<T>, IComponentCollectionStorage
+public abstract class SparseLinearDictionaryStorageBase<T> : IComponentCollection<T>,
+                                                             IComponentCollectionStorage
 	where T : new()
 {
 	private readonly SparseLinearDictionaryBase<int, T> _data;
@@ -11,10 +12,10 @@ public abstract class SparseLinearDictionaryStorageBase<T> : IComponentCollectio
 
 	public SparseLinearDictionaryStorageBase(bool useLookup)
 	{
-		_data = useLookup ?
-			new SparseLinearDictionaryWithLookup<int, T>() :
-			new SparseLinearDictionary<int, T>();
-		_view = new(_data);
+		_data = useLookup
+			        ? new SparseLinearDictionaryWithLookup<int, T>()
+			        : new SparseLinearDictionary<int, T>();
+		_view = new (_data);
 	}
 
 	public void Process(Func<int, T, T> action)
@@ -123,17 +124,20 @@ public abstract class SparseLinearDictionaryStorageBase<T> : IComponentCollectio
 		return _data[entityId];
 	}
 #pragma warning restore
-
 }
 
 public class SparseLinearDictionaryStorage<T> : SparseLinearDictionaryStorageBase<T>
 	where T : new()
 {
-	public SparseLinearDictionaryStorage() : base(false) {}
+	public SparseLinearDictionaryStorage() : base(false)
+	{
+	}
 }
 
 public class SparseLinearDictionaryWithLookupStorage<T> : SparseLinearDictionaryStorageBase<T>
 	where T : new()
 {
-	public SparseLinearDictionaryWithLookupStorage() : base(true) {}
+	public SparseLinearDictionaryWithLookupStorage() : base(true)
+	{
+	}
 }

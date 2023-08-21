@@ -14,9 +14,10 @@ public class SparseLinearDictionaryTest
 	public void ShouldBehaveLikeNormalDictionary(bool useLookup)
 	{
 		var normal = new Dictionary<int, string>();
-		SparseLinearDictionaryBase<int, string> sparse = useLookup ?
-			new SparseLinearDictionaryWithLookup<int, string>() :
-		 	new SparseLinearDictionary<int, string>();
+		SparseLinearDictionaryBase<int, string> sparse =
+			useLookup
+				? new SparseLinearDictionaryWithLookup<int, string>()
+				: new SparseLinearDictionary<int, string>();
 
 		for (var i = 1; i < 64; i++)
 		{
@@ -25,6 +26,7 @@ public class SparseLinearDictionaryTest
 			sparse.Add(kvp);
 		}
 
+		sparse.EmptySlots.Should().Be(0);
 		CheckIfSame(normal, sparse);
 
 		for (var i = 32; i < 64; i++)
@@ -33,6 +35,7 @@ public class SparseLinearDictionaryTest
 			normal.Remove(i);
 		}
 
+		sparse.EmptySlots.Should().Be(32);
 		CheckIfSame(normal, sparse);
 
 		for (var i = 128; i < 256; i++)
@@ -42,6 +45,7 @@ public class SparseLinearDictionaryTest
 			sparse.Add(kvp);
 		}
 
+		sparse.EmptySlots.Should().Be(0);
 		CheckIfSame(normal, sparse);
 
 		sparse.Remove(-1).Should().BeFalse();
@@ -65,6 +69,7 @@ public class SparseLinearDictionaryTest
 		sparse.Keys.Contains(-1).Should().BeTrue();
 		sparse.Values.Contains("-1").Should().BeTrue();
 		sparse.Remove(new KeyValuePair<int, string>(-1, "-1")).Should().BeTrue();
+		sparse.EmptySlots.Should().Be(1);
 
 		sparse.Clear();
 		normal.Clear();

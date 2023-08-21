@@ -46,10 +46,11 @@ public enum StorageType
 [MemoryDiagnoser(false)]
 public class StorageBenchmarks
 {
-	[Params(10000)] public int N;
-	[ParamsAllValues] public ActionType Action;
+	[Params(100, 10000)] public int N;
 
-	private const int c_operationN = 100;
+	[ParamsAllValues] public ActionType Action;
+	// [Params(ActionType.RandomLookup100)] public ActionType Action;
+
 	private TestComponent _targetValue = TestComponent.Create();
 
 	private int[] _randomIds = null!;
@@ -76,11 +77,13 @@ public class StorageBenchmarks
 	[GlobalSetup]
 	public void Setup()
 	{
-		_randomIds = new int[N];
+		_randomIds = new int[100];
 		var rnd = new Random(42);
-		for (var i = 0; i < N; i++)
-			_randomIds[i] = i + 1;
+		for (var i = 0; i < _randomIds.Length; i++)
+			_randomIds[i] = Math.Min((i + 1) * (N / 100), N - 1); // evenly spaced through all list
+		// mix them up
 		_randomIds.AsSpan().Shuffle((min, max) => rnd.Next(min, max));
+		Console.WriteLine("IDS: " + string.Join(", ", _randomIds));
 
 		FillWithRandom(_dblListLookup, _dblListRemove, _dblListUpdate, _dblListRemoveAdd);
 		FillWithRandom(_slDictLookup, _slDictRemove, _slDictUpdate, _slDictRemoveAdd);
@@ -120,42 +123,44 @@ public class StorageBenchmarks
 	[Benchmark]
 	public void SparseLinearDictionaryWithLookup()
 	{
-		RunSelected(_slwlDictAdd, _slwlDictRemove, _slwlDictLookup, _slwlDictUpdate, _slwlDictRemoveAdd);
+		RunSelected(_slwlDictAdd, _slwlDictRemove, _slwlDictLookup, _slwlDictUpdate,
+		            _slwlDictRemoveAdd);
 	}
 
-	private void RunSelected<T>(T storageAdd, T storageRemove, T storageLookup, T storageUpdate, T storageRemoveAdd)
+	private void RunSelected<T>(T storageAdd, T storageRemove, T storageLookup, T storageUpdate,
+	                            T storageRemoveAdd)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
 		switch (Action)
 		{
-			case ActionType.Add100:
-				RunAddBenchmark(storageAdd);
-				break;
-			case ActionType.Remove100:
-				RunRemoveBenchmark(storageRemove);
-				break;
-			case ActionType.RemoveAdd100:
-				RunRemoveAddBenchmark(storageRemoveAdd);
-				break;
-			case ActionType.RandomLookup100:
-				RunRandomLookupBenchmark(storageLookup);
-				break;
-			case ActionType.RandomUpdate100:
-				RunRandomUpdateBenchmark(storageUpdate);
-				break;
-			case ActionType.Process:
-				RunProcessBenchmark(storageUpdate);
-				break;
-			case ActionType.ForEach:
-				RunForEachBenchmark(storageUpdate);
-				break;
+		case ActionType.Add100:
+			RunAddBenchmark(storageAdd);
+			break;
+		case ActionType.Remove100:
+			RunRemoveBenchmark(storageRemove);
+			break;
+		case ActionType.RemoveAdd100:
+			RunRemoveAddBenchmark(storageRemoveAdd);
+			break;
+		case ActionType.RandomLookup100:
+			RunRandomLookupBenchmark(storageLookup);
+			break;
+		case ActionType.RandomUpdate100:
+			RunRandomUpdateBenchmark(storageUpdate);
+			break;
+		case ActionType.Process:
+			RunProcessBenchmark(storageUpdate);
+			break;
+		case ActionType.ForEach:
+			RunForEachBenchmark(storageUpdate);
+			break;
 		}
 	}
 
 	private void RunAddBenchmark<T>(T storage)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		for (var i = 0; i < c_operationN; i++)
+		for (var i = 0; i < _randomIds.Length; i++)
 		{
 			var id = _randomIds[i];
 			storage.StoreComponentForEntity(id);
@@ -165,7 +170,7 @@ public class StorageBenchmarks
 	private void RunRemoveBenchmark<T>(T storage)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		for (var i = 0; i < c_operationN; i++)
+		for (var i = 0; i < _randomIds.Length; i++)
 		{
 			var id = _randomIds[i];
 			storage.RemoveComponentFromStorage(id);
@@ -175,18 +180,19 @@ public class StorageBenchmarks
 	private void RunRemoveAddBenchmark<T>(T storage)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		for (var i = 0; i < c_operationN / 2; i++)
+		for (var i = 0; i < _randomIds.Length / 2; i++)
 		{
 			var id = _randomIds[i];
+			var id2 = _randomIds[i + _randomIds.Length / 2];
 			storage.RemoveComponentFromStorage(id);
-			storage.StoreComponentForEntity(id);
+			storage.StoreComponentForEntity(id2);
 		}
 	}
 
 	private void RunRandomLookupBenchmark<T>(T storage)
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
-		for (var i = 0; i < c_operationN; i++)
+		for (var i = 0; i < _randomIds.Length; i++)
 		{
 			var id = _randomIds[i];
 			var item = storage.Get(id);
@@ -198,7 +204,7 @@ public class StorageBenchmarks
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
 		var val = TestComponent.Create();
-		for (var i = 0; i < c_operationN; i++)
+		for (var i = 0; i < _randomIds.Length; i++)
 		{
 			var id = _randomIds[i];
 			storage.Update(id, val);

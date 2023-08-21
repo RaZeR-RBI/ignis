@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 namespace Ignis.Storage;
 
 public class SparseLinearDictionary<TKey, TValue> : SparseLinearDictionaryBase<TKey, TValue>
-	where TKey : notnull
+	where TKey : notnull, IEquatable<TKey>
 {
 	public SparseLinearDictionary(int size = 128) : base(size)
 	{
@@ -18,13 +18,15 @@ public class SparseLinearDictionary<TKey, TValue> : SparseLinearDictionaryBase<T
 
 	public override bool TryLookup(TKey key, out int index)
 	{
-		index = _keys.IndexOf(key);
+		var span = CollectionsMarshal.AsSpan(_keys);
+		index = span.IndexOf(key);
 		return index >= 0;
 	}
 
 	public override bool TryFindEmptySlot(out int foundIndex)
 	{
-		foundIndex = _presence.IndexOf(0);
+		var span = CollectionsMarshal.AsSpan(_presence);
+		foundIndex = span.IndexOf((byte) 0);
 		return foundIndex >= 0;
 	}
 
