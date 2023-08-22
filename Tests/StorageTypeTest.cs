@@ -112,6 +112,16 @@ public class StorageTypeTest
 		foreach (var id in alive.Reverse())
 			storage.Get(id).Foo.Should().Be(id + 1);
 
+		storage.GetCount().Should().Be(3);
+		// add some more
+		for (var j = 10; j < 20; j++)
+		{
+			var id = em.Create();
+			em.AddComponent<SampleComponent>(id);
+		}
+
+		storage.GetCount().Should().Be(13);
+
 		// Modify using Process
 		storage.Process((id, val) =>
 		{
@@ -160,16 +170,36 @@ public class StorageTypeTest
 		storage.GetView().Contains(1).Should().BeFalse();
 		storage.GetCount().Should().Be(0);
 	}
+
+	[Fact]
+	public void SparseArrayShouldGrow()
+	{
+		var storage = new SparseArrayStorage<SampleComponent>();
+		var sizeBefore = storage.Size;
+		var oldIds = Enumerable.Range(1, 32).ToList();
+		foreach (var id in oldIds)
+		{
+			storage.StoreComponentForEntity(id);
+			storage.Update(id, new SampleComponent() {Foo = id});
+		}
+
+		var newIds = Enumerable.Range(100, 512);
+		foreach (var id in newIds)
+			storage.StoreComponentForEntity(id);
+		var sizeAfter = storage.Size;
+
+		sizeAfter.Should().BeGreaterThan(sizeBefore);
+		foreach (var oldId in oldIds)
+			storage.Get(oldId).Foo.Should().Be(oldId);
+	}
 }
 
 public class StorageTypesTestData : IEnumerable<object[]>
 {
 	public IEnumerator<object[]> GetEnumerator()
 	{
-		yield return new object[] {new DoubleListStorage<SampleComponent>()};
 		yield return new object[] {new SparseArrayStorage<SampleComponent>()};
-		yield return new object[] {new SparseLinearDictionaryStorage<SampleComponent>()};
-		yield return new object[] {new SparseLinearDictionaryWithLookupStorage<SampleComponent>()};
+		yield return new object[] {new DoubleListStorage<SampleComponent>()};
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

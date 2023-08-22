@@ -11,8 +11,7 @@ internal enum EnumeratorType
 	None = 0,
 	List,
 	ConcurrentHashSet,
-	SparseCollectionView,
-	SparseArray,
+	SparseArray
 }
 
 public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
@@ -20,7 +19,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 	private readonly EnumeratorType _type;
 	private List<T>.Enumerator _listEnum;
 	private ConcurrentHashSet<T>.Enumerator _chsEnum;
-	private SparseCollectionView<T>.Enumerator _scvEnum;
 	private SparseArrayEnumerator<T> _saEnum;
 
 	public static readonly CollectionEnumerator<T> Empty = new CollectionEnumerator<T>();
@@ -30,7 +28,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 		_type = EnumeratorType.List;
 		_listEnum = items.GetEnumerator();
 		_chsEnum = default;
-		_scvEnum = default;
 		_saEnum = default;
 	}
 
@@ -39,16 +36,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 		_type = EnumeratorType.ConcurrentHashSet;
 		_chsEnum = items.GetEnumerator();
 		_listEnum = default;
-		_scvEnum = default;
-		_saEnum = default;
-	}
-
-	public CollectionEnumerator(SparseCollectionView<T> items)
-	{
-		_type = EnumeratorType.SparseCollectionView;
-		_chsEnum = default;
-		_listEnum = default;
-		_scvEnum = items.GetEnumerator();
 		_saEnum = default;
 	}
 
@@ -57,7 +44,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 		_type = EnumeratorType.SparseArray;
 		_chsEnum = default;
 		_listEnum = default;
-		_scvEnum = default;
 		_saEnum = items.GetEnumerator();
 	}
 
@@ -69,7 +55,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 			{
 				EnumeratorType.List => _listEnum.Current,
 				EnumeratorType.ConcurrentHashSet => _chsEnum.Current,
-				EnumeratorType.SparseCollectionView => _scvEnum.Current,
 				EnumeratorType.SparseArray => _saEnum.Current,
 				_ => throw new InvalidOperationException()
 			};
@@ -89,9 +74,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 		case EnumeratorType.ConcurrentHashSet:
 			_chsEnum.Dispose();
 			break;
-		case EnumeratorType.SparseCollectionView:
-			_scvEnum.Dispose();
-			break;
 		case EnumeratorType.SparseArray:
 			_saEnum.Dispose();
 			break;
@@ -104,7 +86,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 		{
 			EnumeratorType.List => _listEnum.MoveNext(),
 			EnumeratorType.ConcurrentHashSet => _chsEnum.MoveNext(),
-			EnumeratorType.SparseCollectionView => _scvEnum.MoveNext(),
 			EnumeratorType.SparseArray => _saEnum.MoveNext(),
 			_ => false
 		};
@@ -125,9 +106,6 @@ public struct CollectionEnumerator<T> : IEnumerator<T>, IEnumerator
 			break;
 		case EnumeratorType.ConcurrentHashSet:
 			ResetHelper(_chsEnum);
-			break;
-		case EnumeratorType.SparseCollectionView:
-			ResetHelper(_scvEnum);
 			break;
 		case EnumeratorType.SparseArray:
 			ResetHelper(_saEnum);

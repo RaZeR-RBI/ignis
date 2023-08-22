@@ -6,13 +6,16 @@ using System.Runtime.InteropServices;
 
 namespace Ignis.Storage;
 
-public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentCollectionStorage, IDisposable
+public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentCollectionStorage,
+                                            IDisposable
 	where T : new()
 {
 	private int* _ids;
 	private T[] _values;
 	private int _size;
 	private readonly bool _valueHasReferences;
+
+	public int Size => _size;
 
 	private int _filledCount = 0;
 	private int _curIndex = 0;
@@ -27,12 +30,12 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 	public SparseArrayStorage()
 	{
 		_size = 128;
-		_ids = (int*)NativeMemory.AlignedAlloc(sizeof(int) * (nuint)_size, c_align);
+		_ids = (int*) NativeMemory.AlignedAlloc(sizeof(int) * (nuint) _size, c_align);
 		_values = new T[_size];
 		new Span<int>(_ids, _size).Clear();
 		_valueHasReferences = RuntimeHelpers.IsReferenceOrContainsReferences<T>();
-		_keyWrapper = new(new KeyWrapper(this));
-		_valueWrapper = new(new ValueWrapper(this));
+		_keyWrapper = new (new KeyWrapper(this));
+		_valueWrapper = new (new ValueWrapper(this));
 		_view = new View(this);
 	}
 
@@ -49,6 +52,7 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 				_curIndex++;
 				continue;
 			}
+
 			var componentValue = values[_curIndex];
 			_curIndex++;
 			action(entityId, componentValue, state);
@@ -129,14 +133,16 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 			_filledCount++;
 			return true;
 		}
+
 		if (_filledCount == _size) // grow if not enough space
 		{
 			_size *= 2;
-			_ids = (int*)NativeMemory.AlignedRealloc(_ids, sizeof(int) * (nuint)_size, c_align);
+			_ids = (int*) NativeMemory.AlignedRealloc(_ids, sizeof(int) * (nuint) _size, c_align);
 			var tmp = new T[_size];
 			_values.AsSpan().CopyTo(tmp.AsSpan());
 			_values = tmp;
 		}
+
 		// add to end
 		_ids[_totalCount] = entityId;
 		_totalCount++;
@@ -162,7 +168,7 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 
 	public void Update(int entityId, object value)
 	{
-		Update(entityId, (T)value);
+		Update(entityId, (T) value);
 	}
 #pragma warning restore
 
@@ -217,7 +223,7 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 
 		public int EntityCount => _owner._filledCount;
 
-		private static readonly Type[] s_filter = new Type[] { typeof(T) };
+		private static readonly Type[] s_filter = new Type[] {typeof(T)};
 		public IReadOnlyCollection<Type> Filter => s_filter;
 
 		public bool Contains(int id)
@@ -236,6 +242,7 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 				i++;
 				if (i >= storage.Length) break;
 			}
+
 			return storage[..i];
 		}
 
@@ -249,10 +256,7 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 	{
 		if (!disposedValue)
 		{
-			if (disposing)
-			{
-				_values = null;
-			}
+			if (disposing) _values = null;
 
 			NativeMemory.AlignedFree(_ids);
 			disposedValue = true;
@@ -261,12 +265,12 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 
 	~SparseArrayStorage()
 	{
-		Dispose(disposing: false);
+		Dispose(false);
 	}
 
 	public void Dispose()
 	{
-		Dispose(disposing: true);
+		Dispose(true);
 		GC.SuppressFinalize(this);
 	}
 }

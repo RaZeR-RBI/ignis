@@ -137,6 +137,12 @@
               "link": "Ignis.CollectionEnumerable_T_.CollectionEnumerable(List_T_)"
             },
             {
+              "name": "CollectionEnumerable(SparseArrayEnumerable<T>)",
+              "fullName": "Ignis.CollectionEnumerable<T>.CollectionEnumerable(SparseArrayEnumerable<T>)",
+              "type": "Constructor",
+              "link": "Ignis.CollectionEnumerable_T_.CollectionEnumerable(SparseArrayEnumerable_T_)"
+            },
+            {
               "name": "GetEnumerator()",
               "fullName": "Ignis.CollectionEnumerable<T>.GetEnumerator()",
               "type": "Method",
@@ -173,6 +179,12 @@
               "fullName": "Ignis.CollectionEnumerator<T>.CollectionEnumerator(ConcurrentHashSet<T>)",
               "type": "Constructor",
               "link": "Ignis.CollectionEnumerator_T_.CollectionEnumerator(ConcurrentHashSet_T_)"
+            },
+            {
+              "name": "CollectionEnumerator(SparseArrayEnumerable<T>)",
+              "fullName": "Ignis.CollectionEnumerator<T>.CollectionEnumerator(SparseArrayEnumerable<T>)",
+              "type": "Constructor",
+              "link": "Ignis.CollectionEnumerator_T_.CollectionEnumerator(SparseArrayEnumerable_T_)"
             }
           ]
         },
@@ -1045,309 +1057,194 @@
           ]
         },
         {
-          "name": "SparseCollectionView<T>",
-          "fullName": "Ignis.Storage.SparseCollectionView<T>",
+          "name": "SparseArrayEnumerable<T>",
+          "fullName": "Ignis.Storage.SparseArrayEnumerable<T>",
           "type": "Class",
-          "link": "Ignis.Storage.SparseCollectionView_T_",
+          "link": "Ignis.Storage.SparseArrayEnumerable_T_",
           "children": [
             {
-              "name": "Enumerator",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.Enumerator",
-              "type": "Struct",
-              "link": "Ignis.Storage.SparseCollectionView_T_.Enumerator",
-              "children": [
-                {
-                  "name": "Current",
-                  "fullName": "Ignis.Storage.SparseCollectionView<T>.Enumerator.Current",
-                  "type": "Property",
-                  "link": "Ignis.Storage.SparseCollectionView_T_.Enumerator.Current"
-                },
-                {
-                  "name": "Enumerator(SparseCollectionView<T>)",
-                  "fullName": "Ignis.Storage.SparseCollectionView<T>.Enumerator.Enumerator(SparseCollectionView<T>)",
-                  "type": "Constructor",
-                  "link": "Ignis.Storage.SparseCollectionView_T_.Enumerator.Enumerator(SparseCollectionView_T_)"
-                },
-                {
-                  "name": "Dispose()",
-                  "fullName": "Ignis.Storage.SparseCollectionView<T>.Enumerator.Dispose()",
-                  "type": "Method",
-                  "link": "Ignis.Storage.SparseCollectionView_T_.Enumerator.Dispose()"
-                },
-                {
-                  "name": "MoveNext()",
-                  "fullName": "Ignis.Storage.SparseCollectionView<T>.Enumerator.MoveNext()",
-                  "type": "Method",
-                  "link": "Ignis.Storage.SparseCollectionView_T_.Enumerator.MoveNext()"
-                },
-                {
-                  "name": "Reset()",
-                  "fullName": "Ignis.Storage.SparseCollectionView<T>.Enumerator.Reset()",
-                  "type": "Method",
-                  "link": "Ignis.Storage.SparseCollectionView_T_.Enumerator.Reset()"
-                }
-              ]
-            },
-            {
-              "name": "Count",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.Count",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseCollectionView_T_.Count"
-            },
-            {
-              "name": "IsReadOnly",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.IsReadOnly",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseCollectionView_T_.IsReadOnly"
-            },
-            {
-              "name": "Add(T)",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.Add(T)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.Add(T)"
-            },
-            {
-              "name": "Clear()",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.Clear()",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.Clear()"
-            },
-            {
-              "name": "Contains(T)",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.Contains(T)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.Contains(T)"
-            },
-            {
-              "name": "CopyTo(T[], int)",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.CopyTo(T[], int)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.CopyTo(T[], int)"
+              "name": "SparseArrayEnumerable(ISparseArrayView<T>)",
+              "fullName": "Ignis.Storage.SparseArrayEnumerable<T>.SparseArrayEnumerable(ISparseArrayView<T>)",
+              "type": "Constructor",
+              "link": "Ignis.Storage.SparseArrayEnumerable_T_.SparseArrayEnumerable(ISparseArrayView_T_)"
             },
             {
               "name": "GetEnumerator()",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.GetEnumerator()",
+              "fullName": "Ignis.Storage.SparseArrayEnumerable<T>.GetEnumerator()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.GetEnumerator()"
-            },
-            {
-              "name": "GetPresenceData()",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.GetPresenceData()",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.GetPresenceData()"
-            },
-            {
-              "name": "GetValueData()",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.GetValueData()",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.GetValueData()"
-            },
-            {
-              "name": "SparseCollectionView(ICollection, List<byte>, List<T>)",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.SparseCollectionView(ICollection, List<byte>, List<T>)",
-              "type": "Constructor",
-              "link": "Ignis.Storage.SparseCollectionView_T_.SparseCollectionView(ICollection, List_byte_, List_T_)"
-            },
-            {
-              "name": "Remove(T)",
-              "fullName": "Ignis.Storage.SparseCollectionView<T>.Remove(T)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseCollectionView_T_.Remove(T)"
+              "link": "Ignis.Storage.SparseArrayEnumerable_T_.GetEnumerator()"
             }
           ]
         },
         {
-          "name": "SparseLinearDictionary<TKey, TValue>",
-          "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>",
+          "name": "SparseArrayStorage<T>",
+          "fullName": "Ignis.Storage.SparseArrayStorage<T>",
           "type": "Class",
-          "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_",
+          "link": "Ignis.Storage.SparseArrayStorage_T_",
           "children": [
             {
-              "name": "Enumerator",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Enumerator",
-              "type": "Struct",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Enumerator",
-              "children": [
-                {
-                  "name": "Current",
-                  "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Enumerator.Current",
-                  "type": "Property",
-                  "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Enumerator.Current"
-                },
-                {
-                  "name": "Enumerator(SparseLinearDictionary<TKey, TValue>)",
-                  "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Enumerator.Enumerator(SparseLinearDictionary<TKey, TValue>)",
-                  "type": "Constructor",
-                  "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Enumerator.Enumerator(SparseLinearDictionary_TKey, TValue_)"
-                },
-                {
-                  "name": "Dispose()",
-                  "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Enumerator.Dispose()",
-                  "type": "Method",
-                  "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Enumerator.Dispose()"
-                },
-                {
-                  "name": "MoveNext()",
-                  "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Enumerator.MoveNext()",
-                  "type": "Method",
-                  "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Enumerator.MoveNext()"
-                },
-                {
-                  "name": "Reset()",
-                  "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Enumerator.Reset()",
-                  "type": "Method",
-                  "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Enumerator.Reset()"
-                }
-              ]
-            },
-            {
-              "name": "Count",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Count",
+              "name": "Size",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Size",
               "type": "Property",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Count"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Size"
             },
             {
-              "name": "SyncRoot",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.SyncRoot",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.SyncRoot"
-            },
-            {
-              "name": "IsSynchronized",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.IsSynchronized",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.IsSynchronized"
-            },
-            {
-              "name": "IsReadOnly",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.IsReadOnly",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.IsReadOnly"
-            },
-            {
-              "name": "Keys",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Keys",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Keys"
-            },
-            {
-              "name": "Values",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Values",
-              "type": "Property",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Values"
-            },
-            {
-              "name": "TValue[TKey]",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.TValue[TKey]",
-              "type": "Indexer",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.TValue[TKey]"
-            },
-            {
-              "name": "SparseLinearDictionary(int)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.SparseLinearDictionary(int)",
+              "name": "SparseArrayStorage()",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.SparseArrayStorage()",
               "type": "Constructor",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.SparseLinearDictionary(int)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.SparseArrayStorage()"
             },
             {
-              "name": "Add(KeyValuePair<TKey, TValue>)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Add(KeyValuePair<TKey, TValue>)",
+              "name": "Dispose()",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Dispose()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Add(KeyValuePair_TKey, TValue_)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Dispose()"
             },
             {
-              "name": "Add(TKey, TValue)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Add(TKey, TValue)",
+              "name": "ForEach<TState>(Action<int, T, TState>, TState)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.ForEach<TState>(Action<int, T, TState>, TState)",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Add(TKey, TValue)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.ForEach_TState_(Action_int, T, TState_, TState)"
             },
             {
-              "name": "Clear()",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Clear()",
+              "name": "Get(int)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Get(int)",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Clear()"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Get(int)"
             },
             {
-              "name": "Contains(KeyValuePair<TKey, TValue>)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Contains(KeyValuePair<TKey, TValue>)",
+              "name": "GetCount()",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.GetCount()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Contains(KeyValuePair_TKey, TValue_)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.GetCount()"
             },
             {
-              "name": "ContainsKey(TKey)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.ContainsKey(TKey)",
+              "name": "GetEntityIds()",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.GetEntityIds()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.ContainsKey(TKey)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.GetEntityIds()"
             },
             {
-              "name": "CopyTo(Array, int)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.CopyTo(Array, int)",
+              "name": "GetValue(int)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.GetValue(int)",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.CopyTo(Array, int)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.GetValue(int)"
             },
             {
-              "name": "CopyTo(ICollection<KeyValuePair<TKey, TValue>>)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.CopyTo(ICollection<KeyValuePair<TKey, TValue>>)",
+              "name": "GetValues()",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.GetValues()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.CopyTo(ICollection_KeyValuePair_TKey, TValue__)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.GetValues()"
             },
             {
-              "name": "CopyTo(KeyValuePair<TKey, TValue>[], int)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.CopyTo(KeyValuePair<TKey, TValue>[], int)",
+              "name": "GetView()",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.GetView()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.CopyTo(KeyValuePair_TKey, TValue_[], int)"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.GetView()"
             },
             {
-              "name": "GetEnumerator()",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.GetEnumerator()",
+              "name": "Process(Func<int, T, T>)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Process(Func<int, T, T>)",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.GetEnumerator()"
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Process(Func_int, T, T_)"
             },
+            {
+              "name": "Process<TState>(Func<int, T, TState, T>, TState)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Process<TState>(Func<int, T, TState, T>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Process_TState_(Func_int, T, TState, T_, TState)"
+            },
+            {
+              "name": "RemoveComponentFromStorage(int)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.RemoveComponentFromStorage(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.RemoveComponentFromStorage(int)"
+            },
+            {
+              "name": "StoreComponentForEntity(int)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.StoreComponentForEntity(int)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.StoreComponentForEntity(int)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Update(int, object)"
+            },
+            {
+              "name": "Update(int, T)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Update(int, T)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "UpdateCurrent(T)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.UpdateCurrent(T)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.UpdateCurrent(T)"
+            }
+          ]
+        },
+        {
+          "name": "SparseArrayEnumerator<T>",
+          "fullName": "Ignis.Storage.SparseArrayEnumerator<T>",
+          "type": "Struct",
+          "link": "Ignis.Storage.SparseArrayEnumerator_T_",
+          "children": [
+            {
+              "name": "Current",
+              "fullName": "Ignis.Storage.SparseArrayEnumerator<T>.Current",
+              "type": "Property",
+              "link": "Ignis.Storage.SparseArrayEnumerator_T_.Current"
+            },
+            {
+              "name": "SparseArrayEnumerator(ISparseArrayView<T>)",
+              "fullName": "Ignis.Storage.SparseArrayEnumerator<T>.SparseArrayEnumerator(ISparseArrayView<T>)",
+              "type": "Constructor",
+              "link": "Ignis.Storage.SparseArrayEnumerator_T_.SparseArrayEnumerator(ISparseArrayView_T_)"
+            },
+            {
+              "name": "Dispose()",
+              "fullName": "Ignis.Storage.SparseArrayEnumerator<T>.Dispose()",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayEnumerator_T_.Dispose()"
+            },
+            {
+              "name": "MoveNext()",
+              "fullName": "Ignis.Storage.SparseArrayEnumerator<T>.MoveNext()",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayEnumerator_T_.MoveNext()"
+            },
+            {
+              "name": "Reset()",
+              "fullName": "Ignis.Storage.SparseArrayEnumerator<T>.Reset()",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayEnumerator_T_.Reset()"
+            }
+          ]
+        },
+        {
+          "name": "ISparseArrayView<T>",
+          "fullName": "Ignis.Storage.ISparseArrayView<T>",
+          "type": "Interface",
+          "link": "Ignis.Storage.ISparseArrayView_T_",
+          "children": [
             {
               "name": "GetKeyData()",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.GetKeyData()",
+              "fullName": "Ignis.Storage.ISparseArrayView<T>.GetKeyData()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.GetKeyData()"
-            },
-            {
-              "name": "GetPresenceData()",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.GetPresenceData()",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.GetPresenceData()"
+              "link": "Ignis.Storage.ISparseArrayView_T_.GetKeyData()"
             },
             {
               "name": "GetValueData()",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.GetValueData()",
+              "fullName": "Ignis.Storage.ISparseArrayView<T>.GetValueData()",
               "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.GetValueData()"
-            },
-            {
-              "name": "Remove(KeyValuePair<TKey, TValue>)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Remove(KeyValuePair<TKey, TValue>)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Remove(KeyValuePair_TKey, TValue_)"
-            },
-            {
-              "name": "Remove(TKey)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.Remove(TKey)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.Remove(TKey)"
-            },
-            {
-              "name": "TryGetValue(TKey, TValue)",
-              "fullName": "Ignis.Storage.SparseLinearDictionary<TKey, TValue>.TryGetValue(TKey, TValue)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseLinearDictionary_TKey, TValue_.TryGetValue(TKey, TValue)"
+              "link": "Ignis.Storage.ISparseArrayView_T_.GetValueData()"
             }
           ]
         }
       ]
-    },
-    {
-      "name": "System.Diagnostics.CodeAnalysis",
-      "fullName": "System.Diagnostics.CodeAnalysis",
-      "type": "Namespace",
-      "link": "System.Diagnostics.CodeAnalysis",
-      "children": []
     }
   ]
 }

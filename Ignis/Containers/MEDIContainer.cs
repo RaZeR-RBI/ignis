@@ -18,6 +18,7 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 	private readonly List<Type> _registeredSystems = new List<Type>();
 
 	private readonly List<SystemBase<TState>> _systemInstances = new List<SystemBase<TState>>();
+	private readonly List<object> _miscInstances = new List<object>();
 
 	private IServiceProvider _provider;
 	private IServiceCollection _services;
@@ -34,8 +35,11 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 	{
 		if (!_alreadyBuilt)
 			ContainerProvider<TState>.EndCreation();
-		foreach (var systemType in _registeredSystems)
-			GetSystem(systemType).Dispose();
+		foreach (var type in _registeredTypes)
+		{
+			var o = Resolve(type);
+			if (o is IDisposable d) d.Dispose();
+		}
 	}
 
 #pragma warning disable HAA0101 // rare call, don't care about params allocation
@@ -49,7 +53,7 @@ internal class MEDIContainer<TState> : IContainer<TState>, IDisposable
 
 	public IContainer<TState> AddComponent<TComponent>() where TComponent : struct
 	{
-		return AddComponent<TComponent, DoubleListStorage<TComponent>>();
+		return AddComponent<TComponent, SparseArrayStorage<TComponent>>();
 	}
 
 	public IContainer<TState> AddComponent<TComponent, TStorage>()
