@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Benchmarks.StorageBenchmarks-20230822-164947</title>
+    <title>Benchmarks.StorageBenchmarks-20230822-174827</title>
 
     <style type="text/css">
         table {
@@ -32,7 +32,7 @@ BenchmarkDotNet v0.13.7, Debian GNU/Linux 12 (bookworm)
 Intel Core i7-2630QM CPU 2.00GHz (Sandy Bridge), 1 CPU, 8 logical and 4 physical cores
 .NET SDK 7.0.305
   [Host]     : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
-  Job-YAOCRI : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
+  Job-TBBDNY : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
 </code></pre>
 <pre><code>InvocationCount=1  UnrollFactor=1  
 </code></pre>
@@ -45,88 +45,100 @@ Intel Core i7-2630QM CPU 2.00GHz (Sandy Bridge), 1 CPU, 8 logical and 4 physical
     </thead>
     <tbody>
     <tr>
-        <td>DoubleList</td><td>100</td><td>Add100</td><td>7.973 &mu;s</td><td>0.1219 &mu;s</td><td>0.1018 &mu;s</td><td>7.937 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>Add100</td><td>8.793 &mu;s</td><td>0.1797 &mu;s</td><td>0.4407 &mu;s</td><td>8.649 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>Add100</td><td>6.709 &mu;s</td><td>0.4740 &mu;s</td><td>1.3601 &mu;s</td><td>7.085 &mu;s</td><td>0.93</td><td>0.06</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>Add100</td><td>6.790 &mu;s</td><td>0.1386 &mu;s</td><td>0.2923 &mu;s</td><td>6.806 &mu;s</td><td>0.77</td><td>0.04</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>100</td><td>Remove100</td><td>3.947 &mu;s</td><td>0.0850 &mu;s</td><td>0.1191 &mu;s</td><td>3.929 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>Remove100</td><td>2.558 &mu;s</td><td>0.0557 &mu;s</td><td>0.1245 &mu;s</td><td>2.521 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>Remove100</td><td>6.106 &mu;s</td><td>0.1226 &mu;s</td><td>0.1087 &mu;s</td><td>6.119 &mu;s</td><td>1.54</td><td>0.05</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>Remove100</td><td>6.277 &mu;s</td><td>0.1610 &mu;s</td><td>0.4381 &mu;s</td><td>6.119 &mu;s</td><td>2.46</td><td>0.20</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>100</td><td>RemoveAdd100</td><td>14.316 &mu;s</td><td>0.2923 &mu;s</td><td>0.2591 &mu;s</td><td>14.303 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>RemoveAdd100</td><td>14.245 &mu;s</td><td>0.2919 &mu;s</td><td>0.7050 &mu;s</td><td>14.016 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>RemoveAdd100</td><td>7.299 &mu;s</td><td>0.1516 &mu;s</td><td>0.2734 &mu;s</td><td>7.245 &mu;s</td><td>0.50</td><td>0.02</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>RemoveAdd100</td><td>7.119 &mu;s</td><td>0.1476 &mu;s</td><td>0.2425 &mu;s</td><td>7.090 &mu;s</td><td>0.50</td><td>0.03</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>100</td><td>RandomLookup100</td><td>18.994 &mu;s</td><td>0.3880 &mu;s</td><td>0.7192 &mu;s</td><td>18.815 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>RandomLookup100</td><td>15.379 &mu;s</td><td>0.2466 &mu;s</td><td>0.2422 &mu;s</td><td>15.306 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>RandomLookup100</td><td>16.598 &mu;s</td><td>0.3232 &mu;s</td><td>0.3174 &mu;s</td><td>16.625 &mu;s</td><td>0.88</td><td>0.04</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>RandomLookup100</td><td>16.635 &mu;s</td><td>0.3329 &mu;s</td><td>0.6493 &mu;s</td><td>16.301 &mu;s</td><td>1.09</td><td>0.04</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>100</td><td>RandomUpdate100</td><td>15.060 &mu;s</td><td>0.7702 &mu;s</td><td>2.2710 &mu;s</td><td>13.858 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>RandomUpdate100</td><td>13.304 &mu;s</td><td>0.2731 &mu;s</td><td>0.6801 &mu;s</td><td>13.015 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>RandomUpdate100</td><td>14.098 &mu;s</td><td>0.2899 &mu;s</td><td>0.4339 &mu;s</td><td>13.967 &mu;s</td><td>0.84</td><td>0.14</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>RandomUpdate100</td><td>16.794 &mu;s</td><td>1.0052 &mu;s</td><td>2.9162 &mu;s</td><td>16.005 &mu;s</td><td>1.26</td><td>0.25</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>100</td><td>Process</td><td>4.653 &mu;s</td><td>0.2794 &mu;s</td><td>0.8237 &mu;s</td><td>4.218 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>Read</td><td>3.598 &mu;s</td><td>0.3365 &mu;s</td><td>0.9491 &mu;s</td><td>3.203 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>Process</td><td>3.697 &mu;s</td><td>0.1472 &mu;s</td><td>0.3979 &mu;s</td><td>3.540 &mu;s</td><td>0.81</td><td>0.15</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>Read</td><td>2.890 &mu;s</td><td>0.1167 &mu;s</td><td>0.3273 &mu;s</td><td>2.743 &mu;s</td><td>0.85</td><td>0.21</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>100</td><td>ForEach</td><td>8.226 &mu;s</td><td>0.6462 &mu;s</td><td>1.8747 &mu;s</td><td>7.798 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>Process</td><td>4.475 &mu;s</td><td>0.2830 &mu;s</td><td>0.7651 &mu;s</td><td>4.109 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>100</td><td>ForEach</td><td>7.019 &mu;s</td><td>0.4579 &mu;s</td><td>1.3430 &mu;s</td><td>6.948 &mu;s</td><td>0.89</td><td>0.21</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>Process</td><td>3.619 &mu;s</td><td>0.0764 &mu;s</td><td>0.1756 &mu;s</td><td>3.547 &mu;s</td><td>0.85</td><td>0.11</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>Add100</td><td>6.682 &mu;s</td><td>0.3445 &mu;s</td><td>0.9829 &mu;s</td><td>6.460 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>100</td><td>ForEach</td><td>7.989 &mu;s</td><td>0.4977 &mu;s</td><td>1.4199 &mu;s</td><td>8.044 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>Add100</td><td>4.648 &mu;s</td><td>0.1144 &mu;s</td><td>0.3207 &mu;s</td><td>4.577 &mu;s</td><td>0.70</td><td>0.10</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>100</td><td>ForEach</td><td>5.883 &mu;s</td><td>0.2277 &mu;s</td><td>0.6156 &mu;s</td><td>5.561 &mu;s</td><td>0.75</td><td>0.15</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>Remove100</td><td>278.256 &mu;s</td><td>5.4901 &mu;s</td><td>6.1022 &mu;s</td><td>274.921 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>10000</td><td>Add100</td><td>6.060 &mu;s</td><td>0.1747 &mu;s</td><td>0.4929 &mu;s</td><td>5.888 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>Remove100</td><td>245.896 &mu;s</td><td>2.6075 &mu;s</td><td>2.0358 &mu;s</td><td>245.265 &mu;s</td><td>0.88</td><td>0.02</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>10000</td><td>Add100</td><td>4.881 &mu;s</td><td>0.1314 &mu;s</td><td>0.3791 &mu;s</td><td>4.816 &mu;s</td><td>0.81</td><td>0.08</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>RemoveAdd100</td><td>973.203 &mu;s</td><td>15.3963 &mu;s</td><td>12.8566 &mu;s</td><td>969.090 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>10000</td><td>Remove100</td><td>273.633 &mu;s</td><td>0.9666 &mu;s</td><td>0.8568 &mu;s</td><td>273.731 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>RemoveAdd100</td><td>126.750 &mu;s</td><td>1.2820 &mu;s</td><td>1.1365 &mu;s</td><td>126.212 &mu;s</td><td>0.13</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>10000</td><td>Remove100</td><td>250.928 &mu;s</td><td>4.9068 &mu;s</td><td>5.6507 &mu;s</td><td>250.862 &mu;s</td><td>0.92</td><td>0.03</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>RandomLookup100</td><td>131.065 &mu;s</td><td>2.4389 &mu;s</td><td>4.8141 &mu;s</td><td>129.183 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>10000</td><td>RemoveAdd100</td><td>975.819 &mu;s</td><td>12.6834 &mu;s</td><td>9.9024 &mu;s</td><td>976.033 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>RandomLookup100</td><td>130.430 &mu;s</td><td>2.0041 &mu;s</td><td>1.7766 &mu;s</td><td>130.541 &mu;s</td><td>0.96</td><td>0.04</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>10000</td><td>RemoveAdd100</td><td>128.577 &mu;s</td><td>2.4391 &mu;s</td><td>4.2073 &mu;s</td><td>126.769 &mu;s</td><td>0.13</td><td>0.01</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>RandomUpdate100</td><td>124.775 &mu;s</td><td>0.7903 &mu;s</td><td>0.6170 &mu;s</td><td>124.686 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>10000</td><td>RandomLookup100</td><td>130.850 &mu;s</td><td>2.4761 &mu;s</td><td>3.9274 &mu;s</td><td>130.316 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>RandomUpdate100</td><td>124.998 &mu;s</td><td>2.2020 &mu;s</td><td>1.8387 &mu;s</td><td>124.603 &mu;s</td><td>1.00</td><td>0.01</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>10000</td><td>RandomLookup100</td><td>130.348 &mu;s</td><td>0.8531 &mu;s</td><td>0.7562 &mu;s</td><td>130.495 &mu;s</td><td>0.99</td><td>0.03</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>Process</td><td>156.421 &mu;s</td><td>3.5845 &mu;s</td><td>10.3993 &mu;s</td><td>150.504 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>10000</td><td>RandomUpdate100</td><td>126.626 &mu;s</td><td>1.9792 &mu;s</td><td>1.6527 &mu;s</td><td>126.147 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>Process</td><td>136.167 &mu;s</td><td>5.2238 &mu;s</td><td>14.5620 &mu;s</td><td>128.377 &mu;s</td><td>0.87</td><td>0.07</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>10000</td><td>RandomUpdate100</td><td>126.401 &mu;s</td><td>2.4677 &mu;s</td><td>3.2088 &mu;s</td><td>126.079 &mu;s</td><td>1.01</td><td>0.03</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>DoubleList</td><td>10000</td><td>ForEach</td><td>371.739 &mu;s</td><td>7.2181 &mu;s</td><td>8.0230 &mu;s</td><td>367.409 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+        <td>DoubleList</td><td>10000</td><td>Read</td><td>63.457 &mu;s</td><td>1.1024 &mu;s</td><td>0.9772 &mu;s</td><td>63.068 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
     </tr>
     <tr>
-        <td>SparseArray</td><td>10000</td><td>ForEach</td><td>329.251 &mu;s</td><td>3.6407 &mu;s</td><td>2.8424 &mu;s</td><td>328.430 &mu;s</td><td>0.88</td><td>0.02</td><td>936 B</td><td>1.00</td>
+        <td>SparseArray</td><td>10000</td><td>Read</td><td>40.132 &mu;s</td><td>0.7081 &mu;s</td><td>1.5394 &mu;s</td><td>39.671 &mu;s</td><td>0.63</td><td>0.01</td><td>936 B</td><td>1.00</td>
+    </tr>
+    <tr>
+        <td>DoubleList</td><td>10000</td><td>Process</td><td>150.564 &mu;s</td><td>4.4007 &mu;s</td><td>12.9065 &mu;s</td><td>143.740 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+    </tr>
+    <tr>
+        <td>SparseArray</td><td>10000</td><td>Process</td><td>133.007 &mu;s</td><td>4.2500 &mu;s</td><td>12.2621 &mu;s</td><td>126.859 &mu;s</td><td>0.88</td><td>0.05</td><td>936 B</td><td>1.00</td>
+    </tr>
+    <tr>
+        <td>DoubleList</td><td>10000</td><td>ForEach</td><td>499.840 &mu;s</td><td>9.3498 &mu;s</td><td>8.2884 &mu;s</td><td>499.962 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+    </tr>
+    <tr>
+        <td>SparseArray</td><td>10000</td><td>ForEach</td><td>338.846 &mu;s</td><td>6.5086 &mu;s</td><td>7.2343 &mu;s</td><td>337.503 &mu;s</td><td>0.67</td><td>0.02</td><td>936 B</td><td>1.00</td>
     </tr>
     </tbody>
 </table>

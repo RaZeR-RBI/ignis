@@ -112,6 +112,20 @@ public unsafe class SparseArrayStorage<T> : IComponentCollection<T>, IComponentC
 		}
 	}
 
+	public void Read<TState>(ComponentReader<T, TState> action, TState state)
+	{
+		var count = _totalCount;
+		var ids = new Span<int>(_ids, count);
+		var values = _values.AsSpan()[..count];
+		for (var i = 0; i < count; i++)
+		{
+			var id = ids[i];
+			if (id == 0) continue;
+			ref var val = ref values[i];
+			action(id, val, state);
+		}
+	}
+
 	public bool RemoveComponentFromStorage(int entityId)
 	{
 		var ids = new Span<int>(_ids, _totalCount);

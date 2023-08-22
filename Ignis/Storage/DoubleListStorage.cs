@@ -92,6 +92,19 @@ public class DoubleListStorage<T> : IComponentCollection<T>, IComponentCollectio
 		}
 	}
 
+	public void Read<TState>(ComponentReader<T, TState> action, TState state)
+	{
+		var max = _ids.Count;
+		var ids = CollectionsMarshal.AsSpan(_ids);
+		var values = CollectionsMarshal.AsSpan(_values);
+		for (_curIndex = 0; _curIndex < max; _curIndex++)
+		{
+			var entityId = ids[_curIndex];
+			ref var componentValue = ref values[_curIndex];
+			action(entityId, componentValue, state);
+		}
+	}
+
 	public void Process<TState>(Func<int, T, TState, T> action, TState state)
 	{
 		var max = _ids.Count;

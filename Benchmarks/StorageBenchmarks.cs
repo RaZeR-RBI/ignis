@@ -33,6 +33,7 @@ public enum ActionType
 	RemoveAdd100,
 	RandomLookup100,
 	RandomUpdate100,
+	Read,
 	Process,
 	ForEach
 }
@@ -164,6 +165,9 @@ public class StorageBenchmarks
 		case ActionType.RandomUpdate100:
 			RunRandomUpdateBenchmark(storageUpdate);
 			break;
+		case ActionType.Read:
+			RunReadBenchmark(storageUpdate);
+			break;
 		case ActionType.Process:
 			RunProcessBenchmark(storageUpdate);
 			break;
@@ -231,6 +235,12 @@ public class StorageBenchmarks
 		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
 	{
 		storage.Process((id, old, v) => v, _targetValue);
+	}
+
+	private void RunReadBenchmark<T>(T storage)
+		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
+	{
+		storage.Read((int id, in TestComponent v, in int s) => { }, 0);
 	}
 
 	private void RunForEachBenchmark<T>(T storage)

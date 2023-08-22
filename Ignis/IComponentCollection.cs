@@ -30,6 +30,8 @@ public interface IComponentCollection
 	object GetValue(int entityId);
 }
 
+public delegate void ComponentReader<T, TState>(int id, in T component, in TState state);
+
 /// <summary>
 /// Represents a component storage.
 /// </summary>
@@ -82,9 +84,19 @@ public interface IComponentCollection<T> : IComponentCollection
 
 	/// <summary>
 	/// Iterates over each 'entity ID'-'component' pair using the supplied
-	/// callback. Passes an additional parameter to the callback which can
+	/// callback, passing component data by reference (without copying).
+	/// Passes an additional parameter to the callback which can
 	/// be used to avoid heap allocations by passing the required variables
 	/// through it.
+	/// </summary>
+	/// <param name="action">Callback to be called on each pair</param>
+	void Read<TState>(ComponentReader<T, TState> action, TState state);
+
+	/// <summary>
+	/// Iterates over each 'entity ID'-'component' pair using the supplied
+	/// callback. Passes an additional parameter to the callback which can
+	/// be used to avoid heap allocations by passing the required variables
+	/// through it. Components can be added and removed inside the callback.
 	/// </summary>
 	/// <param name="action">Callback to be called on each pair</param>
 	/// <param name="state">Additional parameter for the callback</param>

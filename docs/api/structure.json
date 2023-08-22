@@ -321,6 +321,12 @@
               "link": "Ignis.IComponentCollection_T_.Process_TState_(Func_int, T, TState, T_, TState)"
             },
             {
+              "name": "Read<TState>(ComponentReader<T, TState>, TState)",
+              "fullName": "Ignis.IComponentCollection<T>.Read<TState>(ComponentReader<T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.IComponentCollection_T_.Read_TState_(ComponentReader_T, TState_, TState)"
+            },
+            {
               "name": "Update(int, T)",
               "fullName": "Ignis.IComponentCollection<T>.Update(int, T)",
               "type": "Method",
@@ -927,6 +933,12 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.Process_TState_(Func_int, T, TState, T_, TState)"
             },
             {
+              "name": "Read<TState>(ComponentReader<T, TState>, TState)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.Read<TState>(ComponentReader<T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.Read_TState_(ComponentReader_T, TState_, TState)"
+            },
+            {
               "name": "RemoveComponentFromStorage(int)",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.RemoveComponentFromStorage(int)",
               "type": "Method",
@@ -1023,6 +1035,12 @@
               "fullName": "Ignis.Storage.NullStorage<T>.Process<TState>(Func<int, T, TState, T>, TState)",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.Process_TState_(Func_int, T, TState, T_, TState)"
+            },
+            {
+              "name": "Read<TState>(ComponentReader<T, TState>, TState)",
+              "fullName": "Ignis.Storage.NullStorage<T>.Read<TState>(ComponentReader<T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.Read_TState_(ComponentReader_T, TState_, TState)"
             },
             {
               "name": "RemoveComponentFromStorage(int)",
@@ -1153,6 +1171,12 @@
               "fullName": "Ignis.Storage.SparseArrayStorage<T>.Process<TState>(Func<int, T, TState, T>, TState)",
               "type": "Method",
               "link": "Ignis.Storage.SparseArrayStorage_T_.Process_TState_(Func_int, T, TState, T_, TState)"
+            },
+            {
+              "name": "Read<TState>(ComponentReader<T, TState>, TState)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Read<TState>(ComponentReader<T, TState>, TState)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Read_TState_(ComponentReader_T, TState_, TState)"
             },
             {
               "name": "RemoveComponentFromStorage(int)",

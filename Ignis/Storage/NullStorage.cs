@@ -93,6 +93,11 @@ public class NullStorage<T> : IComponentCollection<T>, IComponentCollectionStora
 		throw new InvalidOperationException();
 	}
 
+	public void Read<TState>(ComponentReader<T, TState> action, TState state)
+	{
+		throw new InvalidOperationException();
+	}
+
 	private class NullStorageEntityView<U> : IEntityView
 		where U : new()
 	{
