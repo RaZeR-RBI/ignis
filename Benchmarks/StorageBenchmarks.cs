@@ -37,19 +37,12 @@ public enum ActionType
 	ForEach
 }
 
-public enum StorageType
-{
-	DoubleList,
-	SparseLinearDictionary
-}
-
 [MemoryDiagnoser(false)]
 public class StorageBenchmarks
 {
 	[Params(100, 10000)] public int N;
 
 	[ParamsAllValues] public ActionType Action;
-	// [Params(ActionType.RandomLookup100)] public ActionType Action;
 
 	private TestComponent _targetValue = TestComponent.Create();
 
@@ -62,17 +55,11 @@ public class StorageBenchmarks
 	private DoubleListStorage<TestComponent> _dblListRemoveAdd = new ();
 	private DoubleListStorage<TestComponent> _dblListUpdate = new ();
 
-	private SparseLinearDictionaryStorage<TestComponent> _slDictLookup = new ();
-	private SparseLinearDictionaryStorage<TestComponent> _slDictAdd = new ();
-	private SparseLinearDictionaryStorage<TestComponent> _slDictRemove = new ();
-	private SparseLinearDictionaryStorage<TestComponent> _slDictRemoveAdd = new ();
-	private SparseLinearDictionaryStorage<TestComponent> _slDictUpdate = new ();
-
-	private SparseLinearDictionaryWithLookupStorage<TestComponent> _slwlDictLookup = new ();
-	private SparseLinearDictionaryWithLookupStorage<TestComponent> _slwlDictAdd = new ();
-	private SparseLinearDictionaryWithLookupStorage<TestComponent> _slwlDictRemove = new ();
-	private SparseLinearDictionaryWithLookupStorage<TestComponent> _slwlDictRemoveAdd = new ();
-	private SparseLinearDictionaryWithLookupStorage<TestComponent> _slwlDictUpdate = new ();
+	private SparseArrayStorage<TestComponent> _spaLookup = new ();
+	private SparseArrayStorage<TestComponent> _spaAdd = new ();
+	private SparseArrayStorage<TestComponent> _spaRemove = new ();
+	private SparseArrayStorage<TestComponent> _spaRemoveAdd = new ();
+	private SparseArrayStorage<TestComponent> _spaUpdate = new ();
 
 	[GlobalSetup]
 	public void Setup()
@@ -86,8 +73,44 @@ public class StorageBenchmarks
 		Console.WriteLine("IDS: " + string.Join(", ", _randomIds));
 
 		FillWithRandom(_dblListLookup, _dblListRemove, _dblListUpdate, _dblListRemoveAdd);
-		FillWithRandom(_slDictLookup, _slDictRemove, _slDictUpdate, _slDictRemoveAdd);
-		FillWithRandom(_slwlDictLookup, _slwlDictRemove, _slwlDictUpdate, _slwlDictRemoveAdd);
+		FillWithRandom(_spaLookup, _spaRemove, _spaUpdate, _spaRemoveAdd);
+	}
+
+	[GlobalCleanup]
+	public void Cleanup()
+	{
+		_spaLookup.Dispose();
+		_spaAdd.Dispose();
+		_spaRemove.Dispose();
+		_spaUpdate.Dispose();
+		_spaRemoveAdd.Dispose();
+	}
+
+	[IterationCleanup]
+	public void IterationCleanup()
+	{
+		Clear(_dblListAdd);
+		Clear(_spaAdd);
+		Refill(_dblListRemoveAdd);
+		Refill(_spaRemoveAdd);
+	}
+
+	private void Refill<T>(params T[] storages)
+		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
+	{
+		Clear(storages);
+		FillWithRandom(storages);
+	}
+
+	private void Clear<T>(params T[] storages)
+		where T : class, IComponentCollection<TestComponent>, IComponentCollectionStorage
+	{
+		foreach (var s in storages)
+		{
+			var ids = s.GetEntityIds().AsEnumerable().ToList();
+			foreach (var id in ids)
+				s.RemoveComponentFromStorage(id);
+		}
 	}
 
 	private void FillWithRandom<T>(params T[] storages)
@@ -115,16 +138,9 @@ public class StorageBenchmarks
 	}
 
 	[Benchmark]
-	public void SparseLinearDictionary()
+	public void SparseArray()
 	{
-		RunSelected(_slDictAdd, _slDictRemove, _slDictLookup, _slDictUpdate, _slDictRemoveAdd);
-	}
-
-	[Benchmark]
-	public void SparseLinearDictionaryWithLookup()
-	{
-		RunSelected(_slwlDictAdd, _slwlDictRemove, _slwlDictLookup, _slwlDictUpdate,
-		            _slwlDictRemoveAdd);
+		RunSelected(_spaAdd, _spaRemove, _spaLookup, _spaUpdate, _spaRemoveAdd);
 	}
 
 	private void RunSelected<T>(T storageAdd, T storageRemove, T storageLookup, T storageUpdate,

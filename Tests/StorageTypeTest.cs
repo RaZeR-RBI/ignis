@@ -111,6 +111,16 @@ public class StorageTypeTest
 
 		foreach (var id in alive.Reverse())
 			storage.Get(id).Foo.Should().Be(id + 1);
+
+		// Modify using Process
+		storage.Process((id, val) =>
+		{
+			val.Foo = id - 1;
+			return val;
+		});
+
+		foreach (var id in alive)
+			storage.Get(id).Foo.Should().Be(id - 1);
 	}
 
 	[Theory]
@@ -157,6 +167,7 @@ public class StorageTypesTestData : IEnumerable<object[]>
 	public IEnumerator<object[]> GetEnumerator()
 	{
 		yield return new object[] {new DoubleListStorage<SampleComponent>()};
+		yield return new object[] {new SparseArrayStorage<SampleComponent>()};
 		yield return new object[] {new SparseLinearDictionaryStorage<SampleComponent>()};
 		yield return new object[] {new SparseLinearDictionaryWithLookupStorage<SampleComponent>()};
 	}

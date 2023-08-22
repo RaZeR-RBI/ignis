@@ -1,30 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="utf-8"/>
-    <title>Benchmarks.StorageBenchmarks-20230821-204641</title>
+<meta charset='utf-8' />
+<title>Benchmarks.StorageBenchmarks-20230822-164947</title>
 
-    <style type="text/css">
-        table {
-            border-collapse: collapse;
-            display: block;
-            width: 100%;
-            overflow: auto;
-        }
-
-        td, th {
-            padding: 6px 13px;
-            border: 1px solid #ddd;
-            text-align: right;
-        }
-
-        tr {
-            background-color: #fff;
-            border-top: 1px solid #ccc;
-        }
-
-        tr:nth-child(even) { background: #f8f8f8; }
-    </style>
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
 </head>
 <body>
 <pre><code>
@@ -32,144 +17,42 @@ BenchmarkDotNet v0.13.7, Debian GNU/Linux 12 (bookworm)
 Intel Core i7-2630QM CPU 2.00GHz (Sandy Bridge), 1 CPU, 8 logical and 4 physical cores
 .NET SDK 7.0.305
   [Host]     : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
-  DefaultJob : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
+  Job-YAOCRI : .NET 7.0.8 (7.0.823.31807), X64 RyuJIT AVX
 </code></pre>
-<pre><code></code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
 
 <table>
-    <thead>
-    <tr>
-        <th> Method</th><th>N</th><th> Action</th><th> Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Allocated</th><th>Alloc Ratio</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>Add100</td><td>2,766.9 ns</td><td>4.50 ns</td><td>3.76 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>Add100</td><td>3,361.3 ns</td><td>11.84 ns</td><td>10.50 ns</td><td>1.21</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>Add100</td><td>12,667.9 ns</td><td>86.84 ns</td><td>81.23 ns</td><td>4.57</td><td>0.03</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>Remove100</td><td>1,388.1 ns</td><td>2.01 ns</td><td>1.88 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>Remove100</td><td>3,800.7 ns</td><td>9.69 ns</td><td>8.59 ns</td><td>2.74</td><td>0.01</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>Remove100</td><td>13,643.2 ns</td><td>55.82 ns</td><td>52.22 ns</td><td>9.83</td><td>0.04</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>RemoveAdd100</td><td>2,316.4 ns</td><td>12.62 ns</td><td>11.81 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>RemoveAdd100</td><td>3,658.9 ns</td><td>14.45 ns</td><td>13.52 ns</td><td>1.58</td><td>0.01</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>RemoveAdd100</td><td>12,500.3 ns</td><td>106.81 ns</td><td>94.68 ns</td><td>5.40</td><td>0.05</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>RandomLookup100</td><td>3,254.3 ns</td><td>7.11 ns</td><td>6.31 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>RandomLookup100</td><td>3,581.0 ns</td><td>12.29 ns</td><td>11.50 ns</td><td>1.10</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>RandomLookup100</td><td>14,038.7 ns</td><td>81.37 ns</td><td>76.12 ns</td><td>4.31</td><td>0.03</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>RandomUpdate100</td><td>8,360.5 ns</td><td>38.93 ns</td><td>36.42 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>RandomUpdate100</td><td>8,720.0 ns</td><td>27.94 ns</td><td>23.33 ns</td><td>1.04</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>RandomUpdate100</td><td>18,527.9 ns</td><td>152.88 ns</td><td>143.01 ns</td><td>2.22</td><td>0.02</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>Process</td><td>971.1 ns</td><td>4.03 ns</td><td>3.77 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>Process</td><td>887.2 ns</td><td>1.43 ns</td><td>1.27 ns</td><td>0.91</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>Process</td><td>738.5 ns</td><td>0.66 ns</td><td>0.52 ns</td><td>0.76</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>100</td><td>ForEach</td><td>3,030.8 ns</td><td>6.22 ns</td><td>5.51 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>100</td><td>ForEach</td><td>3,130.3 ns</td><td>3.29 ns</td><td>2.92 ns</td><td>1.03</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>100</td><td>ForEach</td><td>2,883.6 ns</td><td>6.11 ns</td><td>5.71 ns</td><td>0.95</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>Add100</td><td>2,866.9 ns</td><td>10.65 ns</td><td>9.96 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>Add100</td><td>3,359.0 ns</td><td>6.48 ns</td><td>6.06 ns</td><td>1.17</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>Add100</td><td>12,517.1 ns</td><td>35.60 ns</td><td>31.56 ns</td><td>4.37</td><td>0.02</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>Remove100</td><td>267,600.8 ns</td><td>191.35 ns</td><td>149.40 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>Remove100</td><td>239,121.4 ns</td><td>405.64 ns</td><td>338.73 ns</td><td>0.89</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>Remove100</td><td>26,405.7 ns</td><td>70.34 ns</td><td>65.79 ns</td><td>0.10</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>RemoveAdd100</td><td>167,679.6 ns</td><td>337.93 ns</td><td>316.10 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>RemoveAdd100</td><td>190,109.3 ns</td><td>211.51 ns</td><td>176.62 ns</td><td>1.13</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>RemoveAdd100</td><td>25,436.7 ns</td><td>68.35 ns</td><td>63.94 ns</td><td>0.15</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>RandomLookup100</td><td>110,918.7 ns</td><td>284.34 ns</td><td>252.06 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>RandomLookup100</td><td>124,019.4 ns</td><td>290.03 ns</td><td>257.10 ns</td><td>1.12</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>RandomLookup100</td><td>26,270.2 ns</td><td>68.15 ns</td><td>63.74 ns</td><td>0.24</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>RandomUpdate100</td><td>116,047.6 ns</td><td>207.88 ns</td><td>194.45 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>RandomUpdate100</td><td>124,473.8 ns</td><td>218.56 ns</td><td>204.44 ns</td><td>1.07</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>RandomUpdate100</td><td>30,906.9 ns</td><td>95.11 ns</td><td>88.97 ns</td><td>0.27</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>Process</td><td>108,370.3 ns</td><td>268.55 ns</td><td>251.20 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>Process</td><td>101,372.9 ns</td><td>333.16 ns</td><td>278.20 ns</td><td>0.93</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>Process</td><td>85,439.3 ns</td><td>192.28 ns</td><td>170.46 ns</td><td>0.79</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>DoubleList</td><td>10000</td><td>ForEach</td><td>308,229.7 ns</td><td>384.98 ns</td><td>300.57 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionary</td><td>10000</td><td>ForEach</td><td>307,999.7 ns</td><td>319.88 ns</td><td>283.57 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    <tr>
-        <td>SparseLinearDictionaryWithLookup</td><td>10000</td><td>ForEach</td><td>284,058.7 ns</td><td>725.71 ns</td><td>643.33 ns</td><td>0.92</td><td>0.00</td><td>-</td><td>NA</td>
-    </tr>
-    </tbody>
-</table>
+<thead><tr><th>Method</th><th>N</th><th>   Action</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Ratio</th><th>RatioSD</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>DoubleList</td><td>100</td><td>Add100</td><td>7.973 &mu;s</td><td>0.1219 &mu;s</td><td>0.1018 &mu;s</td><td>7.937 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>Add100</td><td>6.709 &mu;s</td><td>0.4740 &mu;s</td><td>1.3601 &mu;s</td><td>7.085 &mu;s</td><td>0.93</td><td>0.06</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>100</td><td>Remove100</td><td>3.947 &mu;s</td><td>0.0850 &mu;s</td><td>0.1191 &mu;s</td><td>3.929 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>Remove100</td><td>6.106 &mu;s</td><td>0.1226 &mu;s</td><td>0.1087 &mu;s</td><td>6.119 &mu;s</td><td>1.54</td><td>0.05</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>100</td><td>RemoveAdd100</td><td>14.316 &mu;s</td><td>0.2923 &mu;s</td><td>0.2591 &mu;s</td><td>14.303 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>RemoveAdd100</td><td>7.299 &mu;s</td><td>0.1516 &mu;s</td><td>0.2734 &mu;s</td><td>7.245 &mu;s</td><td>0.50</td><td>0.02</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>100</td><td>RandomLookup100</td><td>18.994 &mu;s</td><td>0.3880 &mu;s</td><td>0.7192 &mu;s</td><td>18.815 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>RandomLookup100</td><td>16.598 &mu;s</td><td>0.3232 &mu;s</td><td>0.3174 &mu;s</td><td>16.625 &mu;s</td><td>0.88</td><td>0.04</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>100</td><td>RandomUpdate100</td><td>15.060 &mu;s</td><td>0.7702 &mu;s</td><td>2.2710 &mu;s</td><td>13.858 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>RandomUpdate100</td><td>14.098 &mu;s</td><td>0.2899 &mu;s</td><td>0.4339 &mu;s</td><td>13.967 &mu;s</td><td>0.84</td><td>0.14</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>100</td><td>Process</td><td>4.653 &mu;s</td><td>0.2794 &mu;s</td><td>0.8237 &mu;s</td><td>4.218 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>Process</td><td>3.697 &mu;s</td><td>0.1472 &mu;s</td><td>0.3979 &mu;s</td><td>3.540 &mu;s</td><td>0.81</td><td>0.15</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>100</td><td>ForEach</td><td>8.226 &mu;s</td><td>0.6462 &mu;s</td><td>1.8747 &mu;s</td><td>7.798 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>100</td><td>ForEach</td><td>7.019 &mu;s</td><td>0.4579 &mu;s</td><td>1.3430 &mu;s</td><td>6.948 &mu;s</td><td>0.89</td><td>0.21</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>Add100</td><td>6.682 &mu;s</td><td>0.3445 &mu;s</td><td>0.9829 &mu;s</td><td>6.460 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>Add100</td><td>4.648 &mu;s</td><td>0.1144 &mu;s</td><td>0.3207 &mu;s</td><td>4.577 &mu;s</td><td>0.70</td><td>0.10</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>Remove100</td><td>278.256 &mu;s</td><td>5.4901 &mu;s</td><td>6.1022 &mu;s</td><td>274.921 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>Remove100</td><td>245.896 &mu;s</td><td>2.6075 &mu;s</td><td>2.0358 &mu;s</td><td>245.265 &mu;s</td><td>0.88</td><td>0.02</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>RemoveAdd100</td><td>973.203 &mu;s</td><td>15.3963 &mu;s</td><td>12.8566 &mu;s</td><td>969.090 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>RemoveAdd100</td><td>126.750 &mu;s</td><td>1.2820 &mu;s</td><td>1.1365 &mu;s</td><td>126.212 &mu;s</td><td>0.13</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>RandomLookup100</td><td>131.065 &mu;s</td><td>2.4389 &mu;s</td><td>4.8141 &mu;s</td><td>129.183 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>RandomLookup100</td><td>130.430 &mu;s</td><td>2.0041 &mu;s</td><td>1.7766 &mu;s</td><td>130.541 &mu;s</td><td>0.96</td><td>0.04</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>RandomUpdate100</td><td>124.775 &mu;s</td><td>0.7903 &mu;s</td><td>0.6170 &mu;s</td><td>124.686 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>RandomUpdate100</td><td>124.998 &mu;s</td><td>2.2020 &mu;s</td><td>1.8387 &mu;s</td><td>124.603 &mu;s</td><td>1.00</td><td>0.01</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>Process</td><td>156.421 &mu;s</td><td>3.5845 &mu;s</td><td>10.3993 &mu;s</td><td>150.504 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>Process</td><td>136.167 &mu;s</td><td>5.2238 &mu;s</td><td>14.5620 &mu;s</td><td>128.377 &mu;s</td><td>0.87</td><td>0.07</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>DoubleList</td><td>10000</td><td>ForEach</td><td>371.739 &mu;s</td><td>7.2181 &mu;s</td><td>8.0230 &mu;s</td><td>367.409 &mu;s</td><td>1.00</td><td>0.00</td><td>936 B</td><td>1.00</td>
+</tr><tr><td>SparseArray</td><td>10000</td><td>ForEach</td><td>329.251 &mu;s</td><td>3.6407 &mu;s</td><td>2.8424 &mu;s</td><td>328.430 &mu;s</td><td>0.88</td><td>0.02</td><td>936 B</td><td>1.00</td>
+</tr></tbody></table>
 </body>
 </html>
