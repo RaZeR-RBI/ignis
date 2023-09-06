@@ -19,6 +19,7 @@ public unsafe struct SparseArrayEnumerator<T> : IEnumerator<T>
 
 	public SparseArrayEnumerator(ISparseArrayView<T> view)
 	{
+		Current = default;
 		_view = view;
 		_i = -1;
 	}
