@@ -438,6 +438,7 @@ internal class EntityManager : IEntityManager
 
 	public IEntityView GetView(IEnumerable<Type> filter)
 	{
+		if (filter.Count() == 1) return GetStorage(filter.First()).GetView();
 		var set = filter.ToHashSet();
 		var view = GetViewByFilter(set);
 		if (view != null) return view;
@@ -453,6 +454,7 @@ internal class EntityManager : IEntityManager
 
 	public bool DestroyView(IEnumerable<Type> filter)
 	{
+		if (filter.Count() == 1) return true;
 		var view = GetViewByFilter(filter);
 		if (view == null) return false;
 		_views.Remove(view);

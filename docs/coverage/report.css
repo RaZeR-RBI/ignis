@@ -1,5 +1,5 @@
-﻿html { font-family: sans-serif; margin: 0; padding: 0; font-size: 0.9em; background-color: #d6d6d6; height: 100%; }
-body { margin: 0; padding: 0; height: 100%; }
+html { font-family: sans-serif; margin: 0; padding: 0; font-size: 0.9em; background-color: #d6d6d6; height: 100%; }
+body { margin: 0; padding: 0; height: 100%; color: #000; }
 h1 { font-family: 'Century Gothic', sans-serif; font-size: 1.2em; font-weight: normal; color: #fff; background-color: #6f6f6f; padding: 10px; margin: 20px -20px 20px -20px;  }
 h1:first-of-type { margin-top: 0; }
 h2 { font-size: 1.0em; font-weight: bold; margin: 10px 0 15px 0; padding: 0; }
@@ -12,7 +12,7 @@ h1 a.button { color: #000; background-color: #bebebe; margin: -5px 0 0 10px; pad
 h1 a.button:hover { background-color: #ccc; }
 h1 a.button i { position: relative; top: 1px; }
 
-.container { margin: auto; max-width: 1500px; width: 90%; background-color: #fff; display: flex; box-shadow: 0 0 60px #7d7d7d; min-height: 100%; }
+.container { margin: auto; max-width: 1650px; width: 90%; background-color: #fff; display: flex; box-shadow: 0 0 60px #7d7d7d; min-height: 100%; }
 .containerleft { padding: 0 20px 20px 20px; flex: 1; }
 .containerright { width: 340px; min-width: 340px; background-color: #e5e5e5; height: 100%; }
 .containerrightfixed { position: fixed; padding: 0 20px 20px 20px; border-left: solid 1px #6f6f6f; width: 300px; overflow-y: auto; height: 100%; top: 0; bottom: 0; }
@@ -46,62 +46,56 @@ div.currenthistory { margin: -2px -5px 0 -5px; padding: 2px 5px 2px 5px; height:
 .customizebox div.right input { font-size: 0.8em; width: 150px; }
 #namespaceslider { width: 200px; display: inline-block; margin-left: 8px; }
 
+.percentagebar {
+    padding-left: 3px;
+}
+a.percentagebar {
+    padding-left: 6px;
+}
 .percentagebarundefined {
     border-left: 2px solid #fff;
-    padding-left: 3px;
 }
 .percentagebar0 {
     border-left: 2px solid #c10909;
-    padding-left: 3px;
 }
 .percentagebar10 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 90%, #0aad0a 90%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar20 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 80%, #0aad0a 80%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar30 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 70%, #0aad0a 70%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar40 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 60%, #0aad0a 60%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar50 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 50%, #0aad0a 50%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar60 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 40%, #0aad0a 40%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar70 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 30%, #0aad0a 30%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar80 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 20%, #0aad0a 20%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar90 {
     border-left: 2px solid;
     border-image: linear-gradient(to bottom, #c10909 10%, #0aad0a 10%, #0aad0a 100%) 1;
-    padding-left: 3px;
 }
 .percentagebar100 {
     border-left: 2px solid #0aad0a;
-    padding-left: 3px;
 }
 
 .hidden, .ng-hide { display: none; }

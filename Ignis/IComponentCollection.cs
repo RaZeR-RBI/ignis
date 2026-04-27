@@ -8,9 +8,19 @@ public interface IComponentCollectionStorage
 {
 	bool RemoveComponentFromStorage(int entityId);
 	bool StoreComponentForEntity(int entityId);
+
+	/// <summary>
+	/// Return the count of entities with this component.
+	/// </summary>
+	int GetCount();
+
+	/// <summary>
+	/// Returns a view which contains entity IDs that have this component.
+	/// </summary>
+	IEntityView GetView();
 }
 
-public interface IComponentCollection
+public interface IComponentCollection : IComponentCollectionStorage
 {
 	/// <summary>
 	/// Updates the specified entity's component value.
@@ -102,16 +112,6 @@ public interface IComponentCollection<T> : IComponentCollection
 	/// <param name="state">Additional parameter for the callback</param>
 	/// <seealso cref="UpdateCurrent(T)" />
 	void ForEach<TState>(Action<int, T, TState> action, TState state);
-
-	/// <summary>
-	/// Return the count of entities with this component.
-	/// </summary>
-	int GetCount();
-
-	/// <summary>
-	/// Returns a view which contains entity IDs that have this component.
-	/// </summary>
-	IEntityView GetView();
 
 	/// <summary>
 	/// Check if the specified entity ID has a component stored in this storage.

@@ -31,16 +31,16 @@
           "link": "Ignis.IgnisExtensions",
           "children": [
             {
-              "name": "AddComponent<T, TState>(IContainer<TState>, int, T)",
-              "fullName": "Ignis.IgnisExtensions.AddComponent<T, TState>(IContainer<TState>, int, T)",
-              "type": "Method",
-              "link": "Ignis.IgnisExtensions.AddComponent_T, TState_(IContainer_TState_, int, T)"
-            },
-            {
               "name": "AddComponent<T, TState>(IContainer<TState>, int)",
               "fullName": "Ignis.IgnisExtensions.AddComponent<T, TState>(IContainer<TState>, int)",
               "type": "Method",
               "link": "Ignis.IgnisExtensions.AddComponent_T, TState_(IContainer_TState_, int)"
+            },
+            {
+              "name": "AddComponent<T, TState>(IContainer<TState>, int, T)",
+              "fullName": "Ignis.IgnisExtensions.AddComponent<T, TState>(IContainer<TState>, int, T)",
+              "type": "Method",
+              "link": "Ignis.IgnisExtensions.AddComponent_T, TState_(IContainer_TState_, int, T)"
             },
             {
               "name": "GetView(IEntityManager, Type[])",
@@ -279,12 +279,6 @@
               "link": "Ignis.IComponentCollection_T_.Get(int)"
             },
             {
-              "name": "GetCount()",
-              "fullName": "Ignis.IComponentCollection<T>.GetCount()",
-              "type": "Method",
-              "link": "Ignis.IComponentCollection_T_.GetCount()"
-            },
-            {
               "name": "GetEntityIds()",
               "fullName": "Ignis.IComponentCollection<T>.GetEntityIds()",
               "type": "Method",
@@ -301,12 +295,6 @@
               "fullName": "Ignis.IComponentCollection<T>.GetValues()",
               "type": "Method",
               "link": "Ignis.IComponentCollection_T_.GetValues()"
-            },
-            {
-              "name": "GetView()",
-              "fullName": "Ignis.IComponentCollection<T>.GetView()",
-              "type": "Method",
-              "link": "Ignis.IComponentCollection_T_.GetView()"
             },
             {
               "name": "Process(Func<int, T, T>)",
@@ -346,6 +334,18 @@
           "type": "Interface",
           "link": "Ignis.IComponentCollectionStorage",
           "children": [
+            {
+              "name": "GetCount()",
+              "fullName": "Ignis.IComponentCollectionStorage.GetCount()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollectionStorage.GetCount()"
+            },
+            {
+              "name": "GetView()",
+              "fullName": "Ignis.IComponentCollectionStorage.GetView()",
+              "type": "Method",
+              "link": "Ignis.IComponentCollectionStorage.GetView()"
+            },
             {
               "name": "RemoveComponentFromStorage(int)",
               "fullName": "Ignis.IComponentCollectionStorage.RemoveComponentFromStorage(int)",
@@ -457,16 +457,16 @@
               "link": "Ignis.IContainer_TState_.IsBuilt()"
             },
             {
-              "name": "Register(Type, Type)",
-              "fullName": "Ignis.IContainer<TState>.Register(Type, Type)",
-              "type": "Method",
-              "link": "Ignis.IContainer_TState_.Register(Type, Type)"
-            },
-            {
               "name": "Register(Type)",
               "fullName": "Ignis.IContainer<TState>.Register(Type)",
               "type": "Method",
               "link": "Ignis.IContainer_TState_.Register(Type)"
+            },
+            {
+              "name": "Register(Type, Type)",
+              "fullName": "Ignis.IContainer<TState>.Register(Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IContainer_TState_.Register(Type, Type)"
             },
             {
               "name": "Register<T>()",
@@ -639,16 +639,10 @@
               "link": "Ignis.IEntityManager.Query(Span_int_, ReadOnlySpan_Type_)"
             },
             {
-              "name": "Query(Span<int>, Type, Type, Type, Type)",
-              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type, Type, Type)",
+              "name": "Query(Span<int>, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type)",
               "type": "Method",
-              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type, Type, Type)"
-            },
-            {
-              "name": "Query(Span<int>, Type, Type, Type)",
-              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type, Type)",
-              "type": "Method",
-              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type, Type)"
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type)"
             },
             {
               "name": "Query(Span<int>, Type, Type)",
@@ -657,10 +651,16 @@
               "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type)"
             },
             {
-              "name": "Query(Span<int>, Type)",
-              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type)",
+              "name": "Query(Span<int>, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type, Type)",
               "type": "Method",
-              "link": "Ignis.IEntityManager.Query(Span_int_, Type)"
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type, Type)"
+            },
+            {
+              "name": "Query(Span<int>, Type, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.Query(Span<int>, Type, Type, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.Query(Span_int_, Type, Type, Type, Type)"
             },
             {
               "name": "Query(Type[])",
@@ -675,16 +675,10 @@
               "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, ReadOnlySpan_Type_, bool)"
             },
             {
-              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, bool)",
-              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, bool)",
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
               "type": "Method",
-              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, bool)"
-            },
-            {
-              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, bool)",
-              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, bool)",
-              "type": "Method",
-              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, bool)"
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, Type, bool)"
             },
             {
               "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, bool)",
@@ -693,10 +687,16 @@
               "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, bool)"
             },
             {
-              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
-              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, Type, Type, bool)",
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, Type, bool)",
               "type": "Method",
-              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, Type, Type, bool)"
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, Type, bool)"
+            },
+            {
+              "name": "QuerySubset(ReadOnlySpan<int>, Span<int>, Type, bool)",
+              "fullName": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan<int>, Span<int>, Type, bool)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QuerySubset(ReadOnlySpan_int_, Span_int_, Type, bool)"
             },
             {
               "name": "QuerySubset<T, C>(T, C, bool)",
@@ -705,16 +705,10 @@
               "link": "Ignis.IEntityManager.QuerySubset_T, C_(T, C, bool)"
             },
             {
-              "name": "QueryTo(ICollection<int>, Type, Type, Type, Type)",
-              "fullName": "Ignis.IEntityManager.QueryTo(ICollection<int>, Type, Type, Type, Type)",
+              "name": "QueryTo(ICollection<int>, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(ICollection<int>, Type)",
               "type": "Method",
-              "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type, Type, Type, Type)"
-            },
-            {
-              "name": "QueryTo(ICollection<int>, Type, Type, Type)",
-              "fullName": "Ignis.IEntityManager.QueryTo(ICollection<int>, Type, Type, Type)",
-              "type": "Method",
-              "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type, Type, Type)"
+              "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type)"
             },
             {
               "name": "QueryTo(ICollection<int>, Type, Type)",
@@ -723,10 +717,16 @@
               "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type, Type)"
             },
             {
-              "name": "QueryTo(ICollection<int>, Type)",
-              "fullName": "Ignis.IEntityManager.QueryTo(ICollection<int>, Type)",
+              "name": "QueryTo(ICollection<int>, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(ICollection<int>, Type, Type, Type)",
               "type": "Method",
-              "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type)"
+              "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type, Type, Type)"
+            },
+            {
+              "name": "QueryTo(ICollection<int>, Type, Type, Type, Type)",
+              "fullName": "Ignis.IEntityManager.QueryTo(ICollection<int>, Type, Type, Type, Type)",
+              "type": "Method",
+              "link": "Ignis.IEntityManager.QueryTo(ICollection_int_, Type, Type, Type, Type)"
             },
             {
               "name": "QueryTo(ICollection<int>, Type[])",
@@ -951,16 +951,16 @@
               "link": "Ignis.Storage.DoubleListStorage_T_.StoreComponentForEntity(int)"
             },
             {
-              "name": "Update(int, object)",
-              "fullName": "Ignis.Storage.DoubleListStorage<T>.Update(int, object)",
-              "type": "Method",
-              "link": "Ignis.Storage.DoubleListStorage_T_.Update(int, object)"
-            },
-            {
               "name": "Update(int, T)",
               "fullName": "Ignis.Storage.DoubleListStorage<T>.Update(int, T)",
               "type": "Method",
               "link": "Ignis.Storage.DoubleListStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.DoubleListStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.DoubleListStorage_T_.Update(int, object)"
             },
             {
               "name": "UpdateCurrent(T)",
@@ -1055,16 +1055,16 @@
               "link": "Ignis.Storage.NullStorage_T_.StoreComponentForEntity(int)"
             },
             {
-              "name": "Update(int, object)",
-              "fullName": "Ignis.Storage.NullStorage<T>.Update(int, object)",
-              "type": "Method",
-              "link": "Ignis.Storage.NullStorage_T_.Update(int, object)"
-            },
-            {
               "name": "Update(int, T)",
               "fullName": "Ignis.Storage.NullStorage<T>.Update(int, T)",
               "type": "Method",
               "link": "Ignis.Storage.NullStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.NullStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.NullStorage_T_.Update(int, object)"
             },
             {
               "name": "UpdateCurrent(T)",
@@ -1191,16 +1191,16 @@
               "link": "Ignis.Storage.SparseArrayStorage_T_.StoreComponentForEntity(int)"
             },
             {
-              "name": "Update(int, object)",
-              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Update(int, object)",
-              "type": "Method",
-              "link": "Ignis.Storage.SparseArrayStorage_T_.Update(int, object)"
-            },
-            {
               "name": "Update(int, T)",
               "fullName": "Ignis.Storage.SparseArrayStorage<T>.Update(int, T)",
               "type": "Method",
               "link": "Ignis.Storage.SparseArrayStorage_T_.Update(int, T)"
+            },
+            {
+              "name": "Update(int, object)",
+              "fullName": "Ignis.Storage.SparseArrayStorage<T>.Update(int, object)",
+              "type": "Method",
+              "link": "Ignis.Storage.SparseArrayStorage_T_.Update(int, object)"
             },
             {
               "name": "UpdateCurrent(T)",

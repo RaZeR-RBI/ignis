@@ -115,10 +115,10 @@ public class EntityViewTest
 		Assert.Same(view3, sameView3);
 		Assert.Same(view4, sameView4);
 
-		em.DestroyView(typeof(Component4)).Should().BeFalse();
+		em.DestroyView(typeof(Component1), typeof(Component2)).Should().BeTrue();
 		em.DestroyView(typeof(Component1)).Should().BeTrue();
-		var newView1 = em.GetView<Component1>();
-		newView1.Should().NotBeSameAs(view1);
+		var newView2 = em.GetView<Component1, Component2>();
+		newView2.Should().NotBeSameAs(view2);
 	}
 
 	public struct Component1
